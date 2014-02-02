@@ -1,7 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Vladimras
- * Date: 14.2.2
- * Time: 18.38
- */ 
+class ItemController extends BaseController {
+    public function getIndex(){
+        return Item::all();
+    }
+}
