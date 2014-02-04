@@ -1,5 +1,5 @@
 @foreach($items as $item)
-    <p>This is {{ $item->pavadinimas }}</p>
+    <p>{{{ $item->pavadinimas}}} <a href="/category/remove/{{$item->id}}">X</a></p>
 @endforeach
 
 <a href="/category/add" >Pridėti</a>

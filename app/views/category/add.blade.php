@@ -3,6 +3,4 @@
 {{Form::text('pavadinimas'); }}
 {{Form::submit('Pridėti'); }}
 
-
-
 {{ Form::close() }}

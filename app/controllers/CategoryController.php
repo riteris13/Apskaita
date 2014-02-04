@@ -10,8 +10,18 @@ class CategoryController extends BaseController {
 
     public function postAdd(){
         $input = Input::all();
+        $validator = Validator::make($input, Category::$rules);
+
+        if($validator->fails()){
+            return Redirect::back()->withInput();
+        }
         $category = Category::create($input);
         $category->save();
         return Redirect::to('category');
+    }
+    public function getRemove($id){
+        $model = Category::findOrFail($id);
+        $model->delete();
+        return Redirect::back();
     }
 }
