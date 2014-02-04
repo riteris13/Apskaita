@@ -22,6 +22,6 @@ class CategoryController extends BaseController {
     public function getRemove($id){
         $model = Category::findOrFail($id);
         $model->delete();
-        return Redirect::back();
+        return Redirect::back()->with('success','Sėkmingai pašalinote kategoriją!');
     }
 }

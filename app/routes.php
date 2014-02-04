@@ -18,3 +18,4 @@ Route::get('/', function()
 
 Route::controller('item', 'ItemController');
 Route::controller('category', 'CategoryController');
+Route::controller('report', 'ReportController');
