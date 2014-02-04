@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Ataskaitos apie klientus</title>
+	<title>Ataskaitos apie pardavimus</title>
 	<style>
 		@import url(//fonts.googleapis.com/css?family=Lato:700);
 
@@ -20,17 +20,5 @@
 	</style>
 </head>
 <body>
-<!--
-sql pasibandymui
--->
-	<?
-	$users = DB::table('daktaras')
-					->join('klinika', 'klinika_id', '=', 'id')
-					->select('vardas', 'pavarde', 'pavadinimas')
-					->get();					
-	?>
-@foreach($items as $item)
-    <p>This is {{ $item->vardas}}</p>
-@endforeach
 
 </body>
