@@ -2,10 +2,14 @@
 
 @section('content')
 
-    @foreach($items as $item)
-        <h6>{{{ $item->pavadinimas}}} <a href="/category/remove/{{$item->id}}">X</a></h6>
-    @endforeach
-
-    <a href="/category/add" class="btn btn-primary" >Pridėti</a>
+    <div class="panel panel-default">
+        <div class="panel-heading">Kategorijų sąrašas</div>
+        <ul class="list-group">
+        @foreach($items as $item)
+            <li class="list-group-item">{{{ $item->pavadinimas}}} <a class="btn-sm btn-danger" href="/category/remove/{{$item->id}}">x</a></li>
+        @endforeach
+        </ul>
+    </div>
+    <a href="/category/add" class="btn btn-primary" >Pridėti naują</a>
 
 @stop

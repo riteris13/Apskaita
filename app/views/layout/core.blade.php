@@ -18,7 +18,7 @@
 </head>
 <body>
 
-<nav class="navbar navbar-default" role="navigation">
+<nav class="navbar navbar-inverse" role="navigation">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -40,13 +40,12 @@
                     <ul class="dropdown-menu">
                         <li><a href="/category">Kategorija</a></li>
                         <li><a href="/report/clients">Klientai</a></li>
-                        <li><a href="/item">Prekes</a></li>
+                        <li><a href="/item">Produktai</a></li>
                     </ul>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#">Prisijungti</a></li>
-                <li><a href="#">Registruotis</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
