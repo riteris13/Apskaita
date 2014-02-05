@@ -45,7 +45,7 @@
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Prisijungti</a></li>
+                <li><a href="/auth/logout">Atsijungti</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->

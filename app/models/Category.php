@@ -12,4 +12,8 @@ class Category extends Eloquent{
         'alpha_num' => 'Neteisingai įvesti duomenys! Gali būti naudojamos tik raidės ir skaičiai, be tarpų.',
         'unique' => 'Tokia kategorija jau egzistuoja!'
     ];
+
+    public function products(){
+        return $this->hasMany('Item', 'kategorija_id');
+    }
 }

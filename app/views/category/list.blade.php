@@ -4,11 +4,25 @@
 
     <div class="panel panel-default">
         <div class="panel-heading">Kategorijų sąrašas</div>
-        <ul class="list-group">
-        @foreach($items as $item)
-            <li class="list-group-item">{{{ $item->pavadinimas}}} <a class="btn-sm btn-danger" href="/category/remove/{{$item->id}}">x</a></li>
-        @endforeach
-        </ul>
+        <table class="table table-hover">
+            <tbody >
+                @foreach($items as $item)
+                  <tr>
+                      <td>
+                         {{{ $item->pavadinimas}}}
+                      </td>
+                      <td class="text-right">
+                          @if($item->products()->count() == 0)
+                          <a onclick="return confirm('Ar tikrai norite pašalinti kategoriją?')" class="btn btn-xs btn-danger" href="/category/remove/{{$item->id}}">Pašalinti</a>
+                         @else
+                          <a alt="Ši kategorija turi produktų. Pirma pašalinkite juos." class=" btn btn-xs btn-danger disabled" href="#">Pašalinti</a>
+                          @endif
+
+                      </td>
+                  </tr>
+                @endforeach
+            </tbody>
+        </table>
     </div>
     <a href="/category/add" class="btn btn-primary" >Pridėti naują</a>
 
