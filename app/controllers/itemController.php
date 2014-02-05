@@ -1,6 +1,7 @@
 <?php
 class ItemController extends BaseController {
     public function getIndex(){
-        return Item::all();
+        $items = Item::all();
+        return View::make('item.list')->with('items',$items);
     }
 }

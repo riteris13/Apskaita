@@ -54,7 +54,7 @@ return array(
 
 		'mysql' => array(
 			'driver'    => 'mysql',
-			'host'      => 'localhost',
+			'host'      => 'riteris13.nacija.lt',
 			'database'  => 'apskaita',
 			'username'  => 'Moderator',
 			'password'  => 'fuw4bruT',
