@@ -10,14 +10,17 @@ class CategoryController extends BaseController {
 
     public function postAdd(){
         $input = Input::all();
-        $validator = Validator::make($input, Category::$rules);
+        $validator = Validator::make($input, Category::$rules, Category::$messages);
 
         if($validator->fails()){
-            return Redirect::back()->withInput();
+            return Redirect::back()
+                ->withInput()
+                ->withErrors($validator);
         }
         $category = Category::create($input);
         $category->save();
-        return Redirect::to('category');
+        $msg = 'Sėkmingai pridėjote kategoriją '.$input['pavadinimas'];
+        return Redirect::to('category')->with('success',$msg);
     }
     public function getRemove($id){
         $model = Category::findOrFail($id);

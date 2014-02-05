@@ -24,6 +24,11 @@
             {{ $success }}
         </div>
     @endif
+    @if(($errors = Session::get('errors')))
+        <div class="alert alert-danger">
+            {{ $errors->first() }}
+        </div>
+    @endif
     @yield('content')
 </div>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
