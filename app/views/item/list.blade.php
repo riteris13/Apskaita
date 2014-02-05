@@ -3,7 +3,7 @@
 @section('content')
 
 @foreach($items as $item)
-<h6>{{{ $item->id}}} {{{ $item->pavadinimas}}} {{{ $item->kodas}}} {{{ $item->category->pavadinimas}}}</h6>
+<h6>{{{ $item->all()}}}</h6>
 @endforeach
 
 @stop
