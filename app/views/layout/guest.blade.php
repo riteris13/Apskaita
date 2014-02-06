@@ -68,6 +68,11 @@
 
     {{ Form::open(array('url' => '/auth', 'class'=>'form-signin')) }}
     <h2 class="form-signin-heading">Prašome prisijungti</h2>
+    @if($wrong = Session::get('wrong'))
+        <div class="alert alert-danger">
+            {{ $wrong }}
+        </div>
+    @endif
     {{Form::email('email', null, array('class'=>'form-control', 'placeholder'=>'El. pašto adresas', 'required', 'autofocus')) }}
     {{Form::password('password', array('type'=>'password', 'class'=>'form-control', 'placeholder'=>'Slaptažodis', 'requred'))}}
     <br>

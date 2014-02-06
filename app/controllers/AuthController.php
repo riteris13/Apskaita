@@ -7,7 +7,9 @@ class AuthController extends BaseController{
         if (Auth::attempt(array('email'=>Input::get('email'), 'password'=>Input::get('password')))){
             return Redirect::to('/');
         }
-        return Redirect::to('/')->withInput();
+        return Redirect::to('/auth')
+                     ->withInput()
+                     ->with('wrong', 'Įvesti neteisingi duomenys!');
 
     }
     public function getLogout(){
