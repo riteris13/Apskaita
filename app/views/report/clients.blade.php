@@ -4,10 +4,25 @@
 
     <div class="panel panel-default">
         <div class="panel-heading">Klientų sąrašas</div>
-        <ul class="list-group">
-        @foreach($doctors as $doctor)
-            <li class="list-group-item"> {{{ $doctor->vardas }}}, {{{ $doctor->pavarde }}}, {{{ $doctor->clinic->pavadinimas }}}</li>
-        @endforeach
-        </ul>
+        <table class="table table-hover">
+            <tbody >
+            @foreach($doctors as $doctor)
+            <tr>
+                <td>
+                    {{{ $doctor->vardas }}}
+                </td>
+                <td>
+                    {{{ $doctor->pavarde }}}
+                </td>
+                <td>
+                    {{{ $doctor->clinic->pavadinimas }}}
+                </td>
+            </tr>
+            @endforeach
+
+            </tbody>
+        </table>
     </div>
+    <p>  {{ $doctors->links() }} </p>
+
 @stop

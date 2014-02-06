@@ -74,7 +74,7 @@
         </div>
     @endif
     {{Form::email('email', null, array('class'=>'form-control', 'placeholder'=>'El. pašto adresas', 'required', 'autofocus')) }}
-    {{Form::password('password', array('type'=>'password', 'class'=>'form-control', 'placeholder'=>'Slaptažodis', 'requred'))}}
+    {{Form::password('password', array('type'=>'password', 'class'=>'form-control', 'placeholder'=>'Slaptažodis', 'required'))}}
     <br>
     {{Form::submit('Prisijungti',array('class'=>'btn btn-lg btn-primary btn-block')); }}
 

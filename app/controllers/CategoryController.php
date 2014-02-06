@@ -1,7 +1,7 @@
 <?php
 class CategoryController extends BaseController {
     public function getIndex(){
-        $items = Category::all();
+        $items = Category::paginate(15);
         return View::make('category.list')->with('items',$items);
     }
     public function getAdd(){

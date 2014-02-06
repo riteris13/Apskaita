@@ -41,6 +41,7 @@
                         <li><a href="/category">Kategorija</a></li>
                         <li><a href="/report/clients">Klientai</a></li>
                         <li><a href="/item">Produktai</a></li>
+                        <li><a href="/clinic">Klinikos</a></li>
                     </ul>
                 </li>
             </ul>

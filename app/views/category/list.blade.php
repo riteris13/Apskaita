@@ -21,9 +21,11 @@
                       </td>
                   </tr>
                 @endforeach
+
             </tbody>
         </table>
     </div>
+  <p>  {{ $items->links() }} </p>
     <a href="/category/add" class="btn btn-primary" >Pridėti naują</a>
 
 @stop
