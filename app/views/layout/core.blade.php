@@ -42,6 +42,7 @@
                         <li><a href="/report/clients">Klientai</a></li>
                         <li><a href="/item">Produktai</a></li>
                         <li><a href="/clinic">Klinikos</a></li>
+						<li><a href="/visit">Apsilankymai</a></li>
                     </ul>
                 </li>
             </ul>
