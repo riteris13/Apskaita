@@ -3,26 +3,26 @@
 @section('content')
 
     <div class="panel panel-default">
-        <div class="panel-heading">Produktų sąrašas</div>
+        <div class="panel-heading">Klientų sąrašas</div>
         <table class="table table-hover">
             <thead>
             <tr>
-                <th>Kategorija</th>
-                <th>Pavadinimas</th>
-                <th>Kodas</th>
+                <th>Vardas</th>
+                <th>Pavardė</th>
+                <th>Klinika</th>
             </tr>
             </thead>
             <tbody >
             @foreach($items as $item)
             <tr>
                 <td>
-                    {{{ $item->category->pavadinimas}}}
+                    {{{ $item->vardas }}}
                 </td>
                 <td>
-                    {{{ $item->pavadinimas}}}
+                    {{{ $item->pavarde }}}
                 </td>
                 <td>
-                    {{{ $item->kodas}}}
+                    {{{ $item->clinic->pavadinimas }}}
                 </td>
             </tr>
             @endforeach
@@ -31,4 +31,6 @@
         </table>
     </div>
     <p>  {{ $items->links() }} </p>
+    <a href="/doctor/add" class="btn btn-primary" >Pridėti naują</a>
+
 @stop

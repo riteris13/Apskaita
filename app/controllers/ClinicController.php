@@ -1,7 +1,7 @@
 <?php
 class ClinicController extends BaseController {
     public function getIndex(){
-        $items = Clinic::paginate();
+        $items = Clinic::orderBy('pavadinimas')->paginate(15);
         return View::make('clinic.list')->with('items',$items);
     }
     public function getAdd(){

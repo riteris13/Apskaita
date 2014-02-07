@@ -39,7 +39,7 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Meniu <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href="/category">Kategorija</a></li>
-                        <li><a href="/report/clients">Klientai</a></li>
+                        <li><a href="/doctor">Gydytojai</a></li>
                         <li><a href="/item">Produktai</a></li>
                         <li><a href="/clinic">Klinikos</a></li>
 						<li><a href="/visit">Apsilankymai</a></li>

@@ -5,6 +5,11 @@
     <div class="panel panel-default">
         <div class="panel-heading">Kategorijų sąrašas</div>
         <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>Pavadinimas</th>
+            </tr>
+            </thead>
             <tbody >
                 @foreach($items as $item)
                   <tr>

@@ -23,5 +23,6 @@ Route::group(array('before' => 'notAuth'), function()
     Route::controller('report', 'ReportController');
     Route::controller('clinic', 'ClinicController');
 	Route::controller('visit', 'VisitController');
+    Route::controller('doctor', 'DoctorController');
 });
     Route::controller('auth', 'AuthController');
