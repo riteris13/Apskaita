@@ -24,6 +24,9 @@
             <td>
 				{{{ $item->kompetitoriai}}}
             </td>
+            <td class="text-right">
+                <a onclick="return confirm('Ar tikrai norite pašalinti apsilankymą?')" class="btn btn-xs btn-danger" href="/visit/remove/{{$item->id}}">Pašalinti</a>
+            </td>
         </tr>
         @endforeach
 

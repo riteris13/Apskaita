@@ -24,6 +24,9 @@
                 <td>
                     {{{ $item->clinic->pavadinimas }}}
                 </td>
+                <td class="text-right">
+                    <a onclick="return confirm('Ar tikrai norite pašalinti kliniką?')" class="btn btn-xs btn-danger" href="/doctor/remove/{{$item->id}}">Pašalinti</a>
+                </td>
             </tr>
             @endforeach
 

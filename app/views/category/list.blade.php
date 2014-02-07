@@ -22,7 +22,6 @@
                          @else
                           <a alt="Ši kategorija turi produktų. Pirma pašalinkite juos." class=" btn btn-xs btn-danger disabled" href="#">Pašalinti</a>
                           @endif
-
                       </td>
                   </tr>
                 @endforeach

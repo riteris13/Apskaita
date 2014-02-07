@@ -5,7 +5,7 @@ class Clinic extends Eloquent {
     public $timestamps = false;
 
     public function doctors(){
-        return $this->hasMany('Doctor','id');
+        return $this->hasMany('Doctor','klinika_id');
     }
     public static $rules = [
         'pavadinimas' => 'required|alpha_num',

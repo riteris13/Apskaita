@@ -21,4 +21,9 @@ class ClinicController extends BaseController {
         $msg = 'Sėkmingai pridėjote kliniką '.$input['pavadinimas'];
         return Redirect::to('clinic')->with('success',$msg);
     }
+    public function getRemove($id){
+        $model = Clinic::findOrFail($id);
+        $model->delete();
+        return Redirect::back()->with('success', 'Sėkmingai pašalinote kliniką!');
+    }
 }

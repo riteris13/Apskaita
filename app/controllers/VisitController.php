@@ -21,4 +21,9 @@ class VisitController extends BaseController {
         $msg = 'Sėkmingai pridėjote apsilakymą';
         return Redirect::to('visit')->with('success',$msg);
     }
+    public function getRemove($id){
+        $model = Visit::findOrFail($id);
+        $model->delete();
+        return Redirect::back()->with('success', 'Sėkmingai pašalinote apsilankymą!');
+    }
 }

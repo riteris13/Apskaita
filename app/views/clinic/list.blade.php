@@ -26,6 +26,13 @@
                 @elseif($item->vat == 0) Ne PVM mokėtojas
                 @endif
             </td>
+            <td class="text-right">
+                @if($item->doctors()->count() == 0)
+                <a onclick="return confirm('Ar tikrai norite pašalinti kliniką?')" class="btn btn-xs btn-danger" href="/clinic/remove/{{$item->id}}">Pašalinti</a>
+                @else
+                <a alt="Ši kategorija turi produktų. Pirma pašalinkite juos." class=" btn btn-xs btn-danger disabled" href="#">Pašalinti</a>
+                @endif
+            </td>
         </tr>
         @endforeach
 

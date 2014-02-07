@@ -21,4 +21,9 @@ class DoctorController extends BaseController {
         $msg = 'Sėkmingai pridėjote daktarą: '.$input['vardas'].' '.$input['pavarde'];
         return Redirect::to('doctor')->with('success',$msg);
     }
+    public function getRemove($id){
+        $model = Doctor::findOrFail($id);
+        $model->delete();
+        return Redirect::back()->with('success', 'Sėkmingai pašalinote daktarą!');
+    }
 }
