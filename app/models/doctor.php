@@ -16,4 +16,7 @@ class Doctor extends Eloquent {
         'required' => 'Neįvesti duomenys',
         'alpha' => 'Neteisingai įvesti duomenys! Gali būti naudojamos tik raidės be tarpų.'
     ];
+    public function getFullNameAttribute(){
+        return $this->vardas.' '.$this->pavarde;
+    }
 }

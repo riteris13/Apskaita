@@ -23,7 +23,8 @@ class ClinicController extends BaseController {
     }
     public function getRemove($id){
         $model = Clinic::findOrFail($id);
+        $msg =  'Sėkmingai pašalinote kliniką '.$model->pavadinimas;
         $model->delete();
-        return Redirect::back()->with('success', 'Sėkmingai pašalinote kliniką!');
+        return Redirect::back()->with('success', $msg);
     }
 }

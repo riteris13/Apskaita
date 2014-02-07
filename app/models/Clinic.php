@@ -15,4 +15,7 @@ class Clinic extends Eloquent {
         'required' => 'Neįvesti duomenys',
         'alpha_num' => 'Neteisingai įvesti duomenys! Gali būti naudojamos tik raidės ir skaičiai, be tarpų.'
     ];
+    public function getVatPayerAttribute(){
+        return $this->vat?'Taip':'Ne';
+    }
 }

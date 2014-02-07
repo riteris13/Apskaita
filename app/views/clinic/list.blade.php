@@ -9,7 +9,7 @@
         <tr>
             <th>Pavadinimias</th>
             <th>Adresas</th>
-            <th>PVM</th>
+            <th>PVM mokėtojas</th>
         </tr>
         </thead>
         <tbody >
@@ -22,9 +22,7 @@
                 {{{ $item->adresas}}}
             </td>
             <td>
-                @if($item->vat == 1) PVM mokėtojas
-                @elseif($item->vat == 0) Ne PVM mokėtojas
-                @endif
+                {{{ $item->vatPayer }}}
             </td>
             <td class="text-right">
                 @if($item->doctors()->count() == 0)

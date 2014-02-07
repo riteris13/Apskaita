@@ -18,7 +18,7 @@ class VisitController extends BaseController {
         }
         $visit = Visit::create($input);
         $visit->save();
-        $msg = 'Sėkmingai pridėjote apsilakymą';
+        $msg = 'Sėkmingai pridėjote apsilakymą.';
         return Redirect::to('visit')->with('success',$msg);
     }
     public function getRemove($id){

@@ -2,14 +2,24 @@
 
 @section('content')
 
+
+<div class="panel panel-default">
+    <div class="panel-heading">Produktų paieška</div>
+</div>
+
     <div class="panel panel-default">
-        <div class="panel-heading">Produktų sąrašas</div>
+        <div class="panel-heading">Kategorijos {{{$items->first()->category->pavadinimas}}} produktų sąrašas</div>
         <table class="table table-hover">
             <thead>
             <tr>
                 <th>Kategorija</th>
                 <th>Pavadinimas</th>
                 <th>Kodas</th>
+
+                @foreach($items->first()->category->fields as $field)
+                <th>{{{ucfirst($field->atributas) }}}</th>
+                @endforeach
+                <th>Kaina</th>
             </tr>
             </thead>
             <tbody >
@@ -23,6 +33,12 @@
                 </td>
                 <td>
                     {{{ $item->kodas}}}
+                </td>
+                @foreach($items->first()->category->fields as $field)
+                <td>{{{ $item->{$field->atributas} }}}</td>
+                @endforeach
+                <td>
+                    {{{ $item->kaina}}}
                 </td>
             </tr>
             @endforeach

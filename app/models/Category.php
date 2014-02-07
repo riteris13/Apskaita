@@ -16,4 +16,7 @@ class Category extends Eloquent{
     public function products(){
         return $this->hasMany('Item', 'kategorija_id');
     }
+    public function fields(){
+        return $this->hasMany('Attribute','kategorija_id');
+    }
 }

@@ -18,12 +18,13 @@ class DoctorController extends BaseController {
         }
         $client = Doctor::create($input);
         $client->save();
-        $msg = 'Sėkmingai pridėjote daktarą: '.$input['vardas'].' '.$input['pavarde'];
+        $msg = 'Sėkmingai pridėjote daktarą: '.$client->fullName;
         return Redirect::to('doctor')->with('success',$msg);
     }
     public function getRemove($id){
         $model = Doctor::findOrFail($id);
+        $msg =  'Sėkmingai pašalinote daktarą '.$model->fullName;
         $model->delete();
-        return Redirect::back()->with('success', 'Sėkmingai pašalinote daktarą!');
+        return Redirect::to('doctor')->with('success',$msg);
     }
 }

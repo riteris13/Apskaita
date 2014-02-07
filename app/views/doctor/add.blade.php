@@ -6,7 +6,7 @@
 
 {{Form::text('vardas'); }}
 {{Form::text('pavarde'); }}
-{{Form::text('klinika_id'); }}
+{{Form::select('klinika_id', Clinic::lists('pavadinimas', 'id')); }}
 {{Form::submit('Pridėti'); }}
 
 {{ Form::close() }}
