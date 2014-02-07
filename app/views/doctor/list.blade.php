@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="panel panel-default">
-        <div class="panel-heading">Klientų sąrašas</div>
+        <div class="panel-heading">Gydytojų sąrašas</div>
         <table class="table table-hover">
             <thead>
             <tr>

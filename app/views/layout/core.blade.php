@@ -38,7 +38,7 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Meniu <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="/category">Kategorija</a></li>
+                        <li><a href="/category">Produktų kategorijos</a></li>
                         <li><a href="/doctor">Gydytojai</a></li>
                         <li><a href="/item">Produktai</a></li>
                         <li><a href="/clinic">Klinikos</a></li>
