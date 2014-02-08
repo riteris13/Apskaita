@@ -15,6 +15,41 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <style>
+
+
+        .form-default {
+            max-width: 640px;
+            padding: 15px;
+            margin: -10 auto;
+        }
+        .form-default .form-default-heading,
+        .form-default .checkbox {
+
+        }
+        .form-default .form-control {
+            position: relative;
+            font-size: 12px;
+            padding: 10px;
+
+        }
+        .form-default .form-control:focus {
+            z-index: 2;
+        }
+        .form-default input[type="text"] {
+            margin-top: 0px;
+            margin-bottom: 20px;
+
+        }
+        .form-default input[type="submit"] {
+
+        }
+        .form-default input[type="dropbox"] {
+
+        }
+
+    </style>
+</head>
 </head>
 <body>
 
