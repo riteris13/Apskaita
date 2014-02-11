@@ -47,4 +47,5 @@
         </table>
     </div>
     <p>  {{ $items->links() }} </p>
+	<a href="/item/add" class="btn btn-primary" >Pridėti naują</a>
 @stop
