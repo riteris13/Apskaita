@@ -2,13 +2,28 @@
 
 @section('content')
 
+@if(($category = Session::get('category')))
 
+@endif
 <div class="panel panel-default">
     <div class="panel-heading">Produktų paieška</div>
+    {{ Form::open(array('url' => 'item', 'class'=>'form-default')) }}
+    <h4>Kategorija</h4>
+    {{Form::select('id', Category::lists('pavadinimas', 'id')); }}
+    <br>
+    <br>
+    {{Form::submit('Pasirinkti', array('class'=>'btn btn-primary')); }}
+
+    {{ Form::close() }}
 </div>
 
     <div class="panel panel-default">
-        <div class="panel-heading">Kategorijos {{{$items->first()->category->pavadinimas}}} produktų sąrašas</div>
+        @if(($fail == 'true'))
+            <div class="panel-heading">Visų kategorijų produktų sąrašas</div>
+        @else
+            <div class="panel-heading">Kategorijos {{{$items->first()->category->pavadinimas}}} produktų sąrašas</div>
+        @endif
+
         <table class="table table-hover">
             <thead>
             <tr>
