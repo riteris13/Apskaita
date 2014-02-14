@@ -29,7 +29,8 @@ class ClinicController extends BaseController {
     }
 	
     public function postEdit(){
-        $input = Input::all();		
+        $input = Input::all();	
+		$input['vat'] = Input::get('vat', 0);		
         $validator = Validator::make($input, Clinic::$rules, Clinic::$messages);
 
         if($validator->fails()){
