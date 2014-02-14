@@ -2,7 +2,7 @@
 class ItemController extends BaseController {
     public function getIndex(){
         $items = Item::orderBy('pavadinimas')->paginate(15);
-        return View::make('item.list')->with('items',$items)->with('fail', 'true');
+        return View::make('item.list')->with('items',$items)->with('fail', 'first');
     }
 
 	public function getAdd(){

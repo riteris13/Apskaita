@@ -2,8 +2,10 @@
 
 @section('content')
 
-@if(($category = Session::get('category')))
-
+@if(($fail == 'true'))
+    <div class="alert alert-danger">
+        Jūsų pasirinktoje kategorijoje prekių nėra. Rodomas visas sąrašas.
+    </div>
 @endif
 <div class="panel panel-default">
     <div class="panel-heading">Produktų paieška</div>
@@ -18,7 +20,7 @@
 </div>
 
     <div class="panel panel-default">
-        @if(($fail == 'true'))
+        @if(($fail == 'true'||'first'))
             <div class="panel-heading">Visų kategorijų produktų sąrašas</div>
         @else
             <div class="panel-heading">Kategorijos {{{$items->first()->category->pavadinimas}}} produktų sąrašas</div>
