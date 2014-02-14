@@ -25,7 +25,11 @@
                     {{{ $item->clinic->pavadinimas }}}
                 </td>
                 <td class="text-right">
-                    <a onclick="return confirm('Ar tikrai norite pašalinti kliniką?')" class="btn btn-xs btn-danger" href="/doctor/remove/{{$item->id}}">Pašalinti</a>
+                    <a
+                        onclick="return confirm('Ar tikrai norite pašalinti kliniką?')"
+                        class="btn btn-xs btn-danger" href="/doctor/remove/{{$item->id}}">
+                        <span class="glyphicon glyphicon-remove"></span> Pašalinti
+                    </a>
                 </td>
             </tr>
             @endforeach
@@ -34,6 +38,6 @@
         </table>
     </div>
     <p>  {{ $items->links() }} </p>
-    <a href="/doctor/add" class="btn btn-primary" >Pridėti naują</a>
+    <a href="/doctor/add" class="btn btn-primary" ><span class="glyphicon glyphicon-plus"></span> Pridėti naują</a>
 
 @stop

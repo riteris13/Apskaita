@@ -24,7 +24,7 @@ class ClinicController extends BaseController {
         }
         $clinic = Clinic::create($input);
         $clinic->save();
-        $msg = 'Sėkmingai prid4jote kliniką '.$input['pavadinimas'];
+        $msg = 'Sėkmingai pridėjote kliniką '.$input['pavadinimas'];
         return Redirect::to('clinic')->with('success',$msg);
     }
 	

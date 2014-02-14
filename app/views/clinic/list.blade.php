@@ -25,11 +25,23 @@
                 {{{ $item->vatPayer }}}
             </td>
             <td class="text-right">
-			<a href="/clinic/edit/{{$item->id}}">Redaguoti</a>
+			<a
+                class="btn btn-xs btn-primary" href="/clinic/edit/{{$item->id}}">
+                <span class="glyphicon glyphicon-pencil"></span> Redaguoti
+            </a>
+
                 @if($item->doctors()->count() == 0)
-                <a onclick="return confirm('Ar tikrai norite pašalinti kliniką?')" class="btn btn-xs btn-danger" href="/clinic/remove/{{$item->id}}">Pašalinti</a>
+                    <a
+                        onclick="return confirm('Ar tikrai norite pašalinti kliniką?')"
+                        class="btn btn-xs btn-danger" href="/clinic/remove/{{$item->id}}">
+                        <span class="glyphicon glyphicon-remove"></span> Pašalinti
+                    </a>
                 @else
-                <a alt="Ši kategorija turi produktų. Pirma pašalinkite juos." class=" btn btn-xs btn-danger disabled" href="#">Pašalinti</a>
+                    <a
+                        class=" btn btn-xs btn-danger disabled"
+                        href="#">
+                        <span class="glyphicon glyphicon-remove"></span> Pašalinti
+                    </a>
                 @endif
             </td>
         </tr>
@@ -39,5 +51,5 @@
     </table>
 </div>
 <p>  {{ $items->links() }} </p>
-<a href="/clinic/add" class="btn btn-primary" >Pridėti naują</a>
+<a href="/clinic/add" class="btn btn-primary" ><span class="glyphicon glyphicon-plus"></span> Pridėti naują</a>
 @stop

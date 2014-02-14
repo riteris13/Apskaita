@@ -18,9 +18,17 @@
                       </td>
                       <td class="text-right">
                           @if($item->products()->count() == 0)
-                          <a onclick="return confirm('Ar tikrai norite pašalinti kategoriją?')" class="btn btn-xs btn-danger" href="/category/remove/{{$item->id}}">Pašalinti</a>
+                            <a
+                                onclick="return confirm('Ar tikrai norite pašalinti kategoriją?')"
+                                class="btn btn-xs btn-danger" href="/category/remove/{{$item->id}}">
+                                <span class="glyphicon glyphicon-remove"></span> Pašalinti
+                            </a>
                          @else
-                          <a alt="Ši kategorija turi produktų. Pirma pašalinkite juos." class=" btn btn-xs btn-danger disabled" href="#">Pašalinti</a>
+                            <a
+                                class=" btn btn-xs btn-danger disabled"
+                                href="#">
+                                <span class="glyphicon glyphicon-remove"></span> Pašalinti
+                            </a>
                           @endif
                       </td>
                   </tr>
@@ -30,6 +38,6 @@
         </table>
     </div>
   <p>  {{ $items->links() }} </p>
-    <a href="/category/add" class="btn btn-primary" >Pridėti naują</a>
+    <a href="/category/add" class="btn btn-primary" ><span class="glyphicon glyphicon-plus"></span> Pridėti naują</a>
 
 @stop
