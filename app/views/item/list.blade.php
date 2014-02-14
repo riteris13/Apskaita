@@ -20,10 +20,14 @@
 </div>
 
     <div class="panel panel-default">
-        @if(($fail == 'true'||'first'))
+        @if(($fail == 'true'))
             <div class="panel-heading">Visų kategorijų produktų sąrašas</div>
-        @else
-            <div class="panel-heading">Kategorijos {{{$items->first()->category->pavadinimas}}} produktų sąrašas</div>
+            @elseif(($fail == 'first'))
+                <div class="panel-heading">Visų kategorijų produktų sąrašas</div>
+
+            @elseif(($fail == 'false'))
+                <div class="panel-heading">Kategorijos {{{$items->first()->category->pavadinimas}}} produktų sąrašas</div>
+
         @endif
 
         <table class="table table-hover">
