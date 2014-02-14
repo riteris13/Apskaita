@@ -25,6 +25,7 @@
                 {{{ $item->vatPayer }}}
             </td>
             <td class="text-right">
+			<a href="/clinic/edit/{{$item->id}}">Redaguoti</a>
                 @if($item->doctors()->count() == 0)
                 <a onclick="return confirm('Ar tikrai norite pašalinti kliniką?')" class="btn btn-xs btn-danger" href="/clinic/remove/{{$item->id}}">Pašalinti</a>
                 @else
