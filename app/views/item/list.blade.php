@@ -37,9 +37,11 @@
                 <th>Pavadinimas</th>
                 <th>Kodas</th>
 
-                @foreach($items->first()->category->fields as $field)
-                <th>{{{ucfirst($field->atributas) }}}</th>
-                @endforeach
+                @if(($fail == 'false'))
+                    @foreach($items->first()->category->fields as $field)
+                    <th>{{{ucfirst($field->atributas) }}}</th>
+                    @endforeach
+                @endif
                 <th>Kaina</th>
             </tr>
             </thead>
@@ -55,9 +57,11 @@
                 <td>
                     {{{ $item->kodas}}}
                 </td>
-                @foreach($items->first()->category->fields as $field)
-                <td>{{{ $item->{$field->atributas} }}}</td>
-                @endforeach
+                @if(($fail == 'false'))
+                    @foreach($items->first()->category->fields as $field)
+                    <td>{{{ $item->{$field->atributas} }}}</td>
+                    @endforeach
+                @endif
                 <td>
                     {{{ $item->kaina}}}
                 </td>
