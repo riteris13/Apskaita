@@ -7,6 +7,10 @@ class VisitController extends BaseController {
     public function getAdd(){
         return View::make('visit.add');
     }
+	public function getEdit($id){
+		$visit = Visit::find($id);
+        return View::make('visit.edit')->with('visit', $visit);
+    }
     public function postAdd(){
         $input = Input::all();
         $validator = Validator::make($input, Visit::$rules, Visit::$messages);
@@ -19,6 +23,19 @@ class VisitController extends BaseController {
         $visit = Visit::create($input);
         $visit->save();
         $msg = 'Sėkmingai pridėjote apsilakymą.';
+        return Redirect::to('visit')->with('success',$msg);
+    }
+	public function postEdit(){
+        $input = Input::all();
+        $validator = Validator::make($input, Visit::$rules, Visit::$messages);
+
+        if($validator->fails()){
+            return Redirect::back()
+                ->withInput()
+                ->withErrors($validator);
+        }
+        $visit = Visit::find($input['id'])->update($input);
+        $msg = 'Sėkmingai atnaujinote apsilakymą.';
         return Redirect::to('visit')->with('success',$msg);
     }
     public function getRemove($id){

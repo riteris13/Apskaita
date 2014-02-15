@@ -25,6 +25,10 @@
 				{{{ $item->kompetitoriai}}}
             </td>
             <td class="text-right">
+				<a
+					class="btn btn-xs btn-primary" href="/visit/edit/{{$item->id}}">
+					<span class="glyphicon glyphicon-pencil"></span> Redaguoti
+				</a>
                 <a
                     onclick="return confirm('Ar tikrai norite pašalinti apsilankymą?')"
                     class="btn btn-xs btn-danger" href="/visit/remove/{{$item->id}}">
