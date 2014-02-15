@@ -72,5 +72,5 @@
         </table>
     </div>
     <p>  {{ $items->links() }} </p>
-	<a href="/item/add" class="btn btn-primary" > <span class="glyphicon glyphicon-plus"></span> Pridėti naują</a>
+	<a href="/item/select" class="btn btn-primary" > <span class="glyphicon glyphicon-plus"></span> Pridėti naują</a>
 @stop

@@ -5,15 +5,23 @@ class ItemController extends BaseController {
         return View::make('item.list')->with('items',$items)->with('fail', 'first');
     }
 
-	public function getAdd(){
-        return View::make('item.add');
+	public function getSelect(){
+        return View::make('item.select');
+    }
+    public function postSelect(){
+        $id = Input::get('kategorija_id');
+        return Redirect::to('item/add/'.$id);
+    }
+    public function getAdd($id){
+        return View::make('item.add')->with('id', $id);
     }
 	public function postAdd(){
+        $id = Input::get('kategorija_id');
         $input = Input::all();
         $validator = Validator::make($input, Item::$rules, Item::$messages);
 
         if($validator->fails()){
-            return Redirect::back()
+            return Redirect::to('item/add/'.$id)
                 ->withInput()
                 ->withErrors($validator);
         }

@@ -2,24 +2,25 @@
 
 @section('content')
 
-{{ Form::open(array('url' => 'item/add', 'class'=>'form-default')) }}
+    {{ Form::open(array($id, 'url' => 'item/add', 'class'=>'form-default')) }}
 
-    <h4>Kategorija</h4>
-    {{Form::select('kategorija_id', Category::lists('pavadinimas', 'id')); }}
+        <h3>Naujas produktas kategorijoje {{{Category::where('id', '=', $id)->first()->pavadinimas}}} :</h3>
+        <br>
+        {{Form::text('kategorija_id', $id, array('class'=>'form-control hidden', 'type'=>'text')); }}
 
-    <h4>Pavadinimas</h4>
-    {{Form::text('pavadinimas', '', array('class'=>'form-control', 'type'=>'text')); }}
+        <h4>Pavadinimas</h4>
+        {{Form::text('pavadinimas', '', array('class'=>'form-control', 'type'=>'text')); }}
 
-    <h4>Kodas</h4>
-    {{Form::text('kodas', '', array('class'=>'form-control', 'type'=>'text')); }}
+        <h4>Kodas</h4>
+        {{Form::text('kodas', '', array('class'=>'form-control', 'type'=>'text')); }}
 
-    <h4>Kaina</h4>
-    {{Form::text('kaina', '', array('class'=>'form-control', 'type'=>'text')); }}
-    <br>
-    <br>
-    {{Form::submit('Pridėti', array('class'=>'btn btn-primary')); }}
+        <h4>Kaina</h4>
+        {{Form::text('kaina', '', array('class'=>'form-control', 'type'=>'text')); }}
+        <br>
+        {{Form::submit('Pridėti', array('class'=>'btn btn-primary')); }}
+    {{ Form::close() }}
 
-{{ Form::close() }}
+
 
 @stop
 
