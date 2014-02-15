@@ -1,7 +1,11 @@
 <?php
 class Item extends Eloquent {
     protected $table = 'produktas';
-	protected $fillable = ['pavadinimas', 'kodas', 'kaina', 'kategorija_id'];
+	protected $fillable =
+        [
+            'pavadinimas', 'kodas', 'kaina', 'kategorija_id', 'sistema','slotas',
+            'kabliukai','puse','zandikaulis','sukimas','rotacija','dydis','zverelis','spalva'
+        ];
     public $timestamps = false;
 
     public function category(){

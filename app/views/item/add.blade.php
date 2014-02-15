@@ -16,6 +16,11 @@
 
         <h4>Kaina</h4>
         {{Form::text('kaina', '', array('class'=>'form-control', 'type'=>'text')); }}
+
+        @foreach($attributes as $attribute)
+            <h4>{{{ucfirst($attribute->atributas)}}}</h4>
+            {{Form::text($attribute->atributas, '', array('class'=>'form-control', 'type'=>'text')); }}
+        @endforeach
         <br>
         {{Form::submit('Pridėti', array('class'=>'btn btn-primary')); }}
     {{ Form::close() }}

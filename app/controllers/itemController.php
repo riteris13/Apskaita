@@ -13,7 +13,8 @@ class ItemController extends BaseController {
         return Redirect::to('item/add/'.$id);
     }
     public function getAdd($id){
-        return View::make('item.add')->with('id', $id);
+        $atrributes = Attribute::where('kategorija_id', '=', $id)->get();
+        return View::make('item.add')->with('id', $id)->with('attributes', $atrributes);
     }
 	public function postAdd(){
         $id = Input::get('kategorija_id');
