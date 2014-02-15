@@ -25,6 +25,10 @@
                     {{{ $item->clinic->pavadinimas }}}
                 </td>
                 <td class="text-right">
+					<a
+						class="btn btn-xs btn-primary" href="/doctor/edit/{{$item->id}}">
+						<span class="glyphicon glyphicon-pencil"></span> Redaguoti
+					</a>
                     <a
                         onclick="return confirm('Ar tikrai norite pašalinti kliniką?')"
                         class="btn btn-xs btn-danger" href="/doctor/remove/{{$item->id}}">
