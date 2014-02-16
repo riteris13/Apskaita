@@ -10,6 +10,9 @@
     <h4>Adresas</h4>
     {{Form::text('adresas', '', array('class'=>'form-control', 'type'=>'text')); }}
 
+    <h4>Įmonės kodas</h4>
+    {{Form::text('kodas', '', array('class'=>'form-control', 'type'=>'text')); }}
+
     <h4>PVM mokėtojas</h4>
     {{Form::checkbox('vat'); }}
     <br>
