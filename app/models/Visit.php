@@ -12,7 +12,10 @@ class Visit extends Eloquent {
         'data' => 'required'
     ];
     public static $messages = [
-        'required' => 'Neįvesti duomenys',
-        'max' => 'Įvestas tekstas per ilgas.'
+        'tikslas.required' => 'Tikslas: Neįvesti duomenys',
+        'data.required' => 'Data: Neįvesti duomenys',
+        'tikslas.max' => 'Tikslas: Įvestas tekstas negali būti ilgesnis nei 45 simboliai.',
+        'pokalbis.max' => 'Pokalbis: Įvestas tekstas negali būti ilgesnis nei 1024 simboliai.',
+        'kompetitoriai.max' => 'Kompetitoriai: Įvestas tekstas negali būti ilgesnis nei 128 simboliai.'
     ];
 }

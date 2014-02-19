@@ -13,10 +13,14 @@ class Clinic extends Eloquent {
         'kodas' => 'required|numeric|max:9'
     ];
     public static $messages = [
-        'required' => 'Neįvesti duomenys.',
-        'alpha_num' => 'Neteisingai įvesti duomenys! Gali būti naudojamos tik raidės ir skaičiai, be tarpų.',
-        'max' => 'Įvestas tekstas per ilgas.',
-        'numeric' => 'Įmonės kodas gali būti tik skaičiai.'
+        'pavadinimas.required' => 'Pavadinimas: Neįvesti duomenys.',
+        'adresas.required' => 'Adresas: Neįvesti duomenys.',
+        'kodas.required' => 'Įmonės kodas: Neįvesti duomenys.',
+        'alpha_num' => 'Įmonės kodas: Neteisingai įvesti duomenys! Gali būti naudojamos tik raidės ir skaičiai, be tarpų.',
+        'pavadinimas.max' => 'Pavadinimas: Įvestas tekstas negali būti ilgesnis nei 45 simboliai.',
+        'adresas.max' => 'Adresas: Įvestas tekstas negali būti ilgesnis nei 128 simboliai.',
+        'kodas.max' => 'Kodas: Įvestas tekstas negali būti ilgesnis nei 9 simboliai.',
+        'kodas.numeric' => 'Įmonės kodas gali būti tik skaičiai.'
     ];
     public function getVatPayerAttribute(){
         return $this->vat?'Taip':'Ne';

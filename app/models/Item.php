@@ -14,16 +14,19 @@ class Item extends Eloquent {
 	public static $rules = [
         'kodas' => 'required|alpha_dash|unique:produktas,kodas|max:45',
         'pavadinimas' => 'required|alpha|max:45',
-		'kaina' => 'required|numeric|max:1000000000',
-        'kategorija_id' => 'required'
+		'kaina' => 'required|numeric|max:1000000000|min:0',
     ];
 	public static $messages = [
-        'required' => 'Neįvesti duomenys',
-        'alpha' => 'Neteisingai įvesti duomenys! Gali būti naudojamos tik raidės be tarpų.',
-		'alpha_num' => 'Neteisingai įvesti duomenys! Gali būti naudojami tik skaičiai.',
-		'alpha_dash' => 'Neteisingai įvesti duomenys! Gali būti naudojamos tik raidės, brūkšnys ir skaičiai.',
-        'max' => 'Įvestas tekstas per ilgas.',
-        'unique' => 'Produktas su tokiu kodu jau egzistuoja!',
-        'numeric' => 'Kaina gali būti tik skaičiai.'
+        'pavadinimas.required' => 'Pavadinimas: Neįvesti duomenys.',
+        'kodas.required' => 'Kodas: Neįvesti duomenys.',
+        'kaina.required' => 'Kaina: Neįvesti duomenys.',
+        'pavadinimas.alpha' => 'Pavadinimas: Neteisingai įvesti duomenys! Gali būti naudojamos tik raidės be tarpų.',
+		'kodas.alpha_dash' => 'Kodas: Neteisingai įvesti duomenys! Gali būti naudojamos tik raidės, brūkšnys ir skaičiai.',
+        'pavadinimas.max' => 'Pavadinimas: Įvestas tekstas negali būti ilgesnis nei 45 simboliai.',
+        'kodas.max' => 'Kodas: Įvestas tekstas negali būti ilgesnis nei 45 simboliai.',
+        'kaina.max' => 'Kaina negali būti didesnė nei 1000000000.',
+        'kaina.min' => 'Kaina negali būti mažesnė nei 0.',
+        'kodas.unique' => 'Produktas su tokiu kodu jau egzistuoja!',
+        'kaina.numeric' => 'Kaina gali būti tik skaičiai.'
     ];
 }
