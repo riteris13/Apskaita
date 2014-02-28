@@ -14,10 +14,8 @@
 
 Route::group(array('before' => 'notAuth'), function()
 {
-    Route::get('/', function()
-    {
-        return View::make('hello');
-    });
+    Route::get('/', 'HomeController@showWelcome');
+    Route::controller('lang', 'LangController');
     Route::controller('item', 'ItemController');
     Route::controller('category', 'CategoryController');
     Route::controller('report', 'ReportController');

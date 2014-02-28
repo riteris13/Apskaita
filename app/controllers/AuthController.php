@@ -14,6 +14,7 @@ class AuthController extends BaseController{
     }
     public function getLogout(){
         Auth::logout();
+        Session::forget('lang');
         return Redirect::to('/auth');
     }
 }

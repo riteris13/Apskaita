@@ -54,6 +54,38 @@
 </head>
 <body>
 
+<?php
+    $menuLT = [
+        'Pavadinimas',
+        'Pagrindinis',
+        'Meniu',
+        'Produktų kategorijos',
+        'Gydytojai',
+        'Produktai',
+        'Klinikos',
+        'Apsilankymai',
+        'Atsijungti'
+    ];
+    $menuEN = [
+        'Name',
+        'Main',
+        'Menu',
+        'Categories',
+        'Doctors',
+        'Products',
+        'Clinics',
+        'Visits',
+        'Log out'
+    ];
+
+    $lang = Session::get('lang');
+    if($lang == 1){
+        $menu = $menuEN;
+    }
+    else{
+        $menu = $menuLT;
+    }
+?>
 <nav class="navbar navbar-inverse" role="navigation">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -64,26 +96,29 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">Apskaita</a>
+            <a class="navbar-brand" href="/">{{$menu[0]}}</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li><a href="/">Pagrindinis</a></li>
+                <li><a href="/">{{$menu[1]}}</a></li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Meniu <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{$menu[2]}}<b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="/category">Produktų kategorijos</a></li>
-                        <li><a href="/doctor">Gydytojai</a></li>
-                        <li><a href="/item">Produktai</a></li>
-                        <li><a href="/clinic">Klinikos</a></li>
-						<li><a href="/visit">Apsilankymai</a></li>
+                        <li><a href="/category">{{$menu[3]}}</a></li>
+                        <li><a href="/doctor">{{$menu[4]}}</a></li>
+                        <li><a href="/item">{{$menu[5]}}</a></li>
+                        <li><a href="/clinic">{{$menu[6]}}</a></li>
+						<li><a href="/visit">{{$menu[7]}}</a></li>
                     </ul>
                 </li>
             </ul>
+
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="/auth/logout">Atsijungti</a></li>
+                <li><a href="/lang/set/0">LT</a></li>
+                <li><a href="/lang/set/1">ENG</a></li>
+                <li><a href="/auth/logout">{{$menu[8]}}</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
