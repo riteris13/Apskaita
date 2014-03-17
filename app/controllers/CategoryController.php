@@ -7,7 +7,10 @@ class CategoryController extends BaseController {
     public function getAdd(){
         return View::make('category.add');
     }
-
+    public function getEdit($id){
+        $category = Category::find($id);
+        return View::make('category.edit')->with('category', $category);
+    }
     public function postAdd(){
         $input = Input::get('pavadinimas');
         $atrr = Input::only('sistema','slotas','kabliukai','puse','zandikaulis','sukimas','rotacija','dydis','zverelis','spalva');

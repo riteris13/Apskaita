@@ -16,7 +16,16 @@
                       <td>
                          {{{ $item->pavadinimas}}}
                       </td>
+                      <td>
+                          @foreach($item->fields as $field)
+                          {{{ $field->atributas}}}
+                          @endforeach
+                      </td>
                       <td class="text-right">
+                          <a
+                              class="btn btn-xs btn-primary" href="/category/edit/{{$item->id}}">
+                              <span class="glyphicon glyphicon-pencil"></span> Redaguoti
+                          </a>
                           @if($item->products()->count() == 0)
                             <a
                                 onclick="return confirm('Ar tikrai norite pašalinti kategoriją?')"
