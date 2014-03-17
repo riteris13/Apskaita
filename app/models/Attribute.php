@@ -5,7 +5,7 @@ class Attribute extends Eloquent {
     public $timestamps = false;
 
     public function category(){
-        return $this->belongsTo('Category','kategorija_id');
+        return $this->belongsTo('Category','id');
     }
 
 }
