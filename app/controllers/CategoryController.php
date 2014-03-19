@@ -33,6 +33,20 @@ class CategoryController extends BaseController {
         $msg = 'Sėkmingai pridėjote kategoriją '.$input;
         return Redirect::to('category')->with('success',$msg);
     }
+    public function postEdit(){
+        $input = Input::get('pavadinimas');
+        $id = Input::get('ID');
+         $atrr = Input::only('sistema','slotas','kabliukai','puse','zandikaulis','sukimas','rotacija','dydis','zverelis','spalva');
+        $validator = Validator::make(['pavadinimas'=>$input], Category::$rules, Category::$messages);
+        if($validator->fails()){
+            return Redirect::back()
+                ->withInput()
+                ->withErrors($validator);
+        }
+        $category = Category::find($id)->update(['pavadinimas'=>$input]);
+        $msg = 'Sėkmingai atnaujinote kategoriją '.$input;
+        return Redirect::to('category')->with('success',$msg);
+    }
     public function getRemove($id){
         $model = Category::findOrFail($id);
         $atrr = Attribute::where('kategorija_id', '=', $id);

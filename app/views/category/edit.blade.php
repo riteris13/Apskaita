@@ -11,6 +11,8 @@ foreach($wordlist as $word){
         $category[$word] = 0;
     }
 }
+preg_match('/\d+/', $category, $match);
+$category['ID'] = $match[0];
 ?>
 {{ Form::model($category, array('url' => 'category/edit', 'class'=>'form-default')) }}
 
@@ -50,7 +52,7 @@ Spalva
 
 <br>
 <br>
-{{ Form::hidden('id', $category['id']) }}
+{{ Form::hidden('ID', $category['ID']) }}
 {{Form::submit('Atnaujinti', array('class'=>'btn btn-primary')); }}
 {{ Form::close() }}
 
