@@ -9,6 +9,7 @@ class CategoryController extends BaseController {
     }
     public function getEdit($id){
         $category = Category::find($id);
+        $category->fields;
         return View::make('category.edit')->with('category', $category);
     }
     public function postAdd(){
