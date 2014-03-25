@@ -56,26 +56,28 @@
 
 <?php
     $menuLT = [
-        'Pavadinimas',
+        'Pavadinimas', //0
         'Pagrindinis',
         'Meniu',
-        'Produktų kategorijos',
+        'Produktų kategorijos',//3
         'Gydytojai',
         'Produktai',
-        'Klinikos',
+        'Klinikos',//6
         'Apsilankymai',
-        'Atsijungti'
+        'Atsijungti',
+        'Ar tikrai norite atsijungti?'//9
     ];
     $menuEN = [
-        'Name',
+        'Name',//0
         'Main',
         'Menu',
-        'Categories',
+        'Categories',//3
         'Doctors',
         'Products',
-        'Clinics',
+        'Clinics',//6
         'Visits',
-        'Log out'
+        'Log out',
+        'Are you sure you want to log out?'//9
     ];
 
     $lang = Session::get('lang');
@@ -118,7 +120,8 @@
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="/lang/set/0">LT</a></li>
                 <li><a href="/lang/set/1">ENG</a></li>
-                <li><a href="/auth/logout">{{$menu[8]}}</a></li>
+                <li><a onclick="return confirm('{{$menu[9]}}')"
+                       href="/auth/logout">{{$menu[8]}}</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->

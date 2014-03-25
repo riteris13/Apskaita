@@ -21,7 +21,7 @@ $category['ID'] = $match[0];
 
 <h4>Pažymėkite reikalingus atributus:</h4>
 Sistema
-{{Form::checkbox('sistema') }}
+{{Form::checkbox('sistema'); }}
 <br>
 Slotas
 {{Form::checkbox('slotas'); }}
