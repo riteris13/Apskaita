@@ -108,11 +108,13 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{$menu[2]}}<b class="caret"></b></a>
                     <ul class="dropdown-menu">
+                        @if(Auth::user()->role == 'direktore')
                         <li><a href="/category">{{$menu[3]}}</a></li>
                         <li><a href="/doctor">{{$menu[4]}}</a></li>
                         <li><a href="/item">{{$menu[5]}}</a></li>
                         <li><a href="/clinic">{{$menu[6]}}</a></li>
 						<li><a href="/visit">{{$menu[7]}}</a></li>
+                        @endif
                     </ul>
                 </li>
             </ul>

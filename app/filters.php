@@ -65,6 +65,12 @@ Route::filter('notAuth', function()
     if (!Auth::check()) return Redirect::to('/auth');
 });
 
+Route::filter('direktore', function(){
+    if (Auth::user()->role != 'direktore')
+    {
+        return Redirect::to('/')->withErrors('Not authorized');
+    }
+});
 /*
 |--------------------------------------------------------------------------
 | CSRF Protection Filter
