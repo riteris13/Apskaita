@@ -30,7 +30,7 @@
 						<span class="glyphicon glyphicon-pencil"></span> Redaguoti
 					</a>
                     <a
-                        onclick="return confirm('Ar tikrai norite pašalinti kliniką?')"
+                        onclick="return confirm('Ar tikrai norite pašalinti gydytoją?')"
                         class="btn btn-xs btn-danger" href="/doctor/remove/{{$item->id}}">
                         <span class="glyphicon glyphicon-remove"></span> Pašalinti
                     </a>

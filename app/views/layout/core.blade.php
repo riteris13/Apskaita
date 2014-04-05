@@ -81,7 +81,7 @@
     ];
 
     $lang = Session::get('lang');
-    if($lang == 1){
+    if($lang == 'en'){
         $menu = $menuEN;
     }
     else{
@@ -120,8 +120,8 @@
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="/lang/set/0">LT</a></li>
-                <li><a href="/lang/set/1">ENG</a></li>
+                <li><a href="/lang/set/lt">LT</a></li>
+                <li><a href="/lang/set/en">ENG</a></li>
                 <li><a onclick="return confirm('{{$menu[9]}}')"
                        href="/auth/logout">{{$menu[8]}}</a></li>
             </ul>

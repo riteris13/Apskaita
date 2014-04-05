@@ -19,6 +19,10 @@ ClassLoader::addDirectories(array(
 	app_path().'/database/seeds',
 
 ));
+if(Session::get('lang') != null){
+    App::setLocale(Session::get('lang'));
+}
+
 
 /*
 |--------------------------------------------------------------------------
