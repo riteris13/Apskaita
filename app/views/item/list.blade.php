@@ -43,6 +43,7 @@
                     @endforeach
                 @endif
                 <th>Kaina</th>
+                <th>Nuolaida</th>
             </tr>
             </thead>
             <tbody >
@@ -64,6 +65,9 @@
                 @endif
                 <td>
                     {{{ $item->kaina}}}
+                </td>
+                <td>
+                    {{{ $item->nuolaida}}}%
                 </td>
             </tr>
             @endforeach

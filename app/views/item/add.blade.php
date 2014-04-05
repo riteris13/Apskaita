@@ -17,6 +17,9 @@
         <h4>Kaina</h4>
         {{Form::text('kaina', '', array('class'=>'form-control', 'type'=>'text')); }}
 
+        <h4>Nuolaida %</h4>
+        {{Form::text('nuolaida', '', array('class'=>'form-control', 'type'=>'text')); }}
+
         @foreach($attributes as $attribute)
             <h4>{{{ucfirst($attribute->atributas)}}}</h4>
             {{Form::text($attribute->atributas, '', array('class'=>'form-control', 'type'=>'text')); }}

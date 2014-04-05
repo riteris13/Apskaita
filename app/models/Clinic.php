@@ -10,7 +10,7 @@ class Clinic extends Eloquent {
     public static $rules = [
         'pavadinimas' => 'required|alpha_num|max:45',
         'adresas' => 'required|max:128',
-        'kodas' => 'required|numeric|max:9'
+        'kodas' => 'required|numeric|regex:/^[0-9]{9}$/'
     ];
     public static $messages = [
         'pavadinimas.required' => 'Pavadinimas: Neįvesti duomenys.',
@@ -19,7 +19,7 @@ class Clinic extends Eloquent {
         'alpha_num' => 'Įmonės kodas: Neteisingai įvesti duomenys! Gali būti naudojamos tik raidės ir skaičiai, be tarpų.',
         'pavadinimas.max' => 'Pavadinimas: Įvestas tekstas negali būti ilgesnis nei 45 simboliai.',
         'adresas.max' => 'Adresas: Įvestas tekstas negali būti ilgesnis nei 128 simboliai.',
-        'kodas.max' => 'Kodas: Įvestas tekstas negali būti ilgesnis nei 9 simboliai.',
+        'kodas.regex' => 'Kodas: Įvestas tekstas negali būti trumpesnis arba ilgesnis nei 9 simboliai.',
         'kodas.numeric' => 'Įmonės kodas gali būti tik skaičiai.'
     ];
     public function getVatPayerAttribute(){

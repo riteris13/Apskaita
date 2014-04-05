@@ -48,12 +48,6 @@
         .form-default input[type="dropbox"] {
 
         }
-        .brand
-        {
-            background: url(/public/logo.png) no-repeat left center;
-            height: 100px;
-            width: 100px;
-        }
 
     </style>
 </head>
@@ -104,7 +98,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class=navbar-brand" href="/"><img src="logo.png" height="50" width="50"></a>
+            <a  href="/"><img src="{{asset('assets/img/logo.png');}}" height="50" width="50"></a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->

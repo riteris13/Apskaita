@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div> <img src="logo.png"> </div>
+    <div> <img src="{{asset('assets/img/logo.png');}}"> </div>
 
 	<h1><?php echo trans('messages.welcome'); ?></h1>
     <br>
