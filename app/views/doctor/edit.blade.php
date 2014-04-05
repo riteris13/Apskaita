@@ -22,10 +22,10 @@
     <h4>Kaip pritraukti</h4>
     {{Form::textarea('kaip_pritraukti',  $doctor['kaip_pritraukti'], array('class'=>'form-control', 'type'=>'textarea')); }}
 
-    <h4>Taikoma nuolaida</h4>
+    <h4>Taikoma nuolaida %</h4>
     {{Form::text('nuolaida',  $doctor['nuolaida'], array('class'=>'form-control', 'type'=>'text')); }}
 
-    <h4>Potencialumas</h4>
+    <h4>Potencialumas %</h4>
     {{Form::text('potencialumas',  $doctor['potencialumas'], array('class'=>'form-control', 'type'=>'text')); }}
 
     <h4>Įvertinimas</h4>
