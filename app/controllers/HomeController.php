@@ -18,7 +18,7 @@ class HomeController extends BaseController {
 	public function showWelcome()
 	{
         if(Session::get('lang') == null){
-            Session::put('lang', '0');
+            Session::put('lang', 'lt');
         }
 		return View::make('hello');
 	}
