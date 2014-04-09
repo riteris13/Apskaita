@@ -69,6 +69,12 @@
                 <td>
                     {{{ $item->nuolaida}}}%
                 </td>
+                <td class="text-right">
+                    <a
+                        class="btn btn-xs btn-primary" href="/item/edit/{{$item->id}}">
+                        <span class="glyphicon glyphicon-pencil"></span> Redaguoti
+                    </a>
+                </td>
             </tr>
             @endforeach
 

@@ -5,6 +5,12 @@ class ItemController extends BaseController {
         return View::make('item.list')->with('items',$items)->with('fail', 'first');
     }
 
+    public function getEdit($id){
+        $item = Item::find($id);
+        $atrributes = Attribute::where('kategorija_id', '=', $item->kategorija_id)->get();
+        return View::make('item.edit')->with('item', $item)->with('attributes', $atrributes);
+    }
+
 	public function getSelect(){
         return View::make('item.select');
     }
@@ -29,6 +35,20 @@ class ItemController extends BaseController {
         $stuff = Item::create($input);
         $stuff->save();
         $msg = 'Sėkmingai pridėjote produktą: '.$stuff->pavadinimas;
+        return Redirect::to('item')->with('success',$msg);
+    }
+    public function postEdit(){
+        $input = Input::all();
+        //$old = Input::get('oldKodas');
+        $id = Input::get('id');
+        $validator = Validator::make($input, array_merge(Item::$rules, array('kodas' => 'alpha_dash|max:45|unique:produktas,kodas')), Item::$messages);
+        if($validator->fails()){
+            return Redirect::back()
+                ->withInput()
+                ->withErrors($validator);
+        }
+        Item::find($id)->update($input);
+        $msg = 'Sėkmingai atnaujinote produktą: '.$input['pavadinimas'];
         return Redirect::to('item')->with('success',$msg);
     }
     public function postIndex(){
