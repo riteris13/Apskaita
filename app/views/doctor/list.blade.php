@@ -10,6 +10,8 @@
                 <th>Vardas</th>
                 <th>Pavardė</th>
                 <th>Klinika</th>
+                <th>Potencialumas</th>
+                <th>Nuolaida %</th>
             </tr>
             </thead>
             <tbody >
@@ -23,6 +25,12 @@
                 </td>
                 <td>
                     {{{ $item->clinic->pavadinimas }}}
+                </td>
+                <td>
+                    {{{ $item->potencialumas }}}
+                </td>
+                <td>
+                    {{{ $item->nuolaida }}}
                 </td>
                 <td class="text-right">
 					<a
