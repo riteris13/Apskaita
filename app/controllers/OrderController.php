@@ -7,6 +7,10 @@ class OrderController extends BaseController{
     public function getAdd(){
         return View::make('order.add');
     }
+    public function getEdit($id){
+        $order = Order::find($id);
+        return View::make('order.edit')->with('order', $order);
+    }
     public function postAdd(){
         $input = Input::all();
         $validator = Validator::make($input, Order::$rules, Order::$messages);
@@ -19,6 +23,20 @@ class OrderController extends BaseController{
         $order = Order::create($input);
         $order->save();
         $msg = 'Sėkmingai pridėjote užsakymą, kurį pateikė: '.$order->doctor->fullName;
+        return Redirect::to('order')->with('success',$msg);
+    }
+    public function postEdit(){
+        $input = Input::all();
+        $validator = Validator::make($input, Order::$rules, Order::$messages);
+
+        if($validator->fails()){
+            return Redirect::back()
+                ->withInput()
+                ->withErrors($validator);
+        }
+        $order = Order::find($input['id']);
+        $order->update($input);
+        $msg = 'Sėkmingai atnaujinote užsakymą, kurį pateikė: '.$order->doctor->fullName;
         return Redirect::to('order')->with('success',$msg);
     }
     public function getRemove($id){
