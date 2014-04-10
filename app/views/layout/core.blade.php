@@ -66,7 +66,8 @@
         'Apsilankymai',
         'Atsijungti',
         'Ar tikrai norite atsijungti?',//9
-        'Ataskaitos'
+        'Ataskaitos',
+        'Užsakymai'
     ];
     $menuEN = [
         'Name',//0
@@ -79,7 +80,8 @@
         'Visits',
         'Log out',
         'Are you sure you want to log out?',//9
-        'Reports'
+        'Reports',
+        'Orders'
     ];
 
     $lang = Session::get('lang');
@@ -117,6 +119,7 @@
                         <li><a href="/clinic">{{$menu[6]}}</a></li>
 						<li><a href="/visit">{{$menu[7]}}</a></li>
                         <li><a href="/report">{{$menu[10]}}</a></li>
+                        <li><a href="/order">{{$menu[11]}}</a></li>
                         @endif
                     </ul>
                 </li>
