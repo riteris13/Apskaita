@@ -12,6 +12,9 @@
                     <th>Klinika</th>
                     <th>Produktas</th>
                     <th>Data</th>
+                    <th>Pardavimo kaina</th>
+                    <th>Kiekis</th>
+                    <th>Suma</th>
                 </tr>
             </thead>
 
@@ -35,6 +38,15 @@
                     </td>
                     <td>
                         {{{ $order->data}}}
+                    </td>
+                    <td>
+                        {{{ $order->kaina}}}
+                    </td>
+                    <td>
+                        {{{ $order->kiekis}}}
+                    </td>
+                    <td>
+                        {{{ $order->kaina * $order->kiekis}}}
                     </td>
                     <td class="text-right">
                         <a
