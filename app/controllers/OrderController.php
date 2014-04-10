@@ -1,7 +1,7 @@
 <?php
 class OrderController extends BaseController{
     public function getIndex(){
-        $orders = Order::all();
+        $orders = Order::orderBy('data', 'Desc')->paginate(15);
         return View::make('order.list')->with('orders', $orders);
     }
     public function getAdd(){

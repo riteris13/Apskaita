@@ -7,9 +7,16 @@ class Order extends Eloquent {
     public $timestamps = false;
 
     public static $rules = [
+        'data' => 'required',
+        'kiekis' => 'required|numeric|max:32000|min:1',
 
     ];
     public static $messages = [
+        'data.required' => 'Data: Neįvesti duomenys',
+        'kiekis.numeric' => 'Kiekis gali būti tik skaičiai.',
+        'kiekis.required' => 'Kiekis: Neįvesti duomenys.',
+        'kiekis.min' => 'Kiekiss negali būti mažiau nei 1.',
+        'kiekis.max' => 'Kiekis negali būti daugiau už 32000.',
 
     ];
 
