@@ -6,6 +6,7 @@
     <table class="table table-hover">
             <thead>
                 <tr>
+                    <th>ID</th>
                     <th>Vardas</th>
                     <th>Pavardė</th>
                     <th>Klinika</th>
@@ -17,6 +18,9 @@
             <tbody >
             @foreach($orders as $order)
                 <tr>
+                    <td>
+                        {{{ $order->id}}}
+                    </td>
                     <td>
                         {{{ $order->doctor->vardas}}}
                     </td>
@@ -31,6 +35,17 @@
                     </td>
                     <td>
                         {{{ $order->data}}}
+                    </td>
+                    <td class="text-right">
+                        <a
+                            class="btn btn-xs btn-primary" href="/order/edit/{{$order->id}}">
+                            <span class="glyphicon glyphicon-pencil"></span> Redaguoti
+                        </a>
+                        <a
+                            onclick="return confirm('Ar tikrai norite pašalinti užsakymą?')"
+                            class="btn btn-xs btn-danger" href="/order/remove/{{$order->id}}">
+                            <span class="glyphicon glyphicon-remove"></span> Pašalinti
+                        </a>
                     </td>
                 </tr>
             @endforeach
