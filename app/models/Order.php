@@ -6,6 +6,13 @@ class Order extends Eloquent {
     ];
     public $timestamps = false;
 
+    public static $rules = [
+
+    ];
+    public static $messages = [
+
+    ];
+
     public function doctor(){
         return $this->belongsTo('Doctor', 'daktaras_id');
     }

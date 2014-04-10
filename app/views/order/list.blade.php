@@ -6,7 +6,6 @@
     <table class="table table-hover">
             <thead>
                 <tr>
-                    <th>ID</th>
                     <th>Vardas</th>
                     <th>Pavardė</th>
                     <th>Klinika</th>
@@ -21,9 +20,6 @@
             <tbody >
             @foreach($orders as $order)
                 <tr>
-                    <td>
-                        {{{ $order->id}}}
-                    </td>
                     <td>
                         {{{ $order->doctor->vardas}}}
                     </td>
@@ -65,5 +61,5 @@
     </table>
 </div>
 
-
+<a href="/order/add" class="btn btn-primary" ><span class="glyphicon glyphicon-plus"></span> Pridėti naują užsakymą</a>
 @stop
