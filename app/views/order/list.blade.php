@@ -36,13 +36,13 @@
                         {{{ $order->data}}}
                     </td>
                     <td>
-                        {{{ $order->kaina}}}
+                        {{{ $order->pir_kaina}}}
                     </td>
                     <td>
                         {{{ $order->kiekis}}}
                     </td>
                     <td>
-                        {{{ $order->kaina * $order->kiekis}}}
+                        {{{ $order->pir_kaina * $order->kiekis}}}
                     </td>
                     <td class="text-right">
                         <a
