@@ -4,15 +4,14 @@
 
 <h3>Produktas priklauso kategorijai "{{{Category::where('id', '=', $item->kategorija_id)->first()->pavadinimas}}}"</h3>
 <br>
-{{Form::text('oldKodas', $item->kodas, array('class'=>'form-control hidden', 'type'=>'text')); }}
 {{Form::text('id', $item->id, array('class'=>'form-control hidden', 'type'=>'text')); }}
 
 <h4>Pavadinimas</h4>
 {{Form::text('pavadinimas', $item->pavadinimas, array('class'=>'form-control', 'type'=>'text')); }}
-{{--
+
 <h4>Kodas</h4>
 {{Form::text('kodas', $item->kodas, array('class'=>'form-control', 'type'=>'text')); }}
---}}
+
 <h4>Kaina</h4>
 {{Form::text('kaina', $item->kaina, array('class'=>'form-control', 'type'=>'text')); }}
 

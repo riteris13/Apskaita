@@ -6,7 +6,7 @@
     <table class="table table-hover">
         <tbody>
             <tr>
-            <td>AO: Daktaras, potencialumas, nuolaida</td>
+            <td>Kliento nuolaida ir potencialas</td>
             <td class="text-right">
                  <a href="/report/ao" class="btn btn-primary" ><span class="glyphicon glyphicon-plus"></span> Generuoti naują</a>
             </td>

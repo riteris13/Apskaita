@@ -74,6 +74,19 @@
                         class="btn btn-xs btn-primary" href="/item/edit/{{$item->id}}">
                         <span class="glyphicon glyphicon-pencil"></span> Redaguoti
                     </a>
+                    @if($item->orders()->count() == 0)
+                    <a
+                        onclick="return confirm('Ar tikrai norite pašalinti produktą?')"
+                        class="btn btn-xs btn-danger" href="/item/remove/{{$item->id}}">
+                        <span class="glyphicon glyphicon-remove"></span> Pašalinti
+                    </a>
+                    @else
+                    <a
+                        class=" btn btn-xs btn-danger disabled"
+                        href="#">
+                        <span class="glyphicon glyphicon-remove"></span> Pašalinti
+                    </a>
+                    @endif
                 </td>
             </tr>
             @endforeach

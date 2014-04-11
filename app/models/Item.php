@@ -11,6 +11,9 @@ class Item extends Eloquent {
     public function category(){
         return $this->belongsTo('Category', 'kategorija_id');
     }
+    public function orders(){
+        return $this->hasMany('Order','produktas_id');
+    }
 	public static $rules = [
         'kodas' => 'required|alpha_dash|unique:produktas,kodas|max:45',
         'pavadinimas' => 'required|alpha|max:45',
