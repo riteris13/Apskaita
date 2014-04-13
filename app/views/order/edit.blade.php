@@ -11,7 +11,7 @@
 {{Form::select('produktas_id', Item::lists('pavadinimas', 'id'), $order['produktas_id']); }}
 
 <h4>Kaina</h4>
-{{Form::text('kaina', $order['kaina'], array('class'=>'form-control', 'type'=>'text')); }}
+{{Form::text('pir_kaina', $order['pir_kaina'], array('class'=>'form-control', 'type'=>'text')); }}
 
 <h4>Kiekis</h4>
 {{Form::text('kiekis', $order['kiekis'], array('class'=>'form-control', 'type'=>'text')); }}
