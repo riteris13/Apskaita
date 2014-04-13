@@ -13,6 +13,7 @@ class OrderController extends BaseController{
     }
     public function postAdd(){
         $input = Input::all();
+        $input['pir_kaina'] = $input['kaina'] * (1-$input['nuolaida']*0.01);
         $validator = Validator::make($input, Order::$rules, Order::$messages);
 
         if($validator->fails()){
