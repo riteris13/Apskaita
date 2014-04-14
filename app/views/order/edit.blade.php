@@ -5,10 +5,10 @@
 {{ Form::model($order, array('url' => 'order/edit', 'class'=>'form-default')) }}
 
 <h4>Klientas</h4>
-{{Form::select('daktaras_id', Doctor::all()->lists('fullName', 'id'), $order['daktaras_id']); }}
+{{Form::select('daktaras_id', Doctor::all()->lists('fullName', 'id'), $order['daktaras_id'], array('class'=>'form-control')); }}
 
 <h4>Produktas</h4>
-{{Form::select('produktas_id', Item::lists('pavadinimas', 'id'), $order['produktas_id']); }}
+{{Form::select('produktas_id', Item::lists('pavadinimas', 'id'), $order['produktas_id'], array('class'=>'form-control')); }}
 
 <h4>Kaina</h4>
 {{Form::text('pir_kaina', $order['pir_kaina'], array('class'=>'form-control', 'type'=>'text')); }}

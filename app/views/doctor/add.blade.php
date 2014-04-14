@@ -11,7 +11,7 @@
     {{Form::text('pavarde', '', array('class'=>'form-control', 'type'=>'text')); }}
 
     <h4>Klinika</h4>
-    {{Form::select('klinika_id', Clinic::lists('pavadinimas', 'id')); }}
+    {{Form::select('klinika_id', Clinic::lists('pavadinimas', 'id'), null, array('class'=>'form-control')); }}
 
     <h4>Detalės</h4>
     {{Form::textarea('detales', '', array('class'=>'form-control', 'type'=>'textarea')); }}

@@ -6,10 +6,10 @@
 {{ Form::hidden('count', 1) }}
 
 <h4>Klientas</h4>
-{{Form::select('daktaras_id', Doctor::all()->lists('fullName', 'id')); }}
+{{Form::select('daktaras_id', Doctor::all()->lists('fullName', 'id'), null, array('class'=>'form-control')); }}
 
 <h4>Produktas</h4>
-{{Form::select('produktas_id', Item::lists('pavadinimas', 'id')); }}
+{{Form::select('produktas_id', Item::lists('pavadinimas', 'id'), null, array('class'=>'form-control')); }}
 
 <h4>Vieneto kaina</h4>
 {{Form::text('kaina', '', array('class'=>'form-control', 'type'=>'text', 'onChange' => "calculatePrice()")); }}

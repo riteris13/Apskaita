@@ -11,8 +11,7 @@
     <div class="panel-heading">Produktų paieška</div>
     {{ Form::open(array('url' => 'item', 'class'=>'form-default')) }}
     <h4>Kategorija</h4>
-    {{Form::select('id', Category::lists('pavadinimas', 'id')); }}
-    <br>
+    {{Form::select('id', Category::lists('pavadinimas', 'id'), null, array('class'=>'form-control')); }}
     <br>
     {{Form::submit('Pasirinkti', array('class'=>'btn btn-primary')); }}
 
