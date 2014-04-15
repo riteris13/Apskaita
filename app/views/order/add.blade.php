@@ -15,9 +15,7 @@
 {{Form::select('kategorija_id', array('default' => 'Pasirinkite kategoriją') + Category::all()->lists('pavadinimas', 'id'), null, array('class'=>'form-control', 'id'=>'category')); }}
 
 <h4>Produktas</h4>
-<select id="product" name="produktas_id" class="form-control" disabled="true">
-    <option>Pirmiausia pasirinkite kategoriją</option>
-</select>
+{{Form::select('produktas_id', array('default' => 'Pirmiausia pasirinkite kategoriją'), null, array('class'=>'form-control', 'id'=>'product', 'disabled' => 'true')); }}
 
 <h4>Vieneto kaina</h4>
 {{Form::text('kaina', '', array('class'=>'form-control', 'type'=>'text', 'onChange' => "calculatePrice()")); }}
