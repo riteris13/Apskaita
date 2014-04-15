@@ -12,11 +12,11 @@
 {{Form::select('daktaras_id', Doctor::all()->lists('fullName', 'id'), null, array('class'=>'form-control')); }}
 
 <h4>Kategorija</h4>
-{{Form::select('kategorija_id', array('default' => 'Pasirinkite kategoriją', 'disable' => 'true') + Category::all()->lists('pavadinimas', 'id'), null, array('class'=>'form-control', 'id'=>'category')); }}
+{{Form::select('kategorija_id', array('default' => 'Pasirinkite kategoriją') + Category::all()->lists('pavadinimas', 'id'), null, array('class'=>'form-control', 'id'=>'category')); }}
 
 <h4>Produktas</h4>
-<select id="product" name="produktas_id" class="form-control">
-    <option>Please choose category first</option>
+<select id="product" name="produktas_id" class="form-control" disabled="true">
+    <option>Pirmiausia pasirinkite kategoriją</option>
 </select>
 
 <h4>Vieneto kaina</h4>
