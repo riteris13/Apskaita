@@ -46,4 +46,9 @@ class OrderController extends BaseController{
         $model->delete();
         return Redirect::to('order')->with('success',$msg);
     }
+    public function getApidropdown(){
+        $input = Input::get('option');
+        $products = Item::where('kategorija_id', '=' , $input)->orderBy('pavadinimas')->get(['id','pavadinimas']);
+        return $products;
+    }
 }
