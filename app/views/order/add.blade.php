@@ -8,8 +8,11 @@
 {{ Form::open(array('url' => 'order/add', 'class'=>'form-default', 'id'=>'addOrder')) }}
 {{ Form::hidden('count', 1) }}
 
+<h4>Klinika</h4>
+{{Form::select('klinika_id', array('default' => 'Pasirinkite Kliniką') + Clinic::all()->lists('pavadinimas', 'id'), null, array('class'=>'form-control', 'id'=>'klinika')); }}
+
 <h4>Klientas</h4>
-{{Form::select('daktaras_id', Doctor::all()->lists('fullName', 'id'), null, array('class'=>'form-control')); }}
+{{Form::select('daktaras_id', array('default' => 'Pirmiausia pasirinkite kliniką'), null, array('class'=>'form-control', 'id'=>'daktaras', 'disabled' => 'true')); }}
 
 <h4>Kategorija</h4>
 {{Form::select('kategorija_id', array('default' => 'Pasirinkite kategoriją') + Category::all()->lists('pavadinimas', 'id'), null, array('class'=>'form-control', 'id'=>'category')); }}
