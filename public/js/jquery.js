@@ -5,9 +5,14 @@ jQuery(document).ready(function($){
 				function(data) {
 					var product = $('#product');
 					product.empty();
-					$.each(data, function(index, element) {
-			            product.append("<option value='"+ element.id +"'>" + element.pavadinimas + "</option>");
-			        });
+					if(data.length == 0){
+						product.append("<option>" + "Kategorija tuščia" + "</option>");
+					}
+					else{
+						$.each(data, function(index, element) {
+							product.append("<option value='"+ element.id +"'>" + element.pavadinimas + "</option>");
+						});
+					}
 				});
 		});
 	})  
