@@ -1,4 +1,7 @@
-jQuery(document).ready(function($){  	
+jQuery(document).ready(function($){ 
+$("select[id='klinika'] :not(option:gt(0))").attr("disabled", "disabled");
+$("select[id='category'] :not(option:gt(0))").attr("disabled", "disabled");
+ 	
 	$('#category').change(function(){
 		$.getJSON("apidropdown", {option: $(this).val() }, 
 			function(data) {
@@ -28,6 +31,7 @@ jQuery(document).ready(function($){
 		function(data) {
 			$.each(data, function(index, element){ 
 				priceField.val(element.kaina)
+				priceField.trigger("change")
 			});
 		});
 	});
@@ -38,6 +42,7 @@ jQuery(document).ready(function($){
 		function(data) {
 			$.each(data, function(index, element){ 
 				discountField.val(element.nuolaida)
+				discountField.trigger("change")
 			});
 		});
 	});

@@ -25,12 +25,12 @@
             array('class'=>'form-control', 'id'=>'produktas', 'disabled' => 'true')); }}
 
 <h4>Vieneto kaina</h4>
-{{Form::text('kaina', '', array('class'=>'form-control', 'type'=>'text', 'onChange' => "calculatePrice()",
-            'id' => 'kaina' )); }}
+{{Form::text('kaina', '', array('class'=>'form-control', 'type'=>'text',
+            'onChange' => "calculatePrice();calculateTotal()", 'id' => 'kaina')); }}
 
 <h4>Nuolaida %</h4>
-{{Form::text('nuolaida', '', array('class'=>'form-control', 'type'=>'text', 'onChange' => "calculatePrice()",
-            'oninput' => "calculatePrice()",'id' => 'nuolaida' )); }}
+{{Form::text('nuolaida', '', array('class'=>'form-control', 'type'=>'text',
+            'onChange' => "calculatePrice();calculateTotal()", 'id' => 'nuolaida')); }}
 
 <!-- Neredaguojamas laukas -->
 <div id="pir_kaina"></div>
@@ -43,7 +43,10 @@
 --}}
 
 <h4>Kiekis</h4>
-{{Form::text('kiekis', '', array('class'=>'form-control', 'type'=>'text')); }}
+{{Form::text('kiekis', '', array('class'=>'form-control', 'type'=>'text','onChange' => "calculateTotal()",
+            'id' => 'kiekis' )); }}
+
+<div id="bendra_suma"></div>
 
 {{Form::macro('date', function($name, $value = null, $options = array()) {
 $input =  '<input type="date" name="' . $name . '" value="' . $value . '"';
