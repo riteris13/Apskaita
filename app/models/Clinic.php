@@ -16,7 +16,7 @@ class Clinic extends Eloquent {
         'pavadinimas.required' => 'Pavadinimas: Neįvesti duomenys.',
         'adresas.required' => 'Adresas: Neįvesti duomenys.',
         'kodas.required' => 'Įmonės kodas: Neįvesti duomenys.',
-        'alpha_num' => 'Įmonės kodas: Neteisingai įvesti duomenys! Gali būti naudojamos tik raidės ir skaičiai, be tarpų.',
+        'pavadinimas.alpha_num' => 'Pavadinimas: Gali būti naudojamos tik raidės ir skaičiai, be tarpų.',
         'pavadinimas.max' => 'Pavadinimas: Įvestas tekstas negali būti ilgesnis nei 45 simboliai.',
         'adresas.max' => 'Adresas: Įvestas tekstas negali būti ilgesnis nei 128 simboliai.',
         'kodas.regex' => 'Kodas: Įvestas tekstas negali būti trumpesnis arba ilgesnis nei 9 simboliai.',

@@ -57,8 +57,8 @@ class OrderController extends BaseController{
         return $doctors;
     }
     public function getPrice(){
-    $input = Input::get('option');
-    $price = Item::where('id', '=', $input)->get(['kaina']);
+        $input = Input::get('option');
+        $price = Item::where('id', '=', $input)->get(['kaina']);
     return $price;
     }
     public function getDiscount(){

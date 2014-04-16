@@ -28,7 +28,7 @@
 {{Form::text('kaina', '', array('class'=>'form-control', 'type'=>'text',
             'onChange' => "calculatePrice();calculateTotal()", 'id' => 'kaina')); }}
 
-<h4>Nuolaida %</h4>
+<h4>Daktarui taikoma nuolaida %</h4>
 {{Form::text('nuolaida', '', array('class'=>'form-control', 'type'=>'text',
             'onChange' => "calculatePrice();calculateTotal()", 'id' => 'nuolaida')); }}
 
