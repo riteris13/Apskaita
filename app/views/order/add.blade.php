@@ -9,22 +9,28 @@
 {{ Form::hidden('count', 1) }}
 
 <h4>Klinika</h4>
-{{Form::select('klinika_id', array('default' => 'Pasirinkite Kliniką') + Clinic::all()->lists('pavadinimas', 'id'), null, array('class'=>'form-control', 'id'=>'klinika')); }}
+{{Form::select('klinika_id', array('default' => 'Pasirinkite Kliniką') + Clinic::all()->lists('pavadinimas', 'id'),
+            null, array('class'=>'form-control', 'id'=>'klinika')); }}
 
 <h4>Klientas</h4>
-{{Form::select('daktaras_id', array('default' => 'Pirmiausia pasirinkite kliniką'), null, array('class'=>'form-control', 'id'=>'daktaras', 'disabled' => 'true')); }}
+{{Form::select('daktaras_id', array('default' => 'Pirmiausia pasirinkite kliniką'), null,
+            array('class'=>'form-control', 'id'=>'daktaras', 'disabled' => 'true')); }}
 
 <h4>Kategorija</h4>
-{{Form::select('kategorija_id', array('default' => 'Pasirinkite kategoriją') + Category::all()->lists('pavadinimas', 'id'), null, array('class'=>'form-control', 'id'=>'category')); }}
+{{Form::select('kategorija_id', array('default' => 'Pasirinkite kategoriją') +
+            Category::all()->lists('pavadinimas', 'id'), null, array('class'=>'form-control', 'id'=>'category')); }}
 
 <h4>Produktas</h4>
-{{Form::select('produktas_id', array('default' => 'Pirmiausia pasirinkite kategoriją'), null, array('class'=>'form-control', 'id'=>'product', 'disabled' => 'true')); }}
+{{Form::select('produktas_id', array('default' => 'Pirmiausia pasirinkite kategoriją'), null,
+            array('class'=>'form-control', 'id'=>'produktas', 'disabled' => 'true')); }}
 
 <h4>Vieneto kaina</h4>
-{{Form::text('kaina', '', array('class'=>'form-control', 'type'=>'text', 'onChange' => "calculatePrice()")); }}
+{{Form::text('kaina', '', array('class'=>'form-control', 'type'=>'text', 'onChange' => "calculatePrice()",
+            'id' => 'kaina' )); }}
 
 <h4>Nuolaida %</h4>
-{{Form::text('nuolaida', '', array('class'=>'form-control', 'type'=>'text', 'onChange' => "calculatePrice()")); }}
+{{Form::text('nuolaida', '', array('class'=>'form-control', 'type'=>'text', 'onChange' => "calculatePrice()",
+            'oninput' => "calculatePrice()",'id' => 'nuolaida' )); }}
 
 <!-- Neredaguojamas laukas -->
 <div id="pir_kaina"></div>

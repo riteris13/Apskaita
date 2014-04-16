@@ -56,4 +56,14 @@ class OrderController extends BaseController{
         $doctors = Doctor::where('klinika_id', '=' , $input)->orderBy('pavarde')->get(['id','vardas', 'pavarde']);
         return $doctors;
     }
+    public function getPrice(){
+    $input = Input::get('option');
+    $price = Item::where('id', '=', $input)->get(['kaina']);
+    return $price;
+    }
+    public function getDiscount(){
+        $input = Input::get('option');
+        $discount = Doctor::where('id', '=', $input)->get(['nuolaida']);
+        return $discount;
+    }
 }
