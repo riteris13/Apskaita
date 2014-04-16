@@ -1,7 +1,7 @@
 jQuery(document).ready(function($){ 
 $("select[id='klinika'] :not(option:gt(0))").attr("disabled", "disabled");
 $("select[id='category'] :not(option:gt(0))").attr("disabled", "disabled");
- 	
+
 	$('#category').change(function(){
 		$.getJSON("apidropdown", {option: $(this).val() }, 
 			function(data) {
@@ -23,27 +23,62 @@ $("select[id='category'] :not(option:gt(0))").attr("disabled", "disabled");
 			}
 		});
 	});
-	
+var proDisc; //produkto nuolaida
+var docDisc; //daktaro nuolaida
 	$('#produktas').live('change', function(){
 		var priceField = $("#kaina");
-		var discountField = $("#nuolaida");
-		$.getJSON("price", {option: $(this).val() }, 
+		var priceDiscount = $("#nuolaidaP");
+		$.getJSON("pricediscount", {option: $(this).val() }, 
 		function(data) {
 			$.each(data, function(index, element){ 
 				priceField.val(element.kaina)
+				priceDiscount.attr('checked', false);
+				if(element.nuolaida === null){
+					proDisc = 0;
+					priceDiscount.val(0);
+					document.getElementById('nuolPtext').innerHTML =  " Produktui: 0%" ;
+				}
+				else{
+					proDisc = element.nuolaida;
+					priceDiscount.val(proDisc)
+					document.getElementById('nuolPtext').innerHTML =  
+							" Produktui: " + proDisc + "%";
+				}
 				priceField.trigger("change")
 			});
 		});
 	});
 	
+var discount = $("#nuolaida");	
+	$('#nuolaidaP').live('click', function(){
+			discount.val(proDisc);
+			discount.trigger("change");
+	});
+	
+	$('#nuolaidaD').live('click', function(){
+			discount.val(docDisc);
+			discount.trigger("change");
+	});
+	
+	
 	$('#daktaras').live('change', function(){
-		var discountField = $("#nuolaida");
+		var doctorDiscount = $("#nuolaidaD");
 		$.getJSON("discount", {option: $(this).val() }, 
-		function(data) {
-			$.each(data, function(index, element){ 
-				discountField.val(element.nuolaida)
-				discountField.trigger("change")
-			});
+		function(data) {	
+			$.each(data, function(index, element){
+				doctorDiscount.attr('checked', false); 			
+				if(element.nuolaida === null){
+					docDisc = 0;
+					doctorDiscount.val(0);
+					document.getElementById('nuolDtext').innerHTML =  " Daktarui: 0%" ;
+				}
+				else{
+						docDisc = element.nuolaida;
+						doctorDiscount.val(docDisc);
+						document.getElementById('nuolDtext').innerHTML =  
+							" Daktarui: " + docDisc + "%";
+					}
+					});				
 		});
 	});
 	

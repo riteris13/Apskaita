@@ -28,7 +28,13 @@
 {{Form::text('kaina', '', array('class'=>'form-control', 'type'=>'text',
             'onChange' => "calculatePrice();calculateTotal()", 'id' => 'kaina')); }}
 
-<h4>Daktarui taikoma nuolaida %</h4>
+<h4>Nuolaidos %</h4>
+{{ Form::radio('nuolaidos', '', '', array('id' => 'nuolaidaD')) }}
+<text for="nuolaidaD" id = "nuolDtext"> Daktarui </text><br>
+{{ Form::radio('nuolaidos', '', '', array('id' => 'nuolaidaP')) }}
+<text for="nuolaidaPro" id = "nuolPtext"> Produktui </text><br>
+
+<h4>Užsakymui taikoma nuolaida %</h4>
 {{Form::text('nuolaida', '', array('class'=>'form-control', 'type'=>'text',
             'onChange' => "calculatePrice();calculateTotal()", 'id' => 'nuolaida')); }}
 

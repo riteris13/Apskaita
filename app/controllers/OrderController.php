@@ -53,12 +53,13 @@ class OrderController extends BaseController{
     }
     public function getApidropdown2(){
         $input = Input::get('option');
-        $doctors = Doctor::where('klinika_id', '=' , $input)->orderBy('pavarde')->get(['id','vardas', 'pavarde']);
+        //$doctors = Doctor::where('klinika_id', '=' , $input)->orderBy('pavarde')->get(['id','vardas', 'pavarde']);
+        $doctors = Clinic::find($input)->doctors()->orderBy('pavarde')->get(['id','vardas', 'pavarde']);
         return $doctors;
     }
-    public function getPrice(){
+    public function getPricediscount(){
         $input = Input::get('option');
-        $price = Item::where('id', '=', $input)->get(['kaina']);
+        $price = Item::where('id', '=', $input)->get(['kaina', 'nuolaida']);
     return $price;
     }
     public function getDiscount(){
