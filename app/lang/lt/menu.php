@@ -1,18 +1,18 @@
 <?php
 
 return array(
-    'Pavadinimas', //0
-    'Pagrindinis',
-    'Meniu',
-    'Produktų kategorijos',//3
-    'Gydytojai',
-    'Produktai',
-    'Klinikos',//6
-    'Apsilankymai',
-    'Atsijungti',
-    'Ar tikrai norite atsijungti?',//9
-    'Ataskaitos',
-    'Užsakymai',
-    'Keisti slaptažodį',
-    'Vartotojas'
+    'name' => 'O.P.U.P.A.S',
+    'add_data' => 'Pridėti duomenis',
+    'categories' => 'Kategorijos',
+    'items' => 'Produktai',
+    'doctors' => 'Gydytojai',
+    'products' => 'Produktai',
+    'clinics' => 'Klinikos',
+    'visits' => 'Vizitai',
+    'log_out' => 'Atsijungti',
+    'log_out_msg' => 'Ar tikrai norite atsijungti?',
+    'reports' => 'Ataskaitos',
+    'orders' => 'Užsakymai',
+    'change_pwd' => 'Keisti slaptažodį'
+
 );

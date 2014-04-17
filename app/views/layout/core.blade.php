@@ -39,17 +39,34 @@
 
     </style>
 </head>
-</head>
-<body>
 
 <?php
-    $menu = trans('menu');
+    function echoActiveClassIfRequestMatches($requestUri)
+    {
+        $current_file_name = basename($_SERVER['REQUEST_URI'], ".php");
+
+        if ($current_file_name == $requestUri)
+            echo 'class="active"';
+    }
+    function echoActiveClassIfLangMatches($lang)
+    {
+        $curr_lang = Session::get('lang');
+
+        if ($curr_lang == $lang)
+            echo 'class="active"';
+    }
+
 ?>
+
+<body>
+
 <nav class="navbar navbar-inverse" role="navigation">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <button type="button" class="navbar-toggle"
+                    data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -61,32 +78,57 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li><a href="/">{{$menu[1]}}</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{$menu[2]}}<b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        @if(Auth::user()->role == 'direktore')
-                        <li><a href="/category">{{$menu[3]}}</a></li>
-                        <li><a href="/doctor">{{$menu[4]}}</a></li>
-                        <li><a href="/item">{{$menu[5]}}</a></li>
-                        <li><a href="/clinic">{{$menu[6]}}</a></li>
-						<li><a href="/visit">{{$menu[7]}}</a></li>
-                        <li><a href="/report">{{$menu[10]}}</a></li>
-                        <li><a href="/order">{{$menu[11]}}</a></li>
-                        @endif
-                    </ul>
+                <li  <?=echoActiveClassIfRequestMatches("")?>><a href="/">{{trans('menu.name')}}</a></li>
+
+                @if(Auth::user()->role == 'direktore')
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{trans('menu.add_data')}}<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li <?=echoActiveClassIfRequestMatches("category")?>>
+                                <a href="/category">{{trans('menu.categories')}}</a>
+                            </li>
+
+                            <li <?=echoActiveClassIfRequestMatches("doctor")?>>
+                                <a href="/doctor">{{trans('menu.doctors')}}</a>
+                            </li>
+
+                            <li <?=echoActiveClassIfRequestMatches("item")?>>
+                                <a href="/item">{{trans('menu.items')}}</a>
+                            </li>
+
+                            <li <?=echoActiveClassIfRequestMatches("clinic")?>>
+                                <a href="/clinic">{{trans('menu.clinics')}}</a>
+                            </li>
+
+                            <li <?=echoActiveClassIfRequestMatches("visit")?>>
+                                <a href="/visit">{{trans('menu.visits')}}</a>
+                            </li>
+
+                            <li <?=echoActiveClassIfRequestMatches("order")?>>
+                                <a href="/order">{{trans('menu.orders')}}</a>
+                            </li>
+                        </ul>
+                    </li>
+                @endif
+
+                <li <?=echoActiveClassIfRequestMatches("report")?>>
+                    <a href="/report">{{trans('menu.reports')}}</a>
                 </li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="/lang/set/lt">LT</a></li>
-                <li><a href="/lang/set/en">ENG</a></li>
+                <li <?=echoActiveClassIfLangMatches("lt")?>><a href="/lang/set/lt">LT</a></li>
+                <li <?=echoActiveClassIfLangMatches("en")?>><a href="/lang/set/en">ENG</a></li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{User::find(Auth::user()->id)->email}}<b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        {{User::find(Auth::user()->id)->email}}<b class="caret"></b>
+                    </a>
+
                     <ul class="dropdown-menu">
-                <li><a href="/auth/change">{{$menu[12]}}</a></li>
-                <li><a onclick="return confirm('{{$menu[9]}}')"
-                       href="/auth/logout">{{$menu[8]}}</a></li>
+                        <li><a href="/auth/change">{{trans('menu.change_pwd')}}</a></li>
+                        <li><a onclick="return confirm('{{trans('menu.log_out_msg')}}')"
+                            href="/auth/logout">{{trans('menu.log_out')}}</a>
+                        </li>
                     </ul>
                 </li>
             </ul>

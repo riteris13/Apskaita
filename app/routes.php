@@ -38,6 +38,9 @@ Route::group(array('before' => 'notAuth'), function(){
             Route::controller('order', 'OrderController');
             Route::get('/invoice', function(){return View::make('invoice/invoice');});
         });
+        Route::group(array('before' => 'atstovas'), function(){
+            Route::controller('report', 'ReportController');
+        });
     });
 });
 

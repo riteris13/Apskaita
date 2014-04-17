@@ -1,18 +1,18 @@
 <?php
 
 return array(
-    'Name',//0
-    'Main',
-    'Menu',
-    'Categories',//3
-    'Doctors',
-    'Products',
-    'Clinics',//6
-    'Visits',
-    'Log out',
-    'Are you sure you want to log out?',//9
-    'Reports',
-    'Orders',
-    'Change password',//12
-    'Account'
+    'name' => 'O.P.O.S.R.S',
+    'add_data' => 'Add data',
+    'categories' => 'Categories',
+    'items' => 'Items',
+    'doctors' => 'Doctors',
+    'products' => 'Products',
+    'clinics' => 'Clinics',
+    'visits' => 'Visits',
+    'log_out' => 'Log out',
+    'log_out_msg' => 'Are you sure you want to log out?',
+    'reports' => 'Reports',
+    'orders' => 'Orders',
+    'change_pwd' => 'Change password'
+
 );
