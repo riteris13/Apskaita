@@ -20,6 +20,20 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 *
 	 * @var array
 	 */
+    public static $change_password_rules  = [
+        'OldPassword' => 'required',
+        'NewPassword' => 'required|min:6',
+        'NewPassword2' => 'required|same:NewPassword'
+    ];
+
+    public static $messages = [
+        'OldPassword.required' => 'Neįvestas senasis slaptažodis',
+        'NewPassword.required' => 'Neįvestas naujas slaptažodis',
+        'NewPassword2.required' => 'Nepakartotas naujas slaptažodis',
+        'same' => 'Nesutampa naujai įvesti slaptažodžiai',
+        'min' => 'Nemažiau 6 simbolių'
+    ];
+
 	protected $hidden = array('password');
 
 	/**

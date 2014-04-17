@@ -55,7 +55,9 @@
         'Atsijungti',
         'Ar tikrai norite atsijungti?',//9
         'Ataskaitos',
-        'Užsakymai'
+        'Užsakymai',
+        'Keisti slaptažodį',
+        'Vartotojas'
     ];
     $menuEN = [
         'Name',//0
@@ -69,7 +71,9 @@
         'Log out',
         'Are you sure you want to log out?',//9
         'Reports',
-        'Orders'
+        'Orders',
+        'Change password',//12
+        'Account'
     ];
 
     $lang = Session::get('lang');
@@ -116,8 +120,14 @@
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="/lang/set/lt">LT</a></li>
                 <li><a href="/lang/set/en">ENG</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{$menu[13]}}<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                <li><a href="/auth/change">{{$menu[12]}}</a></li>
                 <li><a onclick="return confirm('{{$menu[9]}}')"
                        href="/auth/logout">{{$menu[8]}}</a></li>
+                    </ul>
+                </li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
