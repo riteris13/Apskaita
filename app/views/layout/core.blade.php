@@ -43,46 +43,7 @@
 <body>
 
 <?php
-    $menuLT = [
-        'Pavadinimas', //0
-        'Pagrindinis',
-        'Meniu',
-        'Produktų kategorijos',//3
-        'Gydytojai',
-        'Produktai',
-        'Klinikos',//6
-        'Apsilankymai',
-        'Atsijungti',
-        'Ar tikrai norite atsijungti?',//9
-        'Ataskaitos',
-        'Užsakymai',
-        'Keisti slaptažodį',
-        'Vartotojas'
-    ];
-    $menuEN = [
-        'Name',//0
-        'Main',
-        'Menu',
-        'Categories',//3
-        'Doctors',
-        'Products',
-        'Clinics',//6
-        'Visits',
-        'Log out',
-        'Are you sure you want to log out?',//9
-        'Reports',
-        'Orders',
-        'Change password',//12
-        'Account'
-    ];
-
-    $lang = Session::get('lang');
-    if($lang == 'en'){
-        $menu = $menuEN;
-    }
-    else{
-        $menu = $menuLT;
-    }
+    $menu = trans('menu');
 ?>
 <nav class="navbar navbar-inverse" role="navigation">
     <div class="container-fluid">
