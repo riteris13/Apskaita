@@ -3,8 +3,8 @@
 
 {{ Form::open(array('url' => '/auth/change', 'class'=>'form-signin')) }}
 
-<h2>Slaptažodžio keitimas</h2>
-
+<h2>Slaptažodžio keitimas vartotojui {{User::find(Auth::user()->id)->email}}</h2>
+<br>
 {{Form::password('OldPassword', array('type'=>'password', 'class'=>'form-control',
         'placeholder'=>'Old Password', 'required', 'id' => 'OldPassword'))}}
 <br>

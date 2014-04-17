@@ -92,8 +92,7 @@
 
         <tr class="item-row">
             <td class="item-name"><div class="delete-wpr"><textarea>SSL Renewals</textarea><a class="delete" href="javascript:;" title="Remove row">X</a></div></td>
-
-            <td class="description"><textarea>Yearly renewals of SSL certificates on main domain and several subdomains</textarea></td>
+            <td class="description"><textarea>{{Doctor::first()->vardas}}</textarea></td>
             <td><textarea class="cost">$75.00</textarea></td>
             <td><textarea class="qty">3</textarea></td>
             <td><span class="price">$225.00</span></td>

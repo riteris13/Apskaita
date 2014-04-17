@@ -121,7 +121,7 @@
                 <li><a href="/lang/set/lt">LT</a></li>
                 <li><a href="/lang/set/en">ENG</a></li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{$menu[13]}}<b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{User::find(Auth::user()->id)->email}}<b class="caret"></b></a>
                     <ul class="dropdown-menu">
                 <li><a href="/auth/change">{{$menu[12]}}</a></li>
                 <li><a onclick="return confirm('{{$menu[9]}}')"

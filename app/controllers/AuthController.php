@@ -19,7 +19,7 @@ class AuthController extends BaseController{
     }
 
     public function getChange(){
-        return View::make('layout.password');
+        return View::make('user.password');
     }
 
     public function postChange(){
