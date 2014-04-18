@@ -1,5 +1,7 @@
 @extends('layout.core')
 
+<?php $header = trans('header.clinic.edit'); ?>
+
 @section('content')
 
 {{ Form::model($clinic, array('url' => 'clinic/edit', 'class'=>'form-default')) }}

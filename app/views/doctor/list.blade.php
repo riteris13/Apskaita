@@ -1,5 +1,7 @@
 @extends('layout.core')
 
+<?php $header = trans('header.doctor.list'); ?>
+
 @section('content')
 
     <div class="panel panel-default">

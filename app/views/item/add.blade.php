@@ -1,5 +1,7 @@
 @extends('layout.core')
 
+<?php $header = trans('header.item.add'); ?>
+
 @section('content')
 
     {{ Form::open(array($id, 'url' => 'item/add', 'class'=>'form-default')) }}

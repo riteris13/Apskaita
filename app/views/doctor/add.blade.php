@@ -1,5 +1,7 @@
 @extends('layout.core')
 
+<?php $header = trans('header.doctor.add'); ?>
+
 @section('content')
 
 {{ Form::open(array('url' => 'doctor/add', 'class'=>'form-default')) }}

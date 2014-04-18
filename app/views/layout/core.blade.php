@@ -36,6 +36,9 @@
             margin-bottom: 20px;
 
         }
+        .page-header {
+            text-align: center;
+        }
 
     </style>
 </head>
@@ -150,6 +153,13 @@
             {{ $errors->first() }}
         </div>
     @endif
+
+    @if((isset($header) && ($header != null)))
+        <div class="page-header">
+            <h3>{{$header}}</h3>
+        </div>
+    @endif
+
     @yield('content')
 </div>
 <br>

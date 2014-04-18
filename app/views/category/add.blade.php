@@ -1,5 +1,7 @@
 @extends('layout.core')
 
+<?php $header = trans('header.category.add'); ?>
+
 @section('content')
 
 {{ Form::open(array('url' => 'category/add', 'class'=>'form-default')) }}

@@ -1,22 +1,24 @@
 @extends('layout.core')
 
+<?php $header = trans('header.item.list'); ?>
+
 @section('content')
 
-@if(($fail == 'true'))
-    <div class="alert alert-danger">
-        Jūsų pasirinktoje kategorijoje prekių nėra. Rodomas visas sąrašas.
-    </div>
-@endif
-<div class="panel panel-default">
-    <div class="panel-heading">Produktų paieška</div>
-    {{ Form::open(array('url' => 'item', 'class'=>'form-default')) }}
-    <h4>Kategorija</h4>
-    {{Form::select('id', Category::lists('pavadinimas', 'id'), null, array('class'=>'form-control')); }}
-    <br>
-    {{Form::submit('Pasirinkti', array('class'=>'btn btn-primary')); }}
+    @if(($fail == 'true'))
+        <div class="alert alert-danger">
+            Jūsų pasirinktoje kategorijoje prekių nėra. Rodomas visas sąrašas.
+        </div>
+    @endif
+    <div class="panel panel-default">
+        <div class="panel-heading">Produktų paieška</div>
+        {{ Form::open(array('url' => 'item', 'class'=>'form-default')) }}
+        <h4>Kategorija</h4>
+        {{Form::select('id', Category::lists('pavadinimas', 'id'), null, array('class'=>'form-control')); }}
+        <br>
+        {{Form::submit('Pasirinkti', array('class'=>'btn btn-primary')); }}
 
-    {{ Form::close() }}
-</div>
+        {{ Form::close() }}
+    </div>
 
     <div class="panel panel-default">
         @if(($fail == 'true'))

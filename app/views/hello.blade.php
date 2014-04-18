@@ -1,5 +1,5 @@
 @extends('layout.core')
-
+<?php $header = ''  ?>
 @section('content')
 
     <div> <img src="{{asset('assets/img/logo.png');}}"> </div>
