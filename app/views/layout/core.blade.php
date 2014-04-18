@@ -109,13 +109,14 @@
                             </li>
                         </ul>
                     </li>
+                <li><a href="/invoice">{{trans('menu.invoice')}}</a></li>
                 @endif
 
                 <li <?=echoActiveClassIfRequestMatches("report")?>>
                     <a href="/report">{{trans('menu.reports')}}</a>
                 </li>
 
-                <li><a href="/invoice">{{trans('menu.invoice')}}</a></li>
+
             </ul>
 
             <ul class="nav navbar-nav navbar-right">

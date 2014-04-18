@@ -14,6 +14,6 @@ return array(
     'reports' => 'Ataskaitos',
     'orders' => 'Užsakymai',
     'change_pwd' => 'Keisti slaptažodį',
-    'invoice' => 'Sąskaita faktųra'
+    'invoice' => 'Sąskaita faktūra'
 
 );
