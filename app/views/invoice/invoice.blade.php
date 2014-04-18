@@ -16,60 +16,26 @@
 <body>
 
 <div id="page-wrap">
+    <div id="header">
+        <textarea id="first-box"></textarea>
+        <textarea id="title">PVM Sąskaita faktūra</textarea>
 
-    <textarea id="header">INVOICE</textarea>
 
-    <div id="identity">
-
-        <textarea id="address">Chris Coyier
-            123 Appleseed Street
-            Appleville, WI 53719
-
-            Phone: (555) 555-5555</textarea>
-
-        <div id="logo">
-
-            <div id="logoctr">
-                <a href="javascript:;" id="change-logo" title="Change logo">Change Logo</a>
-                <a href="javascript:;" id="save-logo" title="Save changes">Save</a>
-                |
-                <a href="javascript:;" id="delete-logo" title="Delete logo">Delete Logo</a>
-                <a href="javascript:;" id="cancel-logo" title="Cancel changes">Cancel</a>
-            </div>
-
-            <div id="logohelp">
-                <input id="imageloc" type="text" size="50" value="" /><br />
-                (max width: 540px, max height: 100px)
-            </div>
-            <img id="image" src="{{asset('assets/img/logo.png');}}" alt="logo" />
+        <div id="right-box">
+            <textarea id="number"> Nr.</textarea>
+            <textarea id="original">Originalas</textarea>
+            <textarea id="date-field">{{(" \n");}}Išdavimo data: </textarea>
         </div>
 
+        <textarea id="date-place">Sąskaitos išrašymo data ir vieta: </textarea>
     </div>
-
-    <div style="clear:both"></div>
-
-    <div id="customer">
-
-        <textarea id="customer-title">Widget Corp.
-            c/o Steve Widget</textarea>
-
-        <table id="meta">
-            <tr>
-                <td class="meta-head">Invoice #</td>
-                <td><textarea>000123</textarea></td>
-            </tr>
-            <tr>
-
-                <td class="meta-head">Date</td>
-                <td><textarea id="date">December 15, 2009</textarea></td>
-            </tr>
-            <tr>
-                <td class="meta-head">Amount Due</td>
-                <td><div class="due">$875.00</div></td>
-            </tr>
-
-        </table>
-
+    <div id="parties-info">
+        <div id="seller">
+            <textarea id="address">{{(" \n");}}Pardavėjas:{{(" \n");}}Adresas:{{(" \n");}}Įmonės kodas:{{(" \n");}}PVM mokėtojo kodas:{{(" \n");}}Telefonas:{{(" \n");}}Fax:{{(" \n");}}El. paštas:</textarea>
+        </div>
+        <div id="buyer">
+            <textarea id="address">{{(" \n");}}Pirkėjas:{{(" \n");}}Adresas:{{(" \n");}}Įmonės kodas:</textarea>
+        </div>
     </div>
 
     <table id="items">

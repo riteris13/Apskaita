@@ -13,6 +13,7 @@ return array(
     'log_out_msg' => 'Ar tikrai norite atsijungti?',
     'reports' => 'Ataskaitos',
     'orders' => 'Užsakymai',
-    'change_pwd' => 'Keisti slaptažodį'
+    'change_pwd' => 'Keisti slaptažodį',
+    'invoice' => 'Sąskaita faktųra'
 
 );

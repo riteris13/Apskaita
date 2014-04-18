@@ -13,6 +13,7 @@ return array(
     'log_out_msg' => 'Are you sure you want to log out?',
     'reports' => 'Reports',
     'orders' => 'Orders',
-    'change_pwd' => 'Change password'
+    'change_pwd' => 'Change password',
+    'invoice' => 'Invoice'
 
 );
