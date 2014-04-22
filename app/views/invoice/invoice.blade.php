@@ -38,57 +38,41 @@
         </div>
     </div>
 
+    <div id="payment-info">
+        <span>Apmokėjimo forma: </span><textarea id="payment-bold">pavedimas</textarea><span>Apmokėjimo terminas:</span>
+        <textarea id="payment-bold" style="width: 100px;"> </textarea><span>Bankas: </span><textarea id="payment-bold">AB SEB Vilniaus bankas</textarea>
+        <span>Atsiskaitomoji sąskaita: </span><textarea id="payment-bold">LT 75 7044 0600 0770 2100</textarea>
+        <br><span>Valiuta: </span><textarea id="payment-bold">LTL</textarea>
+    </div>
+
     <table id="items">
 
         <tr>
-            <th>Item</th>
-            <th>Description</th>
-            <th>Unit Cost</th>
-            <th>Quantity</th>
-            <th>Price</th>
+            <th>Eil. Nr.</th>
+            <th>Pavadinimas</th>
+            <th>Kiekis</th>
+            <th>Mato vnt.</th>
+            <th>PVM</th>
+            <th>Kaina, LTL</th>
+            <th>Suma, LTL</th>
         </tr>
 
         <tr class="item-row">
-            <td class="item-name"><div class="delete-wpr"><textarea>Web Updates</textarea><a class="delete" href="javascript:;" title="Remove row">X</a></div></td>
-            <td class="description"><textarea>Monthly web updates for http://widgetcorp.com (Nov. 1 - Nov. 30, 2009)</textarea></td>
-            <td><textarea class="cost">$650.00</textarea></td>
-            <td><textarea class="qty">1</textarea></td>
-            <td><span class="price">$650.00</span></td>
-        </tr>
-
-        <tr class="item-row">
-            <td class="item-name"><div class="delete-wpr"><textarea>SSL Renewals</textarea><a class="delete" href="javascript:;" title="Remove row">X</a></div></td>
-            <td class="description"><textarea>{{Doctor::first()->vardas}}</textarea></td>
-            <td><textarea class="cost">$75.00</textarea></td>
-            <td><textarea class="qty">3</textarea></td>
-            <td><span class="price">$225.00</span></td>
+            <td class="item-number"><div class="delete-wpr"><textarea id="table-nr">1.</textarea><a class="delete" href="javascript:;" title="Remove row">X</a></div></td>
+            <td class="item-name"><div class="delete-wpr"><textarea id="table-name">Web Updates</textarea>
+            <td><textarea id="table-qty" class="qty">1</textarea></td>
+            <td><textarea id="table-mes">matas</textarea></td>
+            <td><textarea id="table-vat">PVM</textarea></td>
+            <td><textarea id="table-cost" class="cost">$650.00</textarea></td>
+            <td class="item-price"><span class="price">$650.00</span></td>
         </tr>
 
         <tr id="hiderow">
-            <td colspan="5"><a id="addrow" href="javascript:;" title="Add a row">Add a row</a></td>
+            <td colspan="7"><a id="addrow" href="javascript:;" title="Add a row">Add a row</a></td>
         </tr>
-
-        <tr>
-            <td colspan="2" class="blank"> </td>
-            <td colspan="2" class="total-line">Subtotal</td>
-            <td class="total-value"><div id="subtotal">$875.00</div></td>
-        </tr>
-        <tr>
-
-            <td colspan="2" class="blank"> </td>
-            <td colspan="2" class="total-line">Total</td>
+            <td colspan="5" class="blank"> </td>
+            <td class="total-line">Viso:</td>
             <td class="total-value"><div id="total">$875.00</div></td>
-        </tr>
-        <tr>
-            <td colspan="2" class="blank"> </td>
-            <td colspan="2" class="total-line">Amount Paid</td>
-
-            <td class="total-value"><textarea id="paid">$0.00</textarea></td>
-        </tr>
-        <tr>
-            <td colspan="2" class="blank"> </td>
-            <td colspan="2" class="total-line balance">Balance Due</td>
-            <td class="total-value balance"><div class="due">$875.00</div></td>
         </tr>
 
     </table>
