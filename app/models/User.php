@@ -22,7 +22,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 */
     public static $change_password_rules  = [
         'OldPassword' => 'required',
-        'NewPassword' => 'required|min:6',
+        'NewPassword' => 'required|min:4',
         'NewPassword2' => 'required|same:NewPassword'
     ];
 
@@ -31,7 +31,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
         'NewPassword.required' => 'Neįvestas naujas slaptažodis',
         'NewPassword2.required' => 'Nepakartotas naujas slaptažodis',
         'same' => 'Nesutampa naujai įvesti slaptažodžiai',
-        'min' => 'Nemažiau 6 simbolių'
+        'min' => 'Nemažiau 4 simbolių'
     ];
 
 	protected $hidden = array('password');

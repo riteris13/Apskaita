@@ -24,7 +24,7 @@ table td, table th { border: 1px solid black; padding: 1px; }
 #parties-info {margin-top: 5px; width: 100%; height: 152px;}
 #seller {border: 1px solid  black; width: 388px; height: 150px; float: left; padding-left: 3px;}
 #buyer {border: 1px solid  black; width: 388px; height: 150px; float: right; padding-left: 3px;}
-#address { width: 250px; height: 150px; float: left; }
+#address { width: 100%; height: 150px; }
 #customer { overflow: hidden; }
 
 #payment-info {height: 80px; width: 795px; margin-top: 5px; margin-left: 5px;}
@@ -32,10 +32,10 @@ table td, table th { border: 1px solid black; padding: 1px; }
 
 #table-nr {width: 26px; height: 20px; text-align: center;}
 #table-name {width: 400px; height: 20px; text-align: center;}
-#table-qty {width: 26px; height: 20px; text-align: center;}
-#table-mes {width: 26px; height: 20px; text-align: center;}
-#table-vat {width: 30px; height: 20px; text-align: center;}
-#table-cost {width: 80px; height: 20px; text-align: center;}
+#table-qty {width: 36px; height: 20px; text-align: center;}
+#table-mes {width: 36px; height: 20px; text-align: center;}
+#table-vat {width: 40px; height: 20px; text-align: center;}
+#table-cost {width: 100px; height: 20px; text-align: center;}
 
 
 #meta { margin-top: 1px; width: 300px; float: right; }
@@ -53,11 +53,15 @@ table td, table th { border: 1px solid black; padding: 1px; }
 #items td.balance { background: #eee; }
 #items td.blank { border: 0; }
 
-#terms { text-align: center; margin: 20px 0 0 0; }
-#terms h5 { text-transform: uppercase; font: 13px Helvetica, Sans-Serif; letter-spacing: 10px; border-bottom: 1px solid black; padding: 0 0 8px 0; margin: 0 0 8px 0; }
-#terms textarea { width: 100%; text-align: center;}
+#total-line2 { border: 1px solid #000000; width: 300px; height: 20px; padding-top: 5px; padding-bottom: 5px; padding-left: 10px;}
+#total-line3 { margin-top: 25px; border: 1px solid #000000; width: 788px; height: 20px; padding-top: 5px; padding-bottom: 5px; padding-left: 10px;}
 
 textarea:hover, textarea:focus, #items td.total-value textarea:hover, #items td.total-value textarea:focus, .delete:hover { background-color:#EEFF88; }
+
+#invoice-info {margin-top: 25px; width: 100%; height: 72px;}
+#reciever {border: 1px solid  black; width: 348px; height: 70px; float: left; padding-left: 3px;}
+#giver {border: 1px solid  black; width: 348px; height: 70px; float: right; padding-left: 3px;}
+#invoice-inft { width: 100%; height: 70px; text-align: center; }
 
 .delete-wpr { position: relative; }
 .delete { display: block; color: #000; text-decoration: none; position: absolute; background: #EEEEEE; font-weight: bold; padding: 0px 3px; border: 1px solid; top: -6px; left: -22px; font-family: Verdana; font-size: 12px; }

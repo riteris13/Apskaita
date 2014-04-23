@@ -62,7 +62,7 @@
             <td class="item-name"><div class="delete-wpr"><textarea id="table-name">Web Updates</textarea>
             <td><textarea id="table-qty" class="qty">1</textarea></td>
             <td><textarea id="table-mes">matas</textarea></td>
-            <td><textarea id="table-vat">PVM</textarea></td>
+            <td><textarea id="table-vat">21%</textarea></td>
             <td><textarea id="table-cost" class="cost">$650.00</textarea></td>
             <td class="item-price"><span class="price">$650.00</span></td>
         </tr>
@@ -77,11 +77,22 @@
 
     </table>
 
-    <div id="terms">
-        <h5>Terms</h5>
-        <textarea>NET 30 Days. Finance Charge of 1.5% will be made on unpaid balances after 30 days.</textarea>
+    <div id="total-line2">
+    <span style="font-weight: bold;">Viso apmokejimui: </span><textarea style="font-weight: bold; text-align: right; height: 18px;position: relative; top: 4px;"> LTL</textarea>
+    </div>
+    <div id="total-line3">
+        <span style="font-weight: bold;">Suma žodžiais:  </span><textarea style="height: 18px;position: relative; top: 4px;"> litų ir 00 ct</textarea>
     </div>
 
+    <div id="invoice-info">
+        <div id="reciever">
+            <textarea id="invoice-inft">{{(" \n\n\n");}}Sąskaitą priėmė: </textarea>
+        </div>
+        <div id="giver">
+            <textarea id="invoice-inft">{{(" \n\n\n");}}Sąskaitą išrašė: </textarea>
+        </div>
+    </div>
+    <br>
 </div>
 
 </body>
