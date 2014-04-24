@@ -72,13 +72,13 @@
         </tr>
             <td colspan="5" class="blank"> </td>
             <td class="total-line">Viso:</td>
-            <td class="total-value"><div id="total">$875.00</div></td>
+            <td class="total-value"><div id="total">$650.00</div></td>
         </tr>
 
     </table>
 
     <div id="total-line2">
-    <span style="font-weight: bold;">Viso apmokejimui: </span><textarea style="font-weight: bold; text-align: right; height: 18px;position: relative; top: 4px;"> LTL</textarea>
+    <span style="font-weight: bold;">Viso apmokėjimui: </span><textarea style="font-weight: bold; text-align: right; height: 18px;position: relative; top: 4px;"> LTL</textarea>
     </div>
     <div id="total-line3">
         <span style="font-weight: bold;">Suma žodžiais:  </span><textarea style="height: 18px;position: relative; top: 4px;"> litų ir 00 ct</textarea>

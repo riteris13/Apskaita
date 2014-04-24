@@ -71,6 +71,7 @@
 
         <h4>Užsakymo data</h4>
         {{ Form::date('data', '', array('class'=>'form-control', 'type'=>'date')) }}
+        <br>
 
         {{Form::submit('Pridėti', array('class'=>'btn btn-primary')); }}
     {{ Form::close() }}
