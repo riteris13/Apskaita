@@ -9,25 +9,26 @@
         <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th>Vardas</th>
-                        <th>Pavardė</th>
+                        <th>Užsakovas</th>
                         <th>Klinika</th>
                         <th>Produktas</th>
                         <th>Data</th>
-                        <th>Pardavimo kaina</th>
+                        <th>Kaina vnt.</th>
                         <th>Kiekis</th>
                         <th>Suma</th>
+                        <th>Statusas</th>
                     </tr>
                 </thead>
 
                 <tbody >
                 @foreach($orders as $order)
-                    <tr>
+                @if ( $order->statusas == 1)
+                    <tr bgcolor = "#B2FFB2">
+                @else
+                    <tr bgcolor = "#FFFFB2">
+                @endif
                         <td>
-                            {{{ $order->doctor->vardas}}}
-                        </td>
-                        <td>
-                            {{{ $order->doctor->pavarde}}}
+                            {{{ $order->doctor->fullname}}}
                         </td>
                         <td>
                             {{{ $order->doctor->clinic->pavadinimas}}}
@@ -47,6 +48,15 @@
                         <td>
                             {{{ $order->pir_kaina * $order->kiekis}}}
                         </td>
+                        @if ( $order->statusas == 1)
+                            <td>
+                                {{"Įvykdytas"}}
+                            </td>
+                        @else
+                        <td>
+                            {{"Neįvykdytas"}}
+                        </td>
+                        @endif
                         <td class="text-right">
                             <a
                                 class="btn btn-xs btn-primary" href="/order/edit/{{$order->id}}">

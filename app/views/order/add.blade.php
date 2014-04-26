@@ -9,7 +9,7 @@
     <script type="text/javascript" src="/js/jScript.js"></script>
 
     {{ Form::open(array('url' => 'order/add', 'class'=>'form-default', 'id'=>'addOrder')) }}
-    {{ Form::hidden('count', 1) }}
+    {{ Form::hidden('statusas', 0) }}
 
         <h4>Klinika</h4>
         {{Form::select('klinika_id', array('default' => 'Pasirinkite Kliniką') + Clinic::all()->lists('pavadinimas', 'id'),
@@ -56,6 +56,7 @@
                     'id' => 'kiekis' )); }}
 
         <div id="bendra_suma"></div>
+
 
         {{Form::macro('date', function($name, $value = null, $options = array()) {
         $input =  '<input type="date" name="' . $name . '" value="' . $value . '"';

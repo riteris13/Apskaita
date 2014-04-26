@@ -2,7 +2,7 @@
 class Order extends Eloquent {
     protected $table = 'daktaras_musu_produktas';
     protected $fillable = [
-        'data', 'daktaras_id', 'produktas_id', 'pir_kaina', 'kiekis'
+        'data', 'daktaras_id', 'produktas_id', 'pir_kaina', 'kiekis', 'statusas'
     ];
     public $timestamps = false;
 
