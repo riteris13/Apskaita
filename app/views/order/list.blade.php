@@ -104,7 +104,7 @@
                 </tbody>
         </table>
     </div>
-
+    <p>  {{ $orders->links() }} </p>
     <a href="/order/add" class="btn btn-primary" ><span class="glyphicon glyphicon-plus"></span> Pridėti naują užsakymą</a>
 
 @stop
