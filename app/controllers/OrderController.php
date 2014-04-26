@@ -67,4 +67,36 @@ class OrderController extends BaseController{
         $discount = Doctor::where('id', '=', $input)->get(['nuolaida']);
         return $discount;
     }
+
+    public function postIndex(){
+        $id = Input::get('status');
+        return Redirect::to('order/sorted/'.$id);
+    }
+    public function getSorted($id){
+        if($id != 2){
+            $orders = Order::where('statusas', '=', $id)->orderBy('data', 'Desc')->orderBy('daktaras_id')->paginate(15);
+            if($orders->count() != 0 ){
+                return View::make('order.list')->with('orders',$orders);
+            }
+        }
+        $orders = Order::orderBy('data', 'Desc')->orderBy('daktaras_id')->paginate(15);
+        return View::make('order.list')->with('orders', $orders);
+    }
+    public function getStatus($id){
+        try{
+            $model = Order::findOrFail($id);
+        }catch (Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+            $message = 'Užsakymas tokiu ID nerastas';
+            return Redirect::to('order')->withErrors($message);
+        }
+            if($model->statusas == 0){
+                $model->statusas = 1;
+            }else{
+                $model->statusas = 0;
+            }
+            $model->save();
+            return Redirect::to('order')->with('success', "Statusas pakeistas");
+
+    }
+
 }
