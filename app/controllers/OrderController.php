@@ -2,7 +2,7 @@
 class OrderController extends BaseController{
     public function getIndex(){
         $orders = Order::orderBy('data', 'Desc')->orderBy('daktaras_id')->paginate(15);
-        return View::make('order.list')->with('orders', $orders);
+        return View::make('order.list')->with('items', $orders);
     }
     public function getAdd(){
         return View::make('order.add');
@@ -76,11 +76,11 @@ class OrderController extends BaseController{
         if($id != 2){
             $orders = Order::where('statusas', '=', $id)->orderBy('data', 'Desc')->orderBy('daktaras_id')->paginate(15);
             if($orders->count() != 0 ){
-                return View::make('order.list')->with('orders',$orders);
+                return View::make('order.list')->with('items',$orders);
             }
         }
         $orders = Order::orderBy('data', 'Desc')->orderBy('daktaras_id')->paginate(15);
-        return View::make('order.list')->with('orders', $orders);
+        return View::make('order.list')->with('items', $orders);
     }
     public function getStatus($id){
         try{

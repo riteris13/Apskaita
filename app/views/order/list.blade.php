@@ -31,34 +31,34 @@
                 </thead>
 
                 <tbody >
-                @foreach($orders as $order)
-                @if ( $order->statusas == 1)
+                @foreach($items as $item)
+                @if ( $item->statusas == 1)
                     <tr bgcolor = "#B2FFB2">
                 @else
                     <tr bgcolor = "#FFFFB2">
                 @endif
                         <td>
-                            {{{ $order->doctor->fullname}}}
+                            {{{ $item->doctor->fullname}}}
                         </td>
                         <td>
-                            {{{ $order->doctor->clinic->pavadinimas}}}
+                            {{{ $item->doctor->clinic->pavadinimas}}}
                         </td>
                         <td>
-                            {{{ $order->product->pavadinimas}}}
+                            {{{ $item->product->pavadinimas}}}
                         </td>
                         <td>
-                            {{{ $order->data}}}
+                            {{{ $item->data}}}
                         </td>
                         <td>
-                            {{{ $order->pir_kaina}}}
+                            {{{ $item->pir_kaina}}}
                         </td>
                         <td>
-                            {{{ $order->kiekis}}}
+                            {{{ $item->kiekis}}}
                         </td>
                         <td>
-                            {{{ $order->pir_kaina * $order->kiekis}}}
+                            {{{ $item->pir_kaina * $item->kiekis}}}
                         </td>
-                        @if ( $order->statusas == 1)
+                        @if ( $item->statusas == 1)
                             <td>
                                 {{"Įvykdytas"}}
                             </td>
@@ -68,27 +68,27 @@
                         </td>
                         @endif
                         <td class="text-right">
-                            @if ( $order->statusas == 0)
+                            @if ( $item->statusas == 0)
                             <a
                                 onclick="return confirm('Ar tikrai norite norite pakeisti užsakymo statusą?')"
-                                class="btn btn-xs btn-primary" href="/order/status/{{$order->id}}">
+                                class="btn btn-xs btn-primary" href="/order/status/{{$item->id}}">
                                 <span class="glyphicon glyphicon-thumbs-up"></span>
                             </a>
                             @else
                             <a
                                 onclick="return confirm('Ar tikrai norite norite pakeisti užsakymo statusą?')"
-                                class="btn btn-xs btn-danger" href="/order/status/{{$order->id}}">
+                                class="btn btn-xs btn-danger" href="/order/status/{{$item->id}}">
                                 <span class="glyphicon glyphicon-thumbs-down"></span>
                             </a>
                             @endif
                             <a
-                                class="btn btn-xs btn-primary" href="/order/edit/{{$order->id}}">
+                                class="btn btn-xs btn-primary" href="/order/edit/{{$item->id}}">
                                 <span class="glyphicon glyphicon-pencil"></span> Redaguoti
                             </a>
-                            @if ( $order->statusas == 0)
+                            @if ( $item->statusas == 0)
                             <a
                                 onclick="return confirm('Ar tikrai norite pašalinti užsakymą?')"
-                                class="btn btn-xs btn-danger" href="/order/remove/{{$order->id}}">
+                                class="btn btn-xs btn-danger" href="/order/remove/{{$item->id}}">
                                 <span class="glyphicon glyphicon-remove"></span> Pašalinti
                             </a>
                             @else
@@ -104,7 +104,7 @@
                 </tbody>
         </table>
     </div>
-    <p>  {{ $orders->links() }} </p>
+    <p>  {{ $items->links() }} </p>
     <a href="/order/add" class="btn btn-primary" ><span class="glyphicon glyphicon-plus"></span> Pridėti naują užsakymą</a>
 
 @stop
