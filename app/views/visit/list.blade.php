@@ -20,10 +20,10 @@
                 <td>
                     {{{ $item->tikslas}}}
                 </td>
-                <td>
+                <td class="col-sm-7">
                     {{{ $item->pokalbis}}}
                 </td>
-                <td>
+                <td class="col-sm-2">
                     {{{ $item->kompetitoriai}}}
                 </td>
                 <td class="text-right">

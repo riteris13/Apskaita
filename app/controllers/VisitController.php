@@ -43,4 +43,9 @@ class VisitController extends BaseController {
         $model->delete();
         return Redirect::back()->with('success', 'Sėkmingai pašalinote apsilankymą!');
     }
+    public function getApidropdown(){
+        $input = Input::get('option');
+        $doctors = Clinic::find($input)->doctors()->orderBy('pavarde')->get(['id','vardas', 'pavarde']);
+        return $doctors;
+    }
 }

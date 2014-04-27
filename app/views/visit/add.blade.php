@@ -3,8 +3,18 @@
 <?php $header = trans('header.visit.add'); ?>
 
 @section('content')
+<script type="text/javascript" src="/js/jquery-1.3.2.min.js"></script>
+<script type="text/javascript" src="/js/apsilankymai.js"></script>
 
     {{ Form::open(array('url' => 'visit/add', 'class'=>'form-default')) }}
+
+        <h4>Klinika</h4>
+        {{Form::select('klinika_id', array('default' => 'Pasirinkite Kliniką') + Clinic::all()->lists('pavadinimas', 'id'),
+        null, array('class'=>'form-control', 'id'=>'klinika')); }}
+
+        <h4>Klientas</h4>
+        {{Form::select('daktaras_id', array('default' => 'Pirmiausia pasirinkite kliniką'), null,
+        array('class'=>'form-control', 'id'=>'daktaras', 'disabled' => 'true')); }}
 
         <h4>Tikslas</h4>
         {{Form::text('tikslas', '', array('class'=>'form-control', 'type'=>'text')); }}
