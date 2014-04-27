@@ -24,7 +24,10 @@
         <div id="right-box">
             <textarea id="number"> Nr.</textarea>
             <textarea id="original">Originalas</textarea>
-            <textarea id="date-field">{{(" \n");}}Išdavimo data: </textarea>
+            <div id="date-field">
+                <textarea style="width: 100px;">{{(" \n");}}Išdavimo data: </textarea>
+                <textarea style="width: 140px;" id="date">data </textarea>
+            </div>
         </div>
 
         <textarea id="date-place">Sąskaitos išrašymo data ir vieta: </textarea>
@@ -58,21 +61,21 @@
         </tr>
 
         <tr class="item-row">
-            <td class="item-number"><div class="delete-wpr"><textarea id="table-nr">1.</textarea><a class="delete" href="javascript:;" title="Remove row">X</a></div></td>
-            <td class="item-name"><div class="delete-wpr"><textarea id="table-name">Web Updates</textarea>
+            <td id="table-nr"><span class="nr"> </span></td>
+            <td class="item-name"><textarea id="table-name">Web Updates</textarea>
             <td><textarea id="table-qty" class="qty">1</textarea></td>
             <td><textarea id="table-mes">matas</textarea></td>
             <td><textarea id="table-vat">21%</textarea></td>
-            <td><textarea id="table-cost" class="cost">$650.00</textarea></td>
-            <td class="item-price"><span class="price">$650.00</span></td>
+            <td><textarea id="table-cost" class="cost">650.00</textarea></td>
+            <td class="item-price"> <span class="price">650.00</span><div class="delete-wpr"><a class="delete" href="javascript:;" title="Pašalinti eilutę">X</a></div></td>
         </tr>
 
         <tr id="hiderow">
-            <td colspan="7"><a id="addrow" href="javascript:;" title="Add a row">Add a row</a></td>
+            <td colspan="7"><a id="addrow" href="javascript:;" title="Pridėti tuščią eilutę">Pridėti eilutę</a></td>
         </tr>
             <td colspan="5" class="blank"> </td>
             <td class="total-line">Viso:</td>
-            <td class="total-value"><div id="total">$650.00</div></td>
+            <td class="total-value"><div id="total">650.00</div></td>
         </tr>
 
     </table>

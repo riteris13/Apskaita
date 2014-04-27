@@ -7,12 +7,12 @@ function print_today() {
   // ( http://www.cgiscript.net/scripts.htm )
   // ***********************************************
   var now = new Date();
-  var months = new Array('January','February','March','April','May','June','July','August','September','October','November','December');
+  var months = new Array('sausio','vasario','kovo','balandžio','gegužės','birželio','liepos','rugpjūčio','rugsėjo','spalio','lapkričio','gruodžio');
   var date = ((now.getDate()<10) ? "0" : "")+ now.getDate();
   function fourdigits(number) {
     return (number < 1000) ? number + 1900 : number;
   }
-  var today =  months[now.getMonth()] + " " + date + ", " + (fourdigits(now.getYear()));
+  var today =" \n" + (fourdigits(now.getYear()) + " m. " + months[now.getMonth()] + " " + date + " d.");
   return today;
 }
 
@@ -63,30 +63,30 @@ function roundNumber(number,decimals) {
 function update_total() {
   var total = 0;
   $('.price').each(function(i){
-    price = $(this).html().replace("$","");
+    price = $(this).html();
     if (!isNaN(price)) total += Number(price);
   });
 
   total = roundNumber(total,2);
 
-  $('#subtotal').html("$"+total);
-  $('#total').html("$"+total);
-  
-  update_balance();
-}
+  $('#total').html(total);
 
-function update_balance() {
-  var due = $("#total").html().replace("$","") - $("#paid").val().replace("$","");
-  due = roundNumber(due,2);
-  
-  $('.due').html("$"+due);
+}
+function update_number() {
+    var table = document.getElementsByTagName('table')[0],
+        rows = table.getElementsByTagName('tr'),
+        text = 'textContent' in document ? 'textContent' : 'innerText';
+
+    for (var i = 1, len = rows.length - 2; i < len; i++){
+        rows[i].children[0][text] = i  + '. ';
+    }
 }
 
 function update_price() {
   var row = $(this).parents('.item-row');
-  var price = row.find('.cost').val().replace("$","") * row.find('.qty').val();
+  var price = row.find('.cost').val() * row.find('.qty').val();
   price = roundNumber(price,2);
-  isNaN(price) ? row.find('.price').html("N/A") : row.find('.price').html("$"+price);
+  isNaN(price) ? row.find('.price').html("N/A") : row.find('.price').html(price);
   
   update_total();
 }
@@ -102,38 +102,23 @@ $(document).ready(function() {
     $(this).select();
   });
 
-  $("#paid").blur(update_balance);
    
   $("#addrow").click(function(){
-    $(".item-row:last").after('<tr class="item-row"><td class="item-number"><div class="delete-wpr"><textarea id="table-nr">1.</textarea><a class="delete" href="javascript:;" title="Remove row">X</a></div></td><td class="item-name"><div class="delete-wpr"><textarea id="table-name">Web Updates</textarea><td><textarea id="table-qty" class="qty">1</textarea></td><td><textarea id="table-mes">matas</textarea></td><td><textarea id="table-vat">PVM</textarea></td><td><textarea id="table-cost" class="cost">$650.00</textarea></td><td class="item-price"><span class="price">$650.00</span></td></tr>');
+    $(".item-row:last").after(' <tr class="item-row"><td id="table-nr"><span class="nr"> </span></td><td class="item-name"><textarea id="table-name"> </textarea><td><textarea id="table-qty" class="qty"> </textarea></td><td><textarea id="table-mes"> </textarea></td><td><textarea id="table-vat"> </textarea></td><td><textarea id="table-cost" class="cost"> </textarea></td> <td class="item-price"> <span class="price">0 </span><div class="delete-wpr"><a class="delete" href="javascript:;" title="Pašalinti eilutę">X</a></div></td></tr>');
     if ($(".delete").length > 0) $(".delete").show();
     bind();
+    update_number();
   });
-  
+
   bind();
-  
+
   $(".delete").live('click',function(){
     $(this).parents('.item-row').remove();
     update_total();
     if ($(".delete").length < 2) $(".delete").hide();
+    update_number();
   });
-  
-  $("#cancel-logo").click(function(){
-    $("#logo").removeClass('edit');
-  });
-  $("#delete-logo").click(function(){
-    $("#logo").remove();
-  });
-  $("#change-logo").click(function(){
-    $("#logo").addClass('edit');
-    $("#imageloc").val($("#image").attr('src'));
-    $("#image").select();
-  });
-  $("#save-logo").click(function(){
-    $("#image").attr('src',$("#imageloc").val());
-    $("#logo").removeClass('edit');
-  });
-  
+
   $("#date").val(print_today());
   
 });
