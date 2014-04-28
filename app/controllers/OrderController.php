@@ -9,6 +9,8 @@ class OrderController extends BaseController{
     }
     public function getEdit($id){
         $order = Order::find($id);
+        $order->orders;
+        return Redirect::to('order')->with('success', $order);
         return View::make('order.edit')->with('order', $order);
     }
     public function postAdd(){
@@ -56,14 +58,13 @@ class OrderController extends BaseController{
     }
     public function getApidropdown2(){
         $input = Input::get('option');
-        //$doctors = Doctor::where('klinika_id', '=' , $input)->orderBy('pavarde')->get(['id','vardas', 'pavarde']);
         $doctors = Clinic::find($input)->doctors()->orderBy('pavarde')->get(['id','vardas', 'pavarde']);
         return $doctors;
     }
     public function getPricediscount(){
         $input = Input::get('option');
         $price = Item::where('id', '=', $input)->get(['kaina', 'nuolaida']);
-    return $price;
+        return $price;
     }
     public function getDiscount(){
         $input = Input::get('option');
@@ -112,6 +113,12 @@ class OrderController extends BaseController{
             $model->save();
         return Redirect::to('order')->with('success', "Užsakymas perkeltas į archyvą");
 
+    }
+    public function getDetails(){
+        $input = Input::get('option');
+        $details = array();
+        $details = Order::find($input)->orders;
+        return $details;
     }
 
 }
