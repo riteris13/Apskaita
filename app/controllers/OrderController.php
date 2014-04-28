@@ -9,8 +9,6 @@ class OrderController extends BaseController{
     }
     public function getEdit($id){
         $order = Order::find($id);
-        $order->orders;
-        return Redirect::to('order')->with('success', $order);
         return View::make('order.edit')->with('order', $order);
     }
     public function postAdd(){
