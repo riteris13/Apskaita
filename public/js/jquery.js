@@ -1,18 +1,21 @@
 jQuery(document).ready(function($){ 
 $("select[id='klinika'] :not(option:gt(0))").attr("disabled", "disabled");
 $("select[id='category'] :not(option:gt(0))").attr("disabled", "disabled");
+	window.onload = function(){
+		var clinic = $("#klinika").trigger("change");
+		var category = $("#category").trigger("change");
+	};
 
-	$('#category').change(function(){
+	$(category).change(function(){
 		$.getJSON("apidropdown", {option: $(this).val() }, 
 			function(data) {
-				var product = $('#produktas');
-				product.empty();
+			var product = $('#produktas');			
 			if(data.length == 0){
 				product.attr('disabled', 'disabled');
 				product.append("<option>" + "Kategorija tuščia" 
 					+ "</option>");
-			}
-			else{
+			}else{
+				product.empty();
 				product.append("<option selected disabled>" 
 					+ "Pasirinkite produktą" + "</option>");
 				product.removeAttr('disabled');
@@ -37,8 +40,7 @@ var docDisc; //daktaro nuolaida
 					proDisc = 0;
 					priceDiscount.val(0);
 					document.getElementById('nuolPtext').innerHTML =  " Produktui: 0%" ;
-				}
-				else{
+				}else{
 					proDisc = element.nuolaida;
 					priceDiscount.val(proDisc)
 					document.getElementById('nuolPtext').innerHTML =  
@@ -71,8 +73,7 @@ var discount = $("#nuolaida");
 					docDisc = 0;
 					doctorDiscount.val(0);
 					document.getElementById('nuolDtext').innerHTML =  " Daktarui: 0%" ;
-				}
-				else{
+				}else{
 						docDisc = element.nuolaida;
 						doctorDiscount.val(docDisc);
 						document.getElementById('nuolDtext').innerHTML =  
@@ -90,8 +91,7 @@ var discount = $("#nuolaida");
 			if(data.length == 0){
 				doctor.attr('disabled', 'disabled');
 				doctor.append("<option>" + "Klinika neturi gydytojų" + "</option>");
-			}
-			else{
+			}else{
 				doctor.append("<option selected disabled>" 
 					+ "Pasirinkite gydytoją" + "</option>");
 				doctor.removeAttr('disabled');
