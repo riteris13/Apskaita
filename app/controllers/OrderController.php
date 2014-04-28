@@ -117,7 +117,11 @@ class OrderController extends BaseController{
     public function getDetails(){
         $input = Input::get('option');
         $details = array();
-        $details = Order::find($input)->orders;
+        foreach(Order::find($input)->orders as $pro){
+            $i = $pro["produktas_id"];
+            $pro["produktas"] = Item::find($i)->pavadinimas;
+            array_push($details, $pro->toArray());
+        }
         return $details;
     }
 

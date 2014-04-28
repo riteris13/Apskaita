@@ -7,9 +7,9 @@ var bendraSuma = 0;
 			var suma = element.pir_kaina * element.kiekis;
 			bendraSuma += suma;
 				$('#modalTable').append(
-				'<tr>' + '<td>' + element.produktas_id + '</td>' +
+				'<tr>' + '<td>' + element.produktas + '</td>' +
 					'<td>' + element.pir_kaina + '</td>' + '<td>' + element.kiekis + 
-					'<td>' + suma + '</tr>');
+					'<td>' + suma.toFixed(2) + '</tr>');
 
 			});
 			document.getElementById('bendra_suma').innerHTML =  "Bendra pardavimo suma: " + bendraSuma.toFixed(2) + " LTL";
