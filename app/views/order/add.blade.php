@@ -9,7 +9,6 @@
     <script type="text/javascript" src="/js/jScript.js"></script>
 
     {{ Form::open(array('url' => 'order/add', 'class'=>'form-default', 'id'=>'addOrder')) }}
-    {{ Form::hidden('statusas', 0) }}
 
         <h4>Klinika</h4>
         {{Form::select('klinika_id', array('default' => 'Pasirinkite Kliniką') + Clinic::all()->lists('pavadinimas', 'id'),

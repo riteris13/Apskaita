@@ -1,8 +1,8 @@
 <?php
 class Order extends Eloquent {
-    protected $table = 'daktaras_musu_produktas';
+    protected $table = 'uzsakymai';
     protected $fillable = [
-        'data', 'daktaras_id', 'produktas_id', 'pir_kaina', 'kiekis', 'statusas'
+        'data', 'daktaras_id', 'produktas_id', 'pir_kaina', 'kiekis', 'statusas', 'arch'
     ];
     public $timestamps = false;
 

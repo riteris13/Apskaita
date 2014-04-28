@@ -1,7 +1,7 @@
 <?php
 class OrderController extends BaseController{
     public function getIndex(){
-        $orders = Order::orderBy('data', 'Desc')->orderBy('daktaras_id')->paginate(15);
+        $orders = Order::where('arch', '=', 0)->orderBy('data', 'Desc')->orderBy('daktaras_id')->paginate(15);
         return View::make('order.list')->with('items', $orders);
     }
     public function getAdd(){
@@ -74,12 +74,12 @@ class OrderController extends BaseController{
     }
     public function getSorted($id){
         if($id != 2){
-            $orders = Order::where('statusas', '=', $id)->orderBy('data', 'Desc')->orderBy('daktaras_id')->paginate(15);
+            $orders = Order::where('statusas', '=', $id)->where('arch', '=', 0)->orderBy('data', 'Desc')->orderBy('daktaras_id')->paginate(15);
             if($orders->count() != 0 ){
                 return View::make('order.list')->with('items',$orders);
             }
         }
-        $orders = Order::orderBy('data', 'Desc')->orderBy('daktaras_id')->paginate(15);
+        $orders = Order::where('arch', '=', 0)->orderBy('data', 'Desc')->orderBy('daktaras_id')->paginate(15);
         return View::make('order.list')->with('items', $orders);
     }
     public function getStatus($id){
@@ -96,6 +96,18 @@ class OrderController extends BaseController{
             }
             $model->save();
             return Redirect::to('order')->with('success', "Statusas pakeistas");
+
+    }
+    public function getArchive($id){
+        try{
+            $model = Order::findOrFail($id);
+        }catch (Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+            $message = 'Užsakymas tokiu ID nerastas';
+            return Redirect::to('order')->withErrors($message);
+        }
+            $model->arch = 1;
+            $model->save();
+        return Redirect::to('order')->with('success', "Užsakymas perkeltas į archyvą");
 
     }
 

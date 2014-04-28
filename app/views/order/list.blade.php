@@ -93,9 +93,9 @@
                             </a>
                             @else
                             <a
-                                class=" btn btn-xs btn-danger disabled"
-                                href="#">
-                                <span class="glyphicon glyphicon-remove"></span> Pašalinti
+                                onclick="return confirm('Ar tikrai norite norite archyvuoti užsakymą?')"
+                                class="btn btn-xs btn-danger" href="/order/archive/{{$item->id}}">
+                                <span class="glyphicon glyphicon-briefcase"></span> Archyvuoti
                             </a>
                             @endif
                         </td>
