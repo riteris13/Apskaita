@@ -33,7 +33,8 @@ class Order extends Eloquent {
     public function doctor(){
         return $this->belongsTo('Doctor', 'daktaras_id');
     }
-    public function product(){
-        return $this->belongsTo('Item', 'produktas_id');
+
+    public function orders(){
+        return $this->hasMany('OrderApr', 'uzsakymai_id');
     }
 }

@@ -21,8 +21,8 @@
                     <tr>
                         <th>Užsakovas</th>
                         <th>Klinika</th>
-                        <th>Produktas</th>
                         <th>Data</th>
+                        <th>Produktas</th>
                         <th>Kaina vnt.</th>
                         <th>Kiekis</th>
                         <th>Suma</th>
@@ -43,29 +43,31 @@
                         <td>
                             {{{ $item->doctor->clinic->pavadinimas}}}
                         </td>
+                    <td>
+                        {{{ $item->data}}}
+                    </td>
+                    @foreach($item->orders as $order)
                         <td>
-                            {{{ $item->product->pavadinimas}}}
+                            {{{ $order->product->pavadinimas}}}
                         </td>
                         <td>
-                            {{{ $item->data}}}
+                            {{{ $order->pir_kaina}}}
                         </td>
                         <td>
-                            {{{ $item->pir_kaina}}}
+                            {{{ $order->kiekis}}}
                         </td>
                         <td>
-                            {{{ $item->kiekis}}}
+                            {{{ $order->pir_kaina * $order->kiekis}}}
                         </td>
-                        <td>
-                            {{{ $item->pir_kaina * $item->kiekis}}}
-                        </td>
+                    @endforeach
                         @if ( $item->statusas == 1)
                             <td>
                                 {{"Įvykdytas"}}
                             </td>
                         @else
-                        <td>
-                            {{"Neįvykdytas"}}
-                        </td>
+                            <td>
+                                {{"Neįvykdytas"}}
+                            </td>
                         @endif
                         <td class="text-right">
                             @if ( $item->statusas == 0)
