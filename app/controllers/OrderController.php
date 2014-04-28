@@ -23,6 +23,9 @@ class OrderController extends BaseController{
         }
         $order = Order::create($input);
         $order->save();
+        $input['uzsakymai_id'] = $order->id;
+        $items = OrderApr::create($input);
+        $items->save();
         $msg = 'Sėkmingai pridėjote užsakymą, kurį pateikė: '.$order->doctor->fullName;
         return Redirect::to('order')->with('success',$msg);
     }
