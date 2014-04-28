@@ -1,27 +1,17 @@
-/*
-$(document).ready(function(){
- $('#aprasymas-btn').click(function(){	
- alert($(this).data('id'));
-		$.getJSON("details", {option: $(this).data('id')}, 
-			function(data) {
-			$.each(data, function(index, element) {
-					document.getElementById('modal-body').innerHTML =  element.pavadinimas;
-			});
-		});
-	});
-})
-*/
 function getDetails(id){
-
+var bendraSuma = 0;
 	$.getJSON("order/details", {option: id}, 
 			function(data) {
-			document.getElementById('modal-body').innerHTML = "";
+			$('#modalTable').empty();
 			$.each(data, function(index, element) {
-					document.getElementById('modal-body').innerHTML +=  "Produktas: " + 
-						element.produktas_id + " Kaina: " + element.pir_kaina + 
-						" Kiekis: " + element.kiekis + "<br>";
-			});
+			var suma = element.pir_kaina * element.kiekis;
+			bendraSuma += suma;
+				$('#modalTable').append(
+				'<tr>' + '<td>' + element.produktas_id + '</td>' +
+					'<td>' + element.pir_kaina + '</td>' + '<td>' + element.kiekis + 
+					'<td>' + suma + '</tr>');
 
-		});
-	
+			});
+			document.getElementById('bendra_suma').innerHTML =  "Bendra pardavimo suma: " + bendraSuma.toFixed(2) + " LTL";
+		});	
 }

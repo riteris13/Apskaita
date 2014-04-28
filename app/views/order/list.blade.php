@@ -25,11 +25,6 @@
                         <th>Klinika</th>
                         <th>Data</th>
                         <th>Statusas</th>
-                        <!--  <th>Produktas</th>
-                          <th>Kaina vnt.</th>
-                          <th>Kiekis</th>
-                          <th>Suma</th>
-                          -->
                       </tr>
                   </thead>
 
@@ -58,36 +53,10 @@
                           {{"Neįvykdytas"}}
                       </td>
                       @endif
-                      <!--
-@foreach($item->orders as $order)
-
-</tr>
-<tr>
-    <td>
-        {{{ $order->product->pavadinimas}}}
-    </td>
-    <td>
-        {{{ $order->pir_kaina}}}
-    </td>
-    <td>
-        {{{ $order->kiekis}}}
-    </td>
-    <td>
-        {{{ $order->pir_kaina * $order->kiekis}}}
-    </td>
-@endforeach
--->
-
                         <td class="col-sm-2 text-right">
                             <button class="btn btn-xs btn-primary" onClick = "getDetails({{$item->id}})" data-toggle="modal" data-target="#aprasymas" id="aprasymas-btn">
                             <span class="glyphicon glyphicon-search"></span>
                             </button>
-                            <!--
-                            <a
-                                class="btn btn-xs btn-primary" >
-                                <span class="glyphicon glyphicon-search"> </span>
-                            </a>
-                            -->
                             @if ( $item->statusas == 0)
                             <a
                                 onclick="return confirm('Ar tikrai norite norite pakeisti užsakymo statusą?')"
@@ -138,10 +107,18 @@
                 <h4 class="modal-title" id="myModalLabel">Užsakymo aprašymas</h4>
             </div>
             <div class="modal-body" id="modal-body">
+                <table  class="table table-hover" >
+                    <thead>
+                        <th>Produktas</th>
+                        <th>Kaina vnt.</th>
+                        <th>Kiekis</th>
+                        <th>Suma</th>
+                    </thead>
+                    <tbody id = "modalTable">
 
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </tbody>
+                </table>
+                <h4 id="bendra_suma"> </h4>
             </div>
         </div>
     </div>
