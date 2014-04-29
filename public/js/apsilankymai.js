@@ -4,6 +4,9 @@ jQuery(document).ready(function($){
 		clinic.trigger("change")
 	};
 	$('#klinika').change(function(){
+		if($(this).val() == "default"){
+			return;
+		}
 		$.getJSON("apidropdown", {option: $(this).val() }, 
 		function(data){
 				var doctor = $('#daktaras');

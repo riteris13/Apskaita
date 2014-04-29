@@ -7,24 +7,24 @@ $("select[id='category'] :not(option:gt(0))").attr("disabled", "disabled");
 	};
 
 	$(category).change(function(){
-		$.getJSON("apidropdown", {option: $(this).val() }, 
-			function(data) {
-			var product = $('#produktas');			
-			if(data.length == 0){
-				product.attr('disabled', 'disabled');
-				product.append("<option>" + "Kategorija tuščia" 
-					+ "</option>");
-			}else{
-				product.empty();
-				product.append("<option selected disabled>" 
-					+ "Pasirinkite produktą" + "</option>");
-				product.removeAttr('disabled');
-				$.each(data, function(index, element) {
-					product.append("<option value='"+ element.id +"'>" 
-					+ element.pavadinimas + "</option>");
-				});
-			}
-		});
+			$.getJSON("apidropdown", {option: $(this).val() }, 
+				function(data) {
+				var product = $('#produktas');			
+				if(data.length == 0){
+					product.attr('disabled', 'disabled');
+					product.append("<option>" + "Kategorija tuščia" 
+						+ "</option>");
+				}else{
+					product.empty();
+					product.append("<option selected disabled>" 
+						+ "Pasirinkite produktą" + "</option>");
+					product.removeAttr('disabled');
+					$.each(data, function(index, element) {
+						product.append("<option value='"+ element.id +"'>" 
+						+ element.pavadinimas + "</option>");
+					});
+				}
+			});
 	});
 var proDisc; //produkto nuolaida
 var docDisc; //daktaro nuolaida
@@ -84,23 +84,26 @@ var discount = $("#nuolaida");
 	});
 	
 	$('#klinika').change(function(){
-		$.getJSON("apidropdown2", {option: $(this).val() }, 
-		function(data){
-				var doctor = $('#daktaras');
-				doctor.empty();
-			if(data.length == 0){
-				doctor.attr('disabled', 'disabled');
-				doctor.append("<option>" + "Klinika neturi gydytojų" + "</option>");
-			}else{
-				doctor.append("<option selected disabled>" 
-					+ "Pasirinkite gydytoją" + "</option>");
-				doctor.removeAttr('disabled');
-				$.each(data, function(index, element) {
-					doctor.append("<option value='"+ element.id +"'>" 
-					+ element.vardas + " " + element.pavarde 
-					+ "</option>");
-				});
-			}
-		});
+	if($(this).val() == "default"){
+		return;
+	}
+			$.getJSON("apidropdown2", {option: $(this).val() }, 
+			function(data){
+					var doctor = $('#daktaras');
+					doctor.empty();
+				if(data.length == 0){
+					doctor.attr('disabled', 'disabled');
+					doctor.append("<option>" + "Klinika neturi gydytojų" + "</option>");
+				}else{
+					doctor.append("<option selected disabled>" 
+						+ "Pasirinkite gydytoją" + "</option>");
+					doctor.removeAttr('disabled');
+					$.each(data, function(index, element) {
+						doctor.append("<option value='"+ element.id +"'>" 
+						+ element.vardas + " " + element.pavarde 
+						+ "</option>");
+					});
+				}
+			});
 	});
 })	
