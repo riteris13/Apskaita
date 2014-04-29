@@ -76,7 +76,8 @@ class OrderController extends BaseController{
     }
     public function getSorted($id){
         if($id != 2){
-            $orders = Order::where('statusas', '=', $id)->where('arch', '=', 0)->orderBy('data', 'Desc')->orderBy('daktaras_id')->paginate(15);
+            $orders = Order::where('statusas', '=', $id)->where('arch', '=', 0)->orderBy('data', 'Desc')
+                ->orderBy('daktaras_id')->paginate(15);
             if($orders->count() != 0 ){
                 return View::make('order.list')->with('items',$orders);
             }
@@ -122,5 +123,8 @@ class OrderController extends BaseController{
         }
         return $details;
     }
-
+    public function getHistory(){
+        $orders = Order::where('arch', '=', 1)->orderBy('data', 'Desc')->orderBy('daktaras_id')->paginate(15);
+        return View::make('order.history')->with('items', $orders);
+    }
 }
