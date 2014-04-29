@@ -9,14 +9,19 @@
         <table class="table table-hover">
             <thead>
                 <tr>
+                    <th>Gydytojas</th>
                     <th>Tikslas</th>
                     <th>Pokalbis</th>
                     <th>Kompetitoriai</th>
+                    <th>Data</th>
                 </tr>
             </thead>
             <tbody >
             @foreach($items as $item)
             <tr>
+                <td>
+                    {{{ $item->doctor->fullname }}}
+                </td>
                 <td>
                     {{{ $item->tikslas}}}
                 </td>
@@ -25,6 +30,9 @@
                 </td>
                 <td class="col-sm-2">
                     {{{ $item->kompetitoriai}}}
+                </td>
+                <td>
+                    {{{ $item->data }}}
                 </td>
                 <td class="text-right">
                     <a

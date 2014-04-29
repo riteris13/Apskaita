@@ -6,6 +6,9 @@
 
     {{ Form::model($visit, array('url' => 'visit/edit', 'class'=>'form-default')) }}
 
+        <h4>Klientas</h4>
+        {{Form::select('daktaras_id', Doctor::all()->lists('fullName', 'id'), $visit['daktaras_id'], array('class'=>'form-control')); }}
+
         <h4>Tikslas</h4>
         {{Form::text('tikslas', $visit['tikslas'], array('class'=>'form-control', 'type'=>'text')); }}
 
