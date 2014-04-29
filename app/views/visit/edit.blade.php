@@ -15,21 +15,13 @@
         <h4>Kompetitoriai</h4>
         {{Form::textarea('kompetitoriai', $visit['kompetitoriai'], array('class'=>'form-control', 'type'=>'textarea')); }}
 
-        {{Form::macro('date', function($name, $value = null, $options = array()) {
-            $input =  '<input type="date" name="' . $name . '" value="' . $value . '"';
-
-            foreach ($options as $key => $value) {
-                $input .= ' ' . $key . '="' . $value . '"';
-            }
-
-            $input .= '>';
-
-            return $input;
-        });}}
-
         <h4>Apsilankymo data</h4>
-        {{ Form::date('data', $visit['data'], array('class'=>'form-control', 'type'=>'date')) }}
-
+        {{ Form::text('data', $visit['data'], array('class'=>'date', 'type'=>'text')) }}
+            <script>
+                $(".date").dateinput({
+                    format: 'yyyy-mm-dd'
+                });
+            </script>
         {{Form::hidden('id', $visit['id']) }}
         <br>
         {{Form::submit('Atnaujinti', array('class'=>'btn btn-primary')); }}

@@ -3,8 +3,6 @@
 <?php $header = trans('header.visit.add'); ?>
 
 @section('content')
-<script type="text/javascript" src="/js/jquery-1.3.2.min.js"></script>
-<script type="text/javascript" src="/js/apsilankymai.js"></script>
 
     {{ Form::open(array('url' => 'visit/add', 'class'=>'form-default')) }}
 
@@ -25,20 +23,13 @@
         <h4>Kompetitoriai</h4>
         {{Form::textarea('kompetitoriai', '', array('class'=>'form-control', 'type'=>'textarea')); }}
 
-        {{Form::macro('date', function($name, $value = null, $options = array()) {
-            $input =  '<input type="date" name="' . $name . '" value="' . $value . '"';
-
-            foreach ($options as $key => $value) {
-                $input .= ' ' . $key . '="' . $value . '"';
-            }
-
-            $input .= '>';
-
-            return $input;
-        });}}
-
         <h4>Apsilankymo data</h4>
-        {{ Form::date('data', '', array('class'=>'form-control', 'type'=>'date')) }}
+        {{ Form::text('data', '' , array('class'=>'date', 'type'=>'text')) }}
+        <script>
+            $(".date").dateinput({
+                format: 'yyyy-mm-dd'
+            });
+        </script>
         <br>
         {{Form::submit('Pridėti', array('class'=>'btn btn-primary')); }}
 

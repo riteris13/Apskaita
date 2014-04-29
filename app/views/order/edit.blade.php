@@ -20,20 +20,13 @@
         {{ Form::text('kiekis', $item['kiekis'], array('class'=>'form-control', 'type'=>'text')); }}
         @endforeach
 
-        {{Form::macro('date', function($name, $value = null, $options = array()) {
-        $input =  '<input type="date" name="' . $name . '" value="' . $value . '"';
-
-        foreach ($options as $key => $value) {
-        $input .= ' ' . $key . '="' . $value . '"';
-        }
-
-        $input .= '>';
-
-        return $input;
-        });}}
-
         <h4>Užsakymo data</h4>
-        {{ Form::date('data', $order['data'], array('class'=>'form-control', 'type'=>'date')) }}
+        {{ Form::text('data', $order['data'] , array('class'=>'date', 'type'=>'text')) }}
+        <script>
+            $(".date").dateinput({
+                format: 'yyyy-mm-dd'
+            });
+        </script>
         <br>
         <br>
         {{Form::hidden('id', $order['id']) }}
