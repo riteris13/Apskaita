@@ -71,6 +71,14 @@ Route::filter('direktore', function(){
         return Redirect::to('/')->withErrors('Not authorized');
     }
 });
+
+Route::filter('first_login', function(){
+    if (Auth::user()->first_login == '1')
+    {
+        return Redirect::to('/auth/change')->withErrors('Jungiantis pirmą kartą reikia pakeisti slaptažodį');
+    }
+});
+
 /*
 |--------------------------------------------------------------------------
 | CSRF Protection Filter

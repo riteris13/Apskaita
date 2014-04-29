@@ -14,6 +14,7 @@ return array(
     'reports' => 'Reports',
     'orders' => 'Orders',
     'change_pwd' => 'Change password',
-    'invoice' => 'Invoice'
+    'invoice' => 'Invoice',
+    'add_user' => 'Add user'
 
 );

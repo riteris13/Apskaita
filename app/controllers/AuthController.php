@@ -23,7 +23,7 @@ class AuthController extends BaseController{
     }
 
     public function postChange(){
-        $validator = Validator::make(Input::all(), User::$change_password_rules, User::$messages);
+        $validator = Validator::make(Input::all(), User::$password_change_rules, User::$messages);
 
         if($validator->fails()){
             return Redirect::back()->withErrors($validator);
@@ -35,6 +35,7 @@ class AuthController extends BaseController{
 
             if(Hash::check($old_password, $user->getAuthPassword())){
                 $user->password = Hash::make($password);
+                $user->first_login = '0';
 
                 if($user->save()){
                     return Redirect::to('/')->with('success', 'Password changed');
@@ -47,5 +48,25 @@ class AuthController extends BaseController{
 
         }
         return Redirect::back()->withErrors("Global error");
+    }
+
+    public function getAdd(){
+        return View::make('user.add');
+    }
+    public function postAdd(){
+        $email = Input::get('email');
+        $role = Input::get('role');
+        $validator = Validator::make(['email'=>$email], User::$add_user_rules, User::$messages);
+        if($validator->fails()){
+            return Redirect::back()
+                ->withInput()
+                ->withErrors($validator);
+        }
+        $pass = str_random(6);
+        $password = Hash::make($pass);
+        $user = User::create(['email'=>$email, 'password'=>$password, 'role'=>$role, 'first_login'=>'1']);
+        $user->save();
+        $msg = 'Sėkmingai pridėjote vartotoją '.$email.' jo slaptažodis '.$pass;
+        return Redirect::to('auth/add')->with('success',$msg);
     }
 }

@@ -139,6 +139,9 @@
                     </a>
 
                     <ul class="dropdown-menu">
+                        @if(Auth::user()->role == 'direktore')
+                            <li><a href="/auth/add">{{trans('menu.add_user')}}</a></li>
+                        @endif
                         <li><a href="/auth/change">{{trans('menu.change_pwd')}}</a></li>
                         <li><a onclick="return confirm('{{trans('menu.log_out_msg')}}')"
                             href="/auth/logout">{{trans('menu.log_out')}}</a>
