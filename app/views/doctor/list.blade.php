@@ -5,7 +5,7 @@
 @section('content')
 
     <div class="panel panel-default">
-        <div class="panel-heading">Gydytojų sąrašas</div>
+        <div class="panel-heading">{{trans('header.doctor.table');}}</div>
         <table class="table table-hover">
             <thead>
             <tr>

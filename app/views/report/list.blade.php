@@ -5,7 +5,7 @@
 @section('content')
 
     <div class="panel panel-default">
-        <div class="panel-heading">Ataskaitų tipai</div>
+        <div class="panel-heading">{{trans('header.report.table');}}</div>
         <table class="table table-hover">
             <tbody>
                 <tr>
