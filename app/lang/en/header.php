@@ -29,7 +29,8 @@ return array(
         'add' => 'Add order',
         'edit' => 'Edit order',
         'list' => 'Orders',
-        'table' => 'List of orders'
+        'table' => 'List of orders',
+        'listH' => 'Orders history'
     ),
     'report' => array(
         'list' => 'Reports',

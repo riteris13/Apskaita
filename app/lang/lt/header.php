@@ -29,7 +29,8 @@ return array(
         'add' => 'Pridėti užsakymą',
         'edit' => 'Redaguoti užsakymą',
         'list' => 'Užsakymai',
-        'table' => 'Užsakymų sąrašas'
+        'table' => 'Užsakymų sąrašas',
+        'listH' => 'Užsakymų istorija',
     ),
     'report' => array(
         'list' => 'Ataskaitos',

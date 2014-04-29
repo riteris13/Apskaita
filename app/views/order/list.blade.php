@@ -54,7 +54,8 @@
                       </td>
                       @endif
                         <td class="col-sm-2 text-right">
-                            <button class="btn btn-xs btn-primary" onClick = "getDetails({{$item->id}})" data-toggle="modal" data-target="#aprasymas" id="aprasymas-btn">
+                            <button class="btn btn-xs btn-primary" onClick = "getDetails({{$item->id}})"
+                                    data-toggle="modal" data-target="#aprasymas" id="aprasymas-btn">
                             <span class="glyphicon glyphicon-search"></span>
                             </button>
                             @if ( $item->statusas == 0)
@@ -96,7 +97,10 @@
         </table>
     </div>
     <p>  {{ $items->links() }} </p>
-    <a href="/order/add" class="btn btn-primary" ><span class="glyphicon glyphicon-plus"></span> Pridėti naują užsakymą</a>
+    <a href="/order/add" class="btn btn-primary" ><span class="glyphicon glyphicon-plus"></span>
+        Pridėti naują užsakymą</a>
+    <a href="/order/history" class="btn btn-primary" ><span class="glyphicon glyphicon-folder-open"></span>
+        Archyvas</a>
 
 
 <div class="modal fade" id="aprasymas" tabindex="-1" role="dialog" aria-labelledby="aprasymas" aria-hidden="true">
