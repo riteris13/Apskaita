@@ -31,16 +31,23 @@ class OrderController extends BaseController{
     public function postEdit(){
         $input = Input::all();
         $rules = Order::$editRules;
+        $messages = "";
         for ($i=0;$i<count($input['produktas_id']);$i++)
         {
+            $messages["kiekis.{$i}.required"] = 'Kiekis: Neįvesti duomenys.';
+            $messages["kiekis.{$i}.numeric"] = 'Kiekis gali būti tik skaičiai.';
+            $messages["kiekis.{$i}.min"] = 'Kiekis negali būti mažiau nei 1.';
+            $messages["kiekis.{$i}.max"] = 'Kiekis negali būti daugiau už 32000.';
+            $messages["kaina.{$i}.min"] = 'Kaina negali būti mažiau nei 0.';
+            $messages["kaina.{$i}.max"] = 'Kaina negali būti daugiau už 99999999.99.';
             $rules["kiekis.{$i}"] = 'required|numeric|max:32000|min:1';
             $rules["pir_kaina.{$i}"] = 'required|numeric|max:99999999.99|min:0';
         }
-        $validator = Validator::make($input, $rules, Order::$messages);
+        $validator = Validator::make($input, $rules, $messages);
         if($validator->fails()){
-            return "Redirect after failed validation neveikia";
+            $input2 = Input::except(array('kiekis', 'pir_kaina', 'produktas_id', 'id'));
             return Redirect::back()
-                ->withInput()
+                ->withInput($input2)
                 ->withErrors($validator);
         }
         $order = Order::find($input['order_id']);

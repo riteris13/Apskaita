@@ -3,7 +3,7 @@
 <?php $header = trans('header.order.edit'); ?>
 
 @section('content')
-    {{ Form::model(array ($order), array('url' => 'order/edit', 'class'=>'form-default')) }}
+    {{ Form::model($order, array('url' => 'order/edit', 'class'=>'form-default')) }}
 
         <h4>Klientas</h4>
         {{Form::select('daktaras_id', Doctor::all()->lists('fullName', 'id'), $order['daktaras_id'], array('class'=>'form-control')); }}
