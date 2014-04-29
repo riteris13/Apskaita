@@ -54,7 +54,7 @@ class OrderController extends BaseController{
         $products = Item::where('kategorija_id', '=' , $input)->orderBy('pavadinimas')->get(['id','pavadinimas']);
         return $products;
     }
-    public function getApidropdown2(){
+    public function getApidropdownclient(){
         $input = Input::get('option');
         $doctors = Clinic::find($input)->doctors()->orderBy('pavarde')->get(['id','vardas', 'pavarde']);
         return $doctors;

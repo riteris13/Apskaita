@@ -6,7 +6,7 @@ $("select[id='category'] :not(option:gt(0))").attr("disabled", "disabled");
 		var category = $("#category").trigger("change");
 	};
 
-	$(category).change(function(){
+	$('#category').change(function(){
 			$.getJSON("apidropdown", {option: $(this).val() }, 
 				function(data) {
 				var product = $('#produktas');			
@@ -65,6 +65,9 @@ var discount = $("#nuolaida");
 	
 	$('#daktaras').live('change', function(){
 		var doctorDiscount = $("#nuolaidaD");
+		if(window.location.pathname.indexOf("visit") >= 0){
+			return;
+		}
 		$.getJSON("discount", {option: $(this).val() }, 
 		function(data) {	
 			$.each(data, function(index, element){
@@ -87,7 +90,7 @@ var discount = $("#nuolaida");
 	if($(this).val() == "default"){
 		return;
 	}
-			$.getJSON("apidropdown2", {option: $(this).val() }, 
+			$.getJSON("apidropdownclient", {option: $(this).val() }, 
 			function(data){
 					var doctor = $('#daktaras');
 					doctor.empty();
@@ -107,3 +110,53 @@ var discount = $("#nuolaida");
 			});
 	});
 })	
+
+var theForm = document.forms["addOrder"];
+function getPrice(){
+    var theForm = document.forms["addOrder"];
+    var price = theForm.elements["kaina"];
+    var kaina = 0;
+    if(price.value!="")
+    {
+        kaina = parseFloat(price.value);
+    }
+return kaina;
+}
+
+function getDiscount(){
+    var theForm = document.forms["addOrder"];
+    var discount = theForm.elements["nuolaida"];
+    var size = 0;
+    if(discount.value!="")
+    {
+        size = parseFloat(discount.value);
+    }
+return size;
+}
+
+function getQuantity(){
+    var theForm = document.forms["addOrder"];
+    var quantity = theForm.elements["kiekis"];
+    var amount = 1;
+    if(quantity.value!="")
+    {
+        amount = parseInt(quantity.value);
+    }
+return amount;
+}
+
+function calculatePrice(){
+	var size = getDiscount();
+    var kaina = getPrice() ;
+	var pir_kaina = kaina * (1-size*0.01);
+    document.getElementById('pir_kaina').innerHTML =  "Vieneto pardavimo kaina: " + pir_kaina.toFixed(2);
+}
+
+function calculateTotal(){
+	var size = getDiscount();
+    var kaina = getPrice() 
+	var single = kaina * (1-size*0.01);
+	var quantity = getQuantity();
+	var total = single*quantity;
+	document.getElementById('bendra_suma').innerHTML =  "Bendra pardavimo suma: " + total.toFixed(2);
+}
