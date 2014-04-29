@@ -15,7 +15,6 @@ class OrderController extends BaseController{
         $input = Input::all();
         $input['pir_kaina'] = $input['kaina'] * (1-$input['nuolaida']*0.01);
         $validator = Validator::make($input, Order::$rules, Order::$messages);
-
         if($validator->fails()){
             return Redirect::back()
                 ->withInput()
@@ -31,15 +30,30 @@ class OrderController extends BaseController{
     }
     public function postEdit(){
         $input = Input::all();
-        $validator = Validator::make($input, Order::$rules, Order::$messages);
-
+        $rules = Order::$editRules;
+        for ($i=0;$i<count($input['produktas_id']);$i++)
+        {
+            $rules["kiekis.{$i}"] = 'required|numeric|max:32000|min:1';
+            $rules["pir_kaina.{$i}"] = 'required|numeric|max:99999999.99|min:0';
+        }
+        $validator = Validator::make($input, $rules, Order::$messages);
         if($validator->fails()){
+            return "Redirect after failed validation neveikia";
             return Redirect::back()
                 ->withInput()
                 ->withErrors($validator);
         }
-        $order = Order::find($input['id']);
+        $order = Order::find($input['order_id']);
         $order->update($input);
+        $i = 0;
+        foreach($input['id'] as $id){
+            $orders = OrderApr::find($id);
+            $orders->kiekis = $input['kiekis'][$i];
+            $orders->pir_kaina = $input['pir_kaina'][$i];
+            $orders->produktas_id = $input['produktas_id'][$i];
+            $orders->save();
+            $i++;
+        }
         $msg = 'Sėkmingai atnaujinote užsakymą, kurį pateikė: '.$order->doctor->fullName;
         return Redirect::to('order')->with('success',$msg);
     }
