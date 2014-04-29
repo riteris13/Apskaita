@@ -12,7 +12,7 @@ class Item extends Eloquent {
         return $this->belongsTo('Category', 'kategorija_id');
     }
     public function orders(){
-        return $this->hasMany('Order','produktas_id');
+        return $this->hasMany('OrderApr','produktas_id');
     }
 	public static $rules = [
         'kodas' => 'required|alpha_dash|unique:produktas,kodas|max:45',
