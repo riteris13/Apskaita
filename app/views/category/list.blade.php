@@ -28,13 +28,13 @@
                             <a
                                 onclick="return confirm('Ar tikrai norite pašalinti kategoriją?')"
                                 class="btn btn-xs btn-danger" href="/category/remove/{{$item->id}}">
-                                <span class="glyphicon glyphicon-remove"></span> Pašalinti
+                                <span class="glyphicon glyphicon-trash" title="Pašalinti"></span>
                             </a>
                          @else
                             <a
                                 class=" btn btn-xs btn-danger disabled"
                                 href="#">
-                                <span class="glyphicon glyphicon-remove"></span> Pašalinti
+                                <span class="glyphicon glyphicon-trash"></span>
                             </a>
                           @endif
                       </td>

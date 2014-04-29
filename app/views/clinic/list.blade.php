@@ -29,20 +29,20 @@
                 <td class="text-right">
                 <a
                     class="btn btn-xs btn-primary" href="/clinic/edit/{{$item->id}}">
-                    <span class="glyphicon glyphicon-pencil"></span> Redaguoti
+                    <span class="glyphicon glyphicon-pencil" title="Redaguoti"></span>
                 </a>
 
                     @if($item->doctors()->count() == 0)
                         <a
                             onclick="return confirm('Ar tikrai norite pašalinti kliniką?')"
                             class="btn btn-xs btn-danger" href="/clinic/remove/{{$item->id}}">
-                            <span class="glyphicon glyphicon-remove"></span> Pašalinti
+                            <span class="glyphicon glyphicon-trash" title="Pašalinti"></span>
                         </a>
                     @else
                         <a
                             class=" btn btn-xs btn-danger disabled"
                             href="#">
-                            <span class="glyphicon glyphicon-remove"></span> Pašalinti
+                            <span class="glyphicon glyphicon-trash" title="Pašalinti"></span>
                         </a>
                     @endif
                 </td>

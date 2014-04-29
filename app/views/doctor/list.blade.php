@@ -37,12 +37,12 @@
                 <td class="text-right">
 					<a
 						class="btn btn-xs btn-primary" href="/doctor/edit/{{$item->id}}">
-						<span class="glyphicon glyphicon-pencil"></span> Redaguoti
+						<span class="glyphicon glyphicon-pencil" title="Redaguoti"></span>
 					</a>
                     <a
                         onclick="return confirm('Ar tikrai norite pašalinti gydytoją?')"
                         class="btn btn-xs btn-danger" href="/doctor/remove/{{$item->id}}">
-                        <span class="glyphicon glyphicon-remove"></span> Pašalinti
+                        <span class="glyphicon glyphicon-trash" title="Pašalinti"></span>
                     </a>
                 </td>
             </tr>
