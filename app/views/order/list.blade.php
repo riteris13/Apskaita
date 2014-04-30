@@ -101,13 +101,12 @@
     <a href="/order/history" class="btn btn-primary" ><span class="glyphicon glyphicon-folder-open"></span>
         Archyvas</a>
 
-
 <div class="modal fade" id="aprasymas" tabindex="-1" role="dialog" aria-labelledby="aprasymas" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">Užsakymo aprašymas</h4>
+                <h3 class="modal-title" style="text-align: center" id="myModalLabel">Užsakymo aprašymas</h3>
             </div>
             <div class="modal-body" id="modal-body">
                 <table  class="table table-hover" >
@@ -123,9 +122,9 @@
                 </table>
                 <h4 id="bendra_suma"> </h4>
             </div>
+
         </div>
     </div>
 </div>
-
 
 @stop

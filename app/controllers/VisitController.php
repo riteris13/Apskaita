@@ -48,4 +48,9 @@ class VisitController extends BaseController {
         $doctors = Clinic::find($input)->doctors()->orderBy('pavarde')->get(['id','vardas', 'pavarde']);
         return $doctors;
     }
+    public function getDetails(){
+        $input = Input::get('option');
+        $visit = Visit::where('id', '=', $input)->get(['pokalbis', 'kompetitoriai']);
+        return $visit;
+    }
 }
