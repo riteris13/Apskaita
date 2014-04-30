@@ -27,7 +27,7 @@
                 <td>
                     {{{ $item->data }}}
                 </td>
-                <td class="col-sm-2 text-right">
+                <td class="text-right">
                     <button class="btn btn-xs btn-primary" onClick = "getVisitDetails({{$item->id}})"
                             data-toggle="modal"  data-target="#aprasymas" id="aprasymas-btn">
                         <span class="glyphicon glyphicon-search" rel="tooltip" data-placement="top" title="Peržiūrėti vizitą"></span>

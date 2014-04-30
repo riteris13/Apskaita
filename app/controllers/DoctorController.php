@@ -44,4 +44,9 @@ class DoctorController extends BaseController {
         $model->delete();
         return Redirect::to('doctor')->with('success',$msg);
     }
+    public function getDetails(){
+        $input = Input::get('option');
+        $doctor = Doctor::where('id', '=', $input)->get(['detales', 'kodel_neperka', 'kaip_pritraukti']);
+        return $doctor;
+    }
 }
