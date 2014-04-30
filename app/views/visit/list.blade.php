@@ -25,8 +25,8 @@
                 <td>
                     {{{ $item->tikslas}}}
                 </td>
-                <td  class="col-sm-7">
-                    {{{ $item->pokalbis}}}
+                <td class="col-sm-6">
+                    <div style="height: 60px; overflow: hidden;" >{{{ $item->pokalbis}}}</div>
                 </td>
                 <td class="col-sm-2">
                     {{{ $item->kompetitoriai}}}
