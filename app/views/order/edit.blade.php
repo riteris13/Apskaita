@@ -3,6 +3,9 @@
 <?php $header = trans('header.order.edit'); ?>
 
 @section('content')
+
+<script src="/js/jquery.tools.min.js"></script>
+
     {{ Form::model($order, array('url' => 'order/edit', 'class'=>'form-default')) }}
 
         <h4>Klientas</h4>

@@ -4,6 +4,8 @@
 
 @section('content')
 
+<script src="/js/jquery.tools.min.js"></script>
+
     {{ Form::model($visit, array('url' => 'visit/edit', 'class'=>'form-default')) }}
 
         <h4>Klientas</h4>

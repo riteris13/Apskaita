@@ -2,7 +2,10 @@
 
 <?php $header = trans('header.visit.add'); ?>
 
+
 @section('content')
+
+<script src="/js/jquery.tools.min.js"></script>
 
     {{ Form::open(array('url' => 'visit/add', 'class'=>'form-default')) }}
 

@@ -14,7 +14,7 @@
     <script src="/js/jquery.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="/js/bootstrap.min.js"></script>
-    <script src="/js/jquery.tools.min.js"></script>
+
     <script src="/js/myjquery.js"></script>
 
 
