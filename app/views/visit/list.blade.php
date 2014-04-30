@@ -25,7 +25,7 @@
                 <td>
                     {{{ $item->tikslas}}}
                 </td>
-                <td class="col-sm-7">
+                <td  class="col-sm-7">
                     {{{ $item->pokalbis}}}
                 </td>
                 <td class="col-sm-2">
@@ -36,13 +36,13 @@
                 </td>
                 <td class="text-right">
                     <a
-                        class="btn btn-xs btn-primary" href="/visit/edit/{{$item->id}}">
-                        <span class="glyphicon glyphicon-pencil" title="Redaguoti"></span>
+                        class="btn btn-xs btn-primary" rel="tooltip" data-placement="top" title="Redaguoti" href="/visit/edit/{{$item->id}}">
+                        <span class="glyphicon glyphicon-pencil"></span>
                     </a>
                     <a
                         onclick="return confirm('Ar tikrai norite pašalinti apsilankymą?')"
-                        class="btn btn-xs btn-danger" href="/visit/remove/{{$item->id}}">
-                        <span class="glyphicon glyphicon-trash" title="Pašalinti"></span>
+                        class="btn btn-xs btn-danger" rel="tooltip" data-placement="top" title="Redaguoti" href="/visit/remove/{{$item->id}}">
+                        <span class="glyphicon glyphicon-trash"></span>
                     </a>
                 </td>
             </tr>

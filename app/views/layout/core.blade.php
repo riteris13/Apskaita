@@ -15,6 +15,11 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="/js/bootstrap.min.js"></script>
 
+    <script type="text/javascript">
+        $(function(){
+            $('[rel="tooltip"]').tooltip({delay: { show: 1000}});
+        });
+    </script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

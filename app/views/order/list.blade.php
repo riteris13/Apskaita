@@ -55,7 +55,7 @@
                       @endif
                         <td class="col-sm-2 text-right">
                             <button class="btn btn-xs btn-primary" onClick = "getDetails({{$item->id}})"
-                                    data-toggle="modal" data-target="#aprasymas" id="aprasymas-btn">
+                                    data-toggle="modal"  data-target="#aprasymas" id="aprasymas-btn">
                             <span class="glyphicon glyphicon-search" title="Peržiūrėti užsakymą"></span>
                             </button>
                             @if ( $item->statusas == 0)

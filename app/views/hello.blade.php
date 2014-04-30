@@ -8,4 +8,6 @@
     <br>
     <h4><?php echo trans('messages.intro'); ?></h4>
 
+    <button type="button" class="btn btn-default" rel="tooltip" data-placement="bottom" title="Apačioj">Tooltip on bottom</button>
+
 @stop

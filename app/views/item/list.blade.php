@@ -72,20 +72,20 @@
                 </td>
                 <td class="text-right">
                     <a
-                        class="btn btn-xs btn-primary" href="/item/edit/{{$item->id}}">
-                        <span class="glyphicon glyphicon-pencil" title="Redaguoti"></span>
+                        class="btn btn-xs btn-primary" rel="tooltip" data-placement="top" title="Redaguoti" href="/item/edit/{{$item->id}}">
+                        <span class="glyphicon glyphicon-pencil"></span>
                     </a>
                     @if($item->orders()->count() == 0)
                     <a
                         onclick="return confirm('Ar tikrai norite pašalinti produktą?')"
-                        class="btn btn-xs btn-danger" href="/item/remove/{{$item->id}}">
-                        <span class="glyphicon glyphicon-trash" title="Pašalinti"></span>
+                        class="btn btn-xs btn-danger" rel="tooltip" data-placement="top" title="Pašalinti" href="/item/remove/{{$item->id}}">
+                        <span class="glyphicon glyphicon-trash"></span>
                     </a>
                     @else
                     <a
                         class=" btn btn-xs btn-danger disabled"
                         href="#">
-                        <span class="glyphicon glyphicon-trash" title="Pašalinti"></span>
+                        <span class="glyphicon glyphicon-trash"></span>
                     </a>
                     @endif
                 </td>

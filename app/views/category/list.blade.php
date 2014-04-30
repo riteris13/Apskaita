@@ -27,8 +27,8 @@
                           @if($item->products()->count() == 0)
                             <a
                                 onclick="return confirm('Ar tikrai norite pašalinti kategoriją?')"
-                                class="btn btn-xs btn-danger" href="/category/remove/{{$item->id}}">
-                                <span class="glyphicon glyphicon-trash" title="Pašalinti"></span>
+                                class="btn btn-xs btn-danger" rel="tooltip" data-placement="top" title="Pašalinti" href="/category/remove/{{$item->id}}">
+                                <span class="glyphicon glyphicon-trash"></span>
                             </a>
                          @else
                             <a
