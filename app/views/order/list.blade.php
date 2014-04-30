@@ -3,7 +3,6 @@
 <?php $header = trans('header.order.list'); ?>
 
 @section('content')
-<script type="text/javascript" src="/js/jquery-1.3.2.min.js"></script>
 <script type="text/javascript" src="/js/orderDetails.js"></script>
 
 <div class="panel panel-default">
@@ -56,23 +55,23 @@
                         <td class="col-sm-2 text-right">
                             <button class="btn btn-xs btn-primary" onClick = "getDetails({{$item->id}})"
                                     data-toggle="modal"  data-target="#aprasymas" id="aprasymas-btn">
-                            <span class="glyphicon glyphicon-search" title="Peržiūrėti užsakymą"></span>
+                            <span class="glyphicon glyphicon-search" rel="tooltip" data-placement="top" title="Peržiūrėti užsakymą"></span>
                             </button>
                             @if ( $item->statusas == 0)
                             <a
                                 onclick="return confirm('Ar tikrai norite norite pakeisti užsakymo statusą?')"
                                 class="btn btn-xs btn-primary" href="/order/status/{{$item->id}}">
-                                <span class="glyphicon glyphicon-thumbs-up" title="Atlikti užsakymą"> </span>
+                                <span class="glyphicon glyphicon-thumbs-up" rel="tooltip" data-placement="top" title="Atlikti užsakymą"> </span>
                             </a>
                             <a
                                 class="btn btn-xs btn-primary" href="/order/edit/{{$item->id}}">
-                                <span class="glyphicon glyphicon-pencil" title="Redaguoti"></span>
+                                <span class="glyphicon glyphicon-pencil" rel="tooltip" data-placement="top" title="Redaguoti"></span>
                             </a>
                             @else
                             <a
                                 onclick="return confirm('Ar tikrai norite norite pakeisti užsakymo statusą?')"
                                 class="btn btn-xs btn-danger" href="/order/status/{{$item->id}}">
-                                <span class="glyphicon glyphicon-thumbs-down" title="Atšaukti įvykdymą"> </span>
+                                <span class="glyphicon glyphicon-thumbs-down" rel="tooltip" data-placement="top" title="Atšaukti įvykdymą"> </span>
                             </a>
 
                             @endif
@@ -81,13 +80,13 @@
                             <a
                                 onclick="return confirm('Ar tikrai norite pašalinti užsakymą?')"
                                 class="btn btn-xs btn-danger" href="/order/remove/{{$item->id}}">
-                                <span class="glyphicon glyphicon-trash" title="Pašalinti"></span>
+                                <span class="glyphicon glyphicon-trash" rel="tooltip" data-placement="top" title="Pašalinti"></span>
                             </a>
                             @else
                             <a
                                 onclick="return confirm('Ar tikrai norite norite archyvuoti užsakymą? \r (Archyve galima tik peržiūrėti užsakymus)')"
                                 class="btn btn-xs btn-info" href="/order/archive/{{$item->id}}">
-                                <span class="glyphicon glyphicon-briefcase" title="Archyvuoti"></span>
+                                <span class="glyphicon glyphicon-briefcase" rel="tooltip" data-placement="top" title="Archyvuoti"></span>
                             </a>
                             @endif
                         </td>
