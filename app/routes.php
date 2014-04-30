@@ -16,20 +16,22 @@ Route::group(array('before' => 'notAuth'), function(){
 
     Route::group(array('before' => 'crsf'), function(){
 
-        Route::group(array('before' => 'first-login'), function(){
+        Route::get('/auth/logout', array('uses' => 'AuthController@getLogout'));
+
+        Route::post('/auth/change', array(
+            'as' => 'change',
+            'uses' => 'AuthController@postChange'
+        ));
+
+        Route::get('/auth/change', array(
+            'as' => 'change',
+            'uses' => 'AuthController@getChange'
+        ));
+
+        Route::group(array('before' => 'first_login'), function(){
 
             Route::get('/', 'HomeController@showWelcome');
             Route::controller('lang', 'LangController');
-
-            Route::post('/auth/change', array(
-                'as' => 'change',
-                'uses' => 'AuthController@postChange'
-            ));
-
-            Route::get('/auth/change', array(
-                        'as' => 'change',
-                        'uses' => 'AuthController@getChange'
-            ));
 
             Route::controller('report', 'ReportController');
 
@@ -47,5 +49,5 @@ Route::group(array('before' => 'notAuth'), function(){
         });
     });
 });
-
-Route::controller('auth', 'AuthController');
+Route::post('/auth', array('uses' => 'AuthController@postIndex'));
+Route::get('/auth', array('uses' => 'AuthController@getIndex'));
