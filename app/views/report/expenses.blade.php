@@ -1,11 +1,23 @@
 @extends('layout.core')
 @section('content')
+<style>
+    .input-xs {
+        height: 24px;
+        padding: 0px 0px;
+        font-size: 12px;
+        line-height: 0;
+        border: 0;
+        box-shadow: 0;
+        outline: 0 none;
+        text-align: right;
+    }
+</style>
 
-<table class="table table-hover">
+<table class="table table-bordered table-condensed">
 
     <tbody>
     <tr>
-        <td>
+        <td style="text-align: center; width: 70%;">
             Name
         </td>
         <td>
@@ -15,15 +27,15 @@
     <tr>
         <td>
         </td>
-        <td>
+        <td style="text-align: center;">
             LTL
         </td>
     </tr>
     <tr>
-        <td>
+        <td style="text-align: center; background-color: darkgray;">
             Car Expenses
         </td>
-        <td>
+        <td style="background-color: darkgray">
         </td>
     </tr>
     <tr>
@@ -31,7 +43,7 @@
             Gas/oil/benzine/dyzeline
         </td>
         <td>
-            {{Form::text('amount', '', array('class'=>'form-control', 'type'=>'text')); }}
+            <input type="text" class="form-control input-xs">
         </td>
     </tr>
     <tr>
@@ -39,6 +51,7 @@
             Car wash
         </td>
         <td>
+            <input type="text" class="form-control  input-xs">
         </td>
     </tr>
     <tr>
@@ -46,6 +59,7 @@
             Ice remover from the car window
         </td>
         <td>
+            <input type="text" class="form-control  input-xs">
         </td>
     </tr>
     <tr>
@@ -53,6 +67,7 @@
             Car window liqued
         </td>
         <td>
+            <input type="text" class="form-control  input-xs">
         </td>
     </tr>
     <tr>
@@ -60,6 +75,7 @@
             Car tyres
         </td>
         <td>
+            <input type="text" class="form-control  input-xs">
         </td>
     </tr>
     <tr>
@@ -67,6 +83,7 @@
             Car wipers
         </td>
         <td>
+            <input type="text" class="form-control  input-xs">
         </td>
     </tr>
     <tr>
@@ -74,6 +91,7 @@
             Car lamp
         </td>
         <td>
+            <input type="text" class="form-control  input-xs">
         </td>
     </tr>
     <tr>
@@ -81,7 +99,7 @@
             Payment for the roads
         </td>
         <td>
-            {{Form::text('amount', '', array('class'=>'form-control', 'type'=>'text')); }}
+            <input type="text" class="form-control  input-xs">
         </td>
     </tr>
     <tr>
@@ -89,7 +107,7 @@
             Car service/changing tyre
         </td>
         <td>
-            {{Form::text('amount', '', array('class'=>'form-control', 'type'=>'text')); }}
+            <input type="text" class="form-control  input-xs">
         </td>
     </tr>
     <tr>
@@ -97,7 +115,7 @@
             Parking
         </td>
         <td>
-            {{Form::text('amount', '', array('class'=>'form-control', 'type'=>'text')); }}
+            <input type="text" class="form-control  input-xs">
         </td>
     </tr>
     <tr>
@@ -105,9 +123,43 @@
             Taxi
         </td>
         <td>
-            {{Form::text('amount', '', array('class'=>'form-control', 'type'=>'text')); }}
+            <input type="text" class="form-control  input-xs">
         </td>
     </tr>
+    <tr>
+        <td style="text-align: center; background-color: darkgray;">
+            Office expenses/needs
+        </td>
+        <td style="background-color: darkgray">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Phone
+        </td>
+        <td>
+            <input type="text" class="form-control  input-xs">
+        </td>
+    </tr>
+    <tr>
+    <tr>
+        <td>
+            Office expenses (paper and etc)
+        </td>
+        <td>
+            <input type="text" class="form-control  input-xs">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            New bag for visits
+        </td>
+        <td>
+            <input type="text" class="form-control  input-xs">
+        </td>
+    </tr>
+    <tr>
+    <tr>
 
     </tbody>
 
