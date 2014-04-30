@@ -3,8 +3,7 @@
 <?php $header = trans('header.order.listH'); ?>
 
 @section('content')
-<script type="text/javascript" src="/js/jquery-1.3.2.min.js"></script>
-<script type="text/javascript" src="/js/order.js"></script>
+<script type="text/javascript" src="/js/orderDetails.js"></script>
 
 <div class="panel panel-default">
     <div class="panel-heading">{{trans('header.order.table');}}</div>
@@ -31,7 +30,7 @@
             <td class="col-sm-1 text-right">
                 <button class="btn btn-xs btn-primary" onClick = "getDetails({{$item->id}})"
                         data-toggle="modal" data-target="#aprasymas" id="aprasymas-btn">
-                    <span class="glyphicon glyphicon-search"></span>
+                    <span class="glyphicon glyphicon-search" rel="tooltip" data-placement="top" title="Peržiūrėti užsakymą"></span>
                 </button>
 
             </td>
