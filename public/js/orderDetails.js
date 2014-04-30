@@ -1,6 +1,6 @@
 function getDetails(id){
 var bendraSuma = 0;
-	$.getJSON("order/details", {option: id}, 
+	$.getJSON(window.location.protocol + "//" + window.location.host + "/" + 'order/details', {option: id}, 
 			function(data) {	
 			$('#modalTable').empty();
 			$.each(data, function(index, element) {
