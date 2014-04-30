@@ -6,6 +6,7 @@
 @section('content')
 
 <script src="/js/jquery.tools.min.js"></script>
+<script src="/js/addVisit.js"></script>
 
     {{ Form::open(array('url' => 'visit/add', 'class'=>'form-default')) }}
 

@@ -4,7 +4,7 @@
 
 @section('content')
 <script type="text/javascript" src="/js/jquery-1.3.2.min.js"></script>
-<script type="text/javascript" src="/js/order.js"></script>
+<script type="text/javascript" src="/js/orderDetails.js"></script>
 
 <div class="panel panel-default">
     <div class="panel-heading">Užsakymų rūšiavimas</div>

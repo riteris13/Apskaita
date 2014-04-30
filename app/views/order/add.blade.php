@@ -5,6 +5,7 @@
 @section('content')
 
 <script src="/js/jquery.tools.min.js"></script>
+<script src="/js/addOrder.js"></script>
 
     {{ Form::open(array('url' => 'order/add', 'class'=>'form-default', 'id'=>'addOrder')) }}
 
