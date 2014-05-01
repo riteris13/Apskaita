@@ -7,15 +7,18 @@ $("select[id='category'] :not(option:gt(0))").attr("disabled", "disabled");
 	};
 
 	$('#category').change(function(){
+	if($(this).val() == "default"){
+		return;
+	}
 			$.getJSON("apidropdown", {option: $(this).val() }, 
 				function(data) {
-				var product = $('#produktas');			
+				var product = $('#produktas');	
+				product.empty();				
 				if(data.length == 0){
 					product.attr('disabled', 'disabled');
 					product.append("<option>" + "Kategorija tuščia" 
 						+ "</option>");
 				}else{
-					product.empty();
 					product.append("<option selected disabled>" 
 						+ "Pasirinkite produktą" + "</option>");
 					product.removeAttr('disabled');
@@ -107,7 +110,7 @@ var discount = $("#nuolaida");
 						+ "</option>");
 					});
 				}
-			});
+			});		
 	});
 })	
 
