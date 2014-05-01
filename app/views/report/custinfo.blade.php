@@ -20,10 +20,15 @@
             {{{ $doctor->fullname }}}
         </td>
         <td>
+            <?php $visipavadinimai = array(); ?>
             @foreach($doctor->order as $items)
                 @foreach($items->orders as $item)
-                    {{$item->product->pavadinimas}}<br>
+                    <?php array_push($visipavadinimai, $item->product->pavadinimas); ?>
                 @endforeach
+            @endforeach
+            <?php $pavadinimai = array_unique($visipavadinimai); ?>
+            @foreach($pavadinimai as $pavadinimas)
+                {{{$pavadinimas}}}<br>
             @endforeach
         </td>
         <td>
