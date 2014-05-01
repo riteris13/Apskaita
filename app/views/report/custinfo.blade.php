@@ -1,10 +1,11 @@
 @extends('layout.core')
+
+<?php $header = "Information about the customers 2014"; ?>
+
 @section('content')
 
-<h3 style="text-align: center;">Information about the customers 2014</h3>
-
 <table class="table table-bordered">
-    <thead>
+    <thead style="font-weight: bold; text-align: center;">
         <tr>
             <td>Name, Surname</td>
             <td>Which products he use from us</td>
