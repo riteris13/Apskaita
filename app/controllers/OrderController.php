@@ -38,17 +38,19 @@ class OrderController extends BaseController{
             $messages["kiekis.{$i}.numeric"] = 'Kiekis gali būti tik skaičiai.';
             $messages["kiekis.{$i}.min"] = 'Kiekis negali būti mažiau nei 1.';
             $messages["kiekis.{$i}.max"] = 'Kiekis negali būti daugiau už 32000.';
-            $messages["kaina.{$i}.min"] = 'Kaina negali būti mažiau nei 0.';
-            $messages["kaina.{$i}.max"] = 'Kaina negali būti daugiau už 99999999.99.';
+            $messages["pir_kaina.{$i}.min"] = 'Kaina negali būti mažiau nei 0.';
+            $messages["pir_kaina.{$i}.max"] = 'Kaina negali būti daugiau už 99999999.99.';
+            $messages["pir_kaina.{$i}.required"] = 'Kaina: Neįvesti duomenys.';
+            $messages["pir_kaina.{$i}.numeric"] = 'Kaina gali būti tik skaičiai.';
             $rules["kiekis.{$i}"] = 'required|numeric|max:32000|min:1';
             $rules["pir_kaina.{$i}"] = 'required|numeric|max:99999999.99|min:0';
         }
         $validator = Validator::make($input, $rules, $messages);
         if($validator->fails()){
-            $input2 = Input::except(array('kiekis', 'pir_kaina', 'produktas_id', 'id'));
             return Redirect::back()
-                ->withInput($input2)
-                ->withErrors($validator);
+                ->withInput(Input::except(array('kiekis', 'pir_kaina', 'produktas_id', 'id')))
+                ->withErrors($validator)
+                ->with('kiekis', Input::get('kiekis'));
         }
         $order = Order::find($input['order_id']);
         $order->update($input);
