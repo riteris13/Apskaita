@@ -2,18 +2,29 @@
 @section('content')
 <style>
     .input-xs {
-        height: 24px;
+        height: 16px;
         padding: 0px 0px;
-        font-size: 12px;
-        line-height: 0;
-        border: 0;
-        box-shadow: 0;
+        font-size: 13px;
+        line-height: 0px;
+        border: 0px;
+        box-shadow: 0px;
         outline: 0 none;
         text-align: right;
+        width: 100%;
+    }
+    .table-condensed>tbody>tr>td {
+        padding: 0px;
+        height: 15px;
+        font-size: 13px;
+    }
+    .gray {
+        text-align: center;
+        background-color: darkgray !important;
     }
 </style>
 
-<table class="table table-bordered table-condensed">
+<input type="text" class="input input-xs" style="width: 200px; text-align: left; font-size: 15px;">
+<table  class="table table-bordered table-condensed">
 
     <tbody>
     <tr>
@@ -32,10 +43,10 @@
         </td>
     </tr>
     <tr>
-        <td style="text-align: center; background-color: darkgray;">
+        <td class="gray">
             Car Expenses
         </td>
-        <td style="background-color: darkgray">
+        <td class="gray">
         </td>
     </tr>
     <tr>
@@ -43,7 +54,7 @@
             Gas/oil/benzine/dyzeline
         </td>
         <td>
-            <input type="text" class="form-control input-xs">
+            <input type="text" class="input-xs">
         </td>
     </tr>
     <tr>
@@ -51,7 +62,7 @@
             Car wash
         </td>
         <td>
-            <input type="text" class="form-control  input-xs">
+            <input type="text" class="  input-xs">
         </td>
     </tr>
     <tr>
@@ -59,7 +70,7 @@
             Ice remover from the car window
         </td>
         <td>
-            <input type="text" class="form-control  input-xs">
+            <input type="text" class="  input-xs">
         </td>
     </tr>
     <tr>
@@ -67,7 +78,7 @@
             Car window liqued
         </td>
         <td>
-            <input type="text" class="form-control  input-xs">
+            <input type="text" class="  input-xs">
         </td>
     </tr>
     <tr>
@@ -75,7 +86,7 @@
             Car tyres
         </td>
         <td>
-            <input type="text" class="form-control  input-xs">
+            <input type="text" class="  input-xs">
         </td>
     </tr>
     <tr>
@@ -83,7 +94,7 @@
             Car wipers
         </td>
         <td>
-            <input type="text" class="form-control  input-xs">
+            <input type="text" class="  input-xs">
         </td>
     </tr>
     <tr>
@@ -91,7 +102,7 @@
             Car lamp
         </td>
         <td>
-            <input type="text" class="form-control  input-xs">
+            <input type="text" class="  input-xs">
         </td>
     </tr>
     <tr>
@@ -99,7 +110,7 @@
             Payment for the roads
         </td>
         <td>
-            <input type="text" class="form-control  input-xs">
+            <input type="text" class="  input-xs">
         </td>
     </tr>
     <tr>
@@ -107,7 +118,7 @@
             Car service/changing tyre
         </td>
         <td>
-            <input type="text" class="form-control  input-xs">
+            <input type="text" class="  input-xs">
         </td>
     </tr>
     <tr>
@@ -115,7 +126,7 @@
             Parking
         </td>
         <td>
-            <input type="text" class="form-control  input-xs">
+            <input type="text" class="  input-xs">
         </td>
     </tr>
     <tr>
@@ -123,14 +134,14 @@
             Taxi
         </td>
         <td>
-            <input type="text" class="form-control  input-xs">
+            <input type="text" class="  input-xs">
         </td>
     </tr>
     <tr>
-        <td style="text-align: center; background-color: darkgray;">
+        <td class="gray">
             Office expenses/needs
         </td>
-        <td style="background-color: darkgray">
+        <td class="gray">
         </td>
     </tr>
     <tr>
@@ -138,7 +149,7 @@
             Phone
         </td>
         <td>
-            <input type="text" class="form-control  input-xs">
+            <input type="text" class="  input-xs">
         </td>
     </tr>
     <tr>
@@ -147,7 +158,7 @@
             Office expenses (paper and etc)
         </td>
         <td>
-            <input type="text" class="form-control  input-xs">
+            <input type="text" class="  input-xs">
         </td>
     </tr>
     <tr>
@@ -155,11 +166,236 @@
             New bag for visits
         </td>
         <td>
-            <input type="text" class="form-control  input-xs">
+            <input type="text" class="  input-xs">
         </td>
     </tr>
     <tr>
+        <td>
+            Computer parts, services
+        </td>
+        <td>
+            <input type="text" class="  input-xs">
+        </td>
+    </tr>
     <tr>
+        <td>
+            Printer cartridge filling
+        </td>
+        <td>
+            <input type="text" class="  input-xs">
+        </td>
+    </tr>
+    <tr>
+        <td class="gray">
+            Financial operations
+        </td>
+        <td class="gray">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Debt payment for Bite Vodafone internet
+        </td>
+        <td>
+            <input type="text" class="  input-xs">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Payment for cash transfering to bank account
+        </td>
+        <td>
+            <input type="text" class="  input-xs">
+        </td>
+    </tr>
+    <tr>
+        <td class="gray">
+            Delivery services
+        </td>
+        <td class="gray">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Post
+        </td>
+        <td>
+            <input type="text" class="  input-xs">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Payment for material delivery
+        </td>
+        <td>
+            <input type="text" class="  input-xs">
+        </td>
+    </tr>
+    <tr>
+        <td class="gray">
+            Advertising/promo
+        </td>
+        <td class="gray">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Brochures for the seminar
+        </td>
+        <td>
+            <input type="text" class="  input-xs">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Promotions, advertisement layout and printing
+        </td>
+        <td>
+            <input type="text" class="  input-xs">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Copying
+        </td>
+        <td>
+            <input type="text" class="  input-xs">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Show
+        </td>
+        <td>
+            <input type="text" class="  input-xs">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Translation
+        </td>
+        <td>
+            <input type="text" class="  input-xs">
+        </td>
+    </tr>
+    <tr>
+        <td class="gray">
+            Representation expenses
+        </td>
+        <td class="gray">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Dinner with doctors
+        </td>
+        <td>
+            <input type="text" class="  input-xs">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Christmas presents
+        </td>
+        <td>
+            <input type="text" class="  input-xs">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Christmas bags for presents
+        </td>
+        <td>
+            <input type="text" class="  input-xs">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Sweets
+        </td>
+        <td>
+            <input type="text" class="  input-xs">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Flowers for the doctors
+        </td>
+        <td>
+            <input type="text" class="  input-xs">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Souvenires
+        </td>
+        <td>
+            <input type="text" class="  input-xs">
+        </td>
+    </tr>
+    <tr>
+        <td class="gray">
+            Traveling
+        </td>
+        <td class="gray">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Hotel
+        </td>
+        <td>
+            <input type="text" class="  input-xs">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Food
+        </td>
+        <td>
+            <input type="text" class="  input-xs">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Air tickets
+        </td>
+        <td>
+            <input type="text" class="  input-xs">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Taxi
+        </td>
+        <td>
+            <input type="text" class="  input-xs">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Train tickets
+        </td>
+        <td>
+            <input type="text" class="  input-xs">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Currency exchange
+        </td>
+        <td>
+            <input type="text" class="  input-xs">
+        </td>
+    </tr>
+    <tr>
+        <td style="font-weight: bold;">
+            Total expenses:
+        </td>
+        <td>
+            <input type="text" class="  input-xs" style="font-weight: bold;">
+        </td>
+    </tr>
 
     </tbody>
 
