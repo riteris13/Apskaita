@@ -14,6 +14,11 @@ class ReportController extends BaseController {
         return View::make('report.expenses');
     }
 
+    public function getCustinfo(){
+        $doctors = Doctor::all();
+        return View::make('report.custinfo')->with('doctors', $doctors);
+    }
+
     public function getExport(){
         $doctors = Doctor::all();
         $content = View::make('report.ao')->with('doctors', $doctors)->render();

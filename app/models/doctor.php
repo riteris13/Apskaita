@@ -47,4 +47,10 @@ class Doctor extends Eloquent {
     public function getFullNameAttribute(){
         return $this->vardas.' '.$this->pavarde;
     }
+    public function notOurProduct(){
+        return $this->hasMany('NotOurProduct','daktaras_id')->groupby('produktas_id');
+    }
+    public function order(){
+        return $this->hasMany('Order', 'daktaras_id');
+    }
 }
