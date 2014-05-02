@@ -11,9 +11,14 @@ var bendraSuma = 0;
 					'<td>' + element.produktas + '</td>' +
 					'<td>' + element.pir_kaina + '</td>' + 
 					'<td>' + element.kiekis + '</td>' + 
-					'<td>' + suma.toFixed(2) + '</td>' + 
+					'<td>' + suma.toFixed(2) + '</td>' +	
+					'<td>' +		
+						'<a class="btn btn-xs btn-danger" href="/order/removeitem/' + element.id + '">' +
+						'<span class="glyphicon glyphicon-trash" ' + 
+						'title="Pašalinti">' + '</span>' + '</a>' + '</td>' +
 				'</tr>');
 			});
 			document.getElementById('bendra_suma').innerHTML =  "Bendra pardavimo suma: " + bendraSuma.toFixed(2) + " LTL";
 		});	
+		
 }

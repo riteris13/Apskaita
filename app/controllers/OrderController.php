@@ -151,4 +151,10 @@ class OrderController extends BaseController{
         $orders = Order::where('arch', '=', 1)->orderBy('data', 'Desc')->orderBy('daktaras_id')->paginate(15);
         return View::make('order.history')->with('items', $orders);
     }
+    public function getRemoveitem($id){
+        $model = OrderApr::findOrFail($id);
+        $msg =  'Sėkmingai pašalinote prekę '.$model->product->pavadinimas. ' iš užsakymo';
+        $model->delete();
+        return Redirect::to('order')->with('success',$msg);
+    }
 }
