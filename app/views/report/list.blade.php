@@ -20,7 +20,7 @@
                     <a href="/report/expenses" class="btn btn-primary" ><span class="glyphicon glyphicon-plus"></span> Sudaryti</a>
                 </td>
                 </tr>
-                <td>Informacija apie klientus</td>
+                <td>Informacija apie kliento naudojamus gaminius</td>
                 <td class="text-right">
                     <a href="/report/custinfo" class="btn btn-primary" ><span class="glyphicon glyphicon-plus"></span> Sudaryti</a>
                 </td>
