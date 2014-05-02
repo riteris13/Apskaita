@@ -141,8 +141,8 @@ class OrderController extends BaseController{
         $details = array();
         $order = Order::find($input);
         foreach($order->orders as $pro){
-            $i = $pro["produktas_id"];
-            $pro["produktas"] = Item::find($i)->pavadinimas;
+            $pro["produktas"] = Item::find($pro["produktas_id"])->pavadinimas;
+            $pro["statusas"] = $order['statusas'];
             array_push($details, $pro->toArray());
         }
         return $details;
