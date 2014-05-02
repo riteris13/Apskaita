@@ -29,7 +29,8 @@
                 </td>
                 <td class="text-right">
                     <button class="btn btn-xs btn-primary" onClick = "getVisitDetails({{$item->id}})"
-                            data-toggle="modal"  data-target="#aprasymas" id="aprasymas-btn">
+                            data-toggle="modal"  data-target="#aprasymas" id="aprasymas-btn"
+                            data-keyboard="false" data-backdrop="static">
                         <span class="glyphicon glyphicon-search" rel="tooltip" data-placement="top" title="Peržiūrėti vizitą"></span>
                     </button>
                     <a
@@ -60,6 +61,9 @@
             </div>
             <div class="modal-body" id="modal-body">
 
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Uždaryti</button>
             </div>
         </div>
     </div>

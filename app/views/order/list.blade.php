@@ -54,7 +54,8 @@
                       @endif
                         <td class="col-sm-2 text-right">
                             <button class="btn btn-xs btn-primary" onClick = "getDetails({{$item->id}})"
-                                    data-toggle="modal"  data-target="#aprasymas" id="aprasymas-btn">
+                                    data-toggle="modal"  data-target="#aprasymas" id="aprasymas-btn"
+                                    data-keyboard="false" data-backdrop="static">
                             <span class="glyphicon glyphicon-search" rel="tooltip" data-placement="top" title="Peržiūrėti užsakymą"></span>
                             </button>
                             @if ( $item->statusas == 0)
@@ -121,6 +122,9 @@
                     </tbody>
                 </table>
                 <h4 id="bendra_suma"> </h4>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Uždaryti</button>
+                </div>
             </div>
 
         </div>
