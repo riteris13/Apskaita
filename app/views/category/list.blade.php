@@ -9,7 +9,7 @@
         <table class="table table-hover">
             <thead>
             <tr>
-                <th>Pavadinimas</th>
+                <th>{{{trans('table.name')}}}</th>
             </tr>
             </thead>
             <tbody >
@@ -27,7 +27,7 @@
                           @if($item->products()->count() == 0)
                             <a
                                 onclick="return confirm('Ar tikrai norite pašalinti kategoriją?')"
-                                class="btn btn-xs btn-danger" rel="tooltip" data-placement="top" title="Pašalinti" href="/category/remove/{{$item->id}}">
+                                class="btn btn-xs btn-danger" rel="tooltip" data-placement="top" title="{{{trans('table.del')}}}" href="/category/remove/{{$item->id}}">
                                 <span class="glyphicon glyphicon-trash"></span>
                             </a>
                          @else
@@ -45,6 +45,6 @@
         </table>
     </div>
   <p>  {{ $items->links() }} </p>
-    <a href="/category/add" class="btn btn-primary" ><span class="glyphicon glyphicon-plus"></span> Pridėti naują</a>
+    <a href="/category/add" class="btn btn-primary" ><span class="glyphicon glyphicon-plus"></span> {{{trans('table.add')}}}</a>
 
 @stop

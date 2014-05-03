@@ -9,9 +9,9 @@
         <table class="table table-hover">
             <thead>
             <tr>
-                <th>Pavadinimias</th>
-                <th>Adresas</th>
-                <th>PVM mokėtojas</th>
+                <th>{{{trans('table.name')}}}</th>
+                <th>{{{trans('table.adr')}}}</th>
+                <th>{{{trans('table.pvm')}}}</th>
             </tr>
             </thead>
             <tbody >
@@ -28,14 +28,14 @@
                 </td>
                 <td class="text-right">
                 <a
-                    class="btn btn-xs btn-primary" rel="tooltip" data-placement="top" title="Redaguoti" href="/clinic/edit/{{$item->id}}">
+                    class="btn btn-xs btn-primary" rel="tooltip" data-placement="top" title="{{{trans('table.edit')}}}" href="/clinic/edit/{{$item->id}}">
                     <span class="glyphicon glyphicon-pencil"></span>
                 </a>
 
                     @if($item->doctors()->count() == 0)
                         <a
                             onclick="return confirm('Ar tikrai norite pašalinti kliniką?')"
-                            class="btn btn-xs btn-danger" rel="tooltip" data-placement="top" title="Pašalinti" href="/clinic/remove/{{$item->id}}">
+                            class="btn btn-xs btn-danger" rel="tooltip" data-placement="top" title="{{{trans('table.del')}}}" href="/clinic/remove/{{$item->id}}">
                             <span class="glyphicon glyphicon-trash"></span>
                         </a>
                     @else
@@ -53,5 +53,5 @@
         </table>
     </div>
     <p>  {{ $items->links() }} </p>
-    <a href="/clinic/add" class="btn btn-primary" ><span class="glyphicon glyphicon-plus"></span> Pridėti naują</a>
+    <a href="/clinic/add" class="btn btn-primary" ><span class="glyphicon glyphicon-plus"></span> {{{trans('table.add')}}}</a>
 @stop
