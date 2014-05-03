@@ -16,6 +16,10 @@ class OrderController extends BaseController{
     }
     public function postAdd(){
         $input = Input::all();
+        if(isset($input['Close'])){
+            $msg = 'Sėkmingai atšaukėte užsakymo sukūrimą';
+            return Redirect::to('order')->with('success',$msg);
+        }
         $input['pir_kaina'] = $input['kaina'] * (1-$input['nuolaida']*0.01);
         $validator = Validator::make($input, Order::$rules, Order::$messages);
         if($validator->fails()){
