@@ -7,6 +7,9 @@ class OrderController extends BaseController{
     public function getAdd(){
         return View::make('order.add');
     }
+    public function getAdd2($orderID, $nuolD){
+        return View::make('order.additem')->with('orderID', $orderID)->with('nuolD', $nuolD);
+    }
     public function getEdit($id){
         $order = Order::find($id);
         return View::make('order.edit')->with('order', $order);
@@ -26,6 +29,20 @@ class OrderController extends BaseController{
         $items = OrderApr::create($input);
         $items->save();
         $msg = 'Sėkmingai pridėjote užsakymą, kurį pateikė: '.$order->doctor->fullName;
+        return Redirect::to('order')->with('success',$msg);
+    }
+    public function postAdd2(){
+        $input = Input::all();
+        $input['pir_kaina'] = ($input['kaina'] * (1-$input['nuolaida']*0.01));
+        $validator = Validator::make($input, Order::$rulesItem, Order::$messages);
+        if($validator->fails()){
+            return Redirect::back()
+                ->withInput()
+                ->withErrors($validator);
+        }
+        $order = OrderApr::create($input);
+        $order->save();
+        $msg = 'Sėkmingai pridėjote produktą prie užsakymo';
         return Redirect::to('order')->with('success',$msg);
     }
     public function postEdit(){
@@ -140,9 +157,11 @@ class OrderController extends BaseController{
         $input = Input::get('option');
         $details = array();
         $order = Order::find($input);
+        $discount = $order->doctor->nuolaida;
         foreach($order->orders as $pro){
             $pro["produktas"] = Item::find($pro["produktas_id"])->pavadinimas;
             $pro["statusas"] = $order['statusas'];
+            $pro["nuolaida"] = $discount;
             array_push($details, $pro->toArray());
         }
         return $details;

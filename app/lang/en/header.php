@@ -27,6 +27,7 @@ return array(
     ),
     'order' => array(
         'add' => 'Add order',
+        'addItem' => 'Add item to order',
         'edit' => 'Edit order',
         'list' => 'Orders',
         'table' => 'List of orders',

@@ -27,6 +27,7 @@ return array(
     ),
     'order' => array(
         'add' => 'Pridėti užsakymą',
+        'addItem' => 'Pridėti produktą prie užsakymo',
         'edit' => 'Redaguoti užsakymą',
         'list' => 'Užsakymai',
         'table' => 'Užsakymų sąrašas',

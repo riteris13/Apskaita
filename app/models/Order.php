@@ -14,6 +14,12 @@ class Order extends Eloquent {
         'daktaras_id' => 'required',
         'produktas_id' => 'required'
     ];
+    public static $rulesItem = [
+        'kiekis' => 'required|numeric|max:32000|min:1',
+        'pir_kaina' => 'required|numeric|max:99999999.99|min:0',
+        'nuolaida' => 'required|numeric|max:100|min:0',
+        'produktas_id' => 'required'
+    ];
     public static $editRules = [
         'data' => 'required',
         'daktaras_id' => 'required',

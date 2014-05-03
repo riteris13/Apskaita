@@ -1,3 +1,6 @@
+var uzs = 0;
+var nuolD = 0;
+var sta = 0;
 function getDetails(id){
 var bendraSuma = 0;
 	$.getJSON(window.location.protocol + "//" + window.location.host + "/" + 'order/details', {option: id}, 
@@ -7,6 +10,7 @@ var bendraSuma = 0;
 			var suma = element.pir_kaina * element.kiekis;
 			bendraSuma += suma;
 				if(element.statusas == 0){
+				$('#papildyti-btn').attr('class', 'btn btn-xs btn-primary');
 					$('#modalTable').append(
 					'<tr>' + 
 						'<td>' + element.produktas + '</td>' +
@@ -19,6 +23,7 @@ var bendraSuma = 0;
 							'title="Pašalinti">' + '</span>' + '</a>' + '</td>' +
 					'</tr>');
 				}else{
+				$('#papildyti-btn').attr('class', 'btn btn-xs btn-primary disabled');
 					$('#modalTable').append(
 					'<tr>' + 
 						'<td>' + element.produktas + '</td>' +
@@ -27,8 +32,14 @@ var bendraSuma = 0;
 						'<td>' + suma.toFixed(2) + '</td>' +
 						'</tr>');						
 				}
+			uzs = element.id;
+			nuolD = element.nuolaida;
+			sta = element.statusas;
 			});
 			document.getElementById('bendra_suma').innerHTML =  "Bendra pardavimo suma: " + bendraSuma.toFixed(2) + " LTL";
-		});	
-		
+			
+	})
 }
+$(document).on("click", "#papildyti-btn", function(event){
+		window.location='/order/add2/' + uzs + '/' + nuolD;	
+});
