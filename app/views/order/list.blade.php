@@ -24,6 +24,7 @@
                         <th>Klinika</th>
                         <th>Data</th>
                         <th>Statusas</th>
+                        <th class="text-center">Dydis</th>
                       </tr>
                   </thead>
 
@@ -52,6 +53,9 @@
                           {{"Neįvykdytas"}}
                       </td>
                       @endif
+                      <td class="col-sm-1 text-center">
+                          {{{ $item->orders()->count() }}}
+                      </td>
                         <td class="col-sm-2 text-right">
                             <button class="btn btn-xs btn-primary" onClick = "getDetails({{$item->id}})"
                                     data-toggle="modal"  data-target="#aprasymas" id="aprasymas-btn"
