@@ -32,4 +32,5 @@ return array(
     'fName' => 'Name Surname',
     'purp' => 'Visit purpose',
     'visitDesc' => 'Visit description',
+    'orders' => 'Orders',
 );

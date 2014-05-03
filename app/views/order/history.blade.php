@@ -10,9 +10,9 @@
     <table class="table table-hover">
         <thead >
         <tr>
-            <th>Užsakovas</th>
-            <th>Klinika</th>
-            <th>Data</th>
+            <th>{{{trans('table.client')}}}</th>
+            <th>{{{trans('table.clinic')}}}</th>
+            <th>{{{trans('table.date')}}}</th>
         </tr>
         </thead>
 
@@ -29,6 +29,7 @@
             </td>
             <td class="col-sm-1 text-right">
                 <button class="btn btn-xs btn-primary" onClick = "getDetails({{$item->id}})"
+                        value = "{{{trans('table.orderTotal')}}}"
                         data-toggle="modal" data-target="#aprasymas" id="aprasymas-btn">
                     <span class="glyphicon glyphicon-search" rel="tooltip" data-placement="top" title="Peržiūrėti užsakymą"></span>
                 </button>
@@ -41,7 +42,7 @@
 </div>
 <p>  {{ $items->links() }} </p>
 <a href="/order" class="btn btn-primary" ><span class="glyphicon glyphicon-folder-open"></span>
-    Užsakymai</a>
+    {{{trans('table.orders')}}}</a>
 
 
 <div class="modal fade" id="aprasymas" tabindex="-1" role="dialog" aria-labelledby="aprasymas" aria-hidden="true">
@@ -49,15 +50,15 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">Užsakymo aprašymas</h4>
+                <h3 class="modal-title" style="text-align: center" id="myModalLabel">{{{trans('table.orderDesc')}}}</h3>
             </div>
             <div class="modal-body" id="modal-body">
                 <table  class="table table-hover" >
                     <thead>
-                    <th>Produktas</th>
-                    <th>Kaina vnt.</th>
-                    <th>Kiekis</th>
-                    <th>Suma</th>
+                    <th>{{{trans('table.item')}}}</th>
+                    <th>{{{trans('table.price')}}}</th>
+                    <th>{{{trans('table.quan')}}}</th>
+                    <th>{{{trans('table.total')}}}</th>
                     </thead>
                     <tbody id = "modalTable">
 

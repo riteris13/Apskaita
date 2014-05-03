@@ -32,4 +32,5 @@ return array(
     'fName' => 'Vardas pavardė',
     'purp' => 'Vizito tikslas',
     'visitDesc' => 'Vizito aprašymas',
+    'orders' => 'Užsakymai',
 );
