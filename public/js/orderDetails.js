@@ -44,7 +44,7 @@ var bendraSuma = 0;
 }
 jQuery(document).ready(function($){ 
 	$("button[name='papildyti-btn']").click(function() {
-		window.location='/order/add2/' + uzs + '/' + nuolD;	
+		window.location='/order/add2/' + uzs + '/' + nuolD + '/0';	
 	});
 		
 });

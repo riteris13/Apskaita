@@ -26,7 +26,7 @@ array('class'=>'form-control', 'id'=>'produktas', 'disabled' => 'true')); }}
 <text for="nuolaidaPro" id = "nuolPtext"> Produktui </text><br>
 
 <h4>Užsakymui taikoma nuolaida %</h4>
-{{Form::text('nuolaida', '', array('class'=>'form-control', 'type'=>'text',
+{{Form::text('nuolaida', $nuolOrder, array('class'=>'form-control', 'type'=>'text',
 'onChange' => "calculatePrice();calculateTotal()", 'id' => 'nuolaida')); }}
 
 <!-- Neredaguojamas laukas -->

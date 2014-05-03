@@ -7,8 +7,9 @@ class OrderController extends BaseController{
     public function getAdd(){
         return View::make('order.add');
     }
-    public function getAdd2($orderID, $nuolD){
-        return View::make('order.additem')->with('orderID', $orderID)->with('nuolD', $nuolD);
+    public function getAdd2($orderID, $nuolD, $nuolOrder){
+        return View::make('order.additem')->with('orderID', $orderID)
+            ->with('nuolD', $nuolD)->with('nuolOrder', $nuolOrder);
     }
     public function getEdit($id){
         $order = Order::find($id);
@@ -58,7 +59,8 @@ class OrderController extends BaseController{
             $order = OrderApr::create($input);
             $order->save();
             $msg = 'Sėkmingai pridėjote produktą prie užsakymo';
-            return Redirect::to('order/add2/'.$input['uzsakymai_id'].'/'.$input['nuolD'])->with('success',$msg);
+            return Redirect::to('order/add2/'.$input['uzsakymai_id'].'/'.$input['nuolD'].'/'.$input['nuolaida'])
+                ->with('success',$msg);
         }
         return Redirect::to('order')->withErrors("Global error");
     }
