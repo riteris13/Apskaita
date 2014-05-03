@@ -52,7 +52,8 @@ array('class'=>'form-control', 'id'=>'produktas', 'disabled' => 'true')); }}
 &nbsp;
 {{Form::submit('Pridėti', array('class'=>'btn btn-primary', 'name' => 'addMore')); }}
 &nbsp;
-{{Form::submit('Baigti', array('class'=>'btn btn-primary', 'name' => 'Close')); }}
+{{Form::submit('Baigti', array('class'=>'btn btn-primary', 'name' => 'Close',
+'onclick' => 'if(!confirm("Ar tikrai norite nutraukti užsakymo pildymą?")){return false;};')); }}
 {{ Form::close() }}
 
 <!--
