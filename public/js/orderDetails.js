@@ -41,9 +41,9 @@ var bendraSuma = 0;
 				}
 			uzs = element.uzsakymai_id;
 			nuolD = element.nuolaida;
-			sta = element.statusas;
 			});
-			document.getElementById('bendra_suma').innerHTML =  "Bendra pardavimo suma: " + bendraSuma.toFixed(2) + " LTL";
+			document.getElementById('bendra_suma').innerHTML = document.getElementById('aprasymas-btn').value
+				+ bendraSuma.toFixed(2) + " LTL";
 			
 	})
 }
