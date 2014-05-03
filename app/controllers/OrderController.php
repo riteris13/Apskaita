@@ -107,6 +107,8 @@ class OrderController extends BaseController{
         return Redirect::to('order')->with('success',$msg);
     }
     public function getRemove($id){
+        $items = OrderApr::where('uzsakymai_id', '=', $id);
+        $items->delete();
         $model = Order::findOrFail($id);
         $msg =  'Sėkmingai pašalinote užsakymą, kurį pateikė '.$model->doctor->fullName;
         $model->delete();
