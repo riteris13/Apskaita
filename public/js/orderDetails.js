@@ -10,7 +10,7 @@ var bendraSuma = 0;
 			var suma = element.pir_kaina * element.kiekis;
 			bendraSuma += suma;
 				if(element.statusas == 0){
-				$('#papildyti-btn').attr('class', 'btn btn-xs btn-primary');
+				$("button[name='papildyti-btn']").attr('class', 'btn btn-sm btn-primary');
 					$('#modalTable').append(
 					'<tr>' + 
 						'<td>' + element.produktas + '</td>' +
@@ -18,12 +18,14 @@ var bendraSuma = 0;
 						'<td>' + element.kiekis + '</td>' + 
 						'<td>' + suma.toFixed(2) + '</td>' +				
 						'<td>' +		
-							'<a class="btn btn-xs btn-danger" href="/order/removeitem/' + element.id + '">' +
+							'<a onClick="return confirm(\'Ar tikrai norite pašalinti ' + 
+							element.produktas + ' iš užsakymo?\')" class="btn btn-xs btn-danger"' + 
+							'href="/order/removeitem/' + element.id + '">' +
 							'<span class="glyphicon glyphicon-trash" ' + 
 							'title="Pašalinti">' + '</span>' + '</a>' + '</td>' +
 					'</tr>');
 				}else{
-				$('#papildyti-btn').attr('class', 'btn btn-xs btn-primary disabled');
+				$("button[name='papildyti-btn']").attr('class', 'btn btn-sm btn-primary disabled');
 					$('#modalTable').append(
 					'<tr>' + 
 						'<td>' + element.produktas + '</td>' +
