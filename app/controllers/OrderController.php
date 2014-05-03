@@ -51,7 +51,7 @@ class OrderController extends BaseController{
             return Redirect::to('order')->with('success',$msg);
         }
         $input['pir_kaina'] = ($input['kaina'] * (1-$input['nuolaida']*0.01));
-        $validator = Validator::make($input, Order::$rulesItem, Order::$messages);
+        $validator = Validator::make($input, OrderApr::$rulesAdd, Order::$messages);
         if($validator->fails()){
             return Redirect::back()
                 ->withInput()
@@ -78,7 +78,7 @@ class OrderController extends BaseController{
             $msg = 'Sėkmingai uždarėte produkto redagavimą';
             return Redirect::to('order')->with('success',$msg);
         }
-        $validator = Validator::make($input, OrderApr::$rules, OrderApr::$messages);
+        $validator = Validator::make($input, OrderApr::$rulesEdit, OrderApr::$messages);
         if($validator->fails()){
             return Redirect::back()
                 ->withInput()
@@ -87,48 +87,31 @@ class OrderController extends BaseController{
         if(isset($input['Submit'])){
             $order = OrderApr::find($input['id']);
             $order->update($input);
-            $msg = 'Sėkmingai atnaujinote produktą iš užsakymo';
+            $msg = 'Sėkmingai atnaujinote produktą iš '.$order->order->data
+                .'-os užsakymo, kurį pateikė '.$order->order->doctor->fullname;
             return Redirect::to('order')->with('success',$msg);
         }
         return Redirect::to('order')->withErrors("Global error");
     }
     public function postEdit(){
         $input = Input::all();
-        $rules = Order::$editRules;
-        $messages = "";
-        for ($i=0;$i<count($input['produktas_id']);$i++)
-        {
-            $messages["kiekis.{$i}.required"] = 'Kiekis: Neįvesti duomenys.';
-            $messages["kiekis.{$i}.numeric"] = 'Kiekis gali būti tik skaičiai.';
-            $messages["kiekis.{$i}.min"] = 'Kiekis negali būti mažiau nei 1.';
-            $messages["kiekis.{$i}.max"] = 'Kiekis negali būti daugiau už 32000.';
-            $messages["pir_kaina.{$i}.min"] = 'Kaina negali būti mažiau nei 0.';
-            $messages["pir_kaina.{$i}.max"] = 'Kaina negali būti daugiau už 99999999.99.';
-            $messages["pir_kaina.{$i}.required"] = 'Kaina: Neįvesti duomenys.';
-            $messages["pir_kaina.{$i}.numeric"] = 'Kaina gali būti tik skaičiai.';
-            $rules["kiekis.{$i}"] = 'required|numeric|max:32000|min:1';
-            $rules["pir_kaina.{$i}"] = 'required|numeric|max:99999999.99|min:0';
+        if(isset($input['Close'])){
+            $msg = 'Sėkmingai uždarėte užsakymo redagavimą';
+            return Redirect::to('order')->with('success',$msg);
         }
-        $validator = Validator::make($input, $rules, $messages);
+        $validator = Validator::make($input, Order::$rules, Order::$messages);
         if($validator->fails()){
             return Redirect::back()
-                ->withInput(Input::except(array('kiekis', 'pir_kaina', 'produktas_id', 'id')))
-                ->withErrors($validator)
-                ->with('kiekis', Input::get('kiekis'));
+                ->withInput()
+                ->withErrors($validator);
         }
-        $order = Order::find($input['order_id']);
-        $order->update($input);
-        $i = 0;
-        foreach($input['id'] as $id){
-            $orders = OrderApr::find($id);
-            $orders->kiekis = $input['kiekis'][$i];
-            $orders->pir_kaina = $input['pir_kaina'][$i];
-            $orders->produktas_id = $input['produktas_id'][$i];
-            $orders->save();
-            $i++;
+        if(isset($input['Submit'])){
+            $order = Order::find($input['id']);
+            $order->update($input);
+            $msg = 'Sėkmingai atnaujinote užsakymą, kurį pateikė: '.$order->doctor->fullName;
+            return Redirect::to('order')->with('success',$msg);
         }
-        $msg = 'Sėkmingai atnaujinote užsakymą, kurį pateikė: '.$order->doctor->fullName;
-        return Redirect::to('order')->with('success',$msg);
+        return Redirect::to('order')->withErrors("Global error");
     }
     public function getRemove($id){
         $items = OrderApr::where('uzsakymai_id', '=', $id);
