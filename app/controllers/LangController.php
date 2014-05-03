@@ -7,6 +7,6 @@ class LangController extends BaseController {
     public function getSet($lng){
         Session::put('lang', $lng);
 
-        return Redirect::to('/');
+        return Redirect::back();
     }
 }
