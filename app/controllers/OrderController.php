@@ -21,7 +21,6 @@ class OrderController extends BaseController{
             $msg = 'Sėkmingai atšaukėte užsakymo sukūrimą';
             return Redirect::to('order')->with('success',$msg);
         }
-        $input['pir_kaina'] = $input['kaina'] * (1-$input['nuolaida']*0.01);
         $validator = Validator::make($input, Order::$rules, Order::$messages);
         if($validator->fails()){
             return Redirect::back()
@@ -30,11 +29,16 @@ class OrderController extends BaseController{
         }
         $order = Order::create($input);
         $order->save();
-        $input['uzsakymai_id'] = $order->id;
-        $items = OrderApr::create($input);
-        $items->save();
-        $msg = 'Sėkmingai pridėjote užsakymą, kurį pateikė: '.$order->doctor->fullName;
-        return Redirect::to('order')->with('success',$msg);
+        if(isset($input['Submit'])){
+            $msg = 'Sėkmingai pridėjote užsakymą, kurį pateikė: '.$order->doctor->fullName;
+            return Redirect::to('order')->with('success',$msg);
+        }
+        if(isset($input['addMore'])){
+            $msg = 'Sėkmingai pridėjote užsakymą, kurį pateikė: '.$order->doctor->fullName;
+            return Redirect::to('order/add2/'.$order['id'].'/'.$order->doctor->nuolaida.'/0')
+                ->with('success',$msg);
+        }
+        return Redirect::to('order')->withErrors("Global error");
     }
     public function postAdd2(){
         $input = Input::all();
@@ -104,7 +108,7 @@ class OrderController extends BaseController{
     }
     public function getRemove($id){
         $model = Order::findOrFail($id);
-        $msg =  'Sėkmingai pašalinote užsakymą ID '.$model->id;
+        $msg =  'Sėkmingai pašalinote užsakymą, kurį pateikė '.$model->doctor->fullName;
         $model->delete();
         return Redirect::to('order')->with('success',$msg);
     }
