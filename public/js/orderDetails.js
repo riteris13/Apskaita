@@ -32,7 +32,7 @@ var bendraSuma = 0;
 						'<td>' + suma.toFixed(2) + '</td>' +
 						'</tr>');						
 				}
-			uzs = element.id;
+			uzs = element.uzsakymai_id;
 			nuolD = element.nuolaida;
 			sta = element.statusas;
 			});
