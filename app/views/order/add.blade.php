@@ -17,44 +17,6 @@
         {{Form::select('daktaras_id', array('default' => 'Pirmiausia pasirinkite kliniką'), null,
                     array('class'=>'form-control', 'id'=>'daktaras', 'disabled' => 'true')); }}
 
-        <h4>Kategorija</h4>
-        {{Form::select('kategorija_id', array('default' => 'Pasirinkite kategoriją') +
-                    Category::all()->lists('pavadinimas', 'id'), null, array('class'=>'form-control', 'id'=>'category')); }}
-
-        <h4>Produktas</h4>
-        {{Form::select('produktas_id', array('default' => 'Pirmiausia pasirinkite kategoriją'), null,
-                    array('class'=>'form-control', 'id'=>'produktas', 'disabled' => 'true')); }}
-
-        <h4>Vieneto kaina</h4>
-        {{Form::text('kaina', '', array('class'=>'form-control', 'type'=>'text',
-                    'onChange' => "calculatePrice();calculateTotal()", 'id' => 'kaina')); }}
-
-        <h4>Nuolaidos %</h4>
-        {{ Form::radio('nuolaidos', '', '', array('id' => 'nuolaidaD')) }}
-        <text for="nuolaidaD" id = "nuolDtext"> Daktarui </text><br>
-        {{ Form::radio('nuolaidos', '', '', array('id' => 'nuolaidaP')) }}
-        <text for="nuolaidaPro" id = "nuolPtext"> Produktui </text><br>
-
-        <h4>Užsakymui taikoma nuolaida %</h4>
-        {{Form::text('nuolaida', '', array('class'=>'form-control', 'type'=>'text',
-                    'onChange' => "calculatePrice();calculateTotal()", 'id' => 'nuolaida')); }}
-
-        <!-- Neredaguojamas laukas -->
-        <div id="pir_kaina"></div>
-
-        {{--
-        <!-- Redaguojamas laukas
-        <input type="text"  size = 96%  id="pir_kaina">-->
-        <h4>Vieneto pardavimo kaina</h4>
-        {{Form::text('pir_kaina', '', array('class'=>'form-control', 'type'=>'text', 'id'=>'pir_kaina')); }}
-        --}}
-
-        <h4>Kiekis</h4>
-        {{Form::text('kiekis', '', array('class'=>'form-control', 'type'=>'text','onChange' => "calculateTotal()",
-                    'id' => 'kiekis' )); }}
-
-        <div id="bendra_suma"></div>
-
         <h4>Užsakymo data</h4>
         {{ Form::text('data', '' , array('class'=>'date', 'type'=>'text')) }}
         <script>
@@ -62,10 +24,14 @@
                 format: 'yyyy-mm-dd'
             });
         </script>
-
-        <br>
-
-        {{Form::submit('Pridėti', array('class'=>'btn btn-primary')); }}
+<br>
+        {{Form::submit('Pridėti ir baigti', array('class'=>'btn btn-primary', 'name' => 'Submit',
+            'onclick' => 'if(!confirm("Ar tikrai norite sukurti tuščią užsakymą?")){return false;};')); }}
+        &nbsp;
+        {{Form::submit('Pridėti produktų', array('class'=>'btn btn-primary', 'name' => 'addMore')); }}
+        &nbsp;
+        {{Form::submit('Baigti', array('class'=>'btn btn-primary', 'name' => 'Close',
+        'onclick' => 'if(!confirm("Ar tikrai norite nutraukti užsakymo sukūrimą?")){return false;};')); }}
     {{ Form::close() }}
 
 @stop
