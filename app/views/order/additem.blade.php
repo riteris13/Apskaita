@@ -47,7 +47,15 @@ array('class'=>'form-control', 'id'=>'produktas', 'disabled' => 'true')); }}
 
 <br>
 {{Form::hidden('uzsakymai_id', $orderID) }}
-{{Form::submit('Pridėti produktą', array('class'=>'btn btn-primary')); }}
+{{Form::hidden('nuolD', $nuolD) }}
+{{Form::submit('Pridėti ir baigti', array('class'=>'btn btn-primary', 'name' => 'Submit')); }}
+&nbsp;
+{{Form::submit('Pridėti', array('class'=>'btn btn-primary', 'name' => 'addMore')); }}
+&nbsp;
+{{Form::submit('Baigti', array('class'=>'btn btn-primary', 'name' => 'Close')); }}
 {{ Form::close() }}
 
+<!--
+    <button type="button" class="btn btn-primary" id="produktas-btn">Pridėti Produktą</button>
+-->
 @stop

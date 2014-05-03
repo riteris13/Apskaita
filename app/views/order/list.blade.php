@@ -123,9 +123,12 @@
                 </table>
                 <h4 id="bendra_suma"> </h4>
                 <div class="modal-footer">
-                    <a class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-plus-sign"
-                        title="Papildyti užsakymą" id="papildyti-btn" >Papildyti užsakymą</span></a>
-                    <button type="button" class="btn btn-xs btn-primary" data-dismiss="modal">Uždaryti</button>
+                    <button
+                        type="button" class="btn btn-sm btn-primary" name="papildyti-btn">Papildyti užsakymą
+                    </button>
+                    <button
+                        type="button" class="btn btn-sm btn-primary" data-dismiss="modal">Uždaryti
+                    </button>
                 </div>
             </div>
 

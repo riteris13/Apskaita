@@ -40,6 +40,9 @@ var bendraSuma = 0;
 			
 	})
 }
-$(document).on("click", "#papildyti-btn", function(event){
+jQuery(document).ready(function($){ 
+	$("button[name='papildyti-btn']").click(function() {
 		window.location='/order/add2/' + uzs + '/' + nuolD;	
+	});
+		
 });

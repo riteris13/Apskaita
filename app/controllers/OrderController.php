@@ -33,6 +33,10 @@ class OrderController extends BaseController{
     }
     public function postAdd2(){
         $input = Input::all();
+        if(isset($input['Close'])){
+            $msg = 'Sėkmingai uždarėte užsakymo pildymą';
+            return Redirect::to('order')->with('success',$msg);
+        }
         $input['pir_kaina'] = ($input['kaina'] * (1-$input['nuolaida']*0.01));
         $validator = Validator::make($input, Order::$rulesItem, Order::$messages);
         if($validator->fails()){
@@ -40,10 +44,19 @@ class OrderController extends BaseController{
                 ->withInput()
                 ->withErrors($validator);
         }
-        $order = OrderApr::create($input);
-        $order->save();
-        $msg = 'Sėkmingai pridėjote produktą prie užsakymo';
-        return Redirect::to('order')->with('success',$msg);
+        if(isset($input['Submit'])){
+            $order = OrderApr::create($input);
+            $order->save();
+            $msg = 'Sėkmingai pridėjote produktą prie užsakymo';
+            return Redirect::to('order')->with('success',$msg);
+        }
+        if(isset($input['addMore'])){
+            $order = OrderApr::create($input);
+            $order->save();
+            $msg = 'Sėkmingai pridėjote produktą prie užsakymo';
+            return Redirect::to('order/add2/'.$input['uzsakymai_id'].'/'.$input['nuolD'])->with('success',$msg);
+        }
+        return Redirect::to('order')->withErrors("Global error");
     }
     public function postEdit(){
         $input = Input::all();
