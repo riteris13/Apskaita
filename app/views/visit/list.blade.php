@@ -10,9 +10,9 @@
         <table class="table table-hover">
             <thead>
                 <tr>
-                    <th>Gydytojas</th>
-                    <th>Tikslas</th>
-                    <th>Data</th>
+                    <th>{{{trans('table.fName')}}}</th>
+                    <th>{{{trans('table.purp')}}}</th>
+                    <th>{{{trans('table.date')}}}</th>
                 </tr>
             </thead>
             <tbody >
@@ -31,15 +31,15 @@
                     <button class="btn btn-xs btn-primary" onClick = "getVisitDetails({{$item->id}})"
                             data-toggle="modal"  data-target="#aprasymas" id="aprasymas-btn"
                             data-keyboard="false" data-backdrop="static">
-                        <span class="glyphicon glyphicon-search" rel="tooltip" data-placement="top" title="Peržiūrėti vizitą"></span>
+                        <span class="glyphicon glyphicon-search" rel="tooltip" data-placement="top" title="{{{trans('table.viewVisit')}}}"></span>
                     </button>
                     <a
-                        class="btn btn-xs btn-primary" rel="tooltip" data-placement="top" title="Redaguoti" href="/visit/edit/{{$item->id}}">
+                        class="btn btn-xs btn-primary" rel="tooltip" data-placement="top" title="{{{trans('table.edit')}}}" href="/visit/edit/{{$item->id}}">
                         <span class="glyphicon glyphicon-pencil"></span>
                     </a>
                     <a
                         onclick="return confirm('Ar tikrai norite pašalinti apsilankymą?')"
-                        class="btn btn-xs btn-danger" rel="tooltip" data-placement="top" title="Redaguoti" href="/visit/remove/{{$item->id}}">
+                        class="btn btn-xs btn-danger" rel="tooltip" data-placement="top" title="{{{trans('table.del')}}}" href="/visit/remove/{{$item->id}}">
                         <span class="glyphicon glyphicon-trash"></span>
                     </a>
                 </td>
@@ -50,20 +50,20 @@
         </table>
     </div>
     <p>  {{ $items->links() }} </p>
-    <a href="/visit/add" class="btn btn-primary" ><span class="glyphicon glyphicon-plus"></span> Pridėti naują</a>
+    <a href="/visit/add" class="btn btn-primary" ><span class="glyphicon glyphicon-plus"></span>{{{trans('table.add')}}}</a>
 
 <div class="modal fade" id="aprasymas" tabindex="-1" role="dialog" aria-labelledby="aprasymas" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h3 class="modal-title" style="text-align: center" id="myModalLabel">Vizito aprašymas</h3>
+                <h3 class="modal-title" style="text-align: center" id="myModalLabel">{{{trans('table.visitDesc')}}}</h3>
             </div>
             <div class="modal-body" id="modal-body">
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Uždaryti</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">{{{trans('table.close')}}}</button>
             </div>
         </div>
     </div>

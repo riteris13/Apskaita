@@ -5,7 +5,7 @@ return array(
     'arch' => 'Archyvas',
     'sort' => 'Rūšiuoti',
     'add' => 'Pridėti naują',
-    'fName' => 'Užsakovas',
+    'client' => 'Užsakovas',
     'clinic' => 'Klinika',
     'date' => 'Data',
     'status' => 'Statusas',
@@ -28,4 +28,8 @@ return array(
     'cnlOrder' => 'Atšaukti įvykdymą',
     'toArch' => 'Archyvuoti užsakymą',
     'orderTotal' => 'Bendra pardavimo suma: ',
+    'viewVisit' => 'Peržiūrėti vizitą',
+    'fName' => 'Vardas pavardė',
+    'purp' => 'Vizito tikslas',
+    'visitDesc' => 'Vizito aprašymas',
 );

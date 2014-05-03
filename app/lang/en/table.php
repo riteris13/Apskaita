@@ -7,7 +7,7 @@ return array(
     'add' => 'Add new',
     'clinic' => 'Clinic',
     'date' => 'Date',
-    'fName' => 'Client',
+    'client' => 'Client',
     'status' => 'Status',
     'size' => 'Size',
     'close' => 'Close',
@@ -28,4 +28,8 @@ return array(
     'cnlOrder' => 'Cancel completion',
     'toArch' => 'Archive order',
     'orderTotal' => 'The total amount of sales: ',
+    'viewVisit' => 'View visit',
+    'fName' => 'Name Surname',
+    'purp' => 'Visit purpose',
+    'visitDesc' => 'Visit description',
 );
