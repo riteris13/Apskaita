@@ -10,7 +10,7 @@
 
     {{ Form::open(array('url' => 'visit/add', 'class'=>'form-default')) }}
 
-        <h4>Klinika</h4>
+        <h4>{{{trans('table.clinic')}}}</h4>
         {{Form::select('klinika_id', array('default' => 'Pasirinkite Kliniką') + Clinic::all()->lists('pavadinimas', 'id'),
         null, array('class'=>'form-control', 'id'=>'klinika')); }}
 

@@ -49,4 +49,7 @@ return array(
     'allCatList' => 'Visų kategorijų produktų sąrašas',
     'sel' => 'Pasirinkti',
     'proList' => 'Produktų sąrašas iš kategorijos: ',
+    'orderDate' => 'Užsakymo data',
+    'submit' => 'Pridėti ir baigti',
+    'addMore' => 'Pridėti dar produktų',
 );

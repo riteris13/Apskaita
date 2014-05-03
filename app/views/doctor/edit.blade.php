@@ -12,7 +12,7 @@
     <h4>Pavardė</h4>
     {{Form::text('pavarde', $doctor['pavarde'], array('class'=>'form-control', 'type'=>'text')); }}
 
-    <h4>Klinika</h4>
+    <h4>{{{trans('table.clinic')}}}</h4>
     {{Form::select('klinika_id', Clinic::lists('pavadinimas', 'id'), $doctor['klinika_id'], array('class'=>'form-control') ); }}
 
     <h4>Detalės</h4>
@@ -24,13 +24,13 @@
     <h4>Kaip pritraukti</h4>
     {{Form::textarea('kaip_pritraukti',  $doctor['kaip_pritraukti'], array('class'=>'form-control', 'type'=>'textarea')); }}
 
-    <h4>Taikoma nuolaida %</h4>
+    <h4>{{{trans('table.discount')}}}</h4>
     {{Form::text('nuolaida',  $doctor['nuolaida'], array('class'=>'form-control', 'type'=>'text')); }}
 
-    <h4>Potencialumas %</h4>
+    <h4>{{{trans('table.pot')}}}</h4>
     {{Form::text('potencialumas',  $doctor['potencialumas'], array('class'=>'form-control', 'type'=>'text')); }}
 
-    <h4>Įvertinimas</h4>
+    <h4>{{{trans('table.score')}}}</h4>
     {{Form::text('ivertinimas',  $doctor['ivertinimas'], array('class'=>'form-control', 'type'=>'text')); }}
     <br>
     <br>

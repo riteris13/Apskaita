@@ -50,4 +50,7 @@ return array(
     'allCatList' => 'Item list of all categories',
     'sel' => 'Select',
     'proList' => 'List of products by category',
+    'orderDate' => 'Order date',
+    'submit' => 'Add and close',
+    'addMore' => 'Add more items',
 );

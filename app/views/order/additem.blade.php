@@ -1,17 +1,20 @@
 @extends('layout.core')
 
 <?php $header = trans('header.order.addItem'); ?>
+<?php $submit = trans('table.submit'); ?>
+<?php $addMore = trans('table.addMore'); ?>
+<?php $close = trans('table.close'); ?>
 
 @section('content')
 <script src="/js/addOrderItem.js"></script>
 
 {{ Form::open(array('url' => 'order/add2', 'class'=>'form-default', 'id'=>'addOrderItem')) }}
 
-<h4>Kategorija</h4>
+<h4>{{{trans('table.cat')}}}</h4>
 {{Form::select('kategorija_id', array('default' => 'Pasirinkite kategoriją') +
 Category::all()->lists('pavadinimas', 'id'), null, array('class'=>'form-control', 'id'=>'category')); }}
 
-<h4>Produktas</h4>
+<h4>{{{trans('table.item')}}}</h4>
 {{Form::select('produktas_id', array('default' => 'Pirmiausia pasirinkite kategoriją'), null,
 array('class'=>'form-control', 'id'=>'produktas', 'disabled' => 'true')); }}
 
@@ -23,7 +26,7 @@ array('class'=>'form-control', 'id'=>'produktas', 'disabled' => 'true')); }}
 {{ Form::radio('nuolaidos', $nuolD, '', array('id' => 'nuolaidaD')) }}
 <text for="nuolaidaD" id = "nuolDtext"> Daktarui siūloma nuolaida {{$nuolD}} %</text><br>
 {{ Form::radio('nuolaidos', '', '', array('id' => 'nuolaidaP')) }}
-<text for="nuolaidaPro" id = "nuolPtext"> Produktui </text><br>
+<text for="nuolaidaPro" id = "nuolPtext"> Produktui siūloma nuolaida </text><br>
 
 <h4>Produktui taikoma nuolaida %</h4>
 {{Form::text('nuolaida', $nuolOrder, array('class'=>'form-control', 'type'=>'text',
@@ -39,7 +42,7 @@ array('class'=>'form-control', 'id'=>'produktas', 'disabled' => 'true')); }}
 {{Form::text('pir_kaina', '', array('class'=>'form-control', 'type'=>'text', 'id'=>'pir_kaina')); }}
 --}}
 
-<h4>Kiekis</h4>
+<h4>{{{trans('table.quan')}}}</h4>
 {{Form::text('kiekis', '', array('class'=>'form-control', 'type'=>'text','onChange' => "calculateTotal()",
 'id' => 'kiekis' )); }}
 
@@ -48,11 +51,11 @@ array('class'=>'form-control', 'id'=>'produktas', 'disabled' => 'true')); }}
 <br>
 {{Form::hidden('uzsakymai_id', $orderID) }}
 {{Form::hidden('nuolD', $nuolD) }}
-{{Form::submit('Pridėti ir baigti', array('class'=>'btn btn-primary', 'name' => 'Submit')); }}
+{{Form::submit($submit, array('class'=>'btn btn-primary', 'name' => 'Submit')); }}
 &nbsp;
-{{Form::submit('Pridėti', array('class'=>'btn btn-primary', 'name' => 'addMore')); }}
+{{Form::submit($addMore, array('class'=>'btn btn-primary', 'name' => 'addMore')); }}
 &nbsp;
-{{Form::submit('Baigti', array('class'=>'btn btn-primary', 'name' => 'Close',
+{{Form::submit($close, array('class'=>'btn btn-primary', 'name' => 'Close',
 'onclick' => 'if(!confirm("Ar tikrai norite nutraukti užsakymo pildymą?")){return false;};')); }}
 {{ Form::close() }}
 

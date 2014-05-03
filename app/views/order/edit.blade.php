@@ -8,10 +8,10 @@
 
     {{ Form::model($order, array('url' => 'order/edit', 'class'=>'form-default')) }}
 
-        <h4>Klientas</h4>
+        <h4>{{{trans('table.client')}}}</h4>
         {{Form::select('daktaras_id', Doctor::all()->lists('fullName', 'id'), $order['daktaras_id'], array('class'=>'form-control')); }}
 
-        <h4>Užsakymo data</h4>
+        <h4>{{{trans('table.orderDate')}}}</h4>
         {{ Form::text('data', $order['data'] , array('class'=>'date', 'type'=>'text')) }}
         <script>
             $(".date").dateinput({
