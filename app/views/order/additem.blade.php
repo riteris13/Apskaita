@@ -25,7 +25,7 @@ array('class'=>'form-control', 'id'=>'produktas', 'disabled' => 'true')); }}
 {{ Form::radio('nuolaidos', '', '', array('id' => 'nuolaidaP')) }}
 <text for="nuolaidaPro" id = "nuolPtext"> Produktui </text><br>
 
-<h4>Užsakymui taikoma nuolaida %</h4>
+<h4>Produktui taikoma nuolaida %</h4>
 {{Form::text('nuolaida', $nuolOrder, array('class'=>'form-control', 'type'=>'text',
 'onChange' => "calculatePrice();calculateTotal()", 'id' => 'nuolaida')); }}
 

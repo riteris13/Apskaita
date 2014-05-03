@@ -17,12 +17,17 @@ var bendraSuma = 0;
 						'<td>' + element.pir_kaina + '</td>' + 
 						'<td>' + element.kiekis + '</td>' + 
 						'<td>' + suma.toFixed(2) + '</td>' +				
-						'<td>' +		
+						'<td class="col-sm-1 text-right">' +		
+							'<a onClick="return confirm(\'Ar tikrai norite užsakyme redaguoti produktą: ' + 
+								element.produktas + ' ?\')" class="btn btn-xs btn-primary"' + 
+								'href="/order/edititem/' + element.id + '">' +
+								'<span class="glyphicon glyphicon-pencil" ' + 
+								'title="Redaguoti">' + '</span>' + '</a>' + '&nbsp' + 
 							'<a onClick="return confirm(\'Ar tikrai norite pašalinti ' + 
 							element.produktas + ' iš užsakymo?\')" class="btn btn-xs btn-danger"' + 
-							'href="/order/removeitem/' + element.id + '">' +
-							'<span class="glyphicon glyphicon-trash" ' + 
-							'title="Pašalinti">' + '</span>' + '</a>' + '</td>' +
+								'href="/order/removeitem/' + element.id + '">' +
+								'<span class="glyphicon glyphicon-trash" ' + 
+								'title="Pašalinti">' + '</span>' + '</a>' + '</td>' +							
 					'</tr>');
 				}else{
 				$("button[name='papildyti-btn']").attr('class', 'btn btn-sm btn-primary disabled');

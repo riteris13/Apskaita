@@ -15,6 +15,10 @@ class OrderController extends BaseController{
         $order = Order::find($id);
         return View::make('order.edit')->with('order', $order);
     }
+    public function getEdititem($id){
+        $order = OrderApr::find($id);
+        return View::make('order.edititem')->with('order', $order);
+    }
     public function postAdd(){
         $input = Input::all();
         if(isset($input['Close'])){
@@ -30,7 +34,7 @@ class OrderController extends BaseController{
         $order = Order::create($input);
         $order->save();
         if(isset($input['Submit'])){
-            $msg = 'Sėkmingai pridėjote užsakymą, kurį pateikė: '.$order->doctor->fullName;
+            $msg = 'Sėkmingai sukūrėte užsakymą, kurį pateikė: '.$order->doctor->fullName;
             return Redirect::to('order')->with('success',$msg);
         }
         if(isset($input['addMore'])){
@@ -65,6 +69,26 @@ class OrderController extends BaseController{
             $msg = 'Sėkmingai pridėjote produktą prie užsakymo';
             return Redirect::to('order/add2/'.$input['uzsakymai_id'].'/'.$input['nuolD'].'/'.$input['nuolaida'])
                 ->with('success',$msg);
+        }
+        return Redirect::to('order')->withErrors("Global error");
+    }
+    public function postEdititem(){
+        $input = Input::all();
+        if(isset($input['Close'])){
+            $msg = 'Sėkmingai uždarėte produkto redagavimą';
+            return Redirect::to('order')->with('success',$msg);
+        }
+        $validator = Validator::make($input, OrderApr::$rules, OrderApr::$messages);
+        if($validator->fails()){
+            return Redirect::back()
+                ->withInput()
+                ->withErrors($validator);
+        }
+        if(isset($input['Submit'])){
+            $order = OrderApr::find($input['id']);
+            $order->update($input);
+            $msg = 'Sėkmingai atnaujinote produktą iš užsakymo';
+            return Redirect::to('order')->with('success',$msg);
         }
         return Redirect::to('order')->withErrors("Global error");
     }
