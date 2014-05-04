@@ -1,47 +1,48 @@
 @extends('layout.core')
 
 <?php $header = trans('header.category.add'); ?>
+<?php $btn = trans('table.addBtn'); ?>
 
 @section('content')
 
 {{ Form::open(array('url' => 'category/add', 'class'=>'form-default')) }}
 
-    <h4>Kategorijos pavadinimas</h4>
+    <h4>{{{trans('table.catName')}}}</h4>
         {{Form::text('pavadinimas', '', array('class'=>'form-control', 'type'=>'text')); }}
 
-    <h4>Pažymėkite reikalingus atributus:</h4>
-    Sistema
+    <h4>{{{trans('table.selAtr')}}}</h4>
+    {{{trans('table.sys')}}}
     {{Form::checkbox('sistema'); }}
     <br>
-    Slotas
+    {{{trans('table.slo')}}}
     {{Form::checkbox('slotas'); }}
     <br>
-    Kabliukai
+    {{{trans('table.kabl')}}}
     {{Form::checkbox('kabliukai'); }}
     <br>
-    Pusė
+    {{{trans('table.side')}}}
     {{Form::checkbox('puse'); }}
     <br>
-    Žandikaulis
+    {{{trans('table.jaw')}}}
     {{Form::checkbox('zandikaulis'); }}
     <br>
-    Sukimas
+    {{{trans('table.tor')}}}
     {{Form::checkbox('sukimas'); }}
     <br>
-    Rotacija
+    {{{trans('table.rot')}}}
     {{Form::checkbox('rotacija'); }}
     <br>
-    Dydis
+    {{{trans('table.size')}}}
     {{Form::checkbox('dydis'); }}
     <br>
-    Žvėrelis
+    {{{trans('table.ani')}}}
     {{Form::checkbox('zverelis'); }}
     <br>
-    Spalva
+    {{{trans('table.col')}}}
     {{Form::checkbox('spalva'); }}
     <br>
     <br>
-    {{Form::submit('Pridėti', array('class'=>'btn btn-primary')); }}
+    {{Form::submit($btn, array('class'=>'btn btn-primary')); }}
 {{ Form::close() }}
 
 @stop

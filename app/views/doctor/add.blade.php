@@ -1,21 +1,22 @@
 @extends('layout.core')
 
 <?php $header = trans('header.doctor.add'); ?>
+<?php $btn = trans('table.addBtn'); ?>
 
 @section('content')
 
 {{ Form::open(array('url' => 'doctor/add', 'class'=>'form-default')) }}
 
-    <h4>Vardas</h4>
+    <h4>{{{trans('table.pName')}}}</h4>
     {{Form::text('vardas', '', array('class'=>'form-control', 'type'=>'text')); }}
 
-    <h4>Pavardė</h4>
+    <h4>{{{trans('table.sName')}}}</h4>
     {{Form::text('pavarde', '', array('class'=>'form-control', 'type'=>'text')); }}
 
     <h4>{{{trans('table.clinic')}}}</h4>
     {{Form::select('klinika_id', Clinic::lists('pavadinimas', 'id'), null, array('class'=>'form-control')); }}
 
-    <h4>Detalės</h4>
+    <h4>{{{trans('table.det')}}}</h4>
     {{Form::textarea('detales', '', array('class'=>'form-control', 'type'=>'textarea')); }}
 
     <h4>Kodėl neperka iš mūsų</h4>
@@ -34,7 +35,7 @@
     {{Form::text('ivertinimas', '', array('class'=>'form-control', 'type'=>'text')); }}
     <br>
     <br>
-    {{Form::submit('Pridėti', array('class'=>'btn btn-primary')); }}
+    {{Form::submit($btn, array('class'=>'btn btn-primary')); }}
 
 {{ Form::close() }}
 

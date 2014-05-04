@@ -1,6 +1,7 @@
 @extends('layout.core')
 
 <?php $header = trans('header.clinic.edit'); ?>
+<?php $btn = trans('table.updBtn'); ?>
 
 @section('content')
 
@@ -12,7 +13,7 @@
     <h4>{{{trans('table.adr')}}}</h4>
     {{Form::text('adresas', $clinic['adresas'], array('class'=>'form-control', 'type'=>'text')); }}
 
-    <h4>Įmonės kodas</h4>
+    <h4>{{{trans('table.comCode')}}}</h4>
     {{Form::text('kodas', $clinic['kodas'], array('class'=>'form-control', 'type'=>'text')); }}
 
     <h4>{{{trans('table.pvm')}}}</h4>
@@ -21,7 +22,7 @@
     <br>
     {{ Form::hidden('id', $clinic['id']) }}
 
-    {{Form::submit('Atnaujinti', array('class'=>'btn btn-primary')); }}
+    {{Form::submit($btn, array('class'=>'btn btn-primary')); }}
 
 {{ Form::close() }}
 
