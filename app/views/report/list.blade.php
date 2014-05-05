@@ -25,6 +25,11 @@
                     <a href="/report/custinfo" class="btn btn-primary" ><span class="glyphicon glyphicon-plus"></span> Sudaryti</a>
                 </td>
                 </tr>
+                <td>Informacija apie kliento pirkimus</td>
+                <td class="text-right">
+                    <a href="/report/doctorpurchases" class="btn btn-primary" ><span class="glyphicon glyphicon-plus"></span> Sudaryti</a>
+                </td>
+                </tr>
             </tbody>
         </table>
     </div>
