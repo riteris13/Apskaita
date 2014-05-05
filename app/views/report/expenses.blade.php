@@ -1,5 +1,6 @@
 @extends('layout.core')
 @section('content')
+<script src="/js/expenses.js"></script>
 <style>
     .input-xs {
         height: 16px;
@@ -64,7 +65,7 @@
             Car wash
         </td>
         <td>
-            <input type="text" class="  input-xs">
+            <input type="text" class="input-xs">
         </td>
     </tr>
     <tr>
@@ -72,7 +73,7 @@
             Ice remover from the car window
         </td>
         <td>
-            <input type="text" class="  input-xs">
+            <input type="text" class="input-xs">
         </td>
     </tr>
     <tr>
@@ -80,7 +81,7 @@
             Car window liqued
         </td>
         <td>
-            <input type="text" class="  input-xs">
+            <input type="text" class="input-xs">
         </td>
     </tr>
     <tr>
@@ -88,7 +89,7 @@
             Car tyres
         </td>
         <td>
-            <input type="text" class="  input-xs">
+            <input type="text" class="input-xs">
         </td>
     </tr>
     <tr>
@@ -96,7 +97,7 @@
             Car wipers
         </td>
         <td>
-            <input type="text" class="  input-xs">
+            <input type="text" class="input-xs">
         </td>
     </tr>
     <tr>
@@ -104,7 +105,7 @@
             Car lamp
         </td>
         <td>
-            <input type="text" class="  input-xs">
+            <input type="text" class="input-xs">
         </td>
     </tr>
     <tr>
@@ -112,7 +113,7 @@
             Payment for the roads
         </td>
         <td>
-            <input type="text" class="  input-xs">
+            <input type="text" class="input-xs">
         </td>
     </tr>
     <tr>
@@ -120,7 +121,7 @@
             Car service/changing tyre
         </td>
         <td>
-            <input type="text" class="  input-xs">
+            <input type="text" class="input-xs">
         </td>
     </tr>
     <tr>
@@ -128,7 +129,7 @@
             Parking
         </td>
         <td>
-            <input type="text" class="  input-xs">
+            <input type="text" class="input-xs">
         </td>
     </tr>
     <tr>
@@ -136,7 +137,7 @@
             Taxi
         </td>
         <td>
-            <input type="text" class="  input-xs">
+            <input type="text" class="input-xs">
         </td>
     </tr>
     <tr>
@@ -151,7 +152,7 @@
             Phone
         </td>
         <td>
-            <input type="text" class="  input-xs">
+            <input type="text" class="input-xs">
         </td>
     </tr>
     <tr>
@@ -160,7 +161,7 @@
             Office expenses (paper and etc)
         </td>
         <td>
-            <input type="text" class="  input-xs">
+            <input type="text" class="input-xs">
         </td>
     </tr>
     <tr>
@@ -168,7 +169,7 @@
             New bag for visits
         </td>
         <td>
-            <input type="text" class="  input-xs">
+            <input type="text" class="input-xs">
         </td>
     </tr>
     <tr>
@@ -176,7 +177,7 @@
             Computer parts, services
         </td>
         <td>
-            <input type="text" class="  input-xs">
+            <input type="text" class="input-xs">
         </td>
     </tr>
     <tr>
@@ -184,7 +185,7 @@
             Printer cartridge filling
         </td>
         <td>
-            <input type="text" class="  input-xs">
+            <input type="text" class="input-xs">
         </td>
     </tr>
     <tr>
@@ -199,7 +200,7 @@
             Debt payment for Bite Vodafone internet
         </td>
         <td>
-            <input type="text" class="  input-xs">
+            <input type="text" class="input-xs">
         </td>
     </tr>
     <tr>
@@ -207,7 +208,7 @@
             Payment for cash transfering to bank account
         </td>
         <td>
-            <input type="text" class="  input-xs">
+            <input type="text" class="input-xs">
         </td>
     </tr>
     <tr>
@@ -222,7 +223,7 @@
             Post
         </td>
         <td>
-            <input type="text" class="  input-xs">
+            <input type="text" class="input-xs">
         </td>
     </tr>
     <tr>
@@ -230,7 +231,7 @@
             Payment for material delivery
         </td>
         <td>
-            <input type="text" class="  input-xs">
+            <input type="text" class="input-xs">
         </td>
     </tr>
     <tr>
@@ -245,7 +246,7 @@
             Brochures for the seminar
         </td>
         <td>
-            <input type="text" class="  input-xs">
+            <input type="text" class="input-xs">
         </td>
     </tr>
     <tr>
@@ -253,7 +254,7 @@
             Promotions, advertisement layout and printing
         </td>
         <td>
-            <input type="text" class="  input-xs">
+            <input type="text" class="input-xs">
         </td>
     </tr>
     <tr>
@@ -261,7 +262,7 @@
             Copying
         </td>
         <td>
-            <input type="text" class="  input-xs">
+            <input type="text" class="input-xs">
         </td>
     </tr>
     <tr>
@@ -269,7 +270,7 @@
             Show
         </td>
         <td>
-            <input type="text" class="  input-xs">
+            <input type="text" class="input-xs">
         </td>
     </tr>
     <tr>
@@ -277,7 +278,7 @@
             Translation
         </td>
         <td>
-            <input type="text" class="  input-xs">
+            <input type="text" class="input-xs">
         </td>
     </tr>
     <tr>
@@ -292,7 +293,7 @@
             Dinner with doctors
         </td>
         <td>
-            <input type="text" class="  input-xs">
+            <input type="text" class="input-xs">
         </td>
     </tr>
     <tr>
@@ -300,7 +301,7 @@
             Christmas presents
         </td>
         <td>
-            <input type="text" class="  input-xs">
+            <input type="text" class="input-xs">
         </td>
     </tr>
     <tr>
@@ -308,7 +309,7 @@
             Christmas bags for presents
         </td>
         <td>
-            <input type="text" class="  input-xs">
+            <input type="text" class="input-xs">
         </td>
     </tr>
     <tr>
@@ -316,7 +317,7 @@
             Sweets
         </td>
         <td>
-            <input type="text" class="  input-xs">
+            <input type="text" class="input-xs">
         </td>
     </tr>
     <tr>
@@ -324,7 +325,7 @@
             Flowers for the doctors
         </td>
         <td>
-            <input type="text" class="  input-xs">
+            <input type="text" class="input-xs">
         </td>
     </tr>
     <tr>
@@ -332,7 +333,7 @@
             Souvenires
         </td>
         <td>
-            <input type="text" class="  input-xs">
+            <input type="text" class="input-xs">
         </td>
     </tr>
     <tr>
@@ -347,7 +348,7 @@
             Hotel
         </td>
         <td>
-            <input type="text" class="  input-xs">
+            <input type="text" class="input-xs">
         </td>
     </tr>
     <tr>
@@ -355,7 +356,7 @@
             Food
         </td>
         <td>
-            <input type="text" class="  input-xs">
+            <input type="text" class="input-xs">
         </td>
     </tr>
     <tr>
@@ -363,7 +364,7 @@
             Air tickets
         </td>
         <td>
-            <input type="text" class="  input-xs">
+            <input type="text" class="input-xs">
         </td>
     </tr>
     <tr>
@@ -371,7 +372,7 @@
             Taxi
         </td>
         <td>
-            <input type="text" class="  input-xs">
+            <input type="text" class="input-xs">
         </td>
     </tr>
     <tr>
@@ -379,7 +380,7 @@
             Train tickets
         </td>
         <td>
-            <input type="text" class="  input-xs">
+            <input type="text" class="input-xs">
         </td>
     </tr>
     <tr>
@@ -387,7 +388,7 @@
             Currency exchange
         </td>
         <td>
-            <input type="text" class="  input-xs">
+            <input type="text" class="input-xs">
         </td>
     </tr>
     <tr>
@@ -395,7 +396,7 @@
             Total expenses:
         </td>
         <td>
-            <input type="text" class="  input-xs" style="font-weight: bold;">
+            <input type="text" class="input-xs" style="font-weight: bold;" id="total">
         </td>
     </tr>
 

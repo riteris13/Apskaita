@@ -24,7 +24,7 @@
         <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th>{{{trans('table.fName')}}}</th>
+                        <th>{{{trans('table.client')}}}</th>
                         <th>{{{trans('table.clinic')}}}</th>
                         <th>{{{trans('table.date')}}}</th>
                         <th>{{{trans('table.status')}}}</th>
@@ -61,7 +61,6 @@
                           {{{ $item->orders()->count() }}}
                       </td>
                         <td class="col-sm-2 text-right">
-                          <!--  <h4 text="{{{trans('table.orderTotal')}}}" id="total"></h4> -->
                             <button class="btn btn-xs btn-primary"
                                     value = "{{{trans('table.orderTotal')}}}"
                                     onClick = "getDetails({{$item->id}})"

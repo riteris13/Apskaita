@@ -10,7 +10,7 @@ return array(
         'add' => 'Add clinic',
         'edit' => 'Edit clinic',
         'list' => 'Clinics',
-        'table' => 'List of clinincs'
+        'table' => 'List of clinics'
     ),
     'doctor' => array(
         'add' => 'Add doctor',

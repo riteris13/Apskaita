@@ -10,11 +10,11 @@
         <table class="table table-hover">
             <thead>
             <tr>
-                <th>Vardas Pavardė</th>
-                <th>Klinika</th>
-                <th>Potencialumas %</th>
-                <th>Nuolaida %</th>
-                <th>Ivertinimas</th>
+                <th>{{{trans('table.fName')}}}</th>
+                <th>{{{trans('table.clinic')}}}</th>
+                <th>{{{trans('table.pot')}}}</th>
+                <th>{{{trans('table.discount')}}}</th>
+                <th>{{{trans('table.score')}}}</th>
             </tr>
             </thead>
             <tbody >
@@ -39,15 +39,15 @@
                     <button class="btn btn-xs btn-primary" onClick = "getDoctorDetails({{$item->id}})"
                             data-toggle="modal"  data-target="#aprasymas" id="aprasymas-btn"
                             data-keyboard="false" data-backdrop="static">
-                        <span class="glyphicon glyphicon-search" rel="tooltip" data-placement="top" title="Peržiūrėti vizitą"></span>
+                        <span class="glyphicon glyphicon-search" rel="tooltip" data-placement="top" title="{{{trans('table.viewDoc')}}}"></span>
                     </button>
 					<a
-						class="btn btn-xs btn-primary" rel="tooltip" data-placement="top" title="Redaguoti" href="/doctor/edit/{{$item->id}}">
+						class="btn btn-xs btn-primary" rel="tooltip" data-placement="top" title="{{{trans('table.edit')}}}" href="/doctor/edit/{{$item->id}}">
 						<span class="glyphicon glyphicon-pencil"></span>
 					</a>
                     <a
                         onclick="return confirm('Ar tikrai norite pašalinti gydytoją?')"
-                        class="btn btn-xs btn-danger" rel="tooltip" data-placement="top" title="Pašalinti" href="/doctor/remove/{{$item->id}}">
+                        class="btn btn-xs btn-danger" rel="tooltip" data-placement="top" title="{{{trans('table.del')}}}" href="/doctor/remove/{{$item->id}}">
                         <span class="glyphicon glyphicon-trash"></span>
                     </a>
                 </td>
@@ -58,20 +58,20 @@
         </table>
     </div>
     <p>  {{ $items->links() }} </p>
-    <a href="/doctor/add" class="btn btn-primary" ><span class="glyphicon glyphicon-plus"></span> Pridėti naują</a>
+    <a href="/doctor/add" class="btn btn-primary" ><span class="glyphicon glyphicon-plus"></span> {{{trans('table.add')}}}</a>
 
 <div class="modal fade" id="aprasymas" tabindex="-1" role="dialog" aria-labelledby="aprasymas" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h3 class="modal-title" style="text-align: center" id="myModalLabel">Gydytojo aprašymas</h3>
+                <h3 class="modal-title" style="text-align: center" id="myModalLabel">{{{trans('table.docDesc')}}}</h3>
             </div>
             <div class="modal-body" id="modal-body">
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Uždaryti</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">{{{trans('table.close')}}}</button>
             </div>
         </div>
     </div>
