@@ -4,7 +4,9 @@
 
 @section('content')
 
-<table class="table table-bordered">
+<script src="/js/excelexport.min.js"></script>
+
+<table id="tblExport" class="table table-bordered">
     <thead style="font-weight: bold; text-align: center;">
         <tr>
             <td>Name, Surname</td>
@@ -47,7 +49,23 @@
     </tr>
     </tbody>
 
-
 </table>
 
+<div>
+    <a id="btnExport" href="#" download="">Export</a>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#btnExport").on('click', function () {
+            var uri = $("#tblExport").btechco_excelexport({
+                containerid: "tblExport"
+                , datatype: $datatype.Table
+                , returnUri: true
+            });
+
+            $(this).attr('download', 'ExportToExcel.xls').attr('href', uri).attr('target', '_blank');
+        });
+    });
+</script>
 @stop

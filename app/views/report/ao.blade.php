@@ -1,10 +1,12 @@
 @extends('layout.core')
 @section('content')
 
+<script src="/js/excelexport.min.js"></script>
+
 <div class="panel panel-default">
     <div class="panel-heading"> AO </div>
 
-    <table class="table table-hover">
+    <table id="tblExport" class="table table-hover">
         <thead>
             <tr>
                 <th>Doctors</th>
@@ -30,5 +32,22 @@
         </tbody>
     </table>
 </div>
+<div>
+    <a id="btnExport" href="#" download="">Export</a>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#btnExport").on('click', function () {
+            var uri = $("#tblExport").btechco_excelexport({
+                containerid: "tblExport"
+                , datatype: $datatype.Table
+                , returnUri: true
+            });
+
+            $(this).attr('download', 'ExportToExcel.xls').attr('href', uri).attr('target', '_blank');
+        });
+    });
+</script>
 
 @stop
