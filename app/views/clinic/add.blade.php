@@ -1,7 +1,6 @@
 @extends('layout.core')
 
 <?php $header = trans('header.clinic.add'); ?>
-<?php $btn = trans('table.addBtn'); ?>
 
 @section('content')
 
@@ -20,7 +19,7 @@
     {{Form::checkbox('vat'); }}
     <br>
     <br>
-    {{Form::submit($btn, array('class'=>'btn btn-primary')); }}
+    {{Form::submit(trans('table.addBtn'), array('class'=>'btn btn-primary')); }}
 
 {{ Form::close() }}
 

@@ -35,7 +35,7 @@
             });
         </script>
         <br>
-        {{Form::submit('Pridėti', array('class'=>'btn btn-primary')); }}
+        {{Form::submit(trans('table.addBtn'), array('class'=>'btn btn-primary')); }}
 
     {{ Form::close() }}
 

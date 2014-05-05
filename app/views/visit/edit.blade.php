@@ -29,7 +29,7 @@
             </script>
         {{Form::hidden('id', $visit['id']) }}
         <br>
-        {{Form::submit('Atnaujinti', array('class'=>'btn btn-primary')); }}
+        {{Form::submit(trans('table.updBtn'), array('class'=>'btn btn-primary')); }}
 
     {{ Form::close() }}
 

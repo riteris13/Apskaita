@@ -1,7 +1,6 @@
 @extends('layout.core')
 
 <?php $header = trans('header.category.add'); ?>
-<?php $btn = trans('table.addBtn'); ?>
 
 @section('content')
 
@@ -42,7 +41,7 @@
     {{Form::checkbox('spalva'); }}
     <br>
     <br>
-    {{Form::submit($btn, array('class'=>'btn btn-primary')); }}
+    {{Form::submit(trans('table.addBtn'), array('class'=>'btn btn-primary')); }}
 {{ Form::close() }}
 
 @stop

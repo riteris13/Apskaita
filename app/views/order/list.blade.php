@@ -1,10 +1,6 @@
 @extends('layout.core')
 
 <?php $header = trans('header.order.list'); ?>
-<? $sort = trans('table.sort');?>
-<? $all = trans('table.all');?>
-<? $com = trans('table.comp');?>
-<? $incom = trans('table.inComp');?>
 
 @section('content')
 <script type="text/javascript" src="/js/orderDetails.js"></script>
@@ -13,9 +9,9 @@
     <div class="panel-heading">{{{trans('table.orderSort')}}}</div>
     {{ Form::open(array('url' => 'order', 'class'=>'form-default')) }}
     <h4>{{{trans('table.status')}}}</h4>
-    {{Form::select('status', array('2' => $all, '1' => $com, '0' => $incom), null, array('class'=>'form-control')); }}
+    {{Form::select('status', array('2' =>  trans('table.all'), '1' => trans('table.comp'), '0' =>  trans('table.inComp')), null, array('class'=>'form-control')); }}
     <br>
-    {{Form::submit($sort, array('class'=>'btn btn-primary')); }}
+    {{Form::submit(trans('table.sort'), array('class'=>'btn btn-primary')); }}
 
     {{ Form::close() }}
 </div>

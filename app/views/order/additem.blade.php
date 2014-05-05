@@ -1,9 +1,6 @@
 @extends('layout.core')
 
 <?php $header = trans('header.order.addItem'); ?>
-<?php $submit = trans('table.submit'); ?>
-<?php $addMore = trans('table.addMore'); ?>
-<?php $close = trans('table.close'); ?>
 
 @section('content')
 <script src="/js/addOrderItem.js"></script>
@@ -51,11 +48,11 @@ array('class'=>'form-control', 'id'=>'produktas', 'disabled' => 'true')); }}
 <br>
 {{Form::hidden('uzsakymai_id', $orderID) }}
 {{Form::hidden('nuolD', $nuolD) }}
-{{Form::submit($submit, array('class'=>'btn btn-primary', 'name' => 'Submit')); }}
+{{Form::submit(trans('table.submit'), array('class'=>'btn btn-primary', 'name' => 'Submit')); }}
 &nbsp;
-{{Form::submit($addMore, array('class'=>'btn btn-primary', 'name' => 'addMore')); }}
+{{Form::submit(trans('table.addMore'), array('class'=>'btn btn-primary', 'name' => 'addMore')); }}
 &nbsp;
-{{Form::submit($close, array('class'=>'btn btn-primary', 'name' => 'Close',
+{{Form::submit(trans('table.close'), array('class'=>'btn btn-primary', 'name' => 'Close',
 'onclick' => 'if(!confirm("Ar tikrai norite nutraukti užsakymo pildymą?")){return false;};')); }}
 {{ Form::close() }}
 

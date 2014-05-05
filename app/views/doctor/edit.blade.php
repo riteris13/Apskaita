@@ -1,7 +1,6 @@
 @extends('layout.core')
 
 <?php $header = trans('header.doctor.edit'); ?>
-<?php $btn = trans('table.updBtn'); ?>
 
 @section('content')
 
@@ -36,7 +35,7 @@
     <br>
     <br>
 	{{Form::hidden('id', $doctor['id']) }}	
-    {{Form::submit($btn, array('class'=>'btn btn-primary')); }}
+    {{Form::submit(trans('table.updBtn'), array('class'=>'btn btn-primary')); }}
 
 {{ Form::close() }}
 

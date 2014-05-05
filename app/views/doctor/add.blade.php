@@ -1,7 +1,6 @@
 @extends('layout.core')
 
 <?php $header = trans('header.doctor.add'); ?>
-<?php $btn = trans('table.addBtn'); ?>
 
 @section('content')
 
@@ -35,7 +34,7 @@
     {{Form::text('ivertinimas', '', array('class'=>'form-control', 'type'=>'text')); }}
     <br>
     <br>
-    {{Form::submit($btn, array('class'=>'btn btn-primary')); }}
+    {{Form::submit(trans('table.addBtn'), array('class'=>'btn btn-primary')); }}
 
 {{ Form::close() }}
 

@@ -1,9 +1,7 @@
 @extends('layout.core')
 
 <?php $header = trans('header.order.add'); ?>
-<?php $submit = trans('table.submit'); ?>
-<?php $addMore = trans('table.addMore'); ?>
-<?php $close = trans('table.close'); ?>
+
 
 @section('content')
 
@@ -28,12 +26,12 @@
             });
         </script>
 <br>
-        {{Form::submit($submit, array('class'=>'btn btn-primary', 'name' => 'Submit',
+        {{Form::submit(trans('table.submit'), array('class'=>'btn btn-primary', 'name' => 'Submit',
             'onclick' => 'if(!confirm("Ar tikrai norite sukurti tuščią užsakymą?")){return false;};')); }}
         &nbsp;
-        {{Form::submit($addMore, array('class'=>'btn btn-primary', 'name' => 'addMore')); }}
+        {{Form::submit(trans('table.addMore'), array('class'=>'btn btn-primary', 'name' => 'addMore')); }}
         &nbsp;
-        {{Form::submit($close, array('class'=>'btn btn-primary', 'name' => 'Close',
+        {{Form::submit(trans('table.close'), array('class'=>'btn btn-primary', 'name' => 'Close',
         'onclick' => 'if(!confirm("Ar tikrai norite nutraukti užsakymo sukūrimą?")){return false;};')); }}
     {{ Form::close() }}
 
