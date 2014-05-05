@@ -1,7 +1,6 @@
 @extends('layout.core')
 
 <?php $header = trans('header.item.list'); ?>
-<? $sel = trans('table.sel');?>
 
 @section('content')
 
@@ -16,7 +15,7 @@
         <h4>{{{trans('table.cat')}}}</h4>
         {{Form::select('id', Category::lists('pavadinimas', 'id'), null, array('class'=>'form-control')); }}
         <br>
-        {{Form::submit($sel, array('class'=>'btn btn-primary')); }}
+        {{Form::submit(trans('table.sel'), array('class'=>'btn btn-primary')); }}
 
         {{ Form::close() }}
     </div>
