@@ -34,6 +34,7 @@ class ReportController extends BaseController {
         return View::make('report.doctorReport');
     }
     public function getSales(){
-        return View::make('report.salesReport');
+        $items = Item::all();
+        return View::make('report.salesReport')->with('items', $items);
     }
 }
