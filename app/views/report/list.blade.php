@@ -43,7 +43,7 @@
                 </tr>
                 <td>Ataskaita apie gydytoją</td>
                 <td class="text-right">
-                    <a href="/report/doctorreport" class="btn btn-primary" ><span class="glyphicon glyphicon-plus"></span> Sudaryti</a>
+                    <a href="/report/selectdoctor" class="btn btn-primary" ><span class="glyphicon glyphicon-plus"></span> Sudaryti</a>
                 </td>
                 </tr>
             </tbody>

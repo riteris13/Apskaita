@@ -18,6 +18,7 @@ class ReportController extends BaseController {
         $doctors = Doctor::all();
         return View::make('report.custinfo')->with('doctors', $doctors);
     }
+
     public function getDoctorpurchases(){
         $doctors = Doctor::all();
         return View::make('report.doctorpurchases')->with('doctors', $doctors);
@@ -30,11 +31,24 @@ class ReportController extends BaseController {
     public function getVisitreport(){
         return View::make('report.visitReport');
     }
-    public function getDoctorreport(){
-        return View::make('report.doctorReport');
+    public function getDoctorreport($id){
+        $doctor = Doctor::find($id);
+        return View::make('report.doctorReport')->with('doctor', $doctor);
     }
     public function getSales(){
         $items = Item::all();
         return View::make('report.salesReport')->with('items', $items);
+    }
+    public function getSelectdoctor(){
+        return View::make('report.selectDoctor');
+    }
+    public function getApidropdownclient(){
+        $input = Input::get('option');
+        $doctors = Clinic::find($input)->doctors()->orderBy('pavarde')->get(['id','vardas', 'pavarde']);
+        return $doctors;
+    }
+    public function postSelectdoctor(){
+        $id = Input::get('daktaras_id');
+        return Redirect::to('report/doctorreport/'.$id);
     }
 }
