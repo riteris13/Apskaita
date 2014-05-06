@@ -30,10 +30,10 @@
         <td>
             {{{ $doctor->clinic->pavadinimas }}}
         </td>
-        <td>
+        <td class="col-sm-2 text-left">
             {{{ $doctor->clinic->kodas }}}
         </td>
-        <td>
+        <td class="col-sm-3 text-left">
             <?php $visipavadinimai = array(); ?>
             <? $suma = 0 ?>
             @foreach($doctor->order as $items)
@@ -47,7 +47,7 @@
             {{{$pavadinimas}}}
             @endforeach
         </td>
-        <td>
+        <td class="text-right">
             {{{$suma}}} {{{"Lt"}}}
         </td>
 
