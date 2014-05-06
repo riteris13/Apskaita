@@ -18,13 +18,13 @@
     <h4>{{{trans('table.det')}}}</h4>
     {{Form::textarea('detales', '', array('class'=>'form-control', 'type'=>'textarea')); }}
 
-    <h4>Kodėl neperka iš mūsų</h4>
+    <h4>{{{trans('table.neperka')}}}</h4>
     {{Form::textarea('kodel_neperka', '', array('class'=>'form-control', 'type'=>'textarea')); }}
 
-    <h4>Kaip pritraukti</h4>
+    <h4>{{{trans('table.prit')}}}</h4>
     {{Form::textarea('kaip_pritraukti', '', array('class'=>'form-control', 'type'=>'textarea')); }}
 
-    <h4>Taikoma nuolaida %</h4>
+    <h4>{{{trans('table.taikNuol')}}}</h4>
     {{Form::text('nuolaida', '', array('class'=>'form-control', 'type'=>'text')); }}
 
     <h4>{{{trans('table.pot')}}}</h4>

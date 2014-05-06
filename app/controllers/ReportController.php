@@ -23,12 +23,6 @@ class ReportController extends BaseController {
         return View::make('report.doctorpurchases')->with('doctors', $doctors);
     }
 
-    public function getExport(){
-        $doctors = Doctor::all();
-        $content = View::make('report.ao')->with('doctors', $doctors)->render();
-        return PDF::loadHTML($content)->setPaper('a4')->save('myfile.pdf');
-    }
-
     public function getClients(){
         $doctors = Doctor::with('clinic')->paginate(15);
         return View::make('report.clients')->with('doctors', $doctors);

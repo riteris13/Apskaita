@@ -70,4 +70,12 @@ return array(
     'pName' => 'Name',
     'sName' => 'Surname',
     'det' => 'Details',
+    'neperka' => 'Why he doesn\'t buy our products',
+    'prit' => 'How to attract',
+    'taikNuol' => 'Discount applied %',
+    'proCat' => 'Product belongs to category:',
+    'selCat' => 'Select category',
+    'newProCat' => 'New product in category',
+    'pok' => 'Conversation',
+    'komp' => 'Competitors',
 );

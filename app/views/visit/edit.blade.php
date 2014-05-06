@@ -8,19 +8,19 @@
 
     {{ Form::model($visit, array('url' => 'visit/edit', 'class'=>'form-default')) }}
 
-        <h4>Klientas</h4>
+        <h4>{{{trans('table.client')}}}</h4>
         {{Form::select('daktaras_id', Doctor::all()->lists('fullName', 'id'), $visit['daktaras_id'], array('class'=>'form-control')); }}
 
-        <h4>Tikslas</h4>
+        <h4>{{{trans('table.purp')}}}</h4>
         {{Form::text('tikslas', $visit['tikslas'], array('class'=>'form-control', 'type'=>'text')); }}
 
-        <h4>Pokalbis</h4>
+        <h4>{{{trans('table.pok')}}}</h4>
         {{Form::textarea('pokalbis', $visit['pokalbis'], array('class'=>'form-control', 'type'=>'textarea')); }}
 
-        <h4>Kompetitoriai</h4>
+        <h4>{{{trans('table.komp')}}}</h4>
         {{Form::textarea('kompetitoriai', $visit['kompetitoriai'], array('class'=>'form-control', 'type'=>'textarea')); }}
 
-        <h4>Apsilankymo data</h4>
+        <h4>{{{trans('table.date')}}}</h4>
         {{ Form::text('data', $visit['data'], array('class'=>'date', 'type'=>'text')) }}
             <script>
                 $(".date").dateinput({

@@ -70,4 +70,12 @@ return array(
     'pName' => 'Vardas',
     'sName' => 'Pavardė',
     'det' => 'Detalės',
+    'neperka' => 'Kodėl neperka mūsų produktų',
+    'prit' => 'Kaip pritraukti',
+    'taikNuol' => 'Taikoma nuolaida %',
+    'proCat' => 'Produktas priklauso kategorijai:',
+    'selCat' => 'Pasirinkite kategoriją',
+    'newProCat' => 'Naujas produktas kategorijoje',
+    'pok' => 'Pokalbis',
+    'komp' => 'Kompetitoriai',
 );
