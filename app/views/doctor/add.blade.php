@@ -32,8 +32,7 @@
 
     <h4>{{{trans('table.score')}}}</h4>
     {{Form::text('ivertinimas', '', array('class'=>'form-control', 'type'=>'text')); }}
-    <br>
-    <br>
+
     {{Form::submit(trans('table.addBtn'), array('class'=>'btn btn-primary')); }}
 
 {{ Form::close() }}
