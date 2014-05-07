@@ -45,7 +45,7 @@
 						class="btn btn-xs btn-primary" rel="tooltip" data-placement="top" title="{{{trans('table.edit')}}}" href="/doctor/edit/{{$item->id}}">
 						<span class="glyphicon glyphicon-pencil"></span>
 					</a>
-                    @if($item->order()->count() == 0)
+                    @if($item->orders()->count() == 0 && $item->visits()->count() == 0)
                     <a
                         onclick="return confirm('Ar tikrai norite pašalinti gydytoją?')"
                         class="btn btn-xs btn-danger" rel="tooltip" data-placement="top" title="{{{trans('table.del')}}}" href="/doctor/remove/{{$item->id}}">
