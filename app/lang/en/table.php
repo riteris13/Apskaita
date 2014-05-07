@@ -78,4 +78,9 @@ return array(
     'newProCat' => 'New product in category',
     'pok' => 'Conversation',
     'komp' => 'Competitors',
+    'cre' => 'Create',
+    'addUser' => 'Add new user',
+    'dir' => 'Director',
+    'ats' => 'Representative',
+    'newRol' => 'New user role',
 );

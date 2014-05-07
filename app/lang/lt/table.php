@@ -78,4 +78,9 @@ return array(
     'newProCat' => 'Naujas produktas kategorijoje',
     'pok' => 'Pokalbis',
     'komp' => 'Kompetitoriai',
+    'cre' => 'Sukurti',
+    'addUser' => 'Naujo vartotojo pridėjimas',
+    'dir' => 'Direktorius',
+    'ats' => 'Atstovas',
+    'newRol' => 'Naujo vartotojo rolė',
 );

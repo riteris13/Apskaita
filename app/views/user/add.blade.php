@@ -3,17 +3,17 @@
 
 {{ Form::open(array('url' => '/auth/add', 'class'=>'form-signin')) }}
 
-    <h2>Naujo vartotojo pridėjimas</h2>
+    <h2> {{{trans('table.addUser')}}}</h2>
     <br>
     {{Form::text('email', '', array('type'=>'text', 'class'=>'form-control'))}}
 
     <br>
-    <h4>Naujo vartotojo rolė</h4>
-    <p><b>Direktorius </b>{{ Form::radio('role', 'direktore'); }}</p>
-    <p><b>Atstovas </b>{{ Form::radio('role', 'atstovas'); }}</p>
+    <h4> {{{trans('table.newRol')}}}</h4>
+    <p><b> {{{trans('table.dir')}}} </b>{{ Form::radio('role', 'direktore'); }}</p>
+    <p><b> {{{trans('table.ats')}}} </b>{{ Form::radio('role', 'atstovas'); }}</p>
     <br>
 
-    {{Form::submit('Sukurti',array('class'=>'btn btn-lg btn-primary btn-block')); }}
+    {{Form::submit(trans('table.cre'),array('class'=>'btn btn-lg btn-primary btn-block')); }}
 
     {{ Form::hidden('first-login', '1') }}
 
