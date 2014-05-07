@@ -54,9 +54,10 @@ class AuthController extends BaseController{
         return View::make('user.add');
     }
     public function postAdd(){
-        $email = Input::get('email');
-        $role = Input::get('role');
-        $validator = Validator::make(['email'=>$email], User::$add_user_rules, User::$messages);
+        $input['email'] = Input::get('email');
+        $input['role'] = Input::get('role');
+
+        $validator = Validator::make($input, User::$add_user_rules, User::$messages);
         if($validator->fails()){
             return Redirect::back()
                 ->withInput()
@@ -64,9 +65,9 @@ class AuthController extends BaseController{
         }
         $pass = str_random(6);
         $password = Hash::make($pass);
-        $user = User::create(['email'=>$email, 'password'=>$password, 'role'=>$role, 'first_login'=>'1']);
+        $user = User::create(['email'=>$input['email'], 'password'=>$password, 'role'=>$input['role'], 'first_login'=>'1']);
         $user->save();
-        $msg = 'Sėkmingai pridėjote vartotoją '.$email.' jo slaptažodis '.$pass;
+        $msg = 'Sėkmingai pridėjote vartotoją '. $input['email'].' jo slaptažodis '.$pass;
         return Redirect::to('auth/add')->with('success',$msg);
     }
 }

@@ -21,7 +21,8 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 * @var array
 	 */
     public static $add_user_rules  = [
-        'email' => 'required|email'
+        'email' => 'required|email|unique:users,email',
+        'role' => 'required'
     ];
 
     public static $password_change_rules  = [
@@ -32,6 +33,8 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
     public static $messages = [
         'email.required' => 'Neivestas El. pašto adresas',
+        'email.unique' => 'Pasinktas El. pašto adresas naujas užimtas',
+        'role.required' => 'Nepasirinkta naujo vartotojo rolė',
         'email.email' => 'Neteisingai ivestas El. pašto adresas',
         'OldPassword.required' => 'Neįvestas senasis slaptažodis',
         'NewPassword.required' => 'Neįvestas naujas slaptažodis',
