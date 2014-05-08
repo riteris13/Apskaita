@@ -84,4 +84,10 @@ return array(
     'ats' => 'Atstovas',
     'newRol' => 'Naujo vartotojo rolė',
     'doc' => 'Gydytojas',
+    'men0' => 'Iš viso',
+    'men1' => '1 mėnuo',
+    'men3' => '3 mėnesiai',
+    'men6' => '6 mėnesiai',
+    'men12' => '12 mėnesių',
+    'laik' => 'Laikotarpis',
 );

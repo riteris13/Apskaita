@@ -84,4 +84,10 @@ return array(
     'ats' => 'Representative',
     'newRol' => 'New user role',
     'doc' => 'Doctor',
+    'men0' => 'All time',
+    'men1' => '1 month',
+    'men3' => '3 months',
+    'men6' => '6 months',
+    'men12' => '12 months',
+    'laik' => 'Period',
 );
