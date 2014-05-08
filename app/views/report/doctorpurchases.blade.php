@@ -36,7 +36,7 @@
         <td class="col-sm-3 text-left">
             <?php $visipavadinimai = array(); ?>
             <? $suma = 0 ?>
-            @foreach($doctor->order as $items)
+            @foreach($doctor->orders as $items)
             @foreach($items->orders as $item)
             <?php array_push($visipavadinimai, $item->product->pavadinimas); ?>
             <? $suma += $item->pir_kaina * $item->kiekis ?>

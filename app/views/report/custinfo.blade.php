@@ -25,7 +25,7 @@
         </td>
         <td>
             <?php $visipavadinimai = array(); ?>
-            @foreach($doctor->order as $items)
+            @foreach($doctor->orders as $items)
                 @foreach($items->orders as $item)
                     <?php array_push($visipavadinimai, $item->product->pavadinimas); ?>
                 @endforeach
