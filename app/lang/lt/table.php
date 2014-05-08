@@ -83,4 +83,5 @@ return array(
     'dir' => 'Direktorius',
     'ats' => 'Atstovas',
     'newRol' => 'Naujo vartotojo rolė',
+    'doc' => 'Gydytojas',
 );

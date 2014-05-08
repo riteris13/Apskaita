@@ -14,7 +14,7 @@
         {{Form::select('klinika_id', array('default' => 'Pasirinkite Kliniką') + Clinic::all()->lists('pavadinimas', 'id'),
         null, array('class'=>'form-control', 'id'=>'klinika')); }}
 
-        <h4>{{{trans('table.client')}}}</h4>
+        <h4>{{{trans('table.doc')}}}</h4>
         {{Form::select('daktaras_id', array('default' => 'Pirmiausia pasirinkite kliniką'), null,
         array('class'=>'form-control', 'id'=>'daktaras', 'disabled' => 'true')); }}
 

@@ -83,4 +83,5 @@ return array(
     'dir' => 'Director',
     'ats' => 'Representative',
     'newRol' => 'New user role',
+    'doc' => 'Doctor',
 );
