@@ -1,6 +1,13 @@
 @extends('layout.core')
 
 @section('content')
+<?
+    $tY = date("Y");
+    $prev = date("Y-m-d", strtotime("-$laikas months"));
+    $pY = substr($prev, 0 , 4);
+    $pY2 = $pY;
+    $i = 0;
+?>
 
 <table id="tblExport" class="table table-bordered">
     <tbody>
@@ -16,9 +23,15 @@
         <td>
             Clinic name, address
         </td>
-        <td>
-            {{{ $doctor->clinic->pavadinimas }}}
-        </td>
+                <td>
+                    <b> {{{ $doctor->clinic->pavadinimas}}} </b> <br>
+                </td>
+                <td class="col-lg-3">
+                    {{{ $doctor->clinic->adresas}}} <br>
+                    <b> Company code: {{{ $doctor->clinic->kodas }}} </b> <br>
+                    <b> {{{ $doctor->clinic->vat }}} </b> <br>
+                </td>
+
         <td>
             AO %
             <br> Fixed discount on pricelist {{{ $doctor->nuolaida}}}
@@ -26,23 +39,51 @@
     </tr>
     <tr>
         <td></td>
-        <td>
-            Metai
-        </td>
+            @if($tY == $pY)
+               <td>
+                   {{ $tY }}
+               </td>
+            @else
+                @while($tY >= $pY)
+                    <td>
+                       {{ $pY }}
+                    </td>
+                <? $pY += 1 ?>
+                @endwhile
+            @endif
     </tr>
     <tr>
         <td>
             Sales (LTL)
         </td>
-        <td>
-            <? $suma = 0;?>
+        @if($tY == $pY)
+        <? $suma[0] = 0; ?>
             @foreach($doctor->orders as $order)
-                @foreach($order->orders as $item)
-                    <? $suma+=$item->pir_kaina; ?>
-                @endforeach
+                @if($order->data >= $prev)
+                    @foreach($order->orders as $item)
+                        <? $suma[0] = $suma[0] + $item->pir_kaina*$item->kiekis; ?>
+                    @endforeach
+                @endif
             @endforeach
-            {{{ $suma }}}
-        </td>
+        @else
+            @while($tY >= $pY2)
+            <? $suma[$i] = 0;  ?>
+                @foreach($doctor->orders as $order)
+                <? $uzData = $order->data; ?>
+                    @if($uzData >= $prev && substr($uzData, 0 , 4) == $pY2)
+                        @foreach($order->orders as $item)
+                            <? $suma[$i] = $suma[$i] + $item->pir_kaina*$item->kiekis; ?>
+                        @endforeach
+                    @endif
+                @endforeach
+            <? $pY2 += 1; $i+=1; ?>
+            @endwhile
+        @endif
+        @foreach($suma as $sum)
+            <td>
+                {{{ $sum }}}
+            </td>
+        @endforeach
     </tr>
     <tr>
         <td style="line-height:7px;" colspan=6>&nbsp;</td>

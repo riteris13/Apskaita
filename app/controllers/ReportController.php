@@ -31,9 +31,9 @@ class ReportController extends BaseController {
     public function getVisitreport(){
         return View::make('report.visitReport');
     }
-    public function getDoctorreport($id){
+    public function getDoctorreport($id, $laik){
         $doctor = Doctor::find($id);
-        return View::make('report.doctorReport')->with('doctor', $doctor);
+        return View::make('report.doctorReport')->with('doctor', $doctor)->with('laikas', $laik);
     }
     public function getSales(){
         $items = Item::all();
@@ -49,6 +49,12 @@ class ReportController extends BaseController {
     }
     public function postSelectdoctor(){
         $id = Input::get('daktaras_id');
-        return Redirect::to('report/doctorreport/'.$id);
+        $laik = Input::get('laikotarpis');
+        if(!isset($id)){
+            return Redirect::back()
+                ->withInput()
+                ->withErrors("Nepasirinktas gydytojas");
+        }
+        return Redirect::to('report/doctorreport/'.$id.'/'.$laik);
     }
 }
