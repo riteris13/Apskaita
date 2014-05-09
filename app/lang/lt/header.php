@@ -35,7 +35,9 @@ return array(
     ),
     'report' => array(
         'list' => 'Ataskaitos',
-        'table' => 'Ataskaitų sąrašas'
+        'table' => 'Ataskaitų sąrašas',
+        'selDoc' => 'Pasirinkite gydytoją ir laikotarpį',
+        'selVis' => 'Pasirinkite gydytoją ir vizitą',
     ),
     'visit' => array(
         'add' => 'Pridėti vizitą',
@@ -43,5 +45,4 @@ return array(
         'list' => 'Vizitai',
         'table' => 'Vizitų sąrašas'
     ),
-
 );

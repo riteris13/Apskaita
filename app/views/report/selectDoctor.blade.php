@@ -1,6 +1,6 @@
 @extends('layout.core')
 
-<?php $header = trans('header.item.select'); ?>
+<?php $header = trans('header.report.selDoc'); ?>
 @section('content')
 <script src="/js/addOrder.js"></script>
 

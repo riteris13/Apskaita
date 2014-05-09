@@ -1,7 +1,7 @@
 <?php
 class VisitController extends BaseController {
     public function getIndex(){
-        $items = Visit::paginate(15);
+        $items = Visit::orderBy('data', 'Desc')->paginate(15);
         return View::make('visit.list')->with('items',$items);
     }
     public function getAdd(){

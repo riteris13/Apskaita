@@ -35,7 +35,9 @@ return array(
     ),
     'report' => array(
         'list' => 'Reports',
-        'table' => 'List of reports'
+        'table' => 'List of reports',
+        'selDoc' => 'Select doctor and period',
+        'selVis' => 'Select doctor and visit',
     ),
     'visit' => array(
         'add' => 'Add visit',
@@ -43,5 +45,4 @@ return array(
         'list' => 'Visits',
         'table' => 'List of visits'
     ),
-
 );

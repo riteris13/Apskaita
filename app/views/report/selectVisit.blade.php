@@ -1,6 +1,6 @@
 @extends('layout.core')
 
-<?php $header = trans('header.item.select'); ?>
+<?php $header = trans('header.report.selVis'); ?>
 @section('content')
 <script src="/js/selectVisit.js"></script>
 
