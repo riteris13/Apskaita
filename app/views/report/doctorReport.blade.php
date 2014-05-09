@@ -1,7 +1,7 @@
 @extends('layout.core')
 
 @section('content')
-<?
+<?php
     $tY = date("Y");
     $prev = date("Y-m-d", strtotime("-$laikas months"));
     $pY = substr($prev, 0 , 4);
@@ -48,7 +48,7 @@
                     <td>
                        {{ $pY }}
                     </td>
-                <? $pY += 1 ?>
+                <?php $pY += 1 ?>
                 @endwhile
             @endif
     </tr>
@@ -57,26 +57,26 @@
             Sales (LTL)
         </td>
         @if($tY == $pY)
-        <? $suma[0] = 0; ?>
+        <?php $suma[0] = 0; ?>
             @foreach($doctor->orders as $order)
                 @if($order->data >= $prev)
                     @foreach($order->orders as $item)
-                        <? $suma[0] = $suma[0] + $item->pir_kaina*$item->kiekis; ?>
+                        <?php $suma[0] = $suma[0] + $item->pir_kaina*$item->kiekis; ?>
                     @endforeach
                 @endif
             @endforeach
         @else
             @while($tY >= $pY2)
-            <? $suma[$i] = 0;  ?>
+            <?php $suma[$i] = 0;  ?>
                 @foreach($doctor->orders as $order)
-                <? $uzData = $order->data; ?>
+                <?php $uzData = $order->data; ?>
                     @if($uzData >= $prev && substr($uzData, 0 , 4) == $pY2)
                         @foreach($order->orders as $item)
-                            <? $suma[$i] = $suma[$i] + $item->pir_kaina*$item->kiekis; ?>
+                            <?php $suma[$i] = $suma[$i] + $item->pir_kaina*$item->kiekis; ?>
                         @endforeach
                     @endif
                 @endforeach
-            <? $pY2 += 1; $i+=1; ?>
+            <?php $pY2 += 1; $i+=1; ?>
             @endwhile
         @endif
         @foreach($suma as $sum)

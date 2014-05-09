@@ -1,6 +1,6 @@
 @extends('layout.core')
 
-<? $i=0; ?>
+<?php $i=0; ?>
 @section('content')
 
 <script src="/js/excelexport.min.js"></script>
@@ -19,7 +19,7 @@
     <tbody>
 
     @foreach($doctors as $doctor)
-    <? $i++; ?>
+    <?php $i++; ?>
     <tr>
         <td>
            {{{ $i }}}
@@ -35,11 +35,11 @@
         </td>
         <td class="col-sm-3 text-left">
             <?php $visipavadinimai = array(); ?>
-            <? $suma = 0 ?>
+            <?php $suma = 0 ?>
             @foreach($doctor->orders as $items)
             @foreach($items->orders as $item)
             <?php array_push($visipavadinimai, $item->product->pavadinimas); ?>
-            <? $suma += $item->pir_kaina * $item->kiekis ?>
+            <?php $suma += $item->pir_kaina * $item->kiekis ?>
             @endforeach
             @endforeach
             <?php $pavadinimai = array_unique($visipavadinimai); ?>

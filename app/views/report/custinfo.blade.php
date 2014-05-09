@@ -1,7 +1,7 @@
 @extends('layout.core')
 
 <?php $header = "Information about the customers 2014"; ?>
-<? $i=0; ?>
+<?php $i=0; ?>
 @section('content')
 
 <script src="/js/excelexport.min.js"></script>
@@ -18,7 +18,7 @@
     </thead>
     <tbody>
     @foreach($doctors as $doctor)
-    <? $i++; ?>
+    <?php $i++; ?>
     <tr>
         <td>
             {{{ $i.". "}}}{{{ $doctor->fullname }}}

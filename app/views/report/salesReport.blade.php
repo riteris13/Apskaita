@@ -1,6 +1,6 @@
 @extends('layout.core')
 <?php $header = "Pardavimai bendri 2014 metų"; ?>
-<? $i=0;  $tarpSum[] =0; $bSuma=0; $doleris=2.5031?>
+<?php $i=0;  $tarpSum[] =0; $bSuma=0; $doleris=2.5031?>
 @section('content')
 <script src="/js/salesReport.js"></script>
 
@@ -24,16 +24,16 @@
             {{{ $item->pavadinimas}}}
         </td>
         <td class="text-center">
-            <? $kiekis=0; $suma=0;?>
+            <?php $kiekis=0; $suma=0;?>
             @foreach($item->orders as $order)
-            <? $kiekis += $order->kiekis ?>
-            <? $suma += $order->pir_kaina * $order->kiekis ?>
+            <?php $kiekis += $order->kiekis ?>
+            <?php $suma += $order->pir_kaina * $order->kiekis ?>
             @endforeach
-            <? $bSuma += $suma; $tarpSum[] = $suma;?>
+            <?php $bSuma += $suma; $tarpSum[] = $suma;?>
             {{{$kiekis}}}
         </td>
         <td >
-            <? $dol = round($suma/$doleris, 2) ?>
+            <?php $dol = round($suma/$doleris, 2) ?>
             {{{ $dol }}} $ <br> {{{$suma}}} LT
         </td>
         <td class="rinkos">
