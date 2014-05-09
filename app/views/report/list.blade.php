@@ -32,7 +32,7 @@
                 </tr>
                 <td>Ataskaita apie vizitą</td>
                 <td class="text-right">
-                    <a href="/report/visitreport" class="btn btn-primary" ><span class="glyphicon glyphicon-plus"></span> Sudaryti</a>
+                    <a href="/report/selectvisit" class="btn btn-primary" ><span class="glyphicon glyphicon-plus"></span> Sudaryti</a>
                 </td>
                 </tr>
                 <td>Metinė pardavimų ataskaita</td>
