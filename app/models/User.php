@@ -7,7 +7,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
     public $timestamps = false;
 
-    protected $fillable = ['email', 'password', 'role', 'first_login'];
+    protected $fillable = ['email', 'password', 'role', 'first_login', 'remember_token'];
     /**
 	 * The database table used by the model.
 	 *
@@ -74,4 +74,18 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	{
 		return $this->email;
 	}
+    public function getRememberToken()
+    {
+        return $this->remember_token;
+    }
+
+    public function setRememberToken($value)
+    {
+        $this->remember_token = $value;
+    }
+
+    public function getRememberTokenName()
+    {
+        return 'remember_token';
+    }
 }
