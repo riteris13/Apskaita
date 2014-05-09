@@ -2,8 +2,13 @@
 
 @section('content')
 <?php
+    if($laikas == 0){
+        $prev = Order::where('daktaras_id', '=', $doctor->id)->min('data');
+
+    }else{
+        $prev = date("Y-m-d", strtotime("-$laikas months"));
+    }
     $tY = date("Y");
-    $prev = date("Y-m-d", strtotime("-$laikas months"));
     $pY = substr($prev, 0 , 4);
     $pY2 = $pY;
     $i = 0;
