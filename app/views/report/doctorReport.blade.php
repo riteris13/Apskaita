@@ -14,7 +14,7 @@
     $i = 0;
 ?>
 
-<table id="tblExport" class="table table-bordered">
+<table class="table table-bordered">
     <tbody>
     <tr>
         <td>

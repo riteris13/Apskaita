@@ -44,7 +44,9 @@ Route::group(array('before' => 'notAuth'), function(){
                 Route::controller('visit', 'VisitController');
                 Route::controller('doctor', 'DoctorController');
                 Route::controller('order', 'OrderController');
+                Route::controller('export', 'ExportController');
                 Route::get('/invoice', function(){return View::make('invoice/invoice');});
+
             });
         });
     });

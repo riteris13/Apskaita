@@ -4,7 +4,7 @@
 @section('content')
 <script src="/js/salesReport.js"></script>
 
-<table id="tblExport" class="table table-bordered">    <!-- max table dydziui style="width:842px" -->
+<table class="table table-bordered">    <!-- max table dydziui style="width:842px" -->
     <thead style="font-weight: bold; text-align: center;">
     <tr>
         <td>Eil. Nr.</td>

@@ -4,9 +4,7 @@
 <?php $i=0; ?>
 @section('content')
 
-<script src="/js/excelexport.min.js"></script>
-
-<table id="tblExport" class="table table-bordered">
+<table class="table table-bordered">
     <thead style="font-weight: bold; text-align: center;">
         <tr>
             <td>Name, Surname</td>
@@ -53,20 +51,8 @@
 </table>
 
 <div>
-    <a id="btnExport" href="#" download="">Export</a>
+    <a href="/export/xls/ao" class="btn btn-primary" >Export XLS</a>
+    <a href="/export/pdf/ao" class="btn btn-primary" >Export PDF</a>
 </div>
 
-<script type="text/javascript">
-    $(document).ready(function () {
-        $("#btnExport").on('click', function () {
-            var uri = $("#tblExport").btechco_excelexport({
-                containerid: "tblExport"
-                , datatype: $datatype.Table
-                , returnUri: true
-            });
-
-            $(this).attr('download', 'ExportToExcel.xls').attr('href', uri).attr('target', '_blank');
-        });
-    });
-</script>
 @stop

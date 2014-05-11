@@ -24,10 +24,9 @@
     }
 </style>
 
-<script src="/js/excelexport.min.js"></script>
 
 <input type="text" class="input input-xs" style="width: 200px; text-align: left; font-size: 15px;">
-<table id="tblExport"  class="table table-bordered table-condensed">
+<table class="table table-bordered table-condensed">
 
     <tbody>
     <tr>
@@ -407,21 +406,7 @@
 {{ Form::close() }}
 
 <div>
-    <a id="btnExport" href="#" download="">Export</a>
+
 </div>
-
-<script type="text/javascript">
-    $(document).ready(function () {
-        $("#btnExport").on('click', function () {
-            var uri = $("#tblExport").btechco_excelexport({
-                containerid: "tblExport"
-                , datatype: $datatype.Table
-                , returnUri: true
-            });
-
-            $(this).attr('download', 'ExportToExcel.xls').attr('href', uri).attr('target', '_blank');
-        });
-    });
-</script>
 
 @stop

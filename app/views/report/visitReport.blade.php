@@ -2,7 +2,7 @@
 
 @section('content')
 
-<table id="tblExport" class="table table-bordered">
+<table class="table table-bordered">
     <tbody>
     <tr>
         <td class="text-center" style="background-color: lightgray" colspan="4">
