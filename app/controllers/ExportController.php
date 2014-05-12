@@ -26,6 +26,9 @@ class ExportController extends BaseController{
         if($type == "ao"){
             $this->getAOxls();
         }
+        elseif($type == "iatc"){
+            $this->getIATCxls();
+        }
     }
     public function getPdf($type)
     {
@@ -42,10 +45,14 @@ class ExportController extends BaseController{
 
         $i = 2;
 
-        $objPHPExcel->setActiveSheetIndex(0)
-            ->setCellValue('A1', 'Doctor')
-            ->setCellValue('B1', 'Discount')
-            ->setCellValue('C1', 'Potenciality');
+        $objRichText = $this->getBold("Doctor");
+        $objPHPExcel->getActiveSheet()->getCell("A1")->setValue($objRichText);
+
+        $objRichText2 = $this->getBold("Discount");
+        $objPHPExcel->getActiveSheet()->getCell("B1")->setValue($objRichText2);
+
+        $objRichText3 = $this->getBold("Potenciality");
+        $objPHPExcel->getActiveSheet()->getCell("C1")->setValue($objRichText3);
 
            foreach($doctors as $doctor){
                $objPHPExcel->setActiveSheetIndex(0)
@@ -54,7 +61,76 @@ class ExportController extends BaseController{
                    ->setCellValue('C'.$i, $doctor->potencialumas);
                $i++;
            }
+        $objPHPExcel->getActiveSheet()->getColumnDimension('A')->setAutoSize(true);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('B')->setAutoSize(true);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('C')->setAutoSize(true);
+
         $this->downloadExcel($objPHPExcel,"AO");
+    }
+
+    private function getIATCxls()
+    {
+        $doctors = Doctor::all();
+
+        $objPHPExcel = $this->prepareExcel("IATC");
+
+        $objRichText = $this->getBold("Name, Surname");
+        $objPHPExcel->getActiveSheet()->getCell("A1")->setValue($objRichText);
+        $objRichText1 = $this->getBold("Which products he use from us");
+        $objPHPExcel->getActiveSheet()->getCell("B1")->setValue($objRichText1);
+        $objRichText2 = $this->getBold("Which pruducts from other company");
+        $objPHPExcel->getActiveSheet()->getCell("C1")->setValue($objRichText2);
+        $objRichText3 = $this->getBold("Why he doesn't use our products");
+        $objPHPExcel->getActiveSheet()->getCell("D1")->setValue($objRichText3);
+        $objRichText4 = $this->getBold("My idea to make this doctor our customer");
+        $objPHPExcel->getActiveSheet()->getCell("E1")->setValue($objRichText4);
+
+        $i = 2;
+
+        foreach($doctors as $doctor)
+        {
+            $objPHPExcel->getActiveSheet()->getCell('A'.$i)->setValue($doctor->fullname);
+
+            $visipavadinimai = array();
+            foreach($doctor->orders as $items){
+                foreach($items->orders as $item){
+                    array_push($visipavadinimai, $item->product->pavadinimas);
+                }
+            }
+            $pavadinimai = array_unique($visipavadinimai);
+
+            $objPHPExcel->getActiveSheet()->getCell('B'.$i)->setValue(implode(", ", $pavadinimai));
+
+            $visipavadinimai = array();
+            foreach( $doctor->notourproduct as $item){
+                    array_push($visipavadinimai, $item->product->pavadinimas);
+            }
+            $objPHPExcel->getActiveSheet()->getCell('C'.$i)->setValue(implode(", ", $visipavadinimai));
+
+
+            $objPHPExcel->getActiveSheet()->getCell('D'.$i)->setValue($doctor->kodel_neperka);
+
+            $objPHPExcel->getActiveSheet()->getCell('E'.$i)->setValue($doctor->kaip_pritraukti);
+
+            $i++;
+        }
+
+        $objPHPExcel->getActiveSheet()->getColumnDimension('A')->setAutoSize(true);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('B')->setAutoSize(true);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('C')->setAutoSize(true);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('D')->setAutoSize(true);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('E')->setAutoSize(true);
+
+        $this->downloadExcel($objPHPExcel,"Information_about_the_customers");
+
+    }
+
+    private function getBold($text)
+    {
+        $objRichText = new PHPExcel_RichText();
+        $objTitle = $objRichText->createTextRun($text);
+        $objTitle->getFont()->setBold(true);
+        return $objRichText;
     }
 
     private function prepareExcel($title)
