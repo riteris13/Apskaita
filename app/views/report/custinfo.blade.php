@@ -52,7 +52,7 @@
 
 <div>
     <a href="/export/xls/iatc" class="btn btn-primary" >Export XLS</a>
-    <a href="/export/pdf/ao" class="btn btn-primary" >Export PDF</a>
+    <a href="/export/pdf/iatc" class="btn btn-primary" >Export PDF</a>
 </div>
 
 @stop

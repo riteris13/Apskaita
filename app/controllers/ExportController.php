@@ -35,6 +35,9 @@ class ExportController extends BaseController{
         if($type == "ao"){
             $this->getAOpdf();
         }
+        elseif($type == "iatc"){
+            $this->getIATCpdf();
+        }
     }
 
 
@@ -168,12 +171,10 @@ class ExportController extends BaseController{
         exit;
     }
 
-    public function getAOpdf(){
+    private function getAOpdf(){
         $html = '<html><head>
-    <meta charset="utf-8">
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
-    </head><body><div class="panel panel-default">
-    <div style="text-align: center; font-weight: bold"> AO </div><br><div style="margin: 0 auto; width: 50%"><table>
+    <meta charset="utf-8"></head><body><div>
+        <div style="text-align: center; font-weight: bold"> AO </div><br><div style="margin: 0 auto; width: 50%"><table>
         <thead>
             <tr>
                 <th>Doctors</th>
@@ -187,21 +188,73 @@ class ExportController extends BaseController{
              foreach($doctors as $item)
              {
             $html = $html.'<tr>
-                <td style="text-align : left">'.$item->fullname.
-                '</td>
-                <td style="text-align : right">'.
-                     $item->nuolaida.
-                '</td>
-                <td style="text-align : right">'
-                    .$item->potencialumas.
-                '</td>
+                <td style="text-align : left">'.$item->fullname.'</td>
+                <td style="text-align : right">'.$item->nuolaida.'</td>
+                <td style="text-align : right">'.$item->potencialumas.'</td>
             </tr>';
             };
         $html = $html.'</tbody>
-    </table></div></div></body></html>';
-       // dd($html);
+        </table></div></div></body></html>';
+        // dd($html);
         return PDF::load($html, 'A4', 'portrait')->show();
+    }
 
+    private function getIATCpdf()
+    {
+        $doctors = Doctor::all();
+
+        $html = '<html><head>
+    <meta charset="utf-8"></head><body><div>
+        <div style="text-align: center; font-weight: bold"> Information about the customers </div><br>
+        <div style="margin: 0 auto; width: 100%"><table>
+        <thead>
+            <tr>
+                <th>Name, Surname</th>
+                <th>Which products he use from us</th>
+                <th>Which products from other company</th>
+                <th>Why he doesnt use our products</th>
+                <th>My idea to make this doctor our customer</th>
+            </tr>
+        </thead>
+
+        <tbody>';
+        foreach($doctors as $doctor)
+        {
+            $html = $html.'<tr>
+                <td>'.$doctor->fullname.'</td>';
+
+            $visipavadinimai = array();
+            foreach($doctor->orders as $items){
+                foreach($items->orders as $item){
+                    array_push($visipavadinimai, $item->product->pavadinimas);
+                }
+            }
+            $pavadinimai = array_unique($visipavadinimai);
+
+            $html= $html.'<td>';
+            foreach($pavadinimai as $pavadinimas){
+                $html= $html.$pavadinimas."\n";
+            }
+            $html= $html.'</td>';
+
+            $visipavadinimai = array();
+            foreach( $doctor->notourproduct as $item){
+                array_push($visipavadinimai, $item->product->pavadinimas);
+            }
+            $html= $html.'<td>';
+            foreach($visipavadinimai as $pavadinimas){
+                $html= $html.$pavadinimas."\n";
+            }
+            $html= $html.'</td>
+
+            <td>'.$doctor->kodel_neperka.'</td>
+            <td>'.$doctor->kaip_pritraukti.'</td>
+            </tr>';
+        }
+        $html = $html.'</tbody>
+            </table></div></div></body></html>';
+        // dd($html);
+        return PDF::load($html, 'A4', 'portrait')->show();
     }
 
 }
