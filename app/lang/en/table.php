@@ -90,4 +90,5 @@ return array(
     'men6' => '6 months',
     'men12' => '12 months',
     'laik' => 'Period',
+    'visit' => 'Visit',
 );

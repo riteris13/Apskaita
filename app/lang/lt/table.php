@@ -90,4 +90,5 @@ return array(
     'men6' => '6 mėnesiai',
     'men12' => '12 mėnesių',
     'laik' => 'Laikotarpis',
+    'visit' => 'Vizitas',
 );
