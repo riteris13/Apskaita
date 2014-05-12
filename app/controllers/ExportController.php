@@ -169,9 +169,37 @@ class ExportController extends BaseController{
     }
 
     public function getAOpdf(){
+        $html = '<html><head>
+    <meta charset="utf-8">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    </head><body><div class="panel panel-default">
+    <div style="text-align: center; font-weight: bold"> AO </div><br><div style="margin: 0 auto; width: 50%"><table>
+        <thead>
+            <tr>
+                <th>Doctors</th>
+                <th>Discount</th>
+                <th>Potenciality</th>
+            </tr>
+        </thead>
+
+        <tbody>';
         $doctors = Doctor::all();
-        $view = View::make('report.ao')->with('doctors', $doctors);
-        $html = $view->render();
+             foreach($doctors as $item)
+             {
+            $html = $html.'<tr>
+                <td style="text-align : left">'.$item->fullname.
+                '</td>
+                <td style="text-align : right">'.
+                     $item->nuolaida.
+                '</td>
+                <td style="text-align : right">'
+                    .$item->potencialumas.
+                '</td>
+            </tr>';
+            };
+        $html = $html.'</tbody>
+    </table></div></div></body></html>';
+       // dd($html);
         return PDF::load($html, 'A4', 'portrait')->show();
 
     }

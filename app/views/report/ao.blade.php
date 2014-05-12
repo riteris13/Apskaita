@@ -25,8 +25,8 @@
                 <td>
                     {{{ $item->potencialumas }}}
                 </td>
-            @endforeach
             </tr>
+            @endforeach
         </tbody>
     </table>
 </div>
@@ -34,6 +34,5 @@
     <a href="/export/xls/ao" class="btn btn-primary" >Export XLS</a>
     <a href="/export/pdf/ao" class="btn btn-primary" >Export PDF</a>
 </div>
-
 
 @stop
