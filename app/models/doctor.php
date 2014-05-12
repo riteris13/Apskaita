@@ -39,7 +39,7 @@ class Doctor extends Eloquent {
         'potencialumas.max' => 'Potencialumas negali būti daugiau nei 100%.',
         'ivertinimas.numeric' => 'Ivertinimas gali būti tik skaičiai.',
         'nuolaida.numeric' => 'Nuolaida gali būti tik skaičiai.',
-        'potencialunmas.numeric' => 'Potencialumas gali būti tik skaičiai.',
+        'potencialumas.numeric' => 'Potencialumas gali būti tik skaičiai.',
         'ivertinimas.min' => 'Ivertinimas negali būti mažiau nei 0.',
         'nuolaida.min' => 'Nuolaida negali būti mažiau nei 0.',
         'potencialumas.min' => 'Potencialumas negali būti mažiau nei 0.'

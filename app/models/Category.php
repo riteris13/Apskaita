@@ -9,7 +9,7 @@ class Category extends Eloquent{
     ];
     public static $messages = [
         'required' => 'Pavadinimas: Neįvesti duomenys.',
-        'alpha_num_spaces' => 'Pavadinimas: Neteisingai įvesti duomenys! Gali būti naudojamos tik raidės ir skaičiai, be tarpų.',
+        'alpha_num_spaces' => 'Pavadinimas: Neteisingai įvesti duomenys! Gali būti naudojamos tik raidės, skaičiai ir tarpai.',
         'unique' => 'Tokia kategorija jau egzistuoja!',
         'max' => 'Pavadinimas: Įvestas tekstas negali būti ilgesnis nei 45 simboliai.'
     ];
