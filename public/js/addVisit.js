@@ -1,6 +1,10 @@
 jQuery(document).ready(function($){ 
+	window.onload = function(){
+		var clinic = $("#klinika").trigger("change");
+	};
+	
 	$('#klinika').change(function(){
-	if($(this).val() == "default"){
+	if($(this).val() == "default" || $(this).val() == null){
 		return;
 	}
 			$.getJSON("apidropdownclient", {option: $(this).val() }, 
