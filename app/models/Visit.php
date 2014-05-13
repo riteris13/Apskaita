@@ -6,8 +6,8 @@ class Visit extends Eloquent {
 
 
     public static $rules = [
-        'tikslas' => 'required|max:128',
-        'pokalbis' => 'max:1024',
+        'tikslas' => 'required|alpha_num_spaces|max:128',
+        'pokalbis' => 'alpha_num_spaces|max:1024',
         'kompetitoriai' => 'max:128',
         'data' => 'required',
         'daktaras_id' => 'required'
@@ -16,8 +16,10 @@ class Visit extends Eloquent {
         'tikslas.required' => 'Tikslas: Neįvesti duomenys',
         'data.required' => 'Data: Neįvesti duomenys',
         'daktaras_id.required' => 'Nepasirinktas daktaras',
-        'tikslas.max' => 'Tikslas: Įvestas tekstas negali būti ilgesnis nei 45 simboliai.',
+        'tikslas.max' => 'Tikslas: Įvestas tekstas negali būti ilgesnis nei 128 simboliai.',
         'pokalbis.max' => 'Pokalbis: Įvestas tekstas negali būti ilgesnis nei 1024 simboliai.',
+        'tikslas.alpha_num_spaces' => 'Tikslas: Gali būti naudojamos tik raidės ir skaičiai su tarpais.',
+        'pokalbis.alpha_num_spaces' => 'Pokalbis: Gali būti naudojamos tik raidės ir skaičiai su tarpais.',
         'kompetitoriai.max' => 'Kompetitoriai: Įvestas tekstas negali būti ilgesnis nei 128 simboliai.'
     ];
     public function doctor(){
