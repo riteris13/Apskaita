@@ -51,7 +51,8 @@ class OrderController extends BaseController{
             return Redirect::to('order')->with('success',$msg);
         }
         $input['pir_kaina'] = ($input['kaina'] * (1-$input['nuolaida']*0.01));
-        $validator = Validator::make($input, OrderApr::$rulesAdd, Order::$messages);
+
+        $validator = Validator::make($input, OrderApr::$rulesAdd, OrderApr::$messages);
         if($validator->fails()){
             return Redirect::back()
                 ->withInput()

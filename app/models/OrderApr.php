@@ -5,9 +5,10 @@ class OrderApr extends Eloquent {
     public $timestamps = false;
 
     public static $rulesAdd = [
-        'kiekis' => 'required|numeric|max:32000|min:1',
-        'pir_kaina' => 'required|numeric|max:99999999.99|min:0',
+        'kaina' => 'required|numeric|max:99999999.99|min:0.01',
         'nuolaida' => 'required|numeric|max:100|min:0',
+        'kiekis' => 'required|numeric|max:32000|min:1',
+        'pir_kaina' => 'required|numeric|max:99999999.99|min:0.01',
         'produktas_id' => 'required'
     ];
     public static $rulesEdit = [
@@ -16,14 +17,19 @@ class OrderApr extends Eloquent {
         'produktas_id' => 'required'
     ];
     public static $messages = [
+        'kaina.required' => 'Kaina: Neįvesti duomenys.',
         'kiekis.numeric' => 'Kiekis gali būti tik skaičiai.',
         'kiekis.required' => 'Kiekis: Neįvesti duomenys.',
         'kiekis.min' => 'Kiekis negali būti mažiau nei 1.',
         'kiekis.max' => 'Kiekis negali būti daugiau už 32000.',
-        'kaina.min' => 'Kaina negali būti mažiau nei 0.',
+        'kaina.numeric' => 'Kaina gali būti tik skaičiai',
+        'pir_kaina.numeric' => 'Kaina gali būti tik skaičiai',
         'kaina.max' => 'Kaina negali būti daugiau už 99999999.99.',
-        'nuolaida.min' => 'Kiekis negali būti mažiau nei 1.',
-        'nuolaida.max' => 'Kiekis negali būti daugiau už 100.',
+        'pir_kaina.min' => 'Bendra pardavimo kaina negali būti mažiau nei 0.01',
+        'pir_kaina.max' => 'Bendra pardavimo kaina negali būti daugiau už 99999999.99.',
+        'nuolaida.min' => 'Nuolaida negali būti mažiau nei 1.',
+        'nuolaida.max' => 'Nuolaida negali būti daugiau už 100.',
+        'kaina.min' => 'Kaina negali būti mažiau nei 0.01',
         'produktas_id.required' => 'Iš sąrašo nepasirinktas produktas'
     ];
 
