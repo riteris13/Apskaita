@@ -174,7 +174,8 @@ class ExportController extends BaseController{
     private function getAOpdf(){
         $html = '<html><head>
     <meta charset="utf-8"></head><body><div>
-        <div style="text-align: center; font-weight: bold"> AO </div><br><div style="margin: 0 auto; width: 50%"><table>
+        <div style="text-align: center; font-weight: bold"> AO </div><br><div style="margin: 0 auto; width: 50%">
+        <table border="1px solid" style="border-collapse: collapse;">
         <thead>
             <tr>
                 <th>Doctors</th>
@@ -183,14 +184,15 @@ class ExportController extends BaseController{
             </tr>
         </thead>
 
-        <tbody>';
+        <tbody style="text-align: left">';
         $doctors = Doctor::all();
+        $i = 0;
              foreach($doctors as $item)
              {
             $html = $html.'<tr>
                 <td style="text-align : left">'.$item->fullname.'</td>
-                <td style="text-align : right">'.$item->nuolaida.'</td>
-                <td style="text-align : right">'.$item->potencialumas.'</td>
+                <td style="text-align : center">'.$item->nuolaida.'</td>
+                <td style="text-align : center">'.$item->potencialumas.'</td>
             </tr>';
             };
         $html = $html.'</tbody>

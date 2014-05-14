@@ -11,7 +11,7 @@
                 <tr>
                 <td>Kliento nuolaida ir potencialas</td>
                 <td class="text-right">
-                     <a href="/report/ao" class="btn btn-primary" ><span class="glyphicon glyphicon-plus"></span> Generuoti naują</a>
+                     <a href="/report/ao" class="btn btn-primary" ><span class="glyphicon glyphicon-plus"></span> Sudaryti</a>
                 </td>
                 </tr>
                 <tr>

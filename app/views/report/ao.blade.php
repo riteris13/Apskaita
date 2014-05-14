@@ -17,7 +17,7 @@
             @foreach($doctors as $item)
             <tr>
                 <td>
-                    {{{ $item->vardas,' ', $item->pavarde }}}
+                    {{{ $item->fullname }}}
                 </td>
                 <td>
                     {{{ $item->nuolaida }}}
