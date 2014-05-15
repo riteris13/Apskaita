@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
 
-    <title>Editable Invoice</title>
+    <title>PVM sąskaita faktūra</title>
 
     <link rel='stylesheet' type='text/css' href='css/invoice.style.css' />
     <link rel='stylesheet' type='text/css' href='css/invoice.print.css' media="print" />

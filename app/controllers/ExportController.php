@@ -208,14 +208,15 @@ class ExportController extends BaseController{
         $html = '<html><head>
     <meta charset="utf-8"></head><body><div>
         <div style="text-align: center; font-weight: bold"> Information about the customers </div><br>
-        <div style="margin: 0 auto; width: 100%"><table>
+        <div style="margin: 0 auto; width: 90%">
+        <table border="1px solid" style="border-collapse: collapse;">
         <thead>
             <tr>
-                <th>Name, Surname</th>
-                <th>Which products he use from us</th>
-                <th>Which products from other company</th>
-                <th>Why he doesnt use our products</th>
-                <th>My idea to make this doctor our customer</th>
+                <th style="width: 150px">Name, Surname</th>
+                <th style="width: 130px">Which products she use from us</th>
+                <th style="width: 120px">Which products from other company</th>
+                <th style="width: 150px">Why she doesn\'t use our products</th>
+                <th style="width: 133px">My idea to make this doctor our customer</th>
             </tr>
         </thead>
 
@@ -256,7 +257,7 @@ class ExportController extends BaseController{
         $html = $html.'</tbody>
             </table></div></div></body></html>';
         // dd($html);
-        return PDF::load($html, 'A4', 'portrait')->show();
+        return PDF::load($html, 'A4', 'landscape')->show();
     }
 
 }
