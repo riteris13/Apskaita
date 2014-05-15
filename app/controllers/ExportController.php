@@ -39,7 +39,9 @@ class ExportController extends BaseController{
             $this->getIATCpdf();
         }
     }
-
+    public function postExpenses(){
+        $this->getEXPENSESpdf();
+    }
 
     private  function getAOxls()
     {
@@ -259,5 +261,68 @@ class ExportController extends BaseController{
         // dd($html);
         return PDF::load($html, 'A4', 'landscape')->show();
     }
+    private function getEXPENSESpdf(){
+        $i = 0;
+        $text['0'] = "Office expenses/needs";
+        $text['1'] = "Financial operations";
+        $text['2'] = "Delivery services";
+        $text['3'] = "Advertising/promo";
+        $text['4'] = "Representation expenses";
+        $text['5'] = "Travelling";
 
+        $input = Input::all();
+        $html = '<html><head>
+            <meta charset="utf-8"></head><body><div>
+            <div style="text-align: center; font-weight: bold"></div><br>
+            <div style="margin: 0 auto; width: 100%">
+            '.$input['data'].'
+            <table border="1px solid" style="border-collapse: collapse; width: 600px; text-align: left; font-size: 15px;">
+            <tbody>
+            <tr><td style="text-align: center; width: 70%;">Name</td>
+                <td></td>
+            </tr>
+             <tr><td></td><td style="text-align: center;">LTL</td>
+            </tr>
+            <tr>
+                <td style=" text-align: center; background-color: lightgray">Car Expenses</td>
+                <td style="background-color: lightgray"></td>
+            </tr>';
+
+        foreach(array_combine($input['line-xs'], $input['input-xs']) as $line => $amount){
+            if($i == 11 || $i == 16 || $i == 18 || $i == 20 || $i == 25 || $i == 31){
+                $html = $html.'<tr>
+                <td style=" text-align: center; background-color: lightgray">';
+                    if($i == 11){
+                        $html = $html.$text[0];
+                    }
+                    elseif($i == 16){
+                        $html = $html.$text[1];
+                    }
+                    elseif($i == 18){
+                        $html = $html.$text[2];
+                    }
+                    elseif($i == 20){
+                        $html = $html.$text[3];
+                    }
+                    elseif($i == 25){
+                        $html = $html.$text[4];
+                    }
+                    elseif($i == 31){
+                        $html = $html.$text[5];
+            }
+                $html = $html.'</td>
+                <td style="background-color: lightgray"></td>
+                    </tr>';
+            }
+            $html = $html.'<tr>
+                <td>'.$line.'</td>
+                <td style=" text-align: center;">'.$amount.'</td></tr>';
+            $i++;
+        }
+        $html = $html.'<tr><td style="font-weight: bold">Total expenses:</td>
+            <td style="text-align:center">'.$input['total'].'</td></tr></tbody>
+            </table></div></div></body></html>';
+
+        return PDF::load($html, 'A4', 'portrait')->download("Expenses ".$input['data']);
+    }
 }

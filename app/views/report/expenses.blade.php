@@ -13,6 +13,17 @@
         text-align: right;
         width: 100%;
     }
+    .input-xs2 {
+        height: 16px;
+        padding: 0px 0px;
+        font-size: 13px;
+        line-height: 0px;
+        border: 0px;
+        box-shadow: 0px;
+        outline: 0 none;
+        text-align: left;
+        width: 100%;
+    }
     .table-condensed>tbody>tr>td {
         padding: 0px;
         height: 15px;
@@ -24,10 +35,10 @@
     }
 </style>
 
-
-<input type="text" class="input input-xs" style="width: 200px; text-align: left; font-size: 15px;">
+{{ Form::open(array('url' => 'export/expenses', 'class'=>'input input-xs', 'style'=>'width: 600px; text-align: left; font-size: 15px;')) }}
+<!--<input type="text" class="input input-xs" style="width: 200px; text-align: left; font-size: 15px;">-->
+<input name="data" style="text-align: left" type="text"  class="input-xs" value="{{ date('F')}}, {{ date('Y')}}" id="data">
 <table class="table table-bordered table-condensed">
-
     <tbody>
     <tr>
         <td style="text-align: center; width: 70%;">
@@ -53,90 +64,91 @@
     </tr>
     <tr>
         <td>
-            Gas/oil/benzine/dyzeline
+            <input name="line-xs[]" type="text" class="input-xs2" value="Gas/oil/benzine/dyzeline">
         </td>
         <td>
-            <input type="text" class="input-xs">
-        </td>
-    </tr>
-    <tr>
-        <td>
-            Car wash
-        </td>
-        <td>
-            <input type="text" class="input-xs">
+            <input name="input-xs[]" type="text" class="input-xs">
         </td>
     </tr>
     <tr>
         <td>
-            Ice remover from the car window
+            <input name="line-xs[]" type="text" class="input-xs2" value="Car wash">
         </td>
         <td>
-            <input type="text" class="input-xs">
-        </td>
-    </tr>
-    <tr>
-        <td>
-            Car window liqued
-        </td>
-        <td>
-            <input type="text" class="input-xs">
+            <input name="input-xs[]" type="text" class="input-xs">
         </td>
     </tr>
     <tr>
         <td>
-            Car tyres
+            <input name="line-xs[]" type="text" class="input-xs2" value="Ice remover from the car window">
         </td>
         <td>
-            <input type="text" class="input-xs">
-        </td>
-    </tr>
-    <tr>
-        <td>
-            Car wipers
-        </td>
-        <td>
-            <input type="text" class="input-xs">
+          <input name="input-xs[]" type="text" class="input-xs">
         </td>
     </tr>
     <tr>
         <td>
-            Car lamp
+            <input name="line-xs[]" type="text" class="input-xs2" value="Car window liqued">
+
         </td>
         <td>
-            <input type="text" class="input-xs">
-        </td>
-    </tr>
-    <tr>
-        <td>
-            Payment for the roads
-        </td>
-        <td>
-            <input type="text" class="input-xs">
+            <input name="input-xs[]" type="text" class="input-xs">
         </td>
     </tr>
     <tr>
         <td>
-            Car service/changing tyre
+            <input name="line-xs[]" type="text" class="input-xs2" value="Car tyres">
         </td>
         <td>
-            <input type="text" class="input-xs">
-        </td>
-    </tr>
-    <tr>
-        <td>
-            Parking
-        </td>
-        <td>
-            <input type="text" class="input-xs">
+            <input name="input-xs[]" type="text" class="input-xs">
         </td>
     </tr>
     <tr>
         <td>
-            Taxi
+            <input name="line-xs[]" type="text" class="input-xs2" value="Car wipers">
         </td>
         <td>
-            <input type="text" class="input-xs">
+            <input name="input-xs[]" type="text" class="input-xs">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <input name="line-xs[]" type="text" class="input-xs2" value="Car lamp">
+        </td>
+        <td>
+            <input name="input-xs[]" type="text" class="input-xs">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <input name="line-xs[]" type="text" class="input-xs2" value="Payment for the roads">
+        </td>
+        <td>
+            <input name="input-xs[]" type="text" class="input-xs">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <input name="line-xs[]" type="text" class="input-xs2" value="Car service/changing tyre">
+        </td>
+        <td>
+            <input name="input-xs[]" type="text" class="input-xs">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <input name="line-xs[]" type="text" class="input-xs2" value="Parking">
+        </td>
+        <td>
+            <input name="input-xs[]" type="text" class="input-xs">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <input name="line-xs[]" type="text" class="input-xs2" value="Taxi">
+        </td>
+        <td>
+            <input name="input-xs[]" type="text" class="input-xs">
         </td>
     </tr>
     <tr>
@@ -148,43 +160,43 @@
     </tr>
     <tr>
         <td>
-            Phone
+            <input name="line-xs[]" type="text" class="input-xs2" value="Phone">
         </td>
         <td>
-            <input type="text" class="input-xs">
-        </td>
-    </tr>
-    <tr>
-    <tr>
-        <td>
-            Office expenses (paper and etc)
-        </td>
-        <td>
-            <input type="text" class="input-xs">
+            <input name="input-xs[]" type="text" class="input-xs">
         </td>
     </tr>
     <tr>
+    <tr>
         <td>
-            New bag for visits
+            <input name="line-xs[]" type="text" class="input-xs2" value="Office expenses (paper and etc)">
         </td>
         <td>
-            <input type="text" class="input-xs">
+            <input name="input-xs[]" type="text" class="input-xs">
         </td>
     </tr>
     <tr>
         <td>
-            Computer parts, services
+            <input name="line-xs[]" type="text" class="input-xs2" value="New bag for visits">
         </td>
         <td>
-            <input type="text" class="input-xs">
+            <input name="input-xs[]" type="text" class="input-xs">
         </td>
     </tr>
     <tr>
         <td>
-            Printer cartridge filling
+            <input name="line-xs[]" type="text" class="input-xs2" value="Computer parts, services">
         </td>
         <td>
-            <input type="text" class="input-xs">
+            <input name="input-xs[]" type="text" class="input-xs">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <input name="line-xs[]" type="text" class="input-xs2" value="Printer cartridge filling">
+        </td>
+        <td>
+            <input name="input-xs[]" type="text" class="input-xs">
         </td>
     </tr>
     <tr>
@@ -196,18 +208,18 @@
     </tr>
     <tr>
         <td>
-            Debt payment for Bite Vodafone internet
+            <input name="line-xs[]" type="text" class="input-xs2" value="Debt payment for Bite Vodafone internet">
         </td>
         <td>
-            <input type="text" class="input-xs">
+            <input name="input-xs[]" type="text" class="input-xs">
         </td>
     </tr>
     <tr>
         <td>
-            Payment for cash transfering to bank account
+            <input name="line-xs[]" type="text" class="input-xs2" value="Payment for cash transfering to bank account">
         </td>
         <td>
-            <input type="text" class="input-xs">
+            <input name="input-xs[]" type="text" class="input-xs">
         </td>
     </tr>
     <tr>
@@ -219,18 +231,18 @@
     </tr>
     <tr>
         <td>
-            Post
+            <input name="line-xs[]" type="text" class="input-xs2" value="Post">
         </td>
         <td>
-            <input type="text" class="input-xs">
+            <input name="input-xs[]" type="text" class="input-xs">
         </td>
     </tr>
     <tr>
         <td>
-            Payment for material delivery
+            <input name="line-xs[]" type="text" class="input-xs2" value="Payment for material delivery">
         </td>
         <td>
-            <input type="text" class="input-xs">
+            <input name="input-xs[]" type="text" class="input-xs">
         </td>
     </tr>
     <tr>
@@ -242,42 +254,42 @@
     </tr>
     <tr>
         <td>
-            Brochures for the seminar
+            <input name="line-xs[]" type="text" class="input-xs2" value="Brochures for the seminar">
         </td>
         <td>
-            <input type="text" class="input-xs">
-        </td>
-    </tr>
-    <tr>
-        <td>
-            Promotions, advertisement layout and printing
-        </td>
-        <td>
-            <input type="text" class="input-xs">
+            <input name="input-xs[]" type="text" class="input-xs">
         </td>
     </tr>
     <tr>
         <td>
-            Copying
+            <input name="line-xs[]" type="text" class="input-xs2" value="Promotions, advertisement layout and printing">
         </td>
         <td>
-            <input type="text" class="input-xs">
-        </td>
-    </tr>
-    <tr>
-        <td>
-            Show
-        </td>
-        <td>
-            <input type="text" class="input-xs">
+            <input name="input-xs[]" type="text" class="input-xs">
         </td>
     </tr>
     <tr>
         <td>
-            Translation
+            <input name="line-xs[]" type="text" class="input-xs2" value="Copying">
         </td>
         <td>
-            <input type="text" class="input-xs">
+            <input name="input-xs[]" type="text" class="input-xs">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <input name="line-xs[]" type="text" class="input-xs2" value="Show">
+        </td>
+        <td>
+            <input name="input-xs[]" type="text" class="input-xs">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <input name="line-xs[]" type="text" class="input-xs2" value="Translation">
+        </td>
+        <td>
+            <input name="input-xs[]" type="text" class="input-xs">
         </td>
     </tr>
     <tr>
@@ -289,50 +301,50 @@
     </tr>
     <tr>
         <td>
-            Dinner with doctors
+            <input name="line-xs[]" type="text" class="input-xs2" value="Dinner with doctors">
         </td>
         <td>
-            <input type="text" class="input-xs">
-        </td>
-    </tr>
-    <tr>
-        <td>
-            Christmas presents
-        </td>
-        <td>
-            <input type="text" class="input-xs">
+            <input name="input-xs[]" type="text" class="input-xs">
         </td>
     </tr>
     <tr>
         <td>
-            Christmas bags for presents
+            <input name="line-xs[]" type="text" class="input-xs2" value="Christmas presents">
         </td>
         <td>
-            <input type="text" class="input-xs">
-        </td>
-    </tr>
-    <tr>
-        <td>
-            Sweets
-        </td>
-        <td>
-            <input type="text" class="input-xs">
+            <input name="input-xs[]" type="text" class="input-xs">
         </td>
     </tr>
     <tr>
         <td>
-            Flowers for the doctors
+            <input name="line-xs[]" type="text" class="input-xs2" value="Christmas bags for presents">
         </td>
         <td>
-            <input type="text" class="input-xs">
+            <input name="input-xs[]" type="text" class="input-xs">
         </td>
     </tr>
     <tr>
         <td>
-            Souvenires
+            <input name="line-xs[]" type="text" class="input-xs2" value="Sweets">
         </td>
         <td>
-            <input type="text" class="input-xs">
+            <input name="input-xs[]" type="text" class="input-xs">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <input name="line-xs[]" type="text" class="input-xs2" value="Flowers for the doctors">
+        </td>
+        <td>
+            <input name="input-xs[]" type="text" class="input-xs">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <input name="line-xs[]" type="text" class="input-xs2" value="Souvenires">
+        </td>
+        <td>
+            <input name="input-xs[]" type="text" class="input-xs">
         </td>
     </tr>
     <tr>
@@ -344,50 +356,50 @@
     </tr>
     <tr>
         <td>
-            Hotel
+            <input name="line-xs[]" type="text" class="input-xs2" value="Hotel">
         </td>
         <td>
-            <input type="text" class="input-xs">
-        </td>
-    </tr>
-    <tr>
-        <td>
-            Food
-        </td>
-        <td>
-            <input type="text" class="input-xs">
+            <input name="input-xs[]" type="text" class="input-xs">
         </td>
     </tr>
     <tr>
         <td>
-            Air tickets
+            <input name="line-xs[]" type="text" class="input-xs2" value="Food">
         </td>
         <td>
-            <input type="text" class="input-xs">
-        </td>
-    </tr>
-    <tr>
-        <td>
-            Taxi
-        </td>
-        <td>
-            <input type="text" class="input-xs">
+            <input name="input-xs[]" type="text" class="input-xs">
         </td>
     </tr>
     <tr>
         <td>
-            Train tickets
+            <input name="line-xs[]" type="text" class="input-xs2" value="Air tickets">
         </td>
         <td>
-            <input type="text" class="input-xs">
+            <input name="input-xs[]" type="text" class="input-xs">
         </td>
     </tr>
     <tr>
         <td>
-            Currency exchange
+            <input name="line-xs[]" type="text" class="input-xs2" value="Taxi">
         </td>
         <td>
-            <input type="text" class="input-xs">
+            <input name="input-xs[]" type="text" class="input-xs">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <input name="line-xs[]" type="text" class="input-xs2" value="Train tickets">
+        </td>
+        <td>
+            <input name="input-xs[]" type="text" class="input-xs">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <input name="line-xs[]" type="text" class="input-xs2" value="Currency exchange">
+        </td>
+        <td>
+            <input name="input-xs[]" type="text" class="input-xs">
         </td>
     </tr>
     <tr>
@@ -395,14 +407,14 @@
             Total expenses:
         </td>
         <td>
-            <input type="text" class="input-xs" style="font-weight: bold;" id="total">
+            <input name="total" type="text" class="input-xs" style="font-weight: bold;" id="total">
         </td>
     </tr>
 
     </tbody>
 
 </table>
-
+{{Form::submit("Export PDF", array('class'=>'btn btn-primary')); }}
 {{ Form::close() }}
 
 <div>

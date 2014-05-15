@@ -5,7 +5,8 @@ jQuery(document).ready(function($){
 	}
 		var suma = 0;
 			$('.input-xs').each(function(index){
-				if (!$(this).val() || $(this).attr('id') == "total") {	
+				if (!$(this).val() || $(this).attr('id') == "total" 
+					|| $(this).attr('id') == "data" || $(this).val() == "") {	
 				}else{
 					suma += parseFloat($(this).val());	
 				}				
