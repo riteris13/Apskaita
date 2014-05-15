@@ -2,5 +2,6 @@
 
 return array(
     'welcome' => 'Sveiki atvykę!',
-    'intro' => 'Pristatomoji žinutė.'
+    'intro' => 'Ši sistema skirta UAB "Žikai".',
+    'link' => 'Vartotojo vadovas: '."<a href='/guide.doc'>Vadovas</a>"
 );

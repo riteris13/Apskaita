@@ -1,7 +1,7 @@
 <?php
 
 return array(
-    'name' => 'O.P.O.S.R.S',
+    'name' => 'Žikai',
     'add_data' => 'Add data',
     'categories' => 'Categories',
     'items' => 'Items',

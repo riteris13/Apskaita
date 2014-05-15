@@ -1,6 +1,7 @@
 <?php
 
 return array(
-    'welcome' => 'Welcome to our application',
-    'intro' => 'This is subtitle.'
+    'welcome' => 'Welcome!',
+    'intro' => 'This system is created for "Žikai" Ltd.',
+    'link' =>'Complete user guide: '."<a href='/guide.doc'>Guide</a>"
 );

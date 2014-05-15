@@ -1,7 +1,7 @@
 <?php
 
 return array(
-    'name' => 'O.P.U.P.A.S',
+    'name' => 'Žikai',
     'add_data' => 'Pridėti duomenis',
     'categories' => 'Kategorijos',
     'items' => 'Produktai',

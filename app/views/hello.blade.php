@@ -6,6 +6,6 @@
 
 	<h1><?php echo trans('messages.welcome'); ?></h1>
     <br>
-    <h4><?php echo trans('messages.intro'); ?></h4>
+    <h4><?php echo trans('messages.intro'); if(Auth::user()->role == 'direktore'){echo trans('messages.link');} ?></h4>
 
 @stop
