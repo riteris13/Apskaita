@@ -20,6 +20,7 @@ class OrderApr extends Eloquent {
         'kaina.required' => 'Kaina: Neįvesti duomenys.',
         'kiekis.numeric' => 'Kiekis gali būti tik skaičiai.',
         'kiekis.required' => 'Kiekis: Neįvesti duomenys.',
+        'nuolaida.required' => 'Nuolaida: Neįvesti duomenys.',
         'kiekis.min' => 'Kiekis negali būti mažiau nei 1.',
         'kiekis.max' => 'Kiekis negali būti daugiau už 32000.',
         'kaina.numeric' => 'Kaina gali būti tik skaičiai',
