@@ -40,11 +40,13 @@ class ExportController extends BaseController{
         }
     }
     public function postExpenses(){
-        //$input['PDF'] = Input::get('Export PDF');
-        if(Input::get('PDF') != null){
+        if(Input::get('PDF') == "Export PDF"){
             $this->getEXPENSESpdf();
-        }elseif(Input::get('XLS') != null){
+        }elseif(Input::get('XLS') == "Export XLS"){
             $this->getEXPENSESxls();
+        }
+        else{
+            return Redirect::to('report/expenses')->withErrors('Global error');
         }
     }
 
@@ -268,10 +270,7 @@ class ExportController extends BaseController{
     }
     private function getEXPENSESxls(){
         $input = Input::all();
-        //print_r($input);
-        //return;
         $objPHPExcel = $this->prepareExcel("Expenses");
-
         $i = 5;
 
         $objRichText = $this->getBold($input['data']);
@@ -330,7 +329,6 @@ class ExportController extends BaseController{
         $objPHPExcel->getActiveSheet()->getColumnDimension('B')->setAutoSize(true);
 
         $this->downloadExcel($objPHPExcel,"Expenses");
-        //echo "Nebaigtas xls eksportas";
     }
     private function getEXPENSESpdf(){
         $i = 0;
