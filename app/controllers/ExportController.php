@@ -56,7 +56,7 @@ class ExportController extends BaseController{
             $this->getSALESxls();
         }
         else{
-            return Redirect::to('report/expenses')->withErrors('Global error');
+            return Redirect::to('report/sales')->withErrors('Global error');
         }
     }
 
@@ -403,5 +403,11 @@ class ExportController extends BaseController{
             </table></div></div></body></html>';
 
         return PDF::load($html, 'A4', 'portrait')->download("Expenses ".$input['data']);
+    }
+    private function getSALESxls(){
+        echo "XLS metodas nebaigtas";
+    }
+    private function getSALESpdf(){
+        echo "PDF metodas nebaigtas";
     }
 }

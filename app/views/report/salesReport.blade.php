@@ -4,7 +4,10 @@
 @section('content')
 <script src="/js/salesReport.js"></script>
 
-<table class="table table-bordered">    <!-- max table dydziui style="width:842px" -->
+{{ Form::open(array('url' => 'export/sales')) }}
+{{ "Doleris:", Form::text('Baksas', 2.5031)}}
+
+<table class="table table-bordered" id="tblSales">    <!-- max table dydziui style="width:842px" -->
     <thead style="font-weight: bold; text-align: center;">
     <tr>
         <td>Eil. Nr.</td>
@@ -21,7 +24,7 @@
             {{{++$i}}}
         </td>
         <td class="text-left">
-            {{{ $item->pavadinimas}}}
+            {{ Form::text('name[]', $item->pavadinimas)}}
         </td>
         <td class="text-center">
             <?php $kiekis=0; $suma=0;?>
@@ -30,14 +33,14 @@
             <?php $suma += $order->pir_kaina * $order->kiekis ?>
             @endforeach
             <?php $bSuma += $suma; $tarpSum[] = $suma;?>
-            {{{$kiekis}}}
+            {{ Form::text('amount[]', $kiekis)}}
         </td>
         <td >
             <?php $dol = round($suma/$doleris, 2) ?>
-            {{{ $dol }}} $ <br> {{{$suma}}} LT
+            {{ Form::text('dol[]', $dol)}}$ <br> {{ Form::text('ltl[]', $suma)}}LT
         </td>
         <td class="rinkos">
-            0
+            {{ Form::text('rinkos[]', '')}}
         </td>
     </tr>
     @endforeach
@@ -48,6 +51,10 @@
     <td></td>
     </tbody>
 </table>
+{{Form::submit("Export XLS", array('class'=>'btn btn-primary', 'name' => 'XLS')); }}
+&nbsp;
+{{Form::submit("Export PDF", array('class'=>'btn btn-primary', 'name' => 'PDF')); }}
+{{ Form::close() }}
 
 <script> calculateTotal({{$bSuma}}, <?php echo json_encode($tarpSum); ?> )</script>
 @stop
