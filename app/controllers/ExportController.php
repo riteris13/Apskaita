@@ -267,7 +267,70 @@ class ExportController extends BaseController{
         return PDF::load($html, 'A4', 'landscape')->show();
     }
     private function getEXPENSESxls(){
-        echo "Nebaigtas xls eksportas";
+        $input = Input::all();
+        //print_r($input);
+        //return;
+        $objPHPExcel = $this->prepareExcel("Expenses");
+
+        $i = 5;
+
+        $objRichText = $this->getBold($input['data']);
+        $objPHPExcel->getActiveSheet()->getCell("A1")->setValue($objRichText);
+
+        $objRichText2 = $this->getBold("Name");
+        $objPHPExcel->getActiveSheet()->getCell("A2")->setValue($objRichText2);
+
+        $objRichText3 = $this->getBold("LTL");
+        $objPHPExcel->getActiveSheet()->getCell("B3")->setValue($objRichText3);
+
+        $objRichText4 = $this->getBold("Car expenses");
+        $objPHPExcel->getActiveSheet()->getCell("A4")->setValue($objRichText4);
+
+        foreach(array_combine($input['line-xs'], $input['input-xs']) as $line => $amount){
+            if($i == 16 || $i == 22 || $i == 25 || $i == 28 || $i == 34 || $i == 41){
+                if($i == 16){
+                    $objRichText7 = $this->getBold("Office expenses/needs");
+                    $objPHPExcel->getActiveSheet()->getCell("A".$i)->setValue($objRichText7);
+                    $i++;
+                }elseif($i == 22){
+                    $objRichText7 = $this->getBold("Financial operations");
+                    $objPHPExcel->getActiveSheet()->getCell("A".$i)->setValue($objRichText7);
+                    $i++;
+                }elseif($i == 25){
+                    $objRichText7 = $this->getBold("Delivery services");
+                    $objPHPExcel->getActiveSheet()->getCell("A".$i)->setValue($objRichText7);
+                    $i++;
+                }elseif($i == 28){
+                    $objRichText7 = $this->getBold("Advertising/promo");
+                    $objPHPExcel->getActiveSheet()->getCell("A".$i)->setValue($objRichText7);
+                    $i++;
+                }elseif($i == 34){
+                    $objRichText7 = $this->getBold("Representation expenses");
+                    $objPHPExcel->getActiveSheet()->getCell("A".$i)->setValue($objRichText7);
+                    $i++;
+                }elseif($i == 41){
+                    $objRichText7 = $this->getBold("Traveling");
+                    $objPHPExcel->getActiveSheet()->getCell("A".$i)->setValue($objRichText7);
+                    $i++;
+                }
+            }
+            $objPHPExcel->setActiveSheetIndex(0)
+                ->setCellValue('A'.$i, $line)
+                ->setCellValue('B'.$i, $amount);
+            $i++;
+        }
+
+        $objRichText5 = $this->getBold("Total expenses");
+        $objPHPExcel->getActiveSheet()->getCell('A'.$i)->setValue($objRichText5);
+
+        $objRichText6 = $this->getBold($input['total']);
+        $objPHPExcel->getActiveSheet()->getCell('B'.$i)->setValue($objRichText6);
+
+        $objPHPExcel->getActiveSheet()->getColumnDimension('A')->setAutoSize(true);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('B')->setAutoSize(true);
+
+        $this->downloadExcel($objPHPExcel,"Expenses");
+        //echo "Nebaigtas xls eksportas";
     }
     private function getEXPENSESpdf(){
         $i = 0;
