@@ -91,4 +91,5 @@ return array(
     'men12' => '12 months',
     'laik' => 'Period',
     'visit' => 'Visit',
+    'prepInvoice' => 'Prepare Invoice',
 );

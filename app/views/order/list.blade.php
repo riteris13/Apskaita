@@ -18,7 +18,7 @@
     <div class="panel panel-default">
         <div class="panel-heading">{{trans('header.order.table');}}</div>
         <table class="table table-hover">
-                <thead>
+            <thead>
                     <tr>
                         <th>{{{trans('table.client')}}}</th>
                         <th>{{{trans('table.clinic')}}}</th>
@@ -26,37 +26,42 @@
                         <th>{{{trans('table.status')}}}</th>
                         <th class="text-center">{{{trans('table.size')}}}</th>
                       </tr>
-                  </thead>
-
-                  <tbody >
+                </thead>
+            <tbody >
                   @foreach($items as $item)
-                  @if ( $item->statusas == 1)
-                      <tr bgcolor = "#B2FFB2">
-                  @else
-                      <tr bgcolor = "#FFFFB2">
-                  @endif
-                          <td>
-                              {{{ $item->doctor->fullname}}}
-                          </td>
-                          <td>
-                              {{{ $item->doctor->clinic->pavadinimas}}}
-                          </td>
+                      @if ( $item->statusas == 1)
+                          <tr bgcolor = "#B2FFB2">
+                      @else
+                          <tr bgcolor = "#FFFFB2">
+                      @endif
+                      <td>
+                          {{{ $item->doctor->fullname}}}
+                      </td>
+                      <td>
+                          {{{ $item->doctor->clinic->pavadinimas}}}
+                      </td>
                       <td>
                           {{{ $item->data}}}
                       </td>
                       @if ( $item->statusas == 1)
-                      <td class="col-sm-1">
-                          {{{trans('table.comp')}}}
-                      </td>
+                          <td class="col-sm-1">
+                              {{{trans('table.comp')}}}
+                          </td>
                       @else
-                      <td class="col-sm-1">
-                          {{{trans('table.inComp')}}}
-                      </td>
+                          <td class="col-sm-1">
+                              {{{trans('table.inComp')}}}
+                          </td>
                       @endif
                       <td class="col-sm-1 text-center">
                           {{{ $item->orders()->count() }}}
                       </td>
                         <td class="col-sm-2 text-right">
+                            @if ($item->statusas == 1)
+                                <a
+                                    class="btn btn-xs btn-primary" href="/invoice/withid/{{$item->id}}">
+                                    <span class="glyphicon glyphicon-file" rel="tooltip" data-placement="top" title="{{{trans('table.prepInvoice')}}}"> </span>
+                                </a>
+                            @endif
                             <button class="btn btn-xs btn-primary"
                                     value = "{{{trans('table.orderTotal')}}}"
                                     onClick = "getDetails({{$item->id}})"
@@ -65,40 +70,39 @@
                             <span class="glyphicon glyphicon-search" rel="tooltip" data-placement="top" title="{{{trans('table.viewOrder')}}}"></span>
                             </button>
                             @if ( $item->statusas == 0)
-                            <a
-                                onclick="return confirm('Ar tikrai norite norite pakeisti užsakymo statusą?')"
-                                class="btn btn-xs btn-primary" href="/order/status/{{$item->id}}">
-                                <span class="glyphicon glyphicon-thumbs-up" rel="tooltip" data-placement="top" title="{{{trans('table.compOrder')}}}"> </span>
-                            </a>
-                            <a
-                                class="btn btn-xs btn-primary" href="/order/edit/{{$item->id}}">
-                                <span class="glyphicon glyphicon-pencil" rel="tooltip" data-placement="top" title="{{{trans('table.edit')}}}"></span>
-                            </a>
+                                <a
+                                    onclick="return confirm('Ar tikrai norite norite pakeisti užsakymo statusą?')"
+                                    class="btn btn-xs btn-primary" href="/order/status/{{$item->id}}">
+                                    <span class="glyphicon glyphicon-thumbs-up" rel="tooltip" data-placement="top" title="{{{trans('table.compOrder')}}}"> </span>
+                                </a>
+                                <a
+                                    class="btn btn-xs btn-primary" href="/order/edit/{{$item->id}}">
+                                    <span class="glyphicon glyphicon-pencil" rel="tooltip" data-placement="top" title="{{{trans('table.edit')}}}"></span>
+                                </a>
                             @else
-                            <a
-                                onclick="return confirm('Ar tikrai norite norite pakeisti užsakymo statusą?')"
-                                class="btn btn-xs btn-danger" href="/order/status/{{$item->id}}">
-                                <span class="glyphicon glyphicon-thumbs-down" rel="tooltip" data-placement="top" title="{{{trans('table.cnlOrder')}}}"> </span>
-                            </a>
-
+                                <a
+                                    onclick="return confirm('Ar tikrai norite norite pakeisti užsakymo statusą?')"
+                                    class="btn btn-xs btn-danger" href="/order/status/{{$item->id}}">
+                                    <span class="glyphicon glyphicon-thumbs-down" rel="tooltip" data-placement="top" title="{{{trans('table.cnlOrder')}}}"> </span>
+                                </a>
                             @endif
 
                             @if ( $item->statusas == 0)
-                            <a
-                                onclick="return confirm('Ar tikrai norite pašalinti užsakymą?')"
-                                class="btn btn-xs btn-danger" href="/order/remove/{{$item->id}}">
-                                <span class="glyphicon glyphicon-trash" rel="tooltip" data-placement="top" title="{{{trans('table.del')}}}"></span>
-                            </a>
+                                <a
+                                    onclick="return confirm('Ar tikrai norite pašalinti užsakymą?')"
+                                    class="btn btn-xs btn-danger" href="/order/remove/{{$item->id}}">
+                                    <span class="glyphicon glyphicon-trash" rel="tooltip" data-placement="top" title="{{{trans('table.del')}}}"></span>
+                                </a>
                             @else
-                            <a
-                                onclick="return confirm('Ar tikrai norite norite archyvuoti užsakymą? \r (Archyve galima tik peržiūrėti užsakymus)')"
-                                class="btn btn-xs btn-info" href="/order/archive/{{$item->id}}">
-                                <span class="glyphicon glyphicon-briefcase" rel="tooltip" data-placement="top" title="{{{trans('table.toArch')}}}"></span>
-                            </a>
+                                <a
+                                    onclick="return confirm('Ar tikrai norite norite archyvuoti užsakymą? \r (Archyve galima tik peržiūrėti užsakymus)')"
+                                    class="btn btn-xs btn-info" href="/order/archive/{{$item->id}}">
+                                    <span class="glyphicon glyphicon-briefcase" rel="tooltip" data-placement="top" title="{{{trans('table.toArch')}}}"></span>
+                                </a>
                             @endif
                         </td>
                     </tr>
-                @endforeach
+                  @endforeach
                 </tbody>
         </table>
     </div>
@@ -129,6 +133,9 @@
                 </table>
                 <h4 id="bendra_suma"></h4>
                 <div class="modal-footer">
+                    <button
+                        type="button" class="btn btn-sm btn-primary" name="papildyti-btn">{{{trans('table.appOrder')}}}
+                    </button>
                     <button
                         type="button" class="btn btn-sm btn-primary" name="papildyti-btn">{{{trans('table.appOrder')}}}
                     </button>

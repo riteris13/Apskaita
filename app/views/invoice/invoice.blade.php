@@ -6,10 +6,10 @@
 
     <title>PVM sąskaita faktūra</title>
 
-    <link rel='stylesheet' type='text/css' href='css/invoice.style.css' />
-    <link rel='stylesheet' type='text/css' href='css/invoice.print.css' media="print" />
-    <script type='text/javascript' src='js/jquery-1.3.2.min.js'></script>
-    <script type='text/javascript' src='js/invoice.js'></script>
+    <link rel='stylesheet' type='text/css' href='/css/invoice.style.css' />
+    <link rel='stylesheet' type='text/css' href='/css/invoice.print.css' media="print" />
+    <script type='text/javascript' src='/js/jquery-1.3.2.min.js'></script>
+    <script type='text/javascript' src='/js/invoice.js'></script>
 
 </head>
 
@@ -59,16 +59,20 @@
             <th>Kaina, LTL</th>
             <th>Suma, LTL</th>
         </tr>
-
-        <tr class="item-row">
-            <td id="table-nr"><span class="nr"> </span></td>
-            <td class="item-name"><textarea id="table-name">Web Updates</textarea>
-            <td><textarea id="table-qty" class="qty">1</textarea></td>
-            <td><textarea id="table-mes">matas</textarea></td>
-            <td><textarea id="table-vat">21%</textarea></td>
-            <td><textarea id="table-cost" class="cost">650.00</textarea></td>
-            <td class="item-price"> <span class="price">650.00</span><div class="delete-wpr"><a class="delete" href="javascript:;" title="Pašalinti eilutę">X</a></div></td>
-        </tr>
+        <?php
+        if(!isset($products)){$products = array();}
+        foreach($products as $product){
+           echo( '<tr class="item-row">
+                <td id="table-nr"><span class="nr"> </span></td>
+                <td class="item-name"><textarea id="table-name">'.$product['produktas'].'</textarea>
+                <td><textarea id="table-qty" class="qty">'.$product['kiekis'].'</textarea></td>
+                <td><textarea id="table-mes">matas</textarea></td>
+                <td><textarea id="table-vat">21%</textarea></td>
+                <td><textarea id="table-cost" class="cost">'.$product['pir_kaina'].'</textarea></td>
+                <td class="item-price"> <span class="price">650.00</span><div class="delete-wpr"><a class="delete" href="javascript:;" title="Pašalinti eilutę">X</a></div></td>
+            </tr>');
+        }
+        ?>
 
         <tr id="hiderow">
             <td colspan="7"><a id="addrow" href="javascript:;" title="Pridėti tuščią eilutę">Pridėti eilutę</a></td>

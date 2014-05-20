@@ -91,4 +91,5 @@ return array(
     'men12' => '12 mėnesių',
     'laik' => 'Laikotarpis',
     'visit' => 'Vizitas',
+    'prepInvoice' => 'Sudaryti sąskaitą faktūrą',
 );
