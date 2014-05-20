@@ -40,7 +40,12 @@ class ExportController extends BaseController{
         }
     }
     public function postExpenses(){
-        $this->getEXPENSESpdf();
+        //$input['PDF'] = Input::get('Export PDF');
+        if(Input::get('PDF') != null){
+            $this->getEXPENSESpdf();
+        }elseif(Input::get('XLS') != null){
+            $this->getEXPENSESxls();
+        }
     }
 
     private  function getAOxls()
@@ -260,6 +265,9 @@ class ExportController extends BaseController{
             </table></div></div></body></html>';
         // dd($html);
         return PDF::load($html, 'A4', 'landscape')->show();
+    }
+    private function getEXPENSESxls(){
+        echo "Nebaigtas xls eksportas";
     }
     private function getEXPENSESpdf(){
         $i = 0;

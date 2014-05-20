@@ -414,7 +414,9 @@
     </tbody>
 
 </table>
-{{Form::submit("Export PDF", array('class'=>'btn btn-primary')); }}
+{{Form::submit("Export XLS", array('class'=>'btn btn-primary', 'name' => 'XLS')); }}
+&nbsp;
+{{Form::submit("Export PDF", array('class'=>'btn btn-primary', 'name' => 'PDF')); }}
 {{ Form::close() }}
 
 <div>
