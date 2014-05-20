@@ -2,7 +2,8 @@
 @section('content')
 <script src="/js/expenses.js"></script>
 <style>
-    .input-xs {
+    .input-xs,
+    .input-xs2 {
         height: 16px;
         padding: 0px 0px;
         font-size: 13px;
@@ -13,16 +14,8 @@
         text-align: right;
         width: 100%;
     }
-    .input-xs2 {
-        height: 16px;
-        padding: 0px 0px;
-        font-size: 13px;
-        line-height: 0px;
-        border: 0px;
-        box-shadow: 0px;
-        outline: 0 none;
+    .input-xs2{
         text-align: left;
-        width: 100%;
     }
     .table-condensed>tbody>tr>td {
         padding: 0px;
