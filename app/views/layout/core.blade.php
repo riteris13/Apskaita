@@ -113,17 +113,15 @@
                             <li <?=echoActiveClassIfRequestMatches("clinic")?>>
                                 <a href="/clinic">{{trans('menu.clinics')}}</a>
                             </li>
-
-                            <li <?=echoActiveClassIfRequestMatches("visit")?>>
-                                <a href="/visit">{{trans('menu.visits')}}</a>
-                            </li>
-
-                            <li <?=echoActiveClassIfRequestMatches("order")?>>
-                                <a href="/order">{{trans('menu.orders')}}</a>
-                            </li>
                         </ul>
                     </li>
-                <li><a href="/invoice">{{trans('menu.invoice')}}</a></li>
+                <li <?=echoActiveClassIfRequestMatches("visit")?>>
+                    <a href="/visit">{{trans('menu.visits')}}</a>
+                </li>
+
+                <li <?=echoActiveClassIfRequestMatches("order")?>>
+                    <a href="/order">{{trans('menu.orders')}}</a>
+                </li>
                 @endif
 
                 <li <?=echoActiveClassIfRequestMatches("report")?>>
