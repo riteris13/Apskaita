@@ -49,6 +49,16 @@ class ExportController extends BaseController{
             return Redirect::to('report/expenses')->withErrors('Global error');
         }
     }
+    public function postSales(){
+        if(Input::get('PDF') == "Export PDF"){
+            $this->getSALESpdf();
+        }elseif(Input::get('XLS') == "Export XLS"){
+            $this->getSALESxls();
+        }
+        else{
+            return Redirect::to('report/expenses')->withErrors('Global error');
+        }
+    }
 
     private  function getAOxls()
     {
