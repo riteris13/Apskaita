@@ -1,6 +1,6 @@
 @extends('layout.core')
 <?php $header = "Pardavimai bendri 2014 metų"; ?>
-<?php $i=0;  $tarpSum[] =0; $bSuma=0;?>
+<?php $i=0; $bSuma=0;?>
 @section('content')
 <script src="/js/salesReport.js"></script>
 
@@ -26,14 +26,14 @@
         <td class="text-left">
             {{ Form::text('name[]', $item->pavadinimas)}}
         </td>
-        <td class="text-center">
+        <td>
             <?php $kiekis=0; $suma=0;?>
             @foreach($item->orders as $order)
             <?php $kiekis += $order->kiekis ?>
             <?php $suma += $order->pir_kaina * $order->kiekis ?>
             @endforeach
-            <?php $bSuma += $suma; $tarpSum[] = $suma;?>
-            {{ Form::text('amount[]', $kiekis)}}
+            <?php $bSuma += $suma;?>
+            {{ Form::text('amount[]', $kiekis, array('class'=>'amount'))}}
         </td>
         <td>
             {{ Form::text('dol[]',null, array('class'=>'dol'))}}$ <br> {{ Form::text('ltl[]', number_format($suma, 2,
@@ -47,7 +47,7 @@
     <td></td>
     <td></td>
         <td>Bendra suma:</td>
-        <td> {{ Form::text('bendraSuma', $bSuma,  array('id'=>'Total')) }} </td>
+        <td> {{ Form::text('bendraSuma', null,  array('id'=>'Total')) }} </td>
     <td></td>
     </tbody>
 </table>

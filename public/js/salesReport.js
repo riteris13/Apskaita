@@ -2,27 +2,34 @@ jQuery(document).ready(function($){
 	window.onload = function(){
 		$("#Dol_val").trigger("change");
 	};
-	var sumaLT = 0;
+	var sumaLT = [];
 	var sumaDOL = [];
 	var rinkos = [];
 	var dol = 2.5031;
 	var total = 0;
 	$('#Dol_val').on('change', function(){
 	dol = $(this).val();
-	total = $('#Total').val();
 			$('.ltl').each(function(index){
-				sumaLT = parseFloat($(this).val()) || 0;
-				sumaDOL[index] = (sumaLT/dol).toFixed(2);
-				rinkos[index] = (100/total*sumaLT).toFixed(2);
+				sumaLT[index] = parseFloat($(this).val()) || 0;
+				sumaDOL[index] = (sumaLT[index]/dol).toFixed(2);
+				total += sumaLT[index];
 			});
+			$('#Total').val(total.toFixed(2));
 			$('.dol').each(function(index){
 				$(this).val(sumaDOL[index]);
 			});
 			$('.rinkos').each(function(index){
-				$(this).val(rinkos[index]);
-			});				
+				$(this).val((100/total*sumaLT[index]).toFixed(2));
+			});
+			total = 0;
 	})
-	$('#ltl').on('change', function(){
-		alert("k");
+	$('.ltl').on('change', function(){
+		$("#Dol_val").trigger("change");
 	})
 });
+
+/*pagal index grazina value	
+		var i = 0;
+		i = $('.ltl').index($(this));
+		alert($('.ltl').eq(i).val());
+		*/
