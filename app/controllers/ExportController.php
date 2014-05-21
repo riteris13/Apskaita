@@ -452,6 +452,49 @@ class ExportController extends BaseController{
         $this->downloadExcel($objPHPExcel,"Sales");
     }
     private function getSALESpdf(){
-        echo "PDF metodas nebaigtas";
+        $input = Input::all();
+        $i = 1;
+        $html = '<html><head><meta charset="utf-8"></head><body><div>
+            <div style="text-align: center; font-weight: bold"></div><br>
+            <div style="margin: 0 auto; width: 100%">
+            <table border="1px solid" style="border-collapse: collapse; width: 650px; text-align: left; font-size: 15px;
+                margin-left: 45px;">
+            <thead style="font-weight: bold; text-align: center;">
+            <tr>
+                <td style="text-align: center;">Eil. Nr.</td>
+                <td>Prekės pavadinimas</td>
+                <td>Kiekis</td>
+                <td>Suma $ Ir LT</td>
+                <td>Užimama rinkos dalis %</td>
+            </tr>
+            </thead>
+            <tbody>';
+
+        $mi = new MultipleIterator();
+        $mi->attachIterator(new ArrayIterator($input['name']));
+        $mi->attachIterator(new ArrayIterator($input['amount']));
+        $mi->attachIterator(new ArrayIterator($input['dol']));
+        $mi->attachIterator(new ArrayIterator($input['ltl']));
+        $mi->attachIterator(new ArrayIterator($input['rinkos']));
+        foreach($mi as $value){
+            list($name, $amount, $dol, $ltl, $rinkos) = $value;
+            $html = $html.'<tr>
+                <td style="text-align: center;">'.$i.'</td>
+                <td>'.$name.'</td>
+                <td style="text-align: center;">'.$amount.'</td>
+                <td>'.$dol.'$ ir '.$ltl.'LT</td>
+                <td style="text-align: center;">'.$rinkos.'</td>
+                </tr>';
+            $i++;
+        }
+        $b = $input['bendraSuma'];
+        $html = $html.'<tr><td></td><td></td>
+            <td style="font-weight: bold; text-align: center;">Bendra suma:</td>
+            <td>'.$b.'</td>
+            <td></td> </tr>';
+
+        $html = $html.'</tbody></table></div></div></body></html>';
+
+        return PDF::load($html, 'A4', 'portrait')->download("Sales");
     }
 }

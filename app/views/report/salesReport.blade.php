@@ -1,6 +1,6 @@
 @extends('layout.core')
 <?php $header = "Pardavimai bendri 2014 metų"; ?>
-<?php $i=0; $bSuma=0;?>
+<?php $i=0;?>
 @section('content')
 <script src="/js/salesReport.js"></script>
 
@@ -32,7 +32,6 @@
             <?php $kiekis += $order->kiekis ?>
             <?php $suma += $order->pir_kaina * $order->kiekis ?>
             @endforeach
-            <?php $bSuma += $suma;?>
             {{ Form::text('amount[]', $kiekis, array('class'=>'amount'))}}
         </td>
         <td>
