@@ -1,12 +1,12 @@
 @extends('layout.core')
 <?php $header = "Pardavimai bendri 2014 metų"; ?>
-<?php $i=0;  $tarpSum[] =0; $bSuma=0; $doleris=2.5031?>
+<?php $i=0;  $tarpSum[] =0; $bSuma=0;?>
 @section('content')
 <script src="/js/salesReport.js"></script>
 
 {{ Form::open(array('url' => 'export/sales')) }}
-{{ "Doleris:", Form::text('Baksas', 2.5031)}}
-
+{{ "Doleris:", Form::text('Doleris', 2.5031,  array('id'=>'Dol_val'))}}
+<br><br>
 <table class="table table-bordered" id="tblSales">    <!-- max table dydziui style="width:842px" -->
     <thead style="font-weight: bold; text-align: center;">
     <tr>
@@ -36,8 +36,8 @@
             {{ Form::text('amount[]', $kiekis)}}
         </td>
         <td >
-            <?php $dol = round($suma/$doleris, 2) ?>
-            {{ Form::text('dol[]', $dol)}}$ <br> {{ Form::text('ltl[]', $suma)}}LT
+            {{ Form::text('dol[]',null, array('class'=>'dol'))}}$ <br> {{ Form::text('ltl[]', number_format($suma, 2,
+                '.', ''), array('class'=>'ltl'))}}LT
         </td>
         <td class="rinkos">
             {{ Form::text('rinkos[]', '')}}
@@ -56,5 +56,7 @@
 {{Form::submit("Export PDF", array('class'=>'btn btn-primary', 'name' => 'PDF')); }}
 {{ Form::close() }}
 
+<!--
 <script> calculateTotal({{$bSuma}}, <?php echo json_encode($tarpSum); ?> )</script>
+-->
 @stop
