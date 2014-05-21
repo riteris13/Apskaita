@@ -405,7 +405,51 @@ class ExportController extends BaseController{
         return PDF::load($html, 'A4', 'portrait')->download("Expenses ".$input['data']);
     }
     private function getSALESxls(){
-        echo "XLS metodas nebaigtas";
+        $input = Input::all();
+        $objPHPExcel = $this->prepareExcel("Sales");
+        $i = 2;
+        $j = 1;
+
+        $objRichText = $this->getBold("Eil. Nr.");
+        $objPHPExcel->getActiveSheet()->getCell("A1")->setValue($objRichText);
+
+        $objRichText2 = $this->getBold("Prekės pavadinimas");
+        $objPHPExcel->getActiveSheet()->getCell("B1")->setValue($objRichText2);
+
+        $objRichText3 = $this->getBold("Kiekis");
+        $objPHPExcel->getActiveSheet()->getCell("C1")->setValue($objRichText3);
+
+        $objRichText4 = $this->getBold("Suma $ ir LT");
+        $objPHPExcel->getActiveSheet()->getCell("D1")->setValue($objRichText4);
+
+        $objRichText4 = $this->getBold("Užimama rinkos dalis");
+        $objPHPExcel->getActiveSheet()->getCell("E1")->setValue($objRichText4);
+
+        $mi = new MultipleIterator();
+        $mi->attachIterator(new ArrayIterator($input['name']));
+        $mi->attachIterator(new ArrayIterator($input['amount']));
+        $mi->attachIterator(new ArrayIterator($input['dol']));
+        $mi->attachIterator(new ArrayIterator($input['ltl']));
+        $mi->attachIterator(new ArrayIterator($input['rinkos']));
+        foreach($mi as $value){
+            list($name, $amount, $dol, $ltl, $rinkos) = $value;
+            $objPHPExcel->setActiveSheetIndex(0)
+                ->setCellValue('B'.$i, $j)
+                ->setCellValue('B'.$i, $name)
+                ->setCellValue('C'.$i, $amount)
+                ->setCellValue('D'.$i, $dol)
+                ->setCellValue('E'.$i, $rinkos);
+            $i++;
+            $j++;
+        }
+
+        $objPHPExcel->getActiveSheet()->getColumnDimension('A')->setAutoSize(true);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('B')->setAutoSize(true);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('C')->setAutoSize(true);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('D')->setAutoSize(true);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('E')->setAutoSize(true);
+
+        $this->downloadExcel($objPHPExcel,"Sales");
     }
     private function getSALESpdf(){
         echo "PDF metodas nebaigtas";
