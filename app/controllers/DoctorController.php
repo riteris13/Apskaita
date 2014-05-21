@@ -16,7 +16,7 @@ class DoctorController extends BaseController {
         if($id == "default"){
             $items = Doctor::where('pavarde', 'LIKE', '%'.e($lname).'%')->orderBy('pavarde')->paginate(15);
             if($items->first() == null){
-                return Redirect::to('doctor/')->withErrors('Daktaras, kurio pavardėje būtų '.e($lname).' nerastas.');
+                return Redirect::to('doctor/')->withErrors('Daktaras, kurio pavardėje būtų <b>'.e($lname).'</b> nerastas.');
             }
             else{
                 return View::make('doctor.list')->with('items',$items);
@@ -25,7 +25,7 @@ class DoctorController extends BaseController {
         else{
             $items = Doctor::where('pavarde', 'LIKE', '%'.e($lname).'%')->where('klinika_id', '=', $id)->orderBy('pavarde')->paginate(15);
             if($items->first() == null){
-                return Redirect::to('doctor/')->withErrors('Daktaras, kurio pavardėje būtų '.e($lname).' klinikoje '.Clinic::find($id)->pavadinimas.' nerastas.');
+                return Redirect::to('doctor/')->withErrors('Daktaras, kurio pavardėje būtų <b>'.e($lname).'</b> klinikoje <b>'.Clinic::find($id)->pavadinimas.'</b> nerastas.');
             }
             else{
                 return View::make('doctor.list')->with('items',$items);
@@ -42,7 +42,12 @@ class DoctorController extends BaseController {
         }
         else{
             $items = Doctor::where('klinika_id', '=', $id)->orderBy('pavarde')->paginate(15);
-            return View::make('doctor.list')->with('items',$items);
+            if($items->first() == null){
+                return Redirect::to('doctor/')->withErrors('Klinikoje <b>'.Clinic::find($id)->pavadinimas.'</b> daktarų nerasta. Rodomas visas sąrašas.');
+            }
+            else{
+                return View::make('doctor.list')->with('items',$items);
+            }
         }
     }
     public function getAdd(){
