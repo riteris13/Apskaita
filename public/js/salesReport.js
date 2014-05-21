@@ -1,4 +1,7 @@
-jQuery(document).ready(function($){ 
+jQuery(document).ready(function($){
+	window.onload = function(){
+		$("#Dol_val").trigger("change");
+	};
 	var sumaLT = 0;
 	var sumaDOL = [];
 	var dol = 2.5031;
