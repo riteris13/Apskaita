@@ -4,6 +4,7 @@ return array(
     'addOrder' => 'Add new order',
     'arch' => 'Archive',
     'sort' => 'Sort',
+    'sorting' => 'Sort',
     'add' => 'Add new',
     'clinic' => 'Clinic',
     'date' => 'Date',
@@ -45,6 +46,7 @@ return array(
     'viewDoc' => 'View doctor description',
     'cat' => 'Category',
     'code' => 'Code',
+    'search' => 'Search',
     'itemSearch' => 'Item search',
     'empCatTitle' => 'Category that you selected is empty. Showing all items',
     'allCatList' => 'Item list of all categories',
@@ -92,4 +94,6 @@ return array(
     'laik' => 'Period',
     'visit' => 'Visit',
     'prepInvoice' => 'Prepare Invoice',
+    'attribute' => 'Attribute',
+
 );

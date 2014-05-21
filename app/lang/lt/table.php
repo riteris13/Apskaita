@@ -4,6 +4,7 @@ return array(
     'addOrder' => 'Pridėti naują užsakymą',
     'arch' => 'Archyvas',
     'sort' => 'Rūšiuoti',
+    'sorting' => 'Rūšiavimas',
     'add' => 'Pridėti naują',
     'clinic' => 'Klinika',
     'date' => 'Data',
@@ -45,6 +46,7 @@ return array(
     'viewDoc' => 'Peržiūrėti daktaro aprašymą',
     'cat' => 'Kategorija',
     'code' => 'Kodas',
+    'search' => 'Paieška',
     'itemSearch' => 'Produktų paieška',
     'empCatTitle' => 'Jūsų pasirinktoje kategorijoje prekių nėra. Rodomas visas sąrašas.',
     'allCatList' => 'Visų kategorijų produktų sąrašas',
@@ -92,4 +94,5 @@ return array(
     'laik' => 'Laikotarpis',
     'visit' => 'Vizitas',
     'prepInvoice' => 'Sudaryti sąskaitą faktūrą',
+    'attribute' => 'Atributas',
 );

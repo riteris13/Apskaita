@@ -3,8 +3,26 @@
 <?php $header = trans('header.doctor.list'); ?>
 
 @section('content')
-<script type="text/javascript" src="/js/doctorDetails.js"></script>
-
+    <script type="text/javascript" src="/js/doctorDetails.js"></script>
+    <div class="panel panel-default">
+        <div class="panel-heading">{{trans('table.search');}}</div>
+        <table class="table table-default">
+            {{ Form::open(array('url' => 'doctor', 'class'=>'form-default')) }}
+            <tr>
+                <td style="font-weight: bold; vertical-align: middle">{{{trans('table.clinic')}}}</td>
+                <?php
+                $list = Clinic::lists('pavadinimas', 'id');
+                $list = ["default"=> "Visi"]+$list;
+                ?>
+                <td>{{Form::select('id', $list, '', array('class'=>'form-control')); }}</td>
+                <td style="font-weight: bold; vertical-align: middle">{{{trans('table.sName')}}}</td>
+                <td>{{Form::text('pavarde', '', array('class'=>'form-control', 'type'=>'text')); }}</td>
+                <td style="width: 30%"></td>
+                <td>{{Form::submit(trans('table.search'), array('class'=>'btn btn-primary')); }}</td>
+                {{ Form::close() }}
+            </tr>
+        </table>
+    </div>
     <div class="panel panel-default">
         <div class="panel-heading">{{trans('header.doctor.table');}}</div>
         <table class="table table-hover">

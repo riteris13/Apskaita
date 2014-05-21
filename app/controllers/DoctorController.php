@@ -4,6 +4,30 @@ class DoctorController extends BaseController {
         $items = Doctor::orderBy('pavarde')->paginate(15);
         return View::make('doctor.list')->with('items',$items);
     }
+    public function postIndex(){
+        $input = Input::all();
+        if($input['pavarde'] == null){
+            return Redirect::to('doctor/search/'.$input['id']);
+        }
+        return Redirect::to('doctor/searchwithlname/'.$input['id'].'/'.$input['pavarde']);
+    }
+    public function getSearchwithlname($id, $lname)
+    {
+        $doctors = Doctor::where('pavarde', 'LIKE', '%'.e($lname).'%')->get();
+        if($doctors->first() == null){echo "tuscia";}
+        foreach($doctors as $doctor){
+            echo $doctor->fullname."<br>";
+        }
+    }
+    public function getSearch($id)
+    {
+        if($id == "default"){
+            dd($id);
+        }
+        else{
+            dd(Clinic::find($id)->pavadinimas);
+        }
+    }
     public function getAdd(){
         return View::make('doctor.add');
     }

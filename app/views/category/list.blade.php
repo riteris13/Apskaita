@@ -10,6 +10,7 @@
             <thead>
             <tr>
                 <th>{{{trans('table.name')}}}</th>
+                <th>{{{trans('table.attribute')}}}</th>
             </tr>
             </thead>
             <tbody >
