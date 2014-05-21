@@ -434,10 +434,10 @@ class ExportController extends BaseController{
         foreach($mi as $value){
             list($name, $amount, $dol, $ltl, $rinkos) = $value;
             $objPHPExcel->setActiveSheetIndex(0)
-                ->setCellValue('B'.$i, $j)
+                ->setCellValue('A'.$i, $j)
                 ->setCellValue('B'.$i, $name)
                 ->setCellValue('C'.$i, $amount)
-                ->setCellValue('D'.$i, $dol)
+                ->setCellValue('D'.$i, $dol.'$ '.$ltl.' LT')
                 ->setCellValue('E'.$i, $rinkos);
             $i++;
             $j++;
