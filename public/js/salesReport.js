@@ -4,24 +4,25 @@ jQuery(document).ready(function($){
 	};
 	var sumaLT = 0;
 	var sumaDOL = [];
+	var rinkos = [];
 	var dol = 2.5031;
+	var total = 0;
 	$('#Dol_val').on('change', function(){
 	dol = $(this).val();
+	total = $('#Total').val();
 			$('.ltl').each(function(index){
-				sumaLT = parseFloat($(this).val());
+				sumaLT = parseFloat($(this).val()) || 0;
 				sumaDOL[index] = (sumaLT/dol).toFixed(2);
+				rinkos[index] = (100/total*sumaLT).toFixed(2);
 			});
 			$('.dol').each(function(index){
 				$(this).val(sumaDOL[index]);
-			});						
-		//document.getElementById('total').value = suma.toFixed(2);
+			});
+			$('.rinkos').each(function(index){
+				$(this).val(rinkos[index]);
+			});				
+	})
+	$('#ltl').on('change', function(){
+		alert("k");
 	})
 });
-
-/*
-function calculateTotal(bSuma, tarpSum){
-		for(j=1; j<=tarpSum.length-1; j++){
-			myTable = document.getElementById('tblSales');
-			myTable.rows[j].cells[4].innerHTML = (100/bSuma*tarpSum[j]).toFixed(2) + "%";
-		}
-}*/

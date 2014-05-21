@@ -35,19 +35,19 @@
             <?php $bSuma += $suma; $tarpSum[] = $suma;?>
             {{ Form::text('amount[]', $kiekis)}}
         </td>
-        <td >
+        <td>
             {{ Form::text('dol[]',null, array('class'=>'dol'))}}$ <br> {{ Form::text('ltl[]', number_format($suma, 2,
                 '.', ''), array('class'=>'ltl'))}}LT
         </td>
-        <td class="rinkos">
-            {{ Form::text('rinkos[]', '')}}
+        <td>
+            {{ Form::text('rinkos[]', null, array('class'=>'rinkos'))}}
         </td>
     </tr>
     @endforeach
     <td></td>
     <td></td>
         <td>Bendra suma:</td>
-        <td> {{{$bSuma}}} </td>
+        <td> {{ Form::text('bendraSuma', $bSuma,  array('id'=>'Total')) }} </td>
     <td></td>
     </tbody>
 </table>
@@ -56,7 +56,4 @@
 {{Form::submit("Export PDF", array('class'=>'btn btn-primary', 'name' => 'PDF')); }}
 {{ Form::close() }}
 
-<!--
-<script> calculateTotal({{$bSuma}}, <?php echo json_encode($tarpSum); ?> )</script>
--->
 @stop
