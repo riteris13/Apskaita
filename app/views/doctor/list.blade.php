@@ -5,14 +5,14 @@
 @section('content')
     <script type="text/javascript" src="/js/doctorDetails.js"></script>
     <div class="panel panel-default">
-        <div class="panel-heading">{{trans('table.search');}}</div>
+        <div style=" height: 40px; font-size: 18px" class="panel-heading">{{trans('table.search');}}</div>
         <table class="table table-default">
             {{ Form::open(array('url' => 'doctor', 'class'=>'form-default')) }}
             <tr>
                 <td style="font-weight: bold; vertical-align: middle">{{{trans('table.clinic')}}}</td>
                 <?php
                 $list = Clinic::lists('pavadinimas', 'id');
-                $list = ["default"=> "Visi"]+$list;
+                $list = ["default"=> "Visos"]+$list;
                 ?>
                 <td>{{Form::select('id', $list, '', array('class'=>'form-control')); }}</td>
                 <td style="font-weight: bold; vertical-align: middle">{{{trans('table.sName')}}}</td>
