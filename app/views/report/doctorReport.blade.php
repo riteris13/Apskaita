@@ -1,6 +1,25 @@
 @extends('layout.core')
 
 @section('content')
+<style>
+
+    .text{
+        height: 16px;
+        padding: 0px 0px;
+        font-size: 13px;
+        line-height: 0px;
+        border: 0px;
+        box-shadow: 0px;
+        outline: 0 none;
+        text-align: left;
+        width: 100%;
+    }
+    .table-condensed>tbody>tr>td {
+        padding: 0px;
+        height: 15px;
+        font-size: 13px;
+    }
+</style>
 <?php
     if($laikas == 0){
         $prev = Order::where('daktaras_id', '=', $doctor->id)->min('data');
@@ -20,8 +39,8 @@
         <td>
             Doctor name:
         </td>
-        <td>
-            {{ Form::text('doctor', $doctor->fullname)}}
+        <td class="col-sm-2">
+            {{ Form::text('doctor', $doctor->fullname, array('class'=>'text'))}}
         </td>
     </tr>
     <tr>
@@ -29,34 +48,35 @@
             Clinic name, address
         </td>
                 <td>
-                    <b> {{ Form::text('clinic', $doctor->clinic->pavadinimas)}}</b> <br>
+                    <b> {{ Form::text('clinic', $doctor->clinic->pavadinimas, array('class'=>'text'))}}</b> <br>
                 </td>
                 <td>
-                    {{ Form::text('clinicAdr', $doctor->clinic->adresas)}} <br>
-                    <b> Company code:{{ Form::text('clinicCode', $doctor->clinic->kodas)}}</b> <br>
+                    {{ Form::text('clinicAdr', $doctor->clinic->adresas, array('class'=>'text'))}} <br>
+                    <b> Company code:{{ Form::text('clinicCode', $doctor->clinic->kodas,
+                            array('class'=>'text'))}}</b> <br>
                     <b> @if($doctor->clinic->vat == 0 )
-                        {{ Form::text('VAT', "Not VAT payer")}}
+                        {{ Form::text('VAT', "Not VAT payer", array('class'=>'text'))}}
                         @else
-                        {{ Form::text('VAT', "VAT payer")}}
+                        {{ Form::text('VAT', "VAT payer", array('class'=>'text'))}}
                         @endif
                     </b> <br>
                 </td>
 
         <td>
             AO %
-            <br> Fixed discount on pricelist {{ Form::text('disc', $doctor->nuolaida)}}
+            <br> Fixed discount on pricelist {{ Form::text('disc', $doctor->nuolaida, array('class'=>'text'))}}
         </td>
     </tr>
     <tr>
         <td></td>
             @if($tY == $pY)
                <td>
-                   {{ Form::text('year[]', $tY)}}
+                   {{ Form::text('year[]', $tY, array('class'=>'text'))}}
                </td>
             @else
                 @while($tY >= $pY)
                     <td>
-                        {{ Form::text('year[]', $pY)}}
+                        {{ Form::text('year[]', $pY, array('class'=>'text'))}}
                     </td>
                 <?php $pY += 1 ?>
                 @endwhile
@@ -91,7 +111,7 @@
         @endif
         @foreach($suma as $sum)
             <td>
-                {{ Form::text('total[]', $sum)}}
+                {{ Form::text('total[]', $sum, array('class'=>'text'))}}
             </td>
         @endforeach
     </tr>
@@ -118,7 +138,7 @@
     </th>
     <tr>
         <td>
-            {{ Form::text('details', $doctor->detales)}}
+            {{ Form::text('details', $doctor->detales, array('class'=>'text'))}}
         </td>
         <td>
             <?php $visipavadinimai = array(); ?>
@@ -129,7 +149,7 @@
             @endforeach
             <?php $pavadinimai = array_unique($visipavadinimai); ?>
             @foreach($pavadinimai as $pavadinimas)
-            {{ Form::text('names[]', $pavadinimas)}}<br>
+            {{ Form::text('names[]', $pavadinimas, array('class'=>'text'))}}<br>
             @endforeach
         </td>
         <td>
@@ -140,11 +160,11 @@
         </td>
         <td>
             @foreach($doctor->notourproduct as $item)
-            {{ Form::text('nnames[]', $item->product->pavadinimas)}}<br>
+            {{ Form::text('nnames[]', $item->product->pavadinimas, array('class'=>'text'))}}<br>
             @endforeach
         </td>
         <td>
-            {{ Form::text('score', $doctor->ivertinimas)}}
+            {{ Form::text('score', $doctor->ivertinimas, array('class'=>'text'))}}
         </td>
     </tr>
     </tbody>
