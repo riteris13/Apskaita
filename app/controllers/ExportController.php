@@ -652,7 +652,20 @@ class ExportController extends BaseController{
         $html = $html.'<tr><th>Details about doctor</th>
             <th>What products buys</th> <th>What products likes</th>
             <th>Frequency (how often ordering)</th> <th>What competitors products use</th>
-            <th style="width: 15%">Evaluation of the doctor (1-10 points system)</th></tr>';
+            <th style="width: 15%">Evaluation of the doctor (1-10 points system)</th></tr>    <tr>
+            <td>'.$input['details'].'</td><td>';
+        foreach($input['names'] as $pro){
+            if($pro == ''){ continue;}
+            $html = $html.''.$pro.'; ';
+        }
+        $html = $html.'</td><td></td><td></td><td>';
+        if(isset($input['nnames']) != 0){
+            foreach($input['nnames'] as $npro){
+                if($npro == ''){ continue;}
+                $html = $html.''.$npro.'; ';
+            }
+        }
+        $html = $html.'</td><td>'.$input['score'].'</td>';
 
         $html = $html.'</tbody></table></div></div></body></html>';
 

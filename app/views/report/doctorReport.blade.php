@@ -118,7 +118,7 @@
     </th>
     <tr>
         <td>
-            {{ Form::text('names[]', $doctor->detales)}}
+            {{ Form::text('details', $doctor->detales)}}
         </td>
         <td>
             <?php $visipavadinimai = array(); ?>
