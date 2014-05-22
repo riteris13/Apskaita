@@ -34,7 +34,13 @@
                 <td class="col-lg-3">
                     {{{ $doctor->clinic->adresas}}} <br>
                     <b> Company code: {{{ $doctor->clinic->kodas }}} </b> <br>
-                    <b> {{{ $doctor->clinic->vat }}} </b> <br>
+                    <b> @if($doctor->clinic->vat == 0 )
+                            Not VAT payer
+                        @else
+                            VAT payer
+
+                        @endif
+                    </b> <br>
                 </td>
 
         <td>
