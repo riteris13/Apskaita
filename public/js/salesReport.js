@@ -8,7 +8,7 @@ jQuery(document).ready(function($){
 	var dol = 2.5031;
 	var total = 0;
 	$('#Dol_val').on('change', function(){
-	dol = $(this).val();
+	dol = parseFloat($(this).val()) || 2.5031;
 			$('.ltl').each(function(index){
 				sumaLT[index] = parseFloat($(this).val()) || 0;
 				sumaDOL[index] = (sumaLT[index]/dol).toFixed(2);
@@ -27,9 +27,3 @@ jQuery(document).ready(function($){
 		$("#Dol_val").trigger("change");
 	})
 });
-
-/*pagal index grazina value	
-		var i = 0;
-		i = $('.ltl').index($(this));
-		alert($('.ltl').eq(i).val());
-		*/

@@ -85,7 +85,7 @@
     <td></td>
     <td></td>
         <td>Bendra suma:</td>
-        <td> {{ Form::text('bendraSuma', null,  array('id'=>'Total')) }} </td>
+        <td> {{ Form::text('bendraSuma', null,  array('id'=>'Total', 'class'=>'names')) }} </td>
     <td></td>
     </tbody>
 </table>
