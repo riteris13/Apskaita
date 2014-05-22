@@ -625,7 +625,8 @@ class ExportController extends BaseController{
         return PDF::load($html, 'A4', 'landscape')->download("DoctorPurchases");
     }
     private function getDOCTORREPORTpdf(){
-
+        $input = Input::all();
+    return print_r($input);
     }
     private function getDOCTORREPORTxls(){
 

@@ -21,7 +21,7 @@
             Doctor name:
         </td>
         <td>
-            {{{ $doctor->fullname }}}
+            {{ Form::text('doctor', $doctor->fullname)}}
         </td>
     </tr>
     <tr>
@@ -29,11 +29,11 @@
             Clinic name, address
         </td>
                 <td>
-                    <b> {{{ $doctor->clinic->pavadinimas}}} </b> <br>
+                    <b> {{ Form::text('clinic', $doctor->clinic->pavadinimas)}}</b> <br>
                 </td>
                 <td class="col-lg-3">
-                    {{{ $doctor->clinic->adresas}}} <br>
-                    <b> Company code: {{{ $doctor->clinic->kodas }}} </b> <br>
+                    {{ Form::text('clinicAdr', $doctor->clinic->adresas)}} <br>
+                    <b> Company code:{{ Form::text('clinicCode', $doctor->clinic->kodas)}}</b> <br>
                     <b> @if($doctor->clinic->vat == 0 )
                             Not VAT payer
                         @else
@@ -45,19 +45,19 @@
 
         <td>
             AO %
-            <br> Fixed discount on pricelist {{{ $doctor->nuolaida}}}
+            <br> Fixed discount on pricelist {{ Form::text('disc[]', $doctor->nuolaida)}}
         </td>
     </tr>
     <tr>
         <td></td>
             @if($tY == $pY)
                <td>
-                   {{ $tY }}
+                   {{ Form::text('year[]', $tY)}}
                </td>
             @else
                 @while($tY >= $pY)
                     <td>
-                       {{ $pY }}
+                        {{ Form::text('year[]', $pY)}}
                     </td>
                 <?php $pY += 1 ?>
                 @endwhile
@@ -92,7 +92,7 @@
         @endif
         @foreach($suma as $sum)
             <td>
-                {{{ $sum }}}
+                {{ Form::text('total[]', $sum)}}
             </td>
         @endforeach
     </tr>
@@ -119,7 +119,7 @@
     </th>
     <tr>
         <td>
-            {{{$doctor->detales}}}
+            {{ Form::text('names[]', $doctor->detales)}}
         </td>
         <td>
             <?php $visipavadinimai = array(); ?>
@@ -130,7 +130,7 @@
             @endforeach
             <?php $pavadinimai = array_unique($visipavadinimai); ?>
             @foreach($pavadinimai as $pavadinimas)
-            {{{$pavadinimas}}}<br>
+            {{ Form::text('names[]', $pavadinimas)}}<br>
             @endforeach
         </td>
         <td>
@@ -141,11 +141,11 @@
         </td>
         <td>
             @foreach($doctor->notourproduct as $item)
-            {{$item->product->pavadinimas}}<br>
+            {{ Form::text('nnames[]', $item->product->pavadinimas)}}<br>
             @endforeach
         </td>
         <td>
-            {{{$doctor->ivertinimas}}}
+            {{ Form::text('score', $doctor->ivertinimas)}}
         </td>
     </tr>
     </tbody>
