@@ -13,7 +13,7 @@
     $pY2 = $pY;
     $i = 0;
 ?>
-
+{{ Form::open(array('url' => 'export/doctorreport')) }}
 <table class="table table-bordered">
     <tbody>
     <tr>
@@ -150,4 +150,8 @@
     </tr>
     </tbody>
 </table>
+{{Form::submit("Export XLS", array('class'=>'btn btn-primary', 'name' => 'XLS')); }}
+&nbsp;
+{{Form::submit("Export PDF", array('class'=>'btn btn-primary', 'name' => 'PDF')); }}
+{{ Form::close() }}
 @stop
