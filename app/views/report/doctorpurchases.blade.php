@@ -26,10 +26,10 @@
             {{ Form::text('doctor[]', $doctor->fullname)}}
         </td>
         <td>
-            {{{ $doctor->clinic->pavadinimas }}}
+            {{ Form::text('clinic[]', $doctor->clinic->pavadinimas)}}
         </td>
         <td class="col-sm-2 text-left">
-            {{{ $doctor->clinic->kodas }}}
+            {{ Form::text('code[]', $doctor->clinic->kodas)}}
         </td>
         <td class="col-sm-3 text-left">
             <?php $visipavadinimai = array(); ?>
@@ -42,11 +42,11 @@
             @endforeach
             <?php $pavadinimai = array_unique($visipavadinimai); ?>
             @foreach($pavadinimai as $pavadinimas)
-            {{{$pavadinimas}}}
+            {{ Form::text('names[]', $pavadinimas)}}
             @endforeach
         </td>
         <td class="text-right">
-            {{{$suma}}} {{{"Lt"}}}
+            {{ Form::text('total[]', $suma)}}{{{"Lt"}}}
         </td>
 
         @endforeach
