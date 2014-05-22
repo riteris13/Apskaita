@@ -6,20 +6,25 @@
 
     <script type="text/javascript" src="/js/jquery.tablesorter.min.js"></script>
     <link rel="stylesheet" href="/css/style.tablesorter.css">
-    @if(($fail == 'true'))
-        <div class="alert alert-danger">
-            {{{trans('table.empCatTitle')}}}
-        </div>
-    @endif
-    <div class="panel panel-default">
-        <div class="panel-heading">{{{trans('table.itemSearch')}}}</div>
-        {{ Form::open(array('url' => 'item', 'class'=>'form-default')) }}
-        <h4>{{{trans('table.cat')}}}</h4>
-        {{Form::select('id', Category::lists('pavadinimas', 'id'), null, array('class'=>'form-control')); }}
-        <br>
-        {{Form::submit(trans('table.sel'), array('class'=>'btn btn-primary')); }}
 
-        {{ Form::close() }}
+    <div class="panel panel-default">
+        <div style=" height: 40px; font-size: 18px" class="panel-heading">{{trans('table.search');}}</div>
+        <table class="table table-default">
+            {{ Form::open(array('url' => 'item', 'class'=>'form-default')) }}
+            <tr>
+                <td style="font-weight: bold; vertical-align: middle">{{{trans('table.cat')}}}</td>
+                <?php
+                $list = Category::lists('pavadinimas', 'id');
+                $list = ["default"=> "Visos"]+$list;
+                ?>
+                <td>{{Form::select('id', $list, '', array('class'=>'form-control')); }}</td>
+                <td style="font-weight: bold; vertical-align: middle">{{{trans('table.code')}}}</td>
+                <td>{{Form::text('kodas', '', array('class'=>'form-control', 'type'=>'text')); }}</td>
+                <td style="width: 30%"></td>
+                <td>{{Form::submit(trans('table.search'), array('class'=>'btn btn-primary')); }}</td>
+                {{ Form::close() }}
+            </tr>
+        </table>
     </div>
 
     <div class="panel panel-default">

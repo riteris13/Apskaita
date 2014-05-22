@@ -51,16 +51,55 @@ class ItemController extends BaseController {
         return Redirect::to('item')->with('success',$msg);
     }
     public function postIndex(){
-        $id = Input::get('id');
-        return Redirect::to('item/search/'.$id);
+        $input = Input::all();
+        if($input['kodas'] == null){
+            return Redirect::to('item/search/'.$input['id']);
+        }
+        return Redirect::to('item/searchwithcode/'.$input['id'].'/'.$input['kodas']);
     }
     public function getSearch($id){
-        $items = Item::where('kategorija_id', '=', $id)->orderBy('pavadinimas')->paginate(15);
-        if($items->count() == 0 ){
+        if($id == "default"){
             $items = Item::orderBy('pavadinimas')->paginate(15);
-            return View::make('item.list')->with('items',$items)->with('fail', 'true');
+            return View::make('item.list')->with('items',$items)->with('fail', 'first');
         }
-        return View::make('item.list')->with('items',$items)->with('fail', 'false');
+        else{
+            $items = Item::where('kategorija_id', '=', $id)->orderBy('pavadinimas')->paginate(15);
+            if($items->first() == null){
+                return Redirect::to('/item')
+                    ->withErrors('Kategorijoje <b>'
+                        .Category::find($id)->pavadinimas.
+                        '</b> produktų nerasta. Rodomas visas sąrašas.')
+                    ->with('fail', 'true');
+            }
+            else{
+                return View::make('item.list')->with('items',$items)->with('fail', 'false');
+            }
+        }
+    }
+    public function getSearchwithcode($id, $code){
+        if($id == "default"){
+            $items = Item::where('kodas', 'LIKE', '%'.e($code).'%')->orderBy('pavadinimas')->paginate(15);
+            if($items->first() == null){
+                return Redirect::to('/item')->withErrors('Produktas, kurio kode būtų <b>'.e($code).'</b> nerastas.')
+                                            ->with('fail', 'true');
+            }
+            else{
+                return View::make('item.list')->with('items',$items)->with('fail', 'false');
+            }
+        }
+        else{
+            $items = Item::where('kodas', 'LIKE', '%'.e($code).'%')->where('kategorija_id', '=', $id)->orderBy('pavadinimas')->paginate(15);
+            if($items->first() == null){
+                return Redirect::to('/item')
+                    ->withErrors('Produktas, kurio kode būtų <b>'
+                        .e($code).'</b> kategorijoje <b>'
+                        .Category::find($id)->pavadinimas.'</b> nerastas.')
+                    ->with('fail', 'true');
+            }
+            else{
+                return View::make('item.list')->with('items',$items)->with('fail', 'false');
+            }
+        }
     }
     public function getRemove($id){
         $model = Item::findOrFail($id);
