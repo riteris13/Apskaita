@@ -1,7 +1,37 @@
 @extends('layout.core')
-
 <?php $i=0; ?>
 @section('content')
+<style>
+    .names,
+    .code,
+    .total{
+        height: 16px;
+        padding: 0px 0px;
+        font-size: 13px;
+        line-height: 0px;
+        border: 0px;
+        box-shadow: 0px;
+        outline: 0 none;
+    }
+    .total{
+        text-align: right;
+        width: 60%;
+    }
+    .code{
+        text-align: center;
+        width: 100%;
+    }
+    .names{
+        text-align: left;
+        width: 100%;
+    }
+    .table-condensed>tbody>tr>td {
+        padding: 0px;
+        height: 15px;
+        font-size: 13px;
+    }
+</style>
+
 {{ Form::open(array('url' => 'export/purchases')) }}
 <table class="table table-bordered">
     <thead style="font-weight: bold; text-align: center;">
@@ -23,13 +53,13 @@
            {{{ $i }}}
         </td>
         <td>
-            {{ Form::text('doctor[]', $doctor->fullname)}}
+            {{ Form::text('doctor[]', $doctor->fullname, array('class'=>'names'))}}
         </td>
         <td>
-            {{ Form::text('clinic[]', $doctor->clinic->pavadinimas)}}
+            {{ Form::text('clinic[]', $doctor->clinic->pavadinimas, array('class'=>'names'))}}
         </td>
         <td class="col-sm-2 text-left">
-            {{ Form::text('code[]', $doctor->clinic->kodas)}}
+            {{ Form::text('code[]', $doctor->clinic->kodas, array('class'=>'code'))}}
         </td>
         <td class="col-sm-3 text-left">
             <?php $visipavadinimai = array(); ?>
@@ -42,12 +72,12 @@
             @endforeach
             <?php $pavadinimai = array_unique($visipavadinimai); ?>
             @foreach($pavadinimai as $pavadinimas)
-            {{ Form::text('names[]', $pavadinimas)}}
+            {{ Form::text('names[]', $pavadinimas, array('class'=>'names'))}}
             @endforeach
             {{ Form::hidden('namesNum[]', count($pavadinimai))}}
         </td>
         <td class="text-right">
-            {{ Form::text('total[]', $suma)}}{{{"Lt"}}}
+            {{ Form::text('total[]', $suma, array('class'=>'total'))}}{{{" Lt"}}}
         </td>
         @endforeach
     </tr>
