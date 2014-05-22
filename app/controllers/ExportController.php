@@ -527,7 +527,7 @@ class ExportController extends BaseController{
         $objPHPExcel->getActiveSheet()->getColumnDimension('E')->setAutoSize(true);
         $objPHPExcel->getActiveSheet()->getColumnDimension('F')->setAutoSize(true);
 
-        $this->downloadExcel($objPHPExcel,"Sales");
+        $this->downloadExcel($objPHPExcel,"DoctorPurchases");
     }
     private function getSALESpdf(){
         $input = Input::all();
@@ -626,7 +626,6 @@ class ExportController extends BaseController{
     }
     private function getDOCTORREPORTpdf(){
         $input = Input::all();
-    //return print_r($input);
         $html = '<html><head><meta charset="utf-8"></head><body><div>
             <div style="text-align: center; font-weight: bold"></div><br>
             <div style="margin: 0 auto; width: 100%">
@@ -672,6 +671,35 @@ class ExportController extends BaseController{
         return PDF::load($html, 'A4', 'landscape')->download("DoctorReport");
     }
     private function getDOCTORREPORTxls(){
+        $input = Input::all();
+        $objPHPExcel = $this->prepareExcel("DoctorReport");
 
+        $objRichText = $this->getBold("Doctor name:");
+        $objPHPExcel->getActiveSheet()->getCell("A1")->setValue($objRichText);
+
+        $objRichText2 = $this->getBold($input['doctor']);
+        $objPHPExcel->getActiveSheet()->getCell("B1")->setValue($objRichText2);
+
+        $objRichText3 = $this->getBold("Clinic name, address");
+        $objPHPExcel->getActiveSheet()->getCell("A2")->setValue($objRichText3);
+
+        $objRichText4 = $this->getBold($input['clinic']);
+        $objPHPExcel->getActiveSheet()->getCell("B2")->setValue($objRichText4);
+
+        $objRichText4 = $this->getBold($input['clinicAdr'].' Company code: '
+            .$input['clinicCode'].' '.$input['VAT']);
+        $objPHPExcel->getActiveSheet()->getCell("B3")->setValue($objRichText4);
+
+        $objRichText5 = $this->getBold("AO (%) Fixed discount on price list ".$input['disc']);
+        $objPHPExcel->getActiveSheet()->getCell("B4")->setValue($objRichText5);
+
+        $objPHPExcel->getActiveSheet()->getColumnDimension('A')->setAutoSize(true);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('B')->setAutoSize(true);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('C')->setAutoSize(true);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('D')->setAutoSize(true);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('E')->setAutoSize(true);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('F')->setAutoSize(true);
+
+        $this->downloadExcel($objPHPExcel,"DoctorReport");
     }
 }

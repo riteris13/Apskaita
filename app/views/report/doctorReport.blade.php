@@ -3,7 +3,8 @@
 @section('content')
 <style>
 
-    .text{
+    .text,
+    .disc{
         height: 16px;
         padding: 0px 0px;
         font-size: 13px;
@@ -13,6 +14,10 @@
         outline: 0 none;
         text-align: left;
         width: 100%;
+    }
+    .disc{
+        text-align: right;
+        width: 40%;
     }
     .table-condensed>tbody>tr>td {
         padding: 0px;
@@ -62,9 +67,9 @@
                     </b> <br>
                 </td>
 
-        <td>
-            AO %
-            <br> Fixed discount on pricelist {{ Form::text('disc', $doctor->nuolaida, array('class'=>'text'))}}
+        <td style="text-align: right" colspan="2">
+            AO(%)
+            <br> Fixed discount on pricelist {{ Form::text('disc', $doctor->nuolaida, array('class'=>'disc'))}}
         </td>
     </tr>
     <tr>
