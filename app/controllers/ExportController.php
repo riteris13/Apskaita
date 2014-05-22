@@ -461,6 +461,64 @@ class ExportController extends BaseController{
 
         $this->downloadExcel($objPHPExcel,"Sales");
     }
+    private function getPURCHASESxls(){
+        $input = Input::all();
+        $objPHPExcel = $this->prepareExcel("DoctorPurchases");
+        $i = 2;
+        $nb = 1;
+        $n = 0;
+
+        $objRichText = $this->getBold("Nb");
+        $objPHPExcel->getActiveSheet()->getCell("A1")->setValue($objRichText);
+
+        $objRichText2 = $this->getBold("Doctor name");
+        $objPHPExcel->getActiveSheet()->getCell("B1")->setValue($objRichText2);
+
+        $objRichText3 = $this->getBold("Clinic name");
+        $objPHPExcel->getActiveSheet()->getCell("C1")->setValue($objRichText3);
+
+        $objRichText4 = $this->getBold("Clinic address, VAT or clinic code");
+        $objPHPExcel->getActiveSheet()->getCell("D1")->setValue($objRichText4);
+
+        $objRichText4 = $this->getBold("What doctors are buying from us");
+        $objPHPExcel->getActiveSheet()->getCell("E1")->setValue($objRichText4);
+
+        $objRichText5 = $this->getBold("Sales in 2014");
+        $objPHPExcel->getActiveSheet()->getCell("F1")->setValue($objRichText5);
+
+        $mi = new MultipleIterator();
+        $mi->attachIterator(new ArrayIterator($input['doctor']));
+        $mi->attachIterator(new ArrayIterator($input['clinic']));
+        $mi->attachIterator(new ArrayIterator($input['code']));
+        $mi->attachIterator(new ArrayIterator($input['namesNum']));
+        $mi->attachIterator(new ArrayIterator($input['total']));
+        foreach($mi as $value){
+            list($doctor, $clinic, $code, $namesNum, $total) = $value;
+            $names = "";
+            for($j = 0; $j < $namesNum; $j++){
+                $names = $names.''.$input['names'][$n + $j].'; ';
+            }
+            $objPHPExcel->setActiveSheetIndex(0)
+                ->setCellValue('A'.$i, $nb)
+                ->setCellValue('B'.$i, $doctor)
+                ->setCellValue('C'.$i, $clinic)
+                ->setCellValue('D'.$i, $code)
+                ->setCellValue('E'.$i, $names)
+                ->setCellValue('F'.$i, $total.' LT');
+            $i++;
+            $nb++;
+            $n += $namesNum;
+        }
+
+        $objPHPExcel->getActiveSheet()->getColumnDimension('A')->setAutoSize(true);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('B')->setAutoSize(true);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('C')->setAutoSize(true);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('D')->setAutoSize(true);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('E')->setAutoSize(true);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('F')->setAutoSize(true);
+
+        $this->downloadExcel($objPHPExcel,"Sales");
+    }
     private function getSALESpdf(){
         $input = Input::all();
         $i = 1;
@@ -509,7 +567,6 @@ class ExportController extends BaseController{
     }
     private function getPURCHASESpdf(){
         $input = Input::all();
-        //return print_r($input['names'][0]);
         $i = 1;
         $n = 0;
         $html = '<html><head><meta charset="utf-8"></head><body><div>
@@ -544,10 +601,10 @@ class ExportController extends BaseController{
                 <td style="text-align: center;">'.$code.'</td>
                 <td>';
             for($j = 0; $j < $namesNum; $j++){
-                $html = $html.''.$input['names'][$n + $j].' ';
+                $html = $html.''.$input['names'][$n + $j].'; ';
             }
             $html = $html.'</td>
-                <td style="text-align: center;">'.$total.'LT</td>
+                <td style="text-align: center;">'.$total.' LT</td>
                 </tr>';
             $i++;
             $n += $namesNum;
@@ -556,8 +613,5 @@ class ExportController extends BaseController{
         $html = $html.'</tbody></table></div></div></body></html>';
 
         return PDF::load($html, 'A4', 'landscape')->download("DoctorPurchases");
-    }
-    private function getPURCHASESxls(){
-        echo "nebaigtas eksportas";
     }
 }
