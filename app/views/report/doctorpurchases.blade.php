@@ -36,27 +36,25 @@
             <?php $suma = 0 ?>
             @foreach($doctor->orders as $items)
             @foreach($items->orders as $item)
-            <?php array_push($visipavadinimai, $item->product->pavadinimas); ?>
-            <?php $suma += $item->pir_kaina * $item->kiekis ?>
+            <?php array_push($visipavadinimai, $item->product->pavadinimas);
+                $suma += $item->pir_kaina * $item->kiekis ?>
             @endforeach
             @endforeach
             <?php $pavadinimai = array_unique($visipavadinimai); ?>
             @foreach($pavadinimai as $pavadinimas)
             {{ Form::text('names[]', $pavadinimas)}}
             @endforeach
+            {{ Form::hidden('namesNum[]', count($pavadinimai))}}
         </td>
         <td class="text-right">
             {{ Form::text('total[]', $suma)}}{{{"Lt"}}}
         </td>
-
         @endforeach
     </tr>
     </tbody>
-
 </table>
 
 <div>
-
 </div>
 {{Form::submit("Export XLS", array('class'=>'btn btn-primary', 'name' => 'XLS')); }}
 &nbsp;

@@ -508,7 +508,49 @@ class ExportController extends BaseController{
         return PDF::load($html, 'A4', 'portrait')->download("Sales");
     }
     private function getPURCHASESpdf(){
-        echo "nebaigtas eksportas";
+        $input = Input::all();
+        $i = 1;
+        $html = '<html><head><meta charset="utf-8"></head><body><div>
+            <div style="text-align: center; font-weight: bold"></div><br>
+            <div style="margin: 0 auto; width: 100%">
+            <table border="1px solid" style="border-collapse: collapse; width: 950px; text-align: left; font-size: 15px;
+                margin-left: 45px;">
+            <thead style="font-weight: bold; text-align: center;">
+            <tr>
+                <td style="text-align: center;">Nb</td>
+                <td>Doctor name</td>
+                <td>Clinic name</td>
+                <td>Clinic address, VAT or clinic code</td>
+                <td>What doctors are buying from us</td>
+                <td style="text-align: center;">Sales in 2014</td>
+            </tr>
+            </thead>
+            <tbody>';
+
+        $mi = new MultipleIterator();
+        $mi->attachIterator(new ArrayIterator($input['doctor']));
+        $mi->attachIterator(new ArrayIterator($input['clinic']));
+        $mi->attachIterator(new ArrayIterator($input['code']));
+        $mi->attachIterator(new ArrayIterator($input['namesNum']));
+        $mi->attachIterator(new ArrayIterator($input['total']));
+        foreach($mi as $value){
+            list($doctor, $clinic, $code, $namesNum, $total) = $value;
+            $html = $html.'<tr>
+                <td style="text-align: center;">'.$i.'</td>
+                <td>'.$doctor.'</td>
+                <td>'.$clinic.'</td>
+                <td style="text-align: center;">'.$code.'</td>
+                <td>';
+            
+            $html = $html.'</td>
+                <td style="text-align: center;">'.$total.'LT</td>
+                </tr>';
+            $i++;
+        }
+
+        $html = $html.'</tbody></table></div></div></body></html>';
+
+        return PDF::load($html, 'A4', 'landscape')->download("DoctorPurchases");
     }
     private function getPURCHASESxls(){
         echo "nebaigtas eksportas";
