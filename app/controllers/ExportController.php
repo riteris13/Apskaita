@@ -637,7 +637,22 @@ class ExportController extends BaseController{
             <tr><td>Clinic name, address </td><td><b>'.$input['clinic'].' </b> <br></td>
             <td>'.$input['clinicAdr'].'<br><b> Company code: '.$input['clinicCode'].'</b> <br>
             <b>'.$input['VAT'].'</b> <br></td><td>AO %
-            <br> Fixed discount on pricelist '.$input['disc'].'</td></tr>';
+            <br> Fixed discount on pricelist '.$input['disc'].'</td></tr>
+            <tr><td></td>';
+
+        foreach($input['year'] as $y){
+            $html = $html.'<td>'.$y.'</td>';
+        }
+        $html = $html.'</tr>';
+        $html = $html.'<tr><td>Sales (LTL)</td>';
+        foreach($input['total'] as $t){
+            $html = $html.'<td>'.$t.'</td>';
+        }
+        $html = $html.'</tr><tr><td style="line-height:7px; colspan=6">&nbsp;</td></tr>';
+        $html = $html.'<tr><th>Details about doctor</th>
+            <th>What products buys</th> <th>What products likes</th>
+            <th>Frequency (how often ordering)</th> <th>What competitors products use</th>
+            <th style="width: 15%">Evaluation of the doctor (1-10 points system)</th></tr>';
 
         $html = $html.'</tbody></table></div></div></body></html>';
 
