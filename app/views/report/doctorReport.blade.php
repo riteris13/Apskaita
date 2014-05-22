@@ -31,7 +31,7 @@
                 <td>
                     <b> {{ Form::text('clinic', $doctor->clinic->pavadinimas)}}</b> <br>
                 </td>
-                <td class="col-lg-3">
+                <td>
                     {{ Form::text('clinicAdr', $doctor->clinic->adresas)}} <br>
                     <b> Company code:{{ Form::text('clinicCode', $doctor->clinic->kodas)}}</b> <br>
                     <b> @if($doctor->clinic->vat == 0 )
