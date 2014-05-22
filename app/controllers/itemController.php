@@ -52,9 +52,9 @@ class ItemController extends BaseController {
     }
     public function postIndex(){
         $id = Input::get('id');
-        return Redirect::to('item/sorted/'.$id);
+        return Redirect::to('item/search/'.$id);
     }
-    public function getSorted($id){
+    public function getSearch($id){
         $items = Item::where('kategorija_id', '=', $id)->orderBy('pavadinimas')->paginate(15);
         if($items->count() == 0 ){
             $items = Item::orderBy('pavadinimas')->paginate(15);
