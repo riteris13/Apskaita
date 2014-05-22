@@ -4,9 +4,11 @@
 
 @section('content')
 
+    <script type="text/javascript" src="/js/jquery.tablesorter.min.js"></script>
+    <link rel="stylesheet" href="/css/style.tablesorter.css">
     <div class="panel panel-default">
         <div class="panel-heading">{{trans('header.clinic.table');}}</div>
-        <table class="table table-hover">
+        <table id="sortable" class="table table-hover tablesorter">
             <thead>
             <tr>
                 <th>{{{trans('table.name')}}}</th>
@@ -54,4 +56,11 @@
     </div>
     <p>  {{ $items->links() }} </p>
     <a href="/clinic/add" class="btn btn-primary" ><span class="glyphicon glyphicon-plus"></span> {{{trans('table.add')}}}</a>
+    <script>
+        $(document).ready(function()
+            {
+                $("#sortable").tablesorter();
+            }
+        );
+    </script>
 @stop

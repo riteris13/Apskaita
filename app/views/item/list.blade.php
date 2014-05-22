@@ -4,6 +4,8 @@
 
 @section('content')
 
+    <script type="text/javascript" src="/js/jquery.tablesorter.min.js"></script>
+    <link rel="stylesheet" href="/css/style.tablesorter.css">
     @if(($fail == 'true'))
         <div class="alert alert-danger">
             {{{trans('table.empCatTitle')}}}
@@ -31,7 +33,7 @@
 
         @endif
 
-        <table class="table table-hover">
+        <table id="sortable" class="table table-hover tablesorter">
             <thead>
             <tr>
                 <th>{{{trans('table.cat')}}}</th>
@@ -95,6 +97,14 @@
             </tbody>
         </table>
     </div>
+    <div id="pager" class="pager"></div>
     <p>  {{ $items->links() }} </p>
 	<a href="/item/select" class="btn btn-primary" > <span class="glyphicon glyphicon-plus"></span> {{{trans('table.add')}}}</a>
+    <script>
+        $(document).ready(function()
+            {
+                $("#sortable").tablesorter();
+            }
+        );
+    </script>
 @stop

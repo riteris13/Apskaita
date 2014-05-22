@@ -31,8 +31,6 @@ class DoctorController extends BaseController {
                 return View::make('doctor.list')->with('items',$items);
             }
         }
-
-
     }
     public function getSearch($id)
     {
@@ -43,7 +41,7 @@ class DoctorController extends BaseController {
         else{
             $items = Doctor::where('klinika_id', '=', $id)->orderBy('pavarde')->paginate(15);
             if($items->first() == null){
-                return Redirect::to('doctor/')->withErrors('Klinikoje <b>'.Clinic::find($id)->pavadinimas.'</b> daktarų nerasta. Rodomas visas sąrašas.');
+                return Redirect::to('doctor/')->withErrors('Klinikoje <b>'.Clinic::find($id)->pavadinimas.'</b> gydytojų nerasta. Rodomas visas sąrašas.');
             }
             else{
                 return View::make('doctor.list')->with('items',$items);
