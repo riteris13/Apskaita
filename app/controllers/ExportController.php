@@ -509,7 +509,9 @@ class ExportController extends BaseController{
     }
     private function getPURCHASESpdf(){
         $input = Input::all();
+        //return print_r($input['names'][0]);
         $i = 1;
+        $n = 0;
         $html = '<html><head><meta charset="utf-8"></head><body><div>
             <div style="text-align: center; font-weight: bold"></div><br>
             <div style="margin: 0 auto; width: 100%">
@@ -541,11 +543,14 @@ class ExportController extends BaseController{
                 <td>'.$clinic.'</td>
                 <td style="text-align: center;">'.$code.'</td>
                 <td>';
-            
+            for($j = 0; $j < $namesNum; $j++){
+                $html = $html.''.$input['names'][$n + $j].' ';
+            }
             $html = $html.'</td>
                 <td style="text-align: center;">'.$total.'LT</td>
                 </tr>';
             $i++;
+            $n += $namesNum;
         }
 
         $html = $html.'</tbody></table></div></div></body></html>';
