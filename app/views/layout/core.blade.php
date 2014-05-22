@@ -86,7 +86,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a  href="/"><img src="{{asset('assets/img/logo.png');}}" height="50" width="50"></a>
+            <a  href="/"><img src="{{asset('favicon.ico');}}" height="50" width="50"></a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
