@@ -635,7 +635,9 @@ class ExportController extends BaseController{
                 <tbody>
             <tr><td>Doctor name:</td><td>'.$input['doctor'].'</td></tr>
             <tr><td>Clinic name, address </td><td><b>'.$input['clinic'].' </b> <br></td>
-            ';
+            <td>'.$input['clinicAdr'].'<br><b> Company code: '.$input['clinicCode'].'</b> <br>
+            <b>'.$input['VAT'].'</b> <br></td><td>AO %
+            <br> Fixed discount on pricelist '.$input['disc'].'</td></tr>';
 
         $html = $html.'</tbody></table></div></div></body></html>';
 

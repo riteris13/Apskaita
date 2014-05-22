@@ -35,17 +35,16 @@
                     {{ Form::text('clinicAdr', $doctor->clinic->adresas)}} <br>
                     <b> Company code:{{ Form::text('clinicCode', $doctor->clinic->kodas)}}</b> <br>
                     <b> @if($doctor->clinic->vat == 0 )
-                            Not VAT payer
+                        {{ Form::text('VAT', "Not VAT payer")}}
                         @else
-                            VAT payer
-
+                        {{ Form::text('VAT', "VAT payer")}}
                         @endif
                     </b> <br>
                 </td>
 
         <td>
             AO %
-            <br> Fixed discount on pricelist {{ Form::text('disc[]', $doctor->nuolaida)}}
+            <br> Fixed discount on pricelist {{ Form::text('disc', $doctor->nuolaida)}}
         </td>
     </tr>
     <tr>
