@@ -59,6 +59,16 @@ class ExportController extends BaseController{
             return Redirect::to('report/sales')->withErrors('Global error');
         }
     }
+    public function postPurchases(){
+        if(Input::get('PDF') == "Export PDF"){
+            $this->getPURCHASESpdf();
+        }elseif(Input::get('XLS') == "Export XLS"){
+            $this->getPURCHASESxls();
+        }
+        else{
+            return Redirect::to('report/doctorpurchases')->withErrors('Global error');
+        }
+    }
 
     private  function getAOxls()
     {
@@ -496,5 +506,11 @@ class ExportController extends BaseController{
         $html = $html.'</tbody></table></div></div></body></html>';
 
         return PDF::load($html, 'A4', 'portrait')->download("Sales");
+    }
+    private function getPURCHASESpdf(){
+        echo "nebaigtas eksportas";
+    }
+    private function getPURCHASESxls(){
+        echo "nebaigtas eksportas";
     }
 }

@@ -2,8 +2,8 @@
 
 <?php $i=0; ?>
 @section('content')
-
-<table id="tblExport" class="table table-bordered">
+{{ Form::open(array('url' => 'export/purchases')) }}
+<table class="table table-bordered">
     <thead style="font-weight: bold; text-align: center;">
         <tr>
             <td>Nb </td>
@@ -23,7 +23,7 @@
            {{{ $i }}}
         </td>
         <td>
-            {{{ $doctor->fullname }}}
+            {{ Form::text('doctor[]', $doctor->fullname)}}
         </td>
         <td>
             {{{ $doctor->clinic->pavadinimas }}}
@@ -58,5 +58,8 @@
 <div>
 
 </div>
-
+{{Form::submit("Export XLS", array('class'=>'btn btn-primary', 'name' => 'XLS')); }}
+&nbsp;
+{{Form::submit("Export PDF", array('class'=>'btn btn-primary', 'name' => 'PDF')); }}
+{{ Form::close() }}
 @stop
