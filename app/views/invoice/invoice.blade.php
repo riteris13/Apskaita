@@ -25,19 +25,23 @@
             <textarea id="number"> Nr.</textarea>
             <textarea id="original">Originalas</textarea>
             <div id="date-field">
-                <textarea style="width: 100px;">{{(" \n");}}Išdavimo data: </textarea>
+                <textarea style="width: 100px;">{{(" \n");}} Išdavimo data: </textarea>
                 <textarea style="width: 140px;" id="date">data </textarea>
             </div>
         </div>
-
         <textarea id="date-place">Sąskaitos išrašymo data ir vieta: </textarea>
     </div>
+    <?php
+    if(isset($orderid)){
+        $order = Order::find($orderid);
+        //dd(Clinic::find(Doctor::find($order->daktaras_id)->klinika_id)->adresas);
+    } ?>
     <div id="parties-info">
         <div id="seller">
-            <textarea id="address">{{(" \n");}}Pardavėjas:{{(" \n");}}Adresas:{{(" \n");}}Įmonės kodas:{{(" \n");}}PVM mokėtojo kodas:{{(" \n");}}Telefonas:{{(" \n");}}Fax:{{(" \n");}}El. paštas:</textarea>
+            <textarea id="address">{{(" \n");}}Pardavėjas: UAB "Žikai"{{(" \n");}}Adresas: {{(" \n");}}Įmonės kodas: {{(" \n");}}PVM mokėtojo kodas:{{(" \n");}}Telefonas:{{(" \n");}}Fax:{{(" \n");}}El. paštas:</textarea>
         </div>
         <div id="buyer">
-            <textarea id="address">{{(" \n");}}Pirkėjas:{{(" \n");}}Adresas:{{(" \n");}}Įmonės kodas:</textarea>
+            <textarea id="address">{{(" \n");}}Pirkėjas: {{{Doctor::find($order->daktaras_id)->fullname}}}{{(" \n");}}Adresas: {{{Clinic::find(Doctor::find($order->daktaras_id)->klinika_id)->adresas}}}{{(" \n");}}Įmonės kodas: {{{Clinic::find(Doctor::find($order->daktaras_id)->klinika_id)->kodas}}}</textarea>
         </div>
     </div>
 
@@ -61,16 +65,18 @@
         </tr>
         <?php
         if(!isset($products)){$products = array();}
+        $i=1;
         foreach($products as $product){
            echo( '<tr class="item-row">
-                <td id="table-nr"><span class="nr"> </span></td>
+                <td id="table-nr"><span class="nr">'.$i.'.</span></td>
                 <td class="item-name"><textarea id="table-name">'.$product['produktas'].'</textarea>
                 <td><textarea id="table-qty" class="qty">'.$product['kiekis'].'</textarea></td>
                 <td><textarea id="table-mes">matas</textarea></td>
                 <td><textarea id="table-vat">21%</textarea></td>
                 <td><textarea id="table-cost" class="cost">'.$product['pir_kaina'].'</textarea></td>
-                <td class="item-price"> <span class="price">650.00</span><div class="delete-wpr"><a class="delete" href="javascript:;" title="Pašalinti eilutę">X</a></div></td>
+                <td class="item-price"> <span class="price">'.$product['kiekis']*$product['pir_kaina'].'</span><div class="delete-wpr"><a class="delete" href="javascript:;" title="Pašalinti eilutę">X</a></div></td>
             </tr>');
+            $i++;
         }
         ?>
 
@@ -85,7 +91,7 @@
     </table>
 
     <div id="total-line2">
-    <span style="font-weight: bold;">Viso apmokėjimui: </span><textarea style="font-weight: bold; text-align: right; height: 18px;position: relative; top: 4px;"> LTL</textarea>
+    <span style="font-weight: bold;">Viso apmokėjimui: </span><textarea id="total2" style="font-weight: bold; text-align: right; height: 18px;position: relative; top: 4px;"> LTL</textarea>
     </div>
     <div id="total-line3">
         <span style="font-weight: bold;">Suma žodžiais:  </span><textarea style="height: 18px;position: relative; top: 4px;"> litų ir 00 ct</textarea>

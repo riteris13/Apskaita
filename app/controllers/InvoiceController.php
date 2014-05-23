@@ -18,6 +18,6 @@ class InvoiceController extends BaseController {
             array_push($details, $pro->toArray());
         }
         //dd($details);
-        return View::make('invoice.invoice')->with('products', $details);
+        return View::make('invoice.invoice')->with('products', $details)->with('orderid', $id);
     }
 }

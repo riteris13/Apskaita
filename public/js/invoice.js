@@ -70,6 +70,7 @@ function update_total() {
   total = roundNumber(total,2);
 
   $('#total').html(total);
+  $('#total2').html(total+' LTL');
 
 }
 function update_number() {
@@ -97,6 +98,7 @@ function bind() {
 }
 
 $(document).ready(function() {
+    update_total();
 
   $('input').click(function(){
     $(this).select();
