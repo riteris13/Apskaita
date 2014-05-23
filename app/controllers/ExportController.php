@@ -672,7 +672,9 @@ class ExportController extends BaseController{
     }
     private function getDOCTORREPORTxls(){
         $input = Input::all();
+       // return print_r($input);
         $objPHPExcel = $this->prepareExcel("DoctorReport");
+        $j = 'B';
 
         $objRichText = $this->getBold("Doctor name:");
         $objPHPExcel->getActiveSheet()->getCell("A1")->setValue($objRichText);
@@ -688,10 +690,44 @@ class ExportController extends BaseController{
 
         $objRichText4 = $this->getBold($input['clinicAdr'].' Company code: '
             .$input['clinicCode'].' '.$input['VAT']);
-        $objPHPExcel->getActiveSheet()->getCell("B3")->setValue($objRichText4);
+        $objPHPExcel->getActiveSheet()->getCell("C2")->setValue($objRichText4);
 
         $objRichText5 = $this->getBold("AO (%) Fixed discount on price list ".$input['disc']);
-        $objPHPExcel->getActiveSheet()->getCell("B4")->setValue($objRichText5);
+        $objPHPExcel->getActiveSheet()->getCell("D2")->setValue($objRichText5);
+
+        $objRichText6 = $this->getBold("Sales (LTL)");
+        $objPHPExcel->getActiveSheet()->getCell("A4")->setValue($objRichText6);
+
+        $mi = new MultipleIterator();
+        $mi->attachIterator(new ArrayIterator($input['year']));
+        $mi->attachIterator(new ArrayIterator($input['total']));
+        foreach($mi as $value){
+            list($year, $total) = $value;
+            $objPHPExcel->setActiveSheetIndex(0)
+                ->setCellValue($j.'3', $year)
+                ->setCellValue($j.'4', $total);
+            $j++;
+        }
+
+        $objRichText = $this->getBold("Details about doctor");
+        $objPHPExcel->getActiveSheet()->getCell("A6")->setValue($objRichText);
+
+        $objRichText = $this->getBold("What products buys");
+        $objPHPExcel->getActiveSheet()->getCell("B6")->setValue($objRichText);
+
+        $objRichText = $this->getBold("What products likes");
+        $objPHPExcel->getActiveSheet()->getCell("C6")->setValue($objRichText);
+
+        $objRichText = $this->getBold("Frequency (how often ordering)");
+        $objPHPExcel->getActiveSheet()->getCell("D6")->setValue($objRichText);
+
+        $objRichText = $this->getBold("What competitors products use");
+        $objPHPExcel->getActiveSheet()->getCell("E6")->setValue($objRichText);
+
+        $objRichText = $this->getBold("Evaluation of the doctor (1-10 points system)");
+        $objPHPExcel->getActiveSheet()->getCell("F6")->setValue($objRichText);
+
+
 
         $objPHPExcel->getActiveSheet()->getColumnDimension('A')->setAutoSize(true);
         $objPHPExcel->getActiveSheet()->getColumnDimension('B')->setAutoSize(true);
