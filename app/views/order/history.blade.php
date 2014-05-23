@@ -4,10 +4,12 @@
 
 @section('content')
 <script type="text/javascript" src="/js/orderDetails.js"></script>
+<script type="text/javascript" src="/js/jquery.tablesorter.min.js"></script>
+<link rel="stylesheet" href="/css/style.tablesorter.css">
 
 <div class="panel panel-default">
     <div class="panel-heading">{{trans('header.order.table');}}</div>
-    <table class="table table-hover">
+    <table id="sortable" class="table table-hover tablesorter">
         <thead >
         <tr>
             <th>{{{trans('table.client')}}}</th>
@@ -69,6 +71,13 @@
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function()
+        {
+            $("#sortable").tablesorter();
+        }
+    );
+</script>
 
 
 @stop
