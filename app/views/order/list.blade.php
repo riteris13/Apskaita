@@ -139,9 +139,6 @@
                         type="button" class="btn btn-sm btn-primary" name="papildyti-btn">{{{trans('table.appOrder')}}}
                     </button>
                     <button
-                        type="button" class="btn btn-sm btn-primary" name="papildyti-btn">{{{trans('table.appOrder')}}}
-                    </button>
-                    <button
                         type="button" class="btn btn-sm btn-primary" data-dismiss="modal">{{{trans('table.close')}}}
                     </button>
                 </div>
