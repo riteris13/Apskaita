@@ -43,7 +43,7 @@
 <button class="btn btn-primary"
         data-toggle="modal"  data-target="#naujas" id="naujas-btn"
         data-keyboard="false" data-backdrop="static">
-    <span class="glyphicon glyphicon-plus"> {{{trans('table.add')}}}</span>
+    <span class="glyphicon glyphicon-plus"></span> {{{trans('table.add')}}}
 </button>
 <div class="modal fade" id="naujas" tabindex="-1" role="dialog" aria-labelledby="naujas" aria-hidden="true">
     <div class="modal-dialog modal-lg">
