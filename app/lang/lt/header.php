@@ -23,7 +23,8 @@ return array(
         'edit' => 'Redaguoti produką',
         'select' => 'Pridėti produktą',
         'list' => 'Produktai',
-        'table' => 'Produktų sąrašas'
+        'table' => 'Produktų sąrašas',
+        'notourlist' => ' naudojami ne mūsų produktai',
     ),
     'order' => array(
         'add' => 'Pridėti užsakymą',

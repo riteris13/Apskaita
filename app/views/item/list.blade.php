@@ -15,7 +15,7 @@
                 <td style="font-weight: bold; vertical-align: middle">{{{trans('table.cat')}}}</td>
                 <?php
                 $list = Category::lists('pavadinimas', 'id');
-                $list = ["default"=> "Visos"]+$list;
+                $list = ["default"=> trans('table.all')]+$list;
                 ?>
                 <td>{{Form::select('id', $list, '', array('class'=>'form-control')); }}</td>
                 <td style="font-weight: bold; vertical-align: middle">{{{trans('table.code')}}}</td>
@@ -102,7 +102,6 @@
             </tbody>
         </table>
     </div>
-    <div id="pager" class="pager"></div>
     <p>  {{ $items->links() }} </p>
 	<a href="/item/select" class="btn btn-primary" > <span class="glyphicon glyphicon-plus"></span> {{{trans('table.add')}}}</a>
     <script>

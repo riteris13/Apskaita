@@ -14,7 +14,7 @@
                 <td style="font-weight: bold; vertical-align: middle">{{{trans('table.clinic')}}}</td>
                 <?php
                 $list = Clinic::lists('pavadinimas', 'id');
-                $list = ["default"=> "Visos"]+$list;
+                $list = ["default"=> trans('table.all')]+$list;
                 ?>
                 <td>{{Form::select('id', $list, '', array('class'=>'form-control')); }}</td>
                 <td style="font-weight: bold; vertical-align: middle">{{{trans('table.sName')}}}</td>
@@ -65,6 +65,10 @@
 						class="btn btn-xs btn-primary" rel="tooltip" data-placement="top" title="{{{trans('table.edit')}}}" href="/doctor/edit/{{$item->id}}">
 						<span class="glyphicon glyphicon-pencil"></span>
 					</a>
+                    <a
+                        class="btn btn-xs btn-primary" rel="tooltip" data-placement="top" title="{{{trans('table.notourproductlist')}}}" href="/doctor/notourproductlist/{{$item->id}}">
+                        <span class="glyphicon glyphicon-list"></span>
+                    </a>
                     @if($item->orders()->count() == 0 && $item->visits()->count() == 0)
                     <a
                         onclick="return confirm('Ar tikrai norite pašalinti gydytoją?')"
@@ -85,7 +89,6 @@
             </tbody>
         </table>
     </div>
-    <div id="pager" class="pager"></div>
     <p>  {{ $items->links() }} </p>
     <a href="/doctor/add" class="btn btn-primary" ><span class="glyphicon glyphicon-plus"></span> {{{trans('table.add')}}}</a>
 

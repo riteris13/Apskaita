@@ -95,5 +95,7 @@ return array(
     'visit' => 'Visit',
     'prepInvoice' => 'Prepare Invoice',
     'attribute' => 'Attribute',
+    'notourproductlist' => 'List of not our products he uses',
+    'all' => 'All',
 
 );

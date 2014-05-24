@@ -48,7 +48,7 @@ class Doctor extends Eloquent {
         return $this->vardas.' '.$this->pavarde;
     }
     public function notOurProduct(){
-        return $this->hasMany('NotOurProduct','daktaras_id')->groupby('produktas_id');
+        return $this->hasMany('NotOurProduct','daktaras_id');
     }
     public function orders(){
         return $this->hasMany('Order', 'daktaras_id');

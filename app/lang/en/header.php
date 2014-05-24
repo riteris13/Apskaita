@@ -23,7 +23,8 @@ return array(
         'edit' => 'Edit item',
         'select' => 'Add item',
         'list' => 'Items',
-        'table' => 'List of items'
+        'table' => 'List of items',
+        'notourlist' => ' products he uses not from us',
     ),
     'order' => array(
         'add' => 'Add order',

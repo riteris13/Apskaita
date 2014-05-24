@@ -51,6 +51,18 @@ class DoctorController extends BaseController {
     public function getAdd(){
         return View::make('doctor.add');
     }
+    public function getNotourproductlist($id){
+        $products = Doctor::find($id)->notourproduct;
+        return View::make('doctor.notourproductlist')->with('items',$products);
+    }
+
+    public function getRemovenotourproduct($id)
+    {
+        $model = NotOurProduct::findOrFail($id);
+        $msg =  'Sėkmingai pašalinote '.$model->product->pavadinimas;
+        $model->delete();
+        return Redirect::back()->with('success',$msg);
+    }
 	public function getEdit($id){
 		$doctor = Doctor::find($id);
         return View::make('doctor.edit')->with('doctor', $doctor);

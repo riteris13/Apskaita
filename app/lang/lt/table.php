@@ -95,4 +95,6 @@ return array(
     'visit' => 'Vizitas',
     'prepInvoice' => 'Sudaryti sąskaitą faktūrą',
     'attribute' => 'Atributas',
+    'notourproductlist' => 'Naudojamų ne mūsų produktų sąrašas',
+    'all' => 'Visos',
 );
