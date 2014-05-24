@@ -1,9 +1,13 @@
 @extends('layout.core')
 
-<?php $header = Doctor::find($items->first()->daktaras_id)->fullname.trans('header.item.notourlist'); ?>
+<?php
+    $id = $items->first()->daktaras_id;
+    $header = Doctor::find($id)->fullname.trans('header.item.notourlist');
+?>
 
 @section('content')
 <script type="text/javascript" src="/js/jquery.tablesorter.min.js"></script>
+<script type="text/javascript" src="/js/notOurProduct.js"></script>
 <link rel="stylesheet" href="/css/style.tablesorter.css">
 <table id="sortable" class="table table-hover tablesorter">
     <thead>
@@ -37,8 +41,45 @@
 
     </tbody>
 </table>
+<button class="btn btn-primary"
+        value = "{{$id}}"
+        data-toggle="modal"  data-target="#naujas" id="naujas-btn"
+        data-keyboard="false" data-backdrop="static">
+    <span class="glyphicon glyphicon-plus"> {{{trans('table.add')}}}</span>
+</button>
 
-<a href="/doctor/addnotourproduct" class="btn btn-primary" > <span class="glyphicon glyphicon-plus"></span> {{{trans('table.add')}}}</a>
+<div class="modal fade" id="naujas" tabindex="-1" role="dialog" aria-labelledby="naujas" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body" id="modal-body">
+                {{ Form::open(array('url' => 'doctor/addnotourproduct', 'class'=>'form-default', 'id'=>'addNotourproduct')) }}
+
+                <h4>{{{trans('table.cat')}}}</h4>
+                {{Form::select('kategorija_id', array('default' => 'Pasirinkite kategoriją') +
+                Category::all()->lists('pavadinimas', 'id'), null, array('class'=>'form-control', 'id'=>'category')); }}
+
+                <h4>{{{trans('table.item')}}}</h4>
+                {{Form::select('produktas_id', array('default' => 'Pirmiausia pasirinkite kategoriją'), null,
+                array('class'=>'form-control', 'id'=>'produktas', 'disabled' => 'true')); }}
+
+                {{Form::hidden('daktaras_id', $id); }}
+
+                <div class="modal-footer">
+                    {{Form::submit(trans('table.addBtn'), array('class'=>'btn btn-primary')); }}
+                    {{ Form::close() }}
+                    <button
+                        type="button" class="btn btn-primary" data-dismiss="modal">{{{trans('table.close')}}}
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!--<a href="/doctor/addnotourproduct" >-->
 <script>
     $(document).ready(function()
         {
