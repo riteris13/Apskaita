@@ -67,6 +67,13 @@ class DoctorController extends BaseController {
 		$doctor = Doctor::find($id);
         return View::make('doctor.edit')->with('doctor', $doctor);
     }
+    public function postAddnotourproduct(){
+        $input = Input::all();
+        $product = NotOurProduct::create($input);
+        $product->save();
+        $msg = 'Sėkmingai pridėjote prduktą prie sąrašo';
+        return Redirect::to('doctor/notourproductlist/'.$input['daktaras_id'])->with('success',$msg);
+    }
     public function postAdd(){
         $input = Input::all();
         $validator = Validator::make($input, Doctor::$rules, Doctor::$messages);

@@ -19,7 +19,13 @@ jQuery(document).ready(function($){
 						product.append("<option value='"+ element.id +"'>" 
 						+ element.pavadinimas + "</option>");
 					});
+
 				}
 			});
 	});
+	$('#produktas').on('change', function(){
+		document.getElementById('Submit').disabled = false;
+	});
 });
+
+					

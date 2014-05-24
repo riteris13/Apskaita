@@ -1,5 +1,4 @@
 @extends('layout.core')
-
 <?php
     $id = $items->first()->daktaras_id;
     $header = Doctor::find($id)->fullname.trans('header.item.notourlist');
@@ -42,12 +41,10 @@
     </tbody>
 </table>
 <button class="btn btn-primary"
-        value = "{{$id}}"
         data-toggle="modal"  data-target="#naujas" id="naujas-btn"
         data-keyboard="false" data-backdrop="static">
     <span class="glyphicon glyphicon-plus"> {{{trans('table.add')}}}</span>
 </button>
-
 <div class="modal fade" id="naujas" tabindex="-1" role="dialog" aria-labelledby="naujas" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -55,7 +52,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             </div>
             <div class="modal-body" id="modal-body">
-                {{ Form::open(array('url' => 'doctor/addnotourproduct', 'class'=>'form-default', 'id'=>'addNotourproduct')) }}
+                {{ Form::open(array('url' => 'doctor/addnotourproduct', 'class'=>'form-default', 'id'=>'Addnotourproduct')) }}
 
                 <h4>{{{trans('table.cat')}}}</h4>
                 {{Form::select('kategorija_id', array('default' => 'Pasirinkite kategoriją') +
@@ -68,7 +65,7 @@
                 {{Form::hidden('daktaras_id', $id); }}
 
                 <div class="modal-footer">
-                    {{Form::submit(trans('table.addBtn'), array('class'=>'btn btn-primary')); }}
+                    {{Form::submit(trans('table.addBtn'), array('class'=>'btn btn-primary', 'disabled' => 'disabled', 'id' => 'Submit')); }}
                     {{ Form::close() }}
                     <button
                         type="button" class="btn btn-primary" data-dismiss="modal">{{{trans('table.close')}}}
@@ -79,7 +76,6 @@
         </div>
     </div>
 </div>
-<!--<a href="/doctor/addnotourproduct" >-->
 <script>
     $(document).ready(function()
         {
