@@ -7,7 +7,7 @@
     <tbody>
     <tr>
         <td class="text-center" style="background-color: lightgray" colspan="4">
-            {{{ $visit->data}}}
+            {{ Form::text('data', $visit->data, array('class'=>'text'))}}
         </td>
     </tr>
     <tr>
@@ -25,11 +25,11 @@
         </td>
     </tr>
     <tr>
-        <td rowspan="5">
-            {{{ $visit->tikslas }}}
+        <td>
+            {{ Form::text('tikslas', $visit->tikslas, array('class'=>'text'))}}
         </td>
         <td>
-            {{{ $visit->pokalbis }}}
+            {{ Form::text('pokalbis', $visit->pokalbis, array('class'=>'text'))}}
         </td>
         <td>
             <table class="table table-bordered">
@@ -52,11 +52,75 @@
                     <td>
                         Wires
                     </td>
+                    <td>
+                        Plastic
+                    </td>
+                    <td>
+                        Instuments
+                    </td>
+                    <td>
+                        Aarhus
+                    </td>
+                    <td>
+                        Other
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        {{ Form::text('kiekis[]', '', array('class'=>'text'))}}
+                    </td>
+                    <td>
+                        {{ Form::text('kiekis[]', '', array('class'=>'text'))}}
+                    </td>
+                    <td>
+                        {{ Form::text('kiekis[]', '', array('class'=>'text'))}}
+                    </td>
+                    <td>
+                        {{ Form::text('kiekis[]', '', array('class'=>'text'))}}
+                    </td>
+                    <td>
+                        {{ Form::text('kiekis[]', '', array('class'=>'text'))}}
+                    </td>
+                    <td>
+                        {{ Form::text('kiekis[]', '', array('class'=>'text'))}}
+                    </td>
+                    <td>
+                        {{ Form::text('kiekis[]', '', array('class'=>'text'))}}
+                    </td>
+                    <td>
+                        {{ Form::text('kiekis[]', '', array('class'=>'text'))}}
+                    </td>
+                    <td>
+                        {{ Form::text('kiekis[]', '', array('class'=>'text'))}}
+                    </td>
+                    <td>
+                        {{ Form::text('kiekis[]', '', array('class'=>'text'))}}
+                    </td>
                 </tr>
             </table>
         </td>
         <td>
-            {{{ $visit->kompetitoriai }}}
+            {{ Form::text('kompetitoriai', $visit->kompetitoriai, array('class'=>'text'))}}
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td style="text-align: right">
+            Price total:
+        </td>
+        <td>
+            <table class="table table-bordered">
+                <td>{{ Form::text('total[]', '', array('class'=>'text'))}}</td>
+                <td>{{ Form::text('total[]', '', array('class'=>'text'))}}</td>
+                <td>{{ Form::text('total[]', '', array('class'=>'text'))}}</td>
+                <td>{{ Form::text('total[]', '', array('class'=>'text'))}}</td>
+                <td>{{ Form::text('total[]', '', array('class'=>'text'))}}</td>
+                <td>{{ Form::text('total[]', '', array('class'=>'text'))}}</td>
+                <td>{{ Form::text('total[]', '', array('class'=>'text'))}}</td>
+                <td>{{ Form::text('total[]', '', array('class'=>'text'))}}</td>
+                <td>{{ Form::text('total[]', '', array('class'=>'text'))}}</td>
+                <td>{{ Form::text('total[]', '', array('class'=>'text'))}}</td>
+            </table>
         </td>
     </tr>
     </tbody>

@@ -86,7 +86,8 @@ class ExportController extends BaseController{
             $this->getVISITxls();
         }
         else{
-            return Redirect::to('report/visitreport/')->withErrors('Global error');
+            //$id = Input::get('id');
+            return Redirect::to('report/visitreport/'.Input::get('id'))->withErrors('Global error');
         }
     }
     private  function getAOxls()
