@@ -69,6 +69,10 @@ class DoctorController extends BaseController {
     }
     public function postAddnotourproduct(){
         $input = Input::all();
+        if(NotOurProduct::where('daktaras_id', '=', $input['daktaras_id'])->where('produktas_id', '=', $input['produktas_id'])->first() != null){
+            $msg = 'Toks įrašas jau yra';
+            return Redirect::to('doctor/notourproductlist/'.$input['daktaras_id'])->withErrors($msg);
+        }
         $product = NotOurProduct::create($input);
         $product->save();
         $msg = 'Sėkmingai pridėjote prduktą prie sąrašo';
