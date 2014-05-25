@@ -1,7 +1,8 @@
 @extends('layout.core')
 
 @section('content')
-
+{{ Form::open(array('url' => 'export/visitreport')) }}
+{{ Form::hidden('id', $visit->id)}}
 <table class="table table-bordered">
     <tbody>
     <tr>
@@ -60,6 +61,8 @@
     </tr>
     </tbody>
 </table>
-
-
+{{Form::submit("Export XLS", array('class'=>'btn btn-primary', 'name' => 'XLS')); }}
+&nbsp;
+{{Form::submit("Export PDF", array('class'=>'btn btn-primary', 'name' => 'PDF')); }}
+{{ Form::close() }}
 @stop

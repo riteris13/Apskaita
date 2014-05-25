@@ -79,7 +79,16 @@ class ExportController extends BaseController{
             return Redirect::to('report/doctorpurchases')->withErrors('Global error');
         }
     }
-
+    public function postVisitreport(){
+        if(Input::get('PDF') == "Export PDF"){
+            $this->getVISITpdf();
+        }elseif(Input::get('XLS') == "Export XLS"){
+            $this->getVISITxls();
+        }
+        else{
+            return Redirect::to('report/visitreport/')->withErrors('Global error');
+        }
+    }
     private  function getAOxls()
     {
         $doctors = Doctor::all();
@@ -753,5 +762,13 @@ class ExportController extends BaseController{
         $objPHPExcel->getActiveSheet()->getColumnDimension('F')->setAutoSize(true);
 
         $this->downloadExcel($objPHPExcel,"DoctorReport");
+    }
+    private function getVISITxls(){
+        $input = Input::all();
+        print_r($input);
+    }
+    private function getVISITpdf(){
+    $input = Input::all();
+        print_r($input);
     }
 }
