@@ -127,7 +127,6 @@ class ExportController extends BaseController{
     private function getIATCxls()
     {
         $input = Input::all();
-        //return print_r($input);
         $np = 0;
         $nnp = 0;
         $objPHPExcel = $this->prepareExcel("IATC");
@@ -250,7 +249,9 @@ class ExportController extends BaseController{
 
     private function getIATCpdf()
     {
-        $doctors = Doctor::all();
+        $input = Input::all();
+        $np = 0;
+        $nnp = 0;
 
         $html = '<html><head>
     <meta charset="utf-8"></head><body><div>
@@ -268,43 +269,33 @@ class ExportController extends BaseController{
         </thead>
 
         <tbody>';
-        foreach($doctors as $doctor)
-        {
+        for($i = 0; $i < count($input['names']); $i++){
             $html = $html.'<tr>
-                <td>'.$doctor->fullname.'</td>';
-
-            $visipavadinimai = array();
-            foreach($doctor->orders as $items){
-                foreach($items->orders as $item){
-                    array_push($visipavadinimai, $item->product->pavadinimas);
-                }
-            }
-            $pavadinimai = array_unique($visipavadinimai);
+                <td>'.$input['names'][$i].'</td>';
 
             $html= $html.'<td>';
-            foreach($pavadinimai as $pavadinimas){
-                $html= $html.$pavadinimas.", ";
+            for($g = 0; $g < $input['pc'][$i]; $g++){
+                $html= $html.$input['products'][$np+$g].'; ';
             }
             $html= $html.'</td>';
+            $np += $g;
 
-            $visipavadinimai = array();
-            foreach( $doctor->notourproduct as $item){
-                array_push($visipavadinimai, $item->product->pavadinimas);
-            }
             $html= $html.'<td>';
-            foreach($visipavadinimai as $pavadinimas){
-                $html= $html.$pavadinimas.", ";
+            for($g = 0; $g < $input['npc'][$i]; $g++){
+                $html= $html.$input['nproducts'][$nnp+$g].'; ';
             }
+            $html= $html.'</td>';
+            $nnp += $g;
+
             $html= $html.'</td>
 
-            <td>'.$doctor->kodel_neperka.'</td>
-            <td>'.$doctor->kaip_pritraukti.'</td>
+            <td>'.$input['neperka'][$i].'</td>
+            <td>'.$input['pritraukti'][$i].'</td>
             </tr>';
         }
         $html = $html.'</tbody>
             </table></div></div></body></html>';
-        // dd($html);
-        return PDF::load($html, 'A4', 'landscape')->show();
+        return PDF::load($html, 'A4', 'landscape')->download("Information about customers");
     }
     private function getEXPENSESxls(){
         $input = Input::all();

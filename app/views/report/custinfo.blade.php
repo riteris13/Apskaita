@@ -26,7 +26,7 @@
     }
 </style>
 {{ Form::open(array('url' => 'export/iatc')) }}
-<?php $header = Form::text('header', "Information about the customers 2014", array('class'=>'header')) ?>
+<?php $header = "Information about the customers 2014"?>
 <?php $i=0; ?>
 
 <table class="table table-bordered">
