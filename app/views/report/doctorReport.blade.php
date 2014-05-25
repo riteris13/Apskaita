@@ -27,8 +27,11 @@
 </style>
 <?php
     if($laikas == 0){
-        $prev = Order::where('daktaras_id', '=', $doctor->id)->min('data');
-
+        if($doctor->orders->count() == 0){
+            $prev = date("Y-m-d");
+        }else{
+            $prev = Order::where('daktaras_id', '=', $doctor->id)->min('data');
+        }
     }else{
         $prev = date("Y-m-d", strtotime("-$laikas months"));
     }
@@ -37,6 +40,8 @@
     $pY2 = $pY;
     $i = 0;
 ?>
+
+
 {{ Form::open(array('url' => 'export/doctorreport')) }}
 <table class="table table-bordered">
     <tbody>
