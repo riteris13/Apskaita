@@ -3,7 +3,7 @@
 
 <div class="panel panel-default">
     <div class="panel-heading"> AO </div>
-
+    {{ Form::open(array('url' => 'export/ao')) }}
     <table class="table table-hover">
         <thead>
             <tr>
@@ -17,22 +17,22 @@
             @foreach($doctors as $item)
             <tr>
                 <td>
-                    {{{ $item->fullname }}}
+                    {{ Form::text('name[]', $item->fullname, array('class'=>'rinkos'))}}
                 </td>
                 <td>
-                    {{{ $item->nuolaida }}}
+                    {{ Form::text('disc[]', $item->nuolaida, array('class'=>'rinkos'))}}
                 </td>
                 <td>
-                    {{{ $item->potencialumas }}}
+                    {{ Form::text('pot[]', $item->potencialumas, array('class'=>'rinkos'))}}
                 </td>
             </tr>
             @endforeach
         </tbody>
     </table>
 </div>
-<div>
-    <a href="/export/xls/ao" class="btn btn-primary" >Export XLS</a>
-    <a href="/export/pdf/ao" class="btn btn-primary" >Export PDF</a>
-</div>
+{{Form::submit("Export XLS", array('class'=>'btn btn-primary', 'name' => 'XLS')); }}
+&nbsp;
+{{Form::submit("Export PDF", array('class'=>'btn btn-primary', 'name' => 'PDF')); }}
+{{ Form::close() }}
 
 @stop

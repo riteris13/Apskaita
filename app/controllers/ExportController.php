@@ -59,6 +59,16 @@ class ExportController extends BaseController{
             return Redirect::to('report/sales')->withErrors('Global error');
         }
     }
+    public function postAo(){
+        if(Input::get('PDF') == "Export PDF"){
+            $this->getAOpdf();
+        }elseif(Input::get('XLS') == "Export XLS"){
+            $this->getAOxls();
+        }
+        else{
+            return Redirect::to('report/ao')->withErrors('Global error');
+        }
+    }
     public function postPurchases(){
         if(Input::get('PDF') == "Export PDF"){
             $this->getPURCHASESpdf();
@@ -86,15 +96,12 @@ class ExportController extends BaseController{
             $this->getVISITxls();
         }
         else{
-            //$id = Input::get('id');
             return Redirect::to('report/visitreport/'.Input::get('id'))->withErrors('Global error');
         }
     }
-    private  function getAOxls()
-    {
-        $doctors = Doctor::all();
+    private  function getAOxls(){
+        $input = Input::all();
         $objPHPExcel = $this->prepareExcel("AO");
-
         $i = 2;
 
         $objRichText = $this->getBold("Doctor");
@@ -106,13 +113,19 @@ class ExportController extends BaseController{
         $objRichText3 = $this->getBold("Potenciality");
         $objPHPExcel->getActiveSheet()->getCell("C1")->setValue($objRichText3);
 
-           foreach($doctors as $doctor){
-               $objPHPExcel->setActiveSheetIndex(0)
-                   ->setCellValue('A'.$i, $doctor->fullname)
-                   ->setCellValue('B'.$i, $doctor->nuolaida)
-                   ->setCellValue('C'.$i, $doctor->potencialumas);
-               $i++;
-           }
+        $mi = new MultipleIterator();
+        $mi->attachIterator(new ArrayIterator($input['name']));
+        $mi->attachIterator(new ArrayIterator($input['disc']));
+        $mi->attachIterator(new ArrayIterator($input['pot']));
+        foreach($mi as $value){
+            list($name, $disc, $pot) = $value;
+            $objPHPExcel->setActiveSheetIndex(0)
+                ->setCellValue('A'.$i, $name)
+                ->setCellValue('B'.$i, $disc)
+                ->setCellValue('C'.$i, $pot);
+            $i++;
+        }
+
         $objPHPExcel->getActiveSheet()->getColumnDimension('A')->setAutoSize(true);
         $objPHPExcel->getActiveSheet()->getColumnDimension('B')->setAutoSize(true);
         $objPHPExcel->getActiveSheet()->getColumnDimension('C')->setAutoSize(true);
