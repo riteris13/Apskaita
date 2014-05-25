@@ -3,7 +3,6 @@
 class ExportController extends BaseController{
 
     public function getIndex(){
-
         $objPHPExcel = $this->prepareExcel("test");
 
 // Add some data
@@ -23,19 +22,13 @@ class ExportController extends BaseController{
 
     public function getXls($type)
     {
-        if($type == "ao"){
-            $this->getAOxls();
-        }
-        elseif($type == "iatc"){
+        if($type == "iatc"){
             $this->getIATCxls();
         }
     }
     public function getPdf($type)
     {
-        if($type == "ao"){
-            $this->getAOpdf();
-        }
-        elseif($type == "iatc"){
+        if($type == "iatc"){
             $this->getIATCpdf();
         }
     }
@@ -210,7 +203,6 @@ class ExportController extends BaseController{
             ->setTitle($title)
             ->setSubject($title);
         return $objPHPExcel;
-
     }
 
     private function downloadExcel($objPHPExcel, $name)
@@ -221,7 +213,6 @@ class ExportController extends BaseController{
 
 // Set active sheet index to the first sheet, so Excel opens this as the first sheet
         $objPHPExcel->setActiveSheetIndex(0);
-
 
 // Redirect output to a client’s web browser (Excel5)
         header('Content-Type: application/vnd.ms-excel');
@@ -247,20 +238,18 @@ class ExportController extends BaseController{
         </thead>
 
         <tbody style="text-align: left">';
-        $doctors = Doctor::all();
+        $input = Input::all();
         $i = 0;
-             foreach($doctors as $item)
-             {
+        for($i = 0; $i < count($input['name']); $i++){
             $html = $html.'<tr>
-                <td style="text-align : left">'.$item->fullname.'</td>
-                <td style="text-align : center">'.$item->nuolaida.'</td>
-                <td style="text-align : center">'.$item->potencialumas.'</td>
+                <td style="text-align : left">'.$input['name'][$i].'</td>
+                <td style="text-align : center">'.$input['disc'][$i].'</td>
+                <td style="text-align : center">'.$input['pot'][$i].'</td>
             </tr>';
-            };
+        };
         $html = $html.'</tbody>
         </table></div></div></body></html>';
-        // dd($html);
-        return PDF::load($html, 'A4', 'portrait')->show();
+        return PDF::load($html, 'A4', 'portrait')->download("AO");
     }
 
     private function getIATCpdf()
