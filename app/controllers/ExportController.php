@@ -672,7 +672,6 @@ class ExportController extends BaseController{
     }
     private function getDOCTORREPORTxls(){
         $input = Input::all();
-       // return print_r($input);
         $objPHPExcel = $this->prepareExcel("DoctorReport");
         $j = 'B';
 
@@ -708,7 +707,6 @@ class ExportController extends BaseController{
                 ->setCellValue($j.'4', $total);
             $j++;
         }
-
         $objRichText = $this->getBold("Details about doctor");
         $objPHPExcel->getActiveSheet()->getCell("A6")->setValue($objRichText);
 
@@ -727,7 +725,25 @@ class ExportController extends BaseController{
         $objRichText = $this->getBold("Evaluation of the doctor (1-10 points system)");
         $objPHPExcel->getActiveSheet()->getCell("F6")->setValue($objRichText);
 
+        $objPHPExcel->getActiveSheet()->getCell('A7')->setValue($input['details']);
+        $objPHPExcel->getActiveSheet()->getCell('F7')->setValue($input['score']);
 
+        $names = "";
+        if(isset($input['names']) != 0){
+            foreach($input['names'] as $pro){
+                if($pro == ''){ continue;}
+                $names = $names.''.$pro.'; ';
+            }
+        }
+        $objPHPExcel->getActiveSheet()->getCell('B7')->setValue($names);
+        $names = "";
+        if(isset($input['nnames']) != 0){
+            foreach($input['nnames'] as $pro){
+                if($pro == ''){ continue;}
+                $names = $names.''.$pro.'; ';
+            }
+        }
+        $objPHPExcel->getActiveSheet()->getCell('E7')->setValue($names);
 
         $objPHPExcel->getActiveSheet()->getColumnDimension('A')->setAutoSize(true);
         $objPHPExcel->getActiveSheet()->getColumnDimension('B')->setAutoSize(true);

@@ -75,7 +75,7 @@ class DoctorController extends BaseController {
         }
         $product = NotOurProduct::create($input);
         $product->save();
-        $msg = 'Sėkmingai pridėjote prduktą prie sąrašo';
+        $msg = 'Sėkmingai pridėjote produktą prie sąrašo';
         return Redirect::to('doctor/notourproductlist/'.$input['daktaras_id'])->with('success',$msg);
     }
     public function postAdd(){
