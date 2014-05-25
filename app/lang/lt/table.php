@@ -98,4 +98,5 @@ return array(
     'notourproductlist' => 'Naudojamų ne mūsų produktų sąrašas',
     'all' => 'Visos',
     'ordall' => 'Visi',
+    'prepare' => 'Sudaryti',
 );

@@ -98,5 +98,6 @@ return array(
     'notourproductlist' => 'List of not our products he uses',
     'all' => 'All',
     'ordall' => 'All',
+    'prepare' => 'Prepare',
 
 );

@@ -9,41 +9,41 @@
         <table class="table table-hover">
             <tbody>
                 <tr>
-                <td>Kliento nuolaida ir potencialas</td>
+                <td>{{trans('reports.ao')}}</td>
                 <td class="text-right">
-                     <a href="/report/ao" class="btn btn-primary" ><span class="glyphicon glyphicon-plus"></span> Sudaryti</a>
+                     <a href="/report/ao" class="btn btn-primary" ><span class="glyphicon glyphicon-plus"></span> {{trans('table.prepare')}}</a>
                 </td>
                 </tr>
                 <tr>
-                <td>Išlaidos</td>
+                <td>{{trans('reports.expenses')}}</td>
                 <td class="text-right">
-                    <a href="/report/expenses" class="btn btn-primary" ><span class="glyphicon glyphicon-plus"></span> Sudaryti</a>
+                    <a href="/report/expenses" class="btn btn-primary" ><span class="glyphicon glyphicon-plus"></span> {{trans('table.prepare')}}</a>
                 </td>
                 </tr>
-                <td>Informacija apie kliento naudojamus gaminius</td>
+                <td>{{trans('reports.custinfo')}}</td>
                 <td class="text-right">
-                    <a href="/report/custinfo" class="btn btn-primary" ><span class="glyphicon glyphicon-plus"></span> Sudaryti</a>
+                    <a href="/report/custinfo" class="btn btn-primary" ><span class="glyphicon glyphicon-plus"></span> {{trans('table.prepare')}}</a>
                 </td>
                 </tr>
-                <td>Informacija apie kliento pirkimus</td>
+                <td>{{trans('reports.doctorpurchases')}}</td>
                 <td class="text-right">
-                    <a href="/report/doctorpurchases" class="btn btn-primary" ><span class="glyphicon glyphicon-plus"></span> Sudaryti</a>
+                    <a href="/report/doctorpurchases" class="btn btn-primary" ><span class="glyphicon glyphicon-plus"></span> {{trans('table.prepare')}}</a>
                 </td>
                 </tr>
-                <td>Ataskaita apie vizitą</td>
+                <td>{{trans('reports.visitreport')}}</td>
                 <td class="text-right">
-                    <a href="/report/selectvisit" class="btn btn-primary" ><span class="glyphicon glyphicon-plus"></span> Sudaryti</a>
+                    <a href="/report/selectvisit" class="btn btn-primary" ><span class="glyphicon glyphicon-plus"></span> {{trans('table.prepare')}}</a>
                 </td>
                 </tr>
-                <td>Metinė pardavimų ataskaita</td>
+                <td>{{trans('reports.salesreport')}}</td>
                 <td class="text-right">
-                    <a href="/report/sales" class="btn btn-primary" ><span class="glyphicon glyphicon-plus"></span> Sudaryti</a>
+                    <a href="/report/sales" class="btn btn-primary" ><span class="glyphicon glyphicon-plus"></span> {{trans('table.prepare')}}</a>
                 </td>
                 </tr>
                 </tr>
-                <td>Ataskaita apie gydytoją</td>
+                <td>{{trans('reports.doctorreport')}}</td>
                 <td class="text-right">
-                    <a href="/report/selectdoctor" class="btn btn-primary" ><span class="glyphicon glyphicon-plus"></span> Sudaryti</a>
+                    <a href="/report/selectdoctor" class="btn btn-primary" ><span class="glyphicon glyphicon-plus"></span> {{trans('table.prepare')}}</a>
                 </td>
                 </tr>
             </tbody>
