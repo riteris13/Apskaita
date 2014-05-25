@@ -7,9 +7,9 @@
 <table class="table table-bordered">
     <thead style="font-weight: bold; text-align: center;">
         <tr>
-            <td>Name, Surname</td>
-            <td>Which products he use from us</td>
-            <td>Which products from other company</td>
+            <td style="width: 20%;">Name, Surname</td>
+            <td style="width: 25%;">Which products he use from us</td>
+            <td style="width: 25%;">Which products from other company</td>
             <td>Why he doesn't use our products</td>
             <td>My idea to make this doctor our customer</td>
         </tr>
@@ -30,12 +30,12 @@
             @endforeach
             <?php $pavadinimai = array_unique($visipavadinimai); ?>
             @foreach($pavadinimai as $pavadinimas)
-                {{{$pavadinimas}}}<br>
+                {{{$pavadinimas}}},
             @endforeach
         </td>
         <td>
             @foreach($doctor->notourproduct as $item)
-                {{$item->product->pavadinimas}}<br>
+                {{$item->product->pavadinimas}},
             @endforeach
         </td>
         <td>

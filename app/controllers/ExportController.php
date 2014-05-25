@@ -287,7 +287,7 @@ class ExportController extends BaseController{
 
             $html= $html.'<td>';
             foreach($pavadinimai as $pavadinimas){
-                $html= $html.$pavadinimas."\n";
+                $html= $html.$pavadinimas.", ";
             }
             $html= $html.'</td>';
 
@@ -297,7 +297,7 @@ class ExportController extends BaseController{
             }
             $html= $html.'<td>';
             foreach($visipavadinimai as $pavadinimas){
-                $html= $html.$pavadinimas."\n";
+                $html= $html.$pavadinimas.", ";
             }
             $html= $html.'</td>
 
