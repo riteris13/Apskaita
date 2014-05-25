@@ -8,14 +8,18 @@
 <link rel="stylesheet" href="/css/style.tablesorter.css">
 
 <div class="panel panel-default">
-    <div class="panel-heading">{{{trans('table.orderSort')}}}</div>
-    {{ Form::open(array('url' => 'order', 'class'=>'form-default')) }}
-    <h4>{{{trans('table.status')}}}</h4>
-    {{Form::select('status', array('2' => trans('table.all'), '1' => trans('table.comp'), '0' => trans('table.inComp')), null, array('class'=>'form-control')); }}
-    <br>
-    {{Form::submit(trans('table.sort'), array('class'=>'btn btn-primary')); }}
-
-    {{ Form::close() }}
+    <div style=" height: 40px; font-size: 18px" class="panel-heading">{{trans('table.orderSort');}}</div>
+    <table class="table table-default">
+        {{ Form::open(array('url' => 'order', 'class'=>'form-default')) }}
+        <tr>
+            <td style="font-weight: bold; vertical-align: middle">{{{trans('table.status')}}}</td>
+            <td>{{Form::select('status', array('2' => trans('table.ordall'), '1' => trans('table.comp'), '0' => trans('table.inComp')), null, array('class'=>'form-control')); }}</td>
+            <td style="width: 10%"></td>
+            <td>{{Form::submit(trans('table.sort'), array('class'=>'btn btn-primary')); }}</td>
+            <td style="width: 40%"></td>
+            {{ Form::close() }}
+        </tr>
+    </table>
 </div>
     <div class="panel panel-default">
         <div class="panel-heading">{{trans('header.order.table');}}</div>

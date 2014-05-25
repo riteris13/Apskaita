@@ -19,8 +19,8 @@ return array(
     'orderSort' => 'Užsakymų rūšiavimas',
     'orderDesc' => 'Užsakymo aprašymas',
     'appOrder' => 'Papildyti užsakymą',
-    'comp' => 'Įvykdytas',
-    'inComp' => 'Neįvykdytas',
+    'comp' => 'Įvykdyti',
+    'inComp' => 'Neįvykdyti',
     'all' => 'Visi',
     'del' => 'Pašalinti',
     'viewOrder' => 'Peržiūrėti užsakymą',
@@ -97,4 +97,5 @@ return array(
     'attribute' => 'Atributas',
     'notourproductlist' => 'Naudojamų ne mūsų produktų sąrašas',
     'all' => 'Visos',
+    'ordall' => 'Visi',
 );

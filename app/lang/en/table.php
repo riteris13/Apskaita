@@ -20,7 +20,7 @@ return array(
     'orderDesc' => 'Order description',
     'appOrder' => 'Append order',
     'comp' => 'Completed',
-    'inComp' => 'Incompleted',
+    'inComp' => 'Not completed',
     'all' => 'All',
     'del' => 'Delete',
     'viewOrder' => 'View order',
@@ -97,5 +97,6 @@ return array(
     'attribute' => 'Attribute',
     'notourproductlist' => 'List of not our products he uses',
     'all' => 'All',
+    'ordall' => 'All',
 
 );
