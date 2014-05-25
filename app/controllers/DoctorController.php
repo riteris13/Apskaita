@@ -53,7 +53,7 @@ class DoctorController extends BaseController {
     }
     public function getNotourproductlist($id){
         $products = Doctor::find($id)->notourproduct;
-        return View::make('doctor.notourproductlist')->with('items',$products);
+        return View::make('doctor.notourproductlist')->with('items',$products)->with('id', $id);
     }
 
     public function getRemovenotourproduct($id)

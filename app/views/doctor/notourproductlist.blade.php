@@ -1,6 +1,5 @@
 @extends('layout.core')
 <?php
-    $id = $items->first()->daktaras_id;
     $header = Doctor::find($id)->fullname.trans('header.item.notourlist');
 ?>
 
