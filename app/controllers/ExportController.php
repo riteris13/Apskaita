@@ -20,16 +20,14 @@ class ExportController extends BaseController{
         $this->downloadExcel($objPHPExcel,"test");
     }
 
-    public function getXls($type)
-    {
-        if($type == "iatc"){
+    public function postIatc(){
+        if(Input::get('PDF') == "Export PDF"){
+            $this->getIATCpdf();
+        }elseif(Input::get('XLS') == "Export XLS"){
             $this->getIATCxls();
         }
-    }
-    public function getPdf($type)
-    {
-        if($type == "iatc"){
-            $this->getIATCpdf();
+        else{
+            return Redirect::to('report/expenses')->withErrors('Global error');
         }
     }
     public function postExpenses(){
@@ -39,7 +37,7 @@ class ExportController extends BaseController{
             $this->getEXPENSESxls();
         }
         else{
-            return Redirect::to('report/expenses')->withErrors('Global error');
+            return Redirect::to('report/custinfo')->withErrors('Global error');
         }
     }
     public function postSales(){
@@ -128,8 +126,9 @@ class ExportController extends BaseController{
 
     private function getIATCxls()
     {
-        $doctors = Doctor::all();
-
+        $input = Input::all();
+        $np = 0;
+        $nnp = 0;
         $objPHPExcel = $this->prepareExcel("IATC");
 
         $objRichText = $this->getBold("Name, Surname");
@@ -143,34 +142,30 @@ class ExportController extends BaseController{
         $objRichText4 = $this->getBold("My idea to make this doctor our customer");
         $objPHPExcel->getActiveSheet()->getCell("E1")->setValue($objRichText4);
 
-        $i = 2;
+        $j = 2;
 
-        foreach($doctors as $doctor)
-        {
-            $objPHPExcel->getActiveSheet()->getCell('A'.$i)->setValue($doctor->fullname);
-
-            $visipavadinimai = array();
-            foreach($doctor->orders as $items){
-                foreach($items->orders as $item){
-                    array_push($visipavadinimai, $item->product->pavadinimas);
-                }
+        for($i = 0; $i < count($input['names']); $i++){
+            $objPHPExcel->getActiveSheet()->getCell('A'.$j)->setValue($input['names'][$i]);
+            $pavadinimai = "";
+            for($g = 0; $g < $input['pc'][$i]; $g++){
+                if($input['products'][$np+$g] == ''){ continue;}
+                $pavadinimai = $pavadinimai.''.$input['products'][$np+$g].'; ';
             }
-            $pavadinimai = array_unique($visipavadinimai);
+            $np += $g;
+                $objPHPExcel->getActiveSheet()->getCell('B'.$j)->setValue($pavadinimai);
 
-            $objPHPExcel->getActiveSheet()->getCell('B'.$i)->setValue(implode(", ", $pavadinimai));
-
-            $visipavadinimai = array();
-            foreach( $doctor->notourproduct as $item){
-                    array_push($visipavadinimai, $item->product->pavadinimas);
+            $pavadinimai = "";
+            for($g = 0; $g < $input['npc'][$i]; $g++){
+                if($input['nproducts'][$nnp+$g] == ''){ continue;}
+                $pavadinimai = $pavadinimai.''.$input['nproducts'][$nnp+$g].'; ';
             }
-            $objPHPExcel->getActiveSheet()->getCell('C'.$i)->setValue(implode(", ", $visipavadinimai));
+            $nnp += $g;
+            $objPHPExcel->getActiveSheet()->getCell('C'.$j)->setValue($pavadinimai);
 
+            $objPHPExcel->getActiveSheet()->getCell('D'.$j)->setValue($input['neperka'][$i]);
 
-            $objPHPExcel->getActiveSheet()->getCell('D'.$i)->setValue($doctor->kodel_neperka);
-
-            $objPHPExcel->getActiveSheet()->getCell('E'.$i)->setValue($doctor->kaip_pritraukti);
-
-            $i++;
+            $objPHPExcel->getActiveSheet()->getCell('E'.$j)->setValue($input['pritraukti'][$i]);
+            $j++;
         }
 
         $objPHPExcel->getActiveSheet()->getColumnDimension('A')->setAutoSize(true);
@@ -254,7 +249,9 @@ class ExportController extends BaseController{
 
     private function getIATCpdf()
     {
-        $doctors = Doctor::all();
+        $input = Input::all();
+        $np = 0;
+        $nnp = 0;
 
         $html = '<html><head>
     <meta charset="utf-8"></head><body><div>
@@ -272,43 +269,33 @@ class ExportController extends BaseController{
         </thead>
 
         <tbody>';
-        foreach($doctors as $doctor)
-        {
+        for($i = 0; $i < count($input['names']); $i++){
             $html = $html.'<tr>
-                <td>'.$doctor->fullname.'</td>';
-
-            $visipavadinimai = array();
-            foreach($doctor->orders as $items){
-                foreach($items->orders as $item){
-                    array_push($visipavadinimai, $item->product->pavadinimas);
-                }
-            }
-            $pavadinimai = array_unique($visipavadinimai);
+                <td>'.$input['names'][$i].'</td>';
 
             $html= $html.'<td>';
-            foreach($pavadinimai as $pavadinimas){
-                $html= $html.$pavadinimas.", ";
+            for($g = 0; $g < $input['pc'][$i]; $g++){
+                $html= $html.$input['products'][$np+$g].'; ';
             }
             $html= $html.'</td>';
+            $np += $g;
 
-            $visipavadinimai = array();
-            foreach( $doctor->notourproduct as $item){
-                array_push($visipavadinimai, $item->product->pavadinimas);
-            }
             $html= $html.'<td>';
-            foreach($visipavadinimai as $pavadinimas){
-                $html= $html.$pavadinimas.", ";
+            for($g = 0; $g < $input['npc'][$i]; $g++){
+                $html= $html.$input['nproducts'][$nnp+$g].'; ';
             }
+            $html= $html.'</td>';
+            $nnp += $g;
+
             $html= $html.'</td>
 
-            <td>'.$doctor->kodel_neperka.'</td>
-            <td>'.$doctor->kaip_pritraukti.'</td>
+            <td>'.$input['neperka'][$i].'</td>
+            <td>'.$input['pritraukti'][$i].'</td>
             </tr>';
         }
         $html = $html.'</tbody>
             </table></div></div></body></html>';
-        // dd($html);
-        return PDF::load($html, 'A4', 'landscape')->show();
+        return PDF::load($html, 'A4', 'landscape')->download("Information about customers");
     }
     private function getEXPENSESxls(){
         $input = Input::all();

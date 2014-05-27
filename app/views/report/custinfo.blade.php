@@ -1,8 +1,33 @@
 @extends('layout.core')
-
-<?php $header = "Information about the customers 2014"; ?>
-<?php $i=0; ?>
 @section('content')
+<style>
+    .text{
+        height: 16px;
+        padding: 0px 0px;
+        font-size: 13px;
+        line-height: 0px;
+        border: 0px;
+        box-shadow: 0px;
+        outline: 0 none;
+        text-align: left;
+        width: 100%;
+    }
+    .header{
+        border: 0px;
+        outline: 0 none;
+        padding: 0px 0px;
+        text-align: center;
+        width: 100%;
+    }
+    .table-condensed>tbody>tr>td {
+        padding: 0px;
+        height: 15px;
+        font-size: 13px;
+    }
+</style>
+{{ Form::open(array('url' => 'export/iatc')) }}
+<?php $header = "Information about the customers 2014"?>
+<?php $i=0; ?>
 
 <table class="table table-bordered">
     <thead style="font-weight: bold; text-align: center;">
@@ -19,7 +44,7 @@
     <?php $i++; ?>
     <tr>
         <td>
-            {{{ $i.". "}}}{{{ $doctor->fullname }}}
+            {{ Form::text('names[]', $doctor->fullname, array('class'=>'text'))}}
         </td>
         <td>
             <?php $visipavadinimai = array(); ?>
@@ -28,21 +53,25 @@
                     <?php array_push($visipavadinimai, $item->product->pavadinimas); ?>
                 @endforeach
             @endforeach
-            <?php $pavadinimai = array_unique($visipavadinimai); ?>
+            <?php $pavadinimai = array_unique($visipavadinimai); $pc = 0; $npc = 0?>
             @foreach($pavadinimai as $pavadinimas)
-                {{{$pavadinimas}}},
+            {{ Form::text('products[]', $pavadinimas, array('class'=>'text'))}}
+            <?php $pc++;?>
             @endforeach
+            {{ Form::hidden('pc[]', $pc)}}
         </td>
         <td>
             @foreach($doctor->notourproduct as $item)
-                {{$item->product->pavadinimas}},
+            {{ Form::text('nproducts[]', $item->product->pavadinimas, array('class'=>'text'))}}
+            <?php $npc++;?>
             @endforeach
+            {{ Form::hidden('npc[]', $npc)}}
         </td>
         <td>
-            {{{ $doctor->kodel_neperka }}}
+            {{ Form::text('neperka[]', $doctor->kodel_neperka, array('class'=>'text'))}}
         </td>
         <td>
-            {{{ $doctor->kaip_pritraukti }}}
+            {{ Form::text('pritraukti[]', $doctor->kaip_pritraukti, array('class'=>'text'))}}
         </td>
         @endforeach
     </tr>
@@ -50,9 +79,9 @@
 
 </table>
 
-<div>
-    <a href="/export/xls/iatc" class="btn btn-primary" >Export XLS</a>
-    <a href="/export/pdf/iatc" class="btn btn-primary" >Export PDF</a>
-</div>
+{{Form::submit("Export XLS", array('class'=>'btn btn-primary', 'name' => 'XLS')); }}
+&nbsp;
+{{Form::submit("Export PDF", array('class'=>'btn btn-primary', 'name' => 'PDF')); }}
+{{ Form::close() }}
 
 @stop
