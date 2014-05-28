@@ -755,10 +755,19 @@ class ExportController extends BaseController{
     }
     private function getVISITxls(){
         $input = Input::all();
-        print_r($input);
+        $objPHPExcel = $this->prepareExcel("VisitReport");
+
+        $this->downloadExcel($objPHPExcel,"VisitReport");
     }
     private function getVISITpdf(){
-    $input = Input::all();
-        print_r($input);
+        $input = Input::all();
+        $html = '<html><head><meta charset="utf-8"></head><body><div>
+            <div style="text-align: center; font-weight: bold"></div><br>
+            <div style="margin: 0 auto; width: 100%">
+            <table border="1px solid" style="border-collapse: collapse; width: 950px; text-align: left; font-size: 15px;
+                margin-left: 45px;">
+                <tbody>';
+
+        return PDF::load($html, 'A4', 'landscape')->download("VisitReport");
     }
 }
