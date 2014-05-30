@@ -61,7 +61,7 @@
         <td style="width: 300px; text-align: center">
             Conversation
         </td>
-       <td colspan="10">
+       <td colspan="10" style="text-align: center">
             Order (psc)
         </td>
         <td style="width: 200px; text-align: center">
@@ -82,7 +82,7 @@
         <td rowspan="5">
             {{ Form::textarea('kompetitoriai', $visit->kompetitoriai, array('class'=>'textarea'))}}
         </td>
-        </tr>
+    </tr>
     <tr>
         <td colspan="3" class="td2">
             Brackets

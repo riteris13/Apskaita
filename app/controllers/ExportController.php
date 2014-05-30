@@ -764,10 +764,50 @@ class ExportController extends BaseController{
         $html = '<html><head><meta charset="utf-8"></head><body><div>
             <div style="text-align: center; font-weight: bold"></div><br>
             <div style="margin: 0 auto; width: 100%">
-            <table border="1px solid" style="border-collapse: collapse; width: 950px; text-align: left; font-size: 15px;
+            <table border="1px solid" style="border-collapse: collapse; width: 900px; text-align: left; font-size: 15px;
                 margin-left: 45px;">
-                <tbody>';
-
+            <tbody>
+            <tr><td colspan="13" style="text-align: center">'.$input['data'].'</td></tr>
+            <tr>
+                <td style="width: 150px; text-align: center">Aim</td>
+                <td style="width: 250px; text-align: center">Conversation</td>
+                <td colspan="10" style="text-align: center">Order (psc)</td>
+                <td style="width: 150px; text-align: center">Competition</td>
+            </tr>
+            <tr>
+                <td rowspan="5">'.$input['tikslas'].'</td>
+                <td rowspan="5">'.$input['pokalbis'].'</td>
+                <td class="td2" colspan="8" style="text-align: center; background-color: gray">AO</td>
+                <td class="td2" colspan="2" style="background-color: gray"></td>
+                <td rowspan="5">'.$input['kompetitoriai'].'</td>
+            </tr>
+            <tr>
+                <td colspan="3" style="background-color: gray">Brackets</td>
+                <td style="background-color: gray" rowspan="2">Tubes</td>
+                <td style="background-color: gray" rowspan="2">Bands</td>
+                <td style="background-color: gray" rowspan="2">Wires</td>
+                <td style="background-color: gray" rowspan="2">Plastic</td>
+                <td style="background-color: gray" rowspan="2">Instuments</td>
+                <td style="background-color: gray" rowspan="2">Aarhus</td>
+                <td style="background-color: gray" rowspan="2">Other</td>
+            </tr>
+            <tr>
+                <td style="background-color: gray">Ceramic</td>
+                <td style="background-color: gray">Metal</td>
+                <td style="background-color: gray">Other</td>
+            </tr><tr>';
+        foreach($input['item'] as $item){
+            $html = $html.'<td>'.$item.'</td>';
+        }
+        $html = $html.'</tr><tr>';
+        foreach($input['kiekis'] as $amount){
+            $html = $html.'<td>'.$amount.'</td>';
+        }
+        $html = $html.'</tr><tr><td></td><td style="text-align: right">Price total:</td>';
+        foreach($input['total'] as $total){
+            $html = $html.'<td>'.$total.'</td>';
+        }
+        $html = $html.'<td></td></tr></tbody></table></div></div></body></html>';
         return PDF::load($html, 'A4', 'landscape')->download("VisitReport");
     }
 }
